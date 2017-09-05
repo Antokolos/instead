@@ -270,6 +270,9 @@ int instead_main(int argc, char *argv[])
 #ifdef _WIN32_WCE
 	libwince_init(argv[0], 1);
 	wince_init(argv[0]);
+#elif defined(_WINRT)
+	unix_path(argv[0]);
+	strcpy(game_cwd, argv[0]);
 #else
 #ifdef S60
 	extern char s60_data[];

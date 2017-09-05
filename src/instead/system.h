@@ -7,6 +7,9 @@
  #define strerror(a) ""
  #define putenv(a) ;
  #define setlocale(a, b) ;
+#elif defined(_WINRT)
+#define PATH_MAX 255
+#define putenv(a) ;
 #endif
 
 #include <lua.h>

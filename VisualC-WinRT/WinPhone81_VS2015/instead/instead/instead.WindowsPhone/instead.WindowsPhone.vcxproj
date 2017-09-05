@@ -126,16 +126,16 @@
   </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\work\instead-win\instead\src;C:\work\instead-win\instead\VisualC-WinRT\instead_compat\instead_compat.Shared;C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC-WinRT\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC-WinRT\libgen\libgen.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\work\instead-win\instead\src;C:\work\instead-win\instead\VisualC-WinRT\instead_compat\instead_compat.Shared;C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC-WinRT\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC-WinRT\libgen\libgen.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <IncludePath>C:\work\instead-win\instead\src;C:\work\instead-win\instead\VisualC-WinRT\instead_compat\instead_compat.Shared;C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC-WinRT\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC-WinRT\libgen\libgen.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <IncludePath>C:\work\instead-win\instead\src;C:\work\instead-win\instead\VisualC-WinRT\instead_compat\instead_compat.Shared;C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC-WinRT\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC-WinRT\libgen\libgen.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-240.png" />

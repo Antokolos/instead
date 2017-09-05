@@ -17,9 +17,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)libgen.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)libgen.cpp">
-      <CompileAsWinRT>true</CompileAsWinRT>
-    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)libgen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectCapability Include="SourceItemsFromImports" />

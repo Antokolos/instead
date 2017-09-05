@@ -75,7 +75,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
-    <Import Project="..\lua52.Shared\lua52.Shared.vcxitems" Label="Shared" />
+    <Import Project="..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -98,27 +98,27 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <IncludePath>C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\VisualC\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <IncludePath>C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\VisualC\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <IncludePath>C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\VisualC\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <IncludePath>C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\VisualC\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <IncludePath>C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\VisualC\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <IncludePath>C:\work\instead-win\instead\VisualC-WinRT\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\VisualC\lua52\lua52.Shared\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

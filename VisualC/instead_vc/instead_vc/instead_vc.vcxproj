@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{93A00AD2-776F-46E3-8471-B64B674F25C5}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>instead_vc</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+    <Import Project="..\..\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems" Label="Shared" />
+    <Import Project="..\..\libiconv\libiconv.Shared\libiconv.Shared.vcxitems" Label="Shared" />
+    <Import Project="..\..\libgen\libgen.Shared\libgen.Shared.vcxitems" Label="Shared" />
+    <Import Project="..\..\lua52\lua52.Shared\lua52.Shared.vcxitems" Label="Shared" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\work\instead-win\instead\VisualC\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC\libgen\libgen.Shared;C:\work\instead-win\instead\VisualC\instead_compat\instead_compat.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\work\instead-win\instead\VisualC\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC\libgen\libgen.Shared;C:\work\instead-win\instead\VisualC\instead_compat\instead_compat.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\work\instead-win\instead\VisualC\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC\libgen\libgen.Shared;C:\work\instead-win\instead\VisualC\instead_compat\instead_compat.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\work\instead-win\instead\VisualC\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC\libgen\libgen.Shared;C:\work\instead-win\instead\VisualC\instead_compat\instead_compat.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\config.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\game.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\graphics.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\input.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\cache.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\idf.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\instead.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\lfs.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\list.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\snprintf.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\tinymt32.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\util.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead_bits.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead_paths.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead_sound.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead_sprites.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead_timer.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\ioapi.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\iowin32.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\main.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\menu.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\noise1234.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL2_rotozoom.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_anigif.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_gfxBlitFunc.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\sound.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\themes.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\unpack.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\unzip.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\utils.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\windows.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\config.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\externals.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\game.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\graphics.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\cache.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\idf.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\instead.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\list.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\snprintf.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\system.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\tinymt32.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\util.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\internals.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\ioapi.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\iowin32.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\menu.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\noise1234.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL2_rotozoom.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_anigif.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_gfxBlitFunc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_rotozoom.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\sound.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\themes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\unzip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)\..\..\..\games\**\*.*" Exclude="$(MSBuildThisFileDirectory)\..\..\..\games\**\Makefile;$(MSBuildThisFileDirectory)\..\..\..\games\**\CMakeLists.txt">
+      <Link>games\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <Visible>false</Visible>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <!--DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent-->
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)\..\..\..\stead\**\*.*" Exclude="$(MSBuildThisFileDirectory)\..\..\..\stead\**\Makefile;$(MSBuildThisFileDirectory)\..\..\..\stead\**\CMakeLists.txt">
+      <Link>stead\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <Visible>false</Visible>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)\..\..\..\lang\**\*.*" Exclude="$(MSBuildThisFileDirectory)\..\..\..\lang\**\Makefile;$(MSBuildThisFileDirectory)\..\..\..\lang\**\CMakeLists.txt">
+      <Link>lang\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <Visible>false</Visible>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)\..\..\..\themes\**\*.*" Exclude="$(MSBuildThisFileDirectory)\..\..\..\themes\**\Makefile;$(MSBuildThisFileDirectory)\..\..\..\themes\**\CMakeLists.txt">
+      <Link>themes\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <Visible>false</Visible>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\SDL\VisualC\SDL\SDL.vcxproj">
+      <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDL_image\VisualC\SDL_image.vcxproj">
+      <Project>{2bd5534e-00e2-4bea-ac96-d9a92ea24696}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDL_mixer\VisualC\SDL_mixer.vcxproj">
+      <Project>{f7e944b3-0815-40cd-b3e4-90b2a15b0e33}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDL_ttf\VisualC\SDL_ttf.vcxproj">
+      <Project>{dddbd07d-dc76-4af6-8d02-3e2deb6ee255}</Project>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

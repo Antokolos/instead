@@ -46,8 +46,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ltable.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ltablib.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ltm.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\lua.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\luac.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\lundump.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\lvm.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\lzio.c" />

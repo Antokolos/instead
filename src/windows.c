@@ -27,7 +27,12 @@
 #include <limits.h>
 #include <libgen.h>
 #include <sys/types.h>
+#ifndef _MSVCC
 #include <dir.h>
+#else
+#include "unistd.h"
+#define PATH_MAX MAX_PATH
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>

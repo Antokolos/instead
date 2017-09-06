@@ -76,6 +76,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\work\instead-win\instead\VisualC\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC\libgen\libgen.Shared;C:\work\instead-win\instead\VisualC\instead_compat\instead_compat.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -84,6 +85,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>C:\work\instead-win\instead\VisualC\lua52\lua52.Shared\src;C:\work\instead-win\instead\VisualC\libiconv\libiconv.Shared\include;C:\work\instead-win\instead\VisualC\libgen\libgen.Shared;C:\work\instead-win\instead\VisualC\instead_compat\instead_compat.Shared;C:\work\instead-win\SDL_ttf;C:\work\instead-win\SDL_mixer;C:\work\instead-win\SDL_image;C:\work\instead-win\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -94,8 +96,10 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MSVCC;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -107,8 +111,10 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MSVCC;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -122,8 +128,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MSVCC;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -139,8 +147,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MSVCC;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -184,6 +194,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\unzip.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\utils.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\windows.c" />
+    <ClCompile Include="sdl_main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\config.h" />
@@ -239,16 +250,26 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="..\..\..\..\SDL\VisualC\SDLmain\SDLmain.vcxproj" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\SDL\VisualC\SDLmain\SDLmain.vcxproj">
+      <Project>{da956fd3-e142-46f2-9dd5-c78bebb56b7a}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\SDL\VisualC\SDL\SDL.vcxproj">
       <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\SDL_image\VisualC\SDL_image.vcxproj">
       <Project>{2bd5534e-00e2-4bea-ac96-d9a92ea24696}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDL_mixer\VisualC\native_midi\native_midi.vcxproj">
+      <Project>{ebda67ca-4a23-4f22-bfbc-b8dbe0580d4f}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\SDL_mixer\VisualC\SDL_mixer.vcxproj">
       <Project>{f7e944b3-0815-40cd-b3e4-90b2a15b0e33}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDL_mixer\VisualC\timidity\timidity.vcxproj">
+      <Project>{b162b6f1-e876-4d5f-a1f6-e3a6dc2f4a2c}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\SDL_ttf\VisualC\SDL_ttf.vcxproj">
       <Project>{dddbd07d-dc76-4af6-8d02-3e2deb6ee255}</Project>

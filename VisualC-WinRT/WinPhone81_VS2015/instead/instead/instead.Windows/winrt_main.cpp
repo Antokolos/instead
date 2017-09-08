@@ -3,8 +3,6 @@ using namespace std;
 SDL_winrt_main_NonXAML.cpp, placed in the public domain by David Ludwig  3/13/14
 */
 
-#include <future>
-#include <ppltasks.h>
 #include <string>
 #include "SDL_main.h"
 #include "winrt.h"
@@ -65,8 +63,7 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	return 0;
 }
 
-char* convertFolderNameFromWcharToASCII(Platform::String^ folder)
-{
+char* convertFolderNameFromWcharToASCII(Platform::String^ folder) {
 	std::wstring folderNameW(folder->Begin());
 	std::string folderNameA(folderNameW.begin(), folderNameW.end());
 	return strdup(folderNameA.c_str());
@@ -74,61 +71,13 @@ char* convertFolderNameFromWcharToASCII(Platform::String^ folder)
 
 static char* tmppath = NULL;
 
-// see https://stackoverflow.com/questions/24098740/how-to-copy-a-folder-in-a-windows-store-app
-concurrency::task<int> copydirectory(
-	Windows::Storage::StorageFolder^ source,
-	Windows::Storage::StorageFolder^ destination)
-{ 
-	return concurrency::create_task(destination->TryGetItemAsync(source->DisplayName)).then([source, destination](Windows::Storage::IStorageItem^ existingFolder)
-	{
-		// If the destination exists, return
-		if (existingFolder) {
-			// Potentially we can call existingFolder->DeleteAsync() to delete existing folder
-			concurrency::create_task(destination->CreateFolderAsync(source->DisplayName)).then([source, destination](Windows::Storage::StorageFolder^ targetFolder)
-			{
-				// Get all files (shallow) from source
-				auto queryOptions = ref new Windows::Storage::Search::QueryOptions();
-				//queryOptions->IndexerOption = Windows::Storage::Search::IndexerOption::DoNotUseIndexer;  // Avoid problems cause by out of sync indexer
-				//queryOptions->FolderDepth = Windows::Storage::Search::FolderDepth::Shallow;
-
-				auto queryFiles = source->CreateFileQueryWithOptions(queryOptions);
-
-				concurrency::create_task(queryFiles->GetFilesAsync()).then([source, destination, targetFolder, queryOptions](Windows::Foundation::Collections::IVectorView<Windows::Storage::StorageFile^>^ files)
-				{
-					for (int i = 0; i < files->Size; ++i)
-					{
-						auto file = files->GetAt(i);
-						concurrency::create_task(file->CopyAsync((Windows::Storage::StorageFolder^) targetFolder, file->Name, Windows::Storage::NameCollisionOption::ReplaceExisting)).then([source, destination, targetFolder, queryOptions](Windows::Storage::StorageFile^ f)
-						{
-							// Get all folders (shallow) from source
-							auto queryFolders = source->CreateFolderQueryWithOptions(queryOptions);
-							concurrency::create_task(queryFolders->GetFoldersAsync()).then([source, destination, targetFolder, queryOptions](Windows::Foundation::Collections::IVectorView<Windows::Storage::StorageFolder^>^ folders)
-							{
-								// For each folder call copy with new destination as destination
-								for (int i = 0; i < folders->Size; ++i)
-								{
-									auto storageFolder = folders->GetAt(i);
-									concurrency::create_task(copydirectory((Windows::Storage::StorageFolder^) targetFolder, storageFolder)).wait();
-								}
-							}).wait();
-						}).wait();
-					}
-				}).wait();
-			}).wait();
-		}
-		return 0;
-	});
-}
-
 int main(int argc, char *argv[])
 {
-	Windows::Storage::StorageFolder^ installationFolder = Windows::ApplicationModel::Package::Current->InstalledLocation;\
-	Windows::Storage::StorageFolder^ localFolder = Windows::Storage::ApplicationData::Current->LocalFolder;
-	//Platform::String^ localFolderPath = localFolder->Path;  // C:/Users/user/AppData/Local/Packages/<GUID>/LocalState
-	copydirectory((Windows::Storage::StorageFolder^) installationFolder, localFolder).wait();
-	int err = 0;
-	char* curdir = convertFolderNameFromWcharToASCII(installationFolder->Path);
+	int err;
+	Platform::String^ installationFolder = Windows::ApplicationModel::Package::Current->InstalledLocation->Path;
+	//Platform::String^ localFolder = Windows::Storage::ApplicationData::Current->LocalFolder->Path;  // C:/Users/user/AppData/Local/Packages/<GUID>/LocalState
 	Platform::String^ tempFolder = Windows::Storage::ApplicationData::Current->TemporaryFolder->Path;
+	char* curdir = convertFolderNameFromWcharToASCII(installationFolder);
 	tmppath = convertFolderNameFromWcharToASCII(tempFolder);
 	char *argv2[] = { curdir };
 	err = instead_main(1, argv2);
@@ -137,7 +86,6 @@ int main(int argc, char *argv[])
 	return err;
 }
 
-void getAppTempDir(char *lpPathBuffer)
-{
+void getAppTempDir(char *lpPathBuffer) {
 	strcpy(lpPathBuffer, tmppath);
 }

@@ -74,104 +74,60 @@ char* convertFolderNameFromWcharToASCII(Platform::String^ folder)
 
 static char* tmppath = NULL;
 
-Windows::Storage::IStorageItem^ doit1(Windows::Foundation::IAsyncOperation<Windows::Storage::IStorageItem^>^ task)
-{
-	//auto handle = std::async(std::launch::async, &Windows::Foundation::IAsyncOperation<Windows::Storage::IStorageItem ^>::GetResults);
-	//auto result = handle.get();
-	Windows::Storage::IStorageItem^ res;
-	concurrency::create_task(task).then([](Windows::Storage::IStorageItem^ result)
-	{
-		auto r = result;
-	});
-	return res;
-	/*
-	auto result = task->GetResults();
-	task->Close();  // Should be in finally...
-	return result;*/
-}
-
-Windows::Storage::StorageFile^ doit4(Windows::Foundation::IAsyncOperation<Windows::Storage::StorageFile^>^ task)
-{
-	auto result = task->GetResults();
-	task->Close();  // Should be in finally...
-	return result;
-}
-
-Windows::Storage::StorageFolder^ doit2(Windows::Foundation::IAsyncOperation<Windows::Storage::StorageFolder^>^ task)
-{
-	auto result = task->GetResults(); 
-	task->Close();  // Should be in finally...
-	return result;
-}
-
-Windows::Foundation::Collections::IVectorView<Windows::Storage::StorageFile^>^ doit3(Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVectorView<Windows::Storage::StorageFile^>^>^ task)
-{
-	auto result = task->GetResults();
-	task->Close();  // Should be in finally...
-	return result;
-}
-
-Windows::Foundation::Collections::IVectorView<Windows::Storage::StorageFolder^>^ doit5(Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVectorView<Windows::Storage::StorageFolder^>^>^ task)
-{
-	auto result = task->GetResults();
-	task->Close();  // Should be in finally...
-	return result;
-}
-
-void doit_a(Windows::Foundation::IAsyncAction^ task)
-{
-	//task->GetResults();
-	task->Close();  // Should be in finally...
-}
-
 // see https://stackoverflow.com/questions/24098740/how-to-copy-a-folder-in-a-windows-store-app
-void copydir(
+concurrency::task<int> copydirectory(
 	Windows::Storage::StorageFolder^ source,
 	Windows::Storage::StorageFolder^ destination)
 { 
-	// If the destination exists, delete it.
-	auto targetFolder = doit1(destination->TryGetItemAsync(source->DisplayName));
-	//if (targetFolder is StorageFolder) check omitted
-	if (targetFolder) {
-		doit_a(targetFolder->DeleteAsync());
-	}
-
-	targetFolder = doit2(destination->CreateFolderAsync(source->DisplayName));
-
-	// Get all files (shallow) from source
-	auto queryOptions = ref new Windows::Storage::Search::QueryOptions();
-	queryOptions->IndexerOption = Windows::Storage::Search::IndexerOption::DoNotUseIndexer;  // Avoid problems cause by out of sync indexer
-	queryOptions->FolderDepth = Windows::Storage::Search::FolderDepth::Shallow;
-	
-	auto queryFiles = source->CreateFileQueryWithOptions(queryOptions);
-	auto files = doit3(queryFiles->GetFilesAsync());
-	for (int i = 0; i < files->Size; ++i)
+	return concurrency::create_task(destination->TryGetItemAsync(source->DisplayName)).then([source, destination](Windows::Storage::IStorageItem^ existingFolder)
 	{
-		auto file = files->GetAt(i);
-		doit4(file->CopyAsync((Windows::Storage::StorageFolder^) targetFolder, file->Name, Windows::Storage::NameCollisionOption::ReplaceExisting));
-	}
+		// If the destination exists, return
+		if (existingFolder) {
+			// Potentially we can call existingFolder->DeleteAsync() to delete existing folder
+			concurrency::create_task(destination->CreateFolderAsync(source->DisplayName)).then([source, destination](Windows::Storage::StorageFolder^ targetFolder)
+			{
+				// Get all files (shallow) from source
+				auto queryOptions = ref new Windows::Storage::Search::QueryOptions();
+				//queryOptions->IndexerOption = Windows::Storage::Search::IndexerOption::DoNotUseIndexer;  // Avoid problems cause by out of sync indexer
+				//queryOptions->FolderDepth = Windows::Storage::Search::FolderDepth::Shallow;
 
-	// Get all folders (shallow) from source
-	auto queryFolders = source->CreateFolderQueryWithOptions(queryOptions);
-	auto folders = doit5(queryFolders->GetFoldersAsync());
+				auto queryFiles = source->CreateFileQueryWithOptions(queryOptions);
 
-	// For each folder call copy with new destination as destination
-	for (int i = 0; i < folders->Size; ++i)
-	{
-		auto storageFolder = folders->GetAt(i);
-		copydir((Windows::Storage::StorageFolder^) targetFolder, storageFolder);
-	}
+				concurrency::create_task(queryFiles->GetFilesAsync()).then([source, destination, targetFolder, queryOptions](Windows::Foundation::Collections::IVectorView<Windows::Storage::StorageFile^>^ files)
+				{
+					for (int i = 0; i < files->Size; ++i)
+					{
+						auto file = files->GetAt(i);
+						concurrency::create_task(file->CopyAsync((Windows::Storage::StorageFolder^) targetFolder, file->Name, Windows::Storage::NameCollisionOption::ReplaceExisting)).then([source, destination, targetFolder, queryOptions](Windows::Storage::StorageFile^ f)
+						{
+							// Get all folders (shallow) from source
+							auto queryFolders = source->CreateFolderQueryWithOptions(queryOptions);
+							concurrency::create_task(queryFolders->GetFoldersAsync()).then([source, destination, targetFolder, queryOptions](Windows::Foundation::Collections::IVectorView<Windows::Storage::StorageFolder^>^ folders)
+							{
+								// For each folder call copy with new destination as destination
+								for (int i = 0; i < folders->Size; ++i)
+								{
+									auto storageFolder = folders->GetAt(i);
+									concurrency::create_task(copydirectory((Windows::Storage::StorageFolder^) targetFolder, storageFolder)).wait();
+								}
+							}).wait();
+						}).wait();
+					}
+				}).wait();
+			}).wait();
+		}
+		return 0;
+	});
 }
 
 int main(int argc, char *argv[])
 {
-	int err;
-	Windows::Storage::StorageFolder^ installationFolder = Windows::ApplicationModel::Package::Current->InstalledLocation;
+	Windows::Storage::StorageFolder^ installationFolder = Windows::ApplicationModel::Package::Current->InstalledLocation;\
 	Windows::Storage::StorageFolder^ localFolder = Windows::Storage::ApplicationData::Current->LocalFolder;
 	//Platform::String^ localFolderPath = localFolder->Path;  // C:/Users/user/AppData/Local/Packages/<GUID>/LocalState
-	/*auto tt = std::async(std::launch::async, doit1, installationFolder->TryGetItemAsync("lang")).get();
-	copydir((Windows::Storage::StorageFolder^) tt, localFolder);*/
-    char* curdir = convertFolderNameFromWcharToASCII(installationFolder->Path);
+	copydirectory((Windows::Storage::StorageFolder^) installationFolder, localFolder).wait();
+	int err = 0;
+	char* curdir = convertFolderNameFromWcharToASCII(installationFolder->Path);
 	Platform::String^ tempFolder = Windows::Storage::ApplicationData::Current->TemporaryFolder->Path;
 	tmppath = convertFolderNameFromWcharToASCII(tempFolder);
 	char *argv2[] = { curdir };

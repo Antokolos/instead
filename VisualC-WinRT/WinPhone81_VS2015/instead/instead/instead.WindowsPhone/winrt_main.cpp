@@ -3,6 +3,7 @@ using namespace std;
 SDL_winrt_main_NonXAML.cpp, placed in the public domain by David Ludwig  3/13/14
 */
 
+#include <sstream>
 #include <string>
 #include "SDL_main.h"
 #include "winrt.h"
@@ -63,25 +64,40 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	return 0;
 }
 
-char* convertFolderNameFromWcharToASCII(Platform::String^ folder) {
+char* convertFolderNameFromWcharToASCII(Platform::String^ folder, std::string subfolder) {
 	std::wstring folderNameW(folder->Begin());
 	std::string folderNameA(folderNameW.begin(), folderNameW.end());
-	return strdup(folderNameA.c_str());
+	std::stringstream ss;
+	ss << folderNameA;
+	if (!subfolder.empty()) {
+		ss << "\\" << subfolder;
+	}
+	std::string s = ss.str();
+	return strdup(s.c_str());
+}
+
+char* convertFolderNameFromWcharToASCII(Platform::String^ folder) {
+	return convertFolderNameFromWcharToASCII(folder, "");
 }
 
 static char* tmppath = NULL;
+
+extern "C" int create_dir_if_needed(char *path);
 
 int main(int argc, char *argv[])
 {
 	int err;
 	Platform::String^ installationFolder = Windows::ApplicationModel::Package::Current->InstalledLocation->Path;
-	//Platform::String^ localFolder = Windows::Storage::ApplicationData::Current->LocalFolder->Path;  // C:/Users/user/AppData/Local/Packages/<GUID>/LocalState
+	Platform::String^ localFolder = Windows::Storage::ApplicationData::Current->LocalFolder->Path;  // C:/Users/user/AppData/Local/Packages/<GUID>/LocalState
 	Platform::String^ tempFolder = Windows::Storage::ApplicationData::Current->TemporaryFolder->Path;
 	char* curdir = convertFolderNameFromWcharToASCII(installationFolder);
+	char* appdata = convertFolderNameFromWcharToASCII(localFolder, "appdata");
+	create_dir_if_needed(appdata);
 	tmppath = convertFolderNameFromWcharToASCII(tempFolder);
-	char *argv2[] = { curdir };
-	err = instead_main(1, argv2);
+	char *argv2[] = { curdir, "-fullscreen", "-hires", "-owntheme", "-appdata", appdata };
+	err = instead_main(6, argv2);
 	free(tmppath);
+	free(appdata);
 	free(curdir);
 	return err;
 }

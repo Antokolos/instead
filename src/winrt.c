@@ -31,6 +31,8 @@
 #include <stdlib.h>
 #include <errno.h>
 #include "internals.h"
+#include <direct.h> 
+#include "dirent.h"
 
 extern char *curgame;
 extern char *curgame_dir;
@@ -41,6 +43,28 @@ static char local_stead_path[PATH_MAX];
 
 static char save_path[PATH_MAX];
 static char cfg_path[PATH_MAX];
+
+int create_dir_if_needed(char *path)
+{
+	DIR* dir = opendir(path);
+	if (dir)
+	{
+		/* Directory exists. */
+		closedir(dir);
+		return 0;
+	}
+	else if (ENOENT == errno)
+	{
+		/* Directory does not exist. */
+		_mkdir(path);
+		return 1;
+	}
+	else
+	{
+		/* opendir() failed for some other reason. */
+		return 2;
+	}
+}
 
 char *game_locale(void)
 {

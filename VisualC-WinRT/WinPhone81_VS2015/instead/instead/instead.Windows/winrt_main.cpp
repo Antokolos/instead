@@ -64,7 +64,8 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	return 0;
 }
 
-char* convertFolderNameFromWcharToASCII(Platform::String^ folder, std::string subfolder) {
+char* convertFolderNameFromWcharToASCII(Platform::String^ folder, std::string subfolder)
+{
 	std::wstring folderNameW(folder->Begin());
 	std::string folderNameA(folderNameW.begin(), folderNameW.end());
 	std::stringstream ss;
@@ -76,11 +77,49 @@ char* convertFolderNameFromWcharToASCII(Platform::String^ folder, std::string su
 	return strdup(s.c_str());
 }
 
-char* convertFolderNameFromWcharToASCII(Platform::String^ folder) {
+
+float getMaxLength(float a, float b)
+{
+	return (a > b) ? a : b;
+}
+
+float getMinLength(float a, float b)
+{
+	return (a < b) ? a : b;
+}
+
+char* getModesString()
+{
+	//Windows::Graphics::Display::DisplayInformation^ info = Windows::Graphics::Display::DisplayInformation::NativeOrientation()//::GetForCurrentView();
+	auto devices = Windows::Devices::Input::PointerDevice::GetPointerDevices();
+	if (!devices) {
+		return NULL;
+	}
+	auto firstDevice = devices->GetAt(0);
+	if (!firstDevice) {
+		return NULL;
+	}
+	auto screen = firstDevice->ScreenRect;
+	std::stringstream ss;
+	float min_length = getMinLength(screen.Width, screen.Height);
+	float max_length = getMaxLength(screen.Width, screen.Height);
+	ss << ((int)min_length) << "x" << ((int)max_length) << "," << ((int)max_length) << "x" << ((int)min_length);
+	return strdup(ss.str().c_str());
+}
+
+char* convertFolderNameFromWcharToASCII(Platform::String^ folder)
+{
 	return convertFolderNameFromWcharToASCII(folder, "");
 }
 
 static char* tmppath = NULL;
+static boolean nostdgames = false;
+static boolean hires = false;
+static boolean standalone = false;
+static char* game = NULL;
+static boolean nosound = true;
+static boolean owntheme = true;
+static char* theme = NULL;
 
 extern "C" int create_dir_if_needed(char *path);
 
@@ -94,14 +133,74 @@ int main(int argc, char *argv[])
 	char* appdata = convertFolderNameFromWcharToASCII(localFolder, "appdata");
 	create_dir_if_needed(appdata);
 	tmppath = convertFolderNameFromWcharToASCII(tempFolder);
-	char *argv2[] = { curdir, "-fullscreen", "-hires", "-owntheme", "-appdata", appdata};
-	err = instead_main(6, argv2);
+	char* modes = getModesString();
+	char* _argv[20];
+	int n = 1;
+	_argv[0] = curdir;
+	if (nostdgames)
+	{
+		_argv[n++] = "-nostdgames";
+	}
+	_argv[n++] = "-fullscreen";
+	if (modes)
+	{
+		_argv[n++] = "-modes";
+		_argv[n++] = modes;
+	}
+	if (standalone)
+	{
+		_argv[n++] = "-standalone";
+	}
+	_argv[n++] = (hires) ? "-hires" : "-nohires";
+	if (appdata)
+	{
+		_argv[n++] = "-appdata";
+		_argv[n++] = appdata;
+	}
+	// -gamespath
+	// -themespath
+	if (game)
+	{
+		_argv[n++] = "-game";
+		_argv[n++] = game;
+	}
+	if (nosound)
+	{
+		_argv[n++] = "-nosound";
+	}
+	if (owntheme)
+	{
+		_argv[n++] = "-owntheme";
+	}
+	if (theme)
+	{
+		_argv[n++] = "-theme";
+		_argv[n++] = theme;
+	}
+	_argv[n] = NULL;
+	err = instead_main(n, _argv);
 	free(tmppath);
 	free(appdata);
 	free(curdir);
 	return err;
 }
 
-void getAppTempDir(char *lpPathBuffer) {
+void getAppTempDir(char *lpPathBuffer)
+{
 	strcpy(lpPathBuffer, tmppath);
+}
+
+void rotate_landscape(void)
+{
+	Windows::Graphics::Display::DisplayInformation::AutoRotationPreferences = Windows::Graphics::Display::DisplayOrientations::Landscape;
+}
+
+void rotate_portrait(void)
+{
+	Windows::Graphics::Display::DisplayInformation::AutoRotationPreferences = Windows::Graphics::Display::DisplayOrientations::Portrait;
+}
+
+void unlock_rotation(void)
+{
+	Windows::Graphics::Display::DisplayInformation::AutoRotationPreferences = Windows::Graphics::Display::DisplayOrientations::Landscape | Windows::Graphics::Display::DisplayOrientations::Portrait;
 }

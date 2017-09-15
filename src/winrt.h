@@ -15,6 +15,9 @@ extern "C"
 extern "C"
 {
 #endif	
+    void rotate_landscape(void);
+    void rotate_portrait(void);
+    void unlock_rotation(void);
 	void getAppTempDir(char *lpPathBuffer);
 #ifdef __cplusplus_winrt
 }

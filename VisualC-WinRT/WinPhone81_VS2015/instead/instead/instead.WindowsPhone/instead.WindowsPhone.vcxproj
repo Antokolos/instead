@@ -159,9 +159,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\SDL\VisualC-WinRT\WinPhone81_VS2013\SDL-WinPhone81.vcxproj">
-      <Project>{48fadc0e-964d-4dab-bced-372e0ad19577}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\SDL_image\VisualC-WinRT\WinPhone81_VS2013\jpeg-WinPhone81.vcxproj">
       <Project>{4f241f1f-6636-47a9-aeb2-5b5157961b51}</Project>
     </ProjectReference>

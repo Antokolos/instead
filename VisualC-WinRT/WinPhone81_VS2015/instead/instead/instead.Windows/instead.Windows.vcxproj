@@ -236,9 +236,6 @@
     <None Include="instead.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\SDL\VisualC-WinRT\WinRT81_VS2013\SDL-WinRT81.vcxproj">
-      <Project>{c8df6173-06a1-4f56-a9bc-2002596b30e9}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\SDL_image\VisualC-WinRT\WinRT81_VS2013\jpeg-WinRT81.vcxproj">
       <Project>{2e908ad5-95e9-4b2d-bd6e-ba3ea4c1a2ee}</Project>
     </ProjectReference>

@@ -1918,6 +1918,8 @@ void gfx_finger_pos_scale(float x, float y, int *ox, int *oy)
 	return;
 }
 
+extern void *nativeWindow;
+
 int gfx_set_mode(int w, int h, int fs)
 {
 	int i;
@@ -1939,7 +1941,7 @@ int gfx_set_mode(int w, int h, int fs)
 
 	win_w = w * scale_sw; win_h = h * scale_sw;
 	gfx_get_max_mode(&max_mode_w, &max_mode_h, MODE_ANY); /* get current window size */
-#if defined(IOS) || defined(ANDROID) || defined(MAEMO) || defined(_WIN32_WCE) || defined(S60) || defined(_WINRT)
+#if defined(IOS) || defined(ANDROID) || defined(MAEMO) || defined(_WIN32_WCE) || defined(S60) || defined(__WINRT__)
 	fs = 1; /* always fs for mobiles */
 #endif
 	if (fs && !software_sw) {
@@ -2005,9 +2007,16 @@ int gfx_set_mode(int w, int h, int fs)
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
 #endif
 
-#if defined(IOS) || defined(ANDROID)
-	SDL_VideoWindow = SDL_CreateWindow(t, window_x, window_y, win_w, win_h,
+#if defined(IOS) || defined(ANDROID) || defined(__WINRT__)
+	if (nativeWindow)
+	{
+		SDL_VideoWindow = SDL_CreateWindowFrom(nativeWindow);
+	}
+	else
+	{
+		SDL_VideoWindow = SDL_CreateWindow(t, window_x, window_y, win_w, win_h,
 			SDL_WINDOW_OPENGL | SDL_WINDOW_BORDERLESS | SDL_WINDOW_RESIZABLE);
+    }
 	if (!SDL_VideoWindow) {
 		fprintf(stderr, "Fallback to software window.\n");
 		SDL_VideoWindow = SDL_CreateWindow(t, window_x, window_y, win_w, win_h, 
@@ -2131,7 +2140,7 @@ int gfx_set_mode(int w, int h, int fs)
 	if (scr == NULL) /* ok, fallback to anyformat */
 		scr = SDL_SetVideoMode(gfx_width, gfx_height, 0, SDL_ANYFORMAT | SDL_SWSURFACE | ( ( fs ) ? SDL_FULLSCREEN : 0 ) );
    #else
-    #if !defined(_WIN32_WCE) && !defined(_WINRT)
+    #if !defined(_WIN32_WCE) && !defined(__WINRT__)
 	#if SDL_VERSION_ATLEAST(1,3,0)
 	scr = SDL_SetVideoMode(gfx_width, gfx_height, 32, SDL_DOUBLEBUF | hw | ( ( fs ) ? SDL_FULLSCREEN : 0 ) );
 	#else

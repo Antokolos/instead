@@ -82,7 +82,7 @@
     <ClCompile>
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WINRT;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;__WINRT__;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -95,7 +95,7 @@
     <ClCompile>
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WINRT;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;__WINRT__;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -108,7 +108,7 @@
     <ClCompile>
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WINRT;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;__WINRT__;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -121,7 +121,7 @@
     <ClCompile>
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WINRT;VERSION="3.1.2";LANG_PATH="lang";THEME_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;__WINRT__;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />
@@ -159,6 +159,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\SDL\VisualC-WinRT\WinPhone81_VS2013\SDL-WinPhone81.vcxproj">
+      <Project>{48fadc0e-964d-4dab-bced-372e0ad19577}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\SDL_image\VisualC-WinRT\WinPhone81_VS2013\jpeg-WinPhone81.vcxproj">
       <Project>{4f241f1f-6636-47a9-aeb2-5b5157961b51}</Project>
     </ProjectReference>

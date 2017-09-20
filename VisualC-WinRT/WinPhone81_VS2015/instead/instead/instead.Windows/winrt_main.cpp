@@ -114,7 +114,7 @@ char* convertFolderNameFromWcharToASCII(Platform::String^ folder)
 
 static char* tmppath = NULL;
 static boolean nostdgames = false;
-static boolean hires = false;
+static boolean hires = true;
 static boolean standalone = false;
 static char* game = NULL;
 static boolean nosound = true;

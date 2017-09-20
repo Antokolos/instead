@@ -3184,10 +3184,10 @@ static int kbd_modifiers(struct inp_event *ev)
 static int is_key_back(struct inp_event *ev)
 {
 	if (!is_key(ev, "escape")
-#if defined(S60) || defined(_WIN32_WCE) || defined(_WINRT)
+#if defined(S60) || defined(_WIN32_WCE) || defined(__WINRT__)
 	    || !is_key(ev, "space")
 #endif
-#if defined(_WIN32_WCE) || defined(_WINRT)
+#if defined(_WIN32_WCE) || defined(__WINRT__)
 	    || (ev->code >= 0xc0 && ev->code <= 0xcf) ||
 	    !is_key(ev, "f1") ||
 	    !is_key(ev, "f2") ||
@@ -3332,7 +3332,7 @@ static int kbd_instead(struct inp_event *ev, int *x, int *y)
 			else
 				game_scroll_pdown();
 		}
-#if !defined(S60) && !defined(_WIN32_WCE) && !defined(_WINRT)
+#if !defined(S60) && !defined(_WIN32_WCE) && !defined(__WINRT__)
 	} else if (!is_key(ev, "left") || !is_key(ev, "[4]")) {
 		select_ref(1, 0);
 	} else if (!is_key(ev, "right") || !is_key(ev, "[6]")) {
@@ -3466,12 +3466,18 @@ static void game_void_cycle(void)
 	}
 }
 #endif
+void _game_cycle(void *userdata)
+{
+	game_cycle();
+}
 int game_loop(void)
 {
 #ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(game_void_cycle, 0, 0);
 	return -1;
-#else
+#elif _WINRT_XAML
+	return SDL_WinRTXAMLSetAnimationCallback(&_game_cycle, NULL);
+#else 
 	while (game_running) {
 		if (game_cycle() < 0)
 			break;

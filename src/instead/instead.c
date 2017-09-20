@@ -824,7 +824,7 @@ static int instead_platform(void)
 	snprintf(plat, sizeof(plat) - 1, "PLATFORM='MACOSX'");
 #elif defined(_WIN32_WCE)
 	snprintf(plat, sizeof(plat) - 1, "PLATFORM='WINCE'");
-#elif defined(_WINRT)
+#elif defined(__WINRT__)
 	snprintf(plat, sizeof(plat) - 1, "PLATFORM='WINRT'");
 #elif defined(S60)
 	snprintf(plat, sizeof(plat) - 1, "PLATFORM='S60'");
@@ -850,7 +850,7 @@ static int instead_package(const char *path)
 	if (!stead_path)
 		return -1;
 	strcpy(stead_path, "package.path=\"");
-#if defined(_WIN32_WCE) || defined(_WINRT)
+#if defined(_WIN32_WCE) || defined(__WINRT__)
 	if (path) {
 		strcat(stead_path, path); /* wince have not cwd :) */
 		strcat(stead_path, "/?.lua;");

@@ -389,7 +389,7 @@ int is_absolute_path(const char *path)
 	return (*path == '/' || *path == '\\');
 }
 
-#elif defined(_WINRT)
+#elif defined(__WINRT__)
 
 #include "system.h"
 #include <windows.h>

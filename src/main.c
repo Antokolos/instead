@@ -82,6 +82,7 @@ static int lua_exec = 1;
 static int nocfg_sw = 0;
 
 char *instead_exec = NULL;
+void *nativeWindow = NULL;
 
 #ifdef _USE_UNPACK
 extern int unpack(const char *zipfilename, const char *where);
@@ -270,7 +271,7 @@ int instead_main(int argc, char *argv[])
 #ifdef _WIN32_WCE
 	libwince_init(argv[0], 1);
 	wince_init(argv[0]);
-#elif defined(_WINRT)
+#elif defined(__WINRT__)
 	unix_path(argv[0]);
 	strcpy(game_cwd, argv[0]);
 #else
@@ -317,6 +318,15 @@ int instead_main(int argc, char *argv[])
 				mode_sw = strdup(argv[++i]);
 			else
 				mode_sw = strdup("-1x-1");
+		}
+		else if (!strcmp(argv[i], "-native_window")) {
+			FREE(nativeWindow);
+			if ((i + 1) < argc)
+				nativeWindow = (void *)SDL_strtoull(argv[++i], NULL, 10);
+			if (nativeWindow)
+			{
+				SDL_SetMainReady();
+			}
 		} else if (!strcmp(argv[i], "-modes")) {
 			FREE(modes_sw);
 			if ((i + 1) < argc)
@@ -674,6 +684,9 @@ int instead_main(int argc, char *argv[])
 	}
 
 	game_loop();
+#ifdef _WINRT_XAML
+	return 0;
+#endif
 #ifdef __EMSCRIPTEN__
 	return 0;
 #endif

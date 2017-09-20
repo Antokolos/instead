@@ -7,7 +7,7 @@
  #define strerror(a) ""
  #define putenv(a) ;
  #define setlocale(a, b) ;
-#elif defined(_WINRT)
+#elif defined(__WINRT__)
 #define PATH_MAX 255
 #define putenv(a) ;
 #endif

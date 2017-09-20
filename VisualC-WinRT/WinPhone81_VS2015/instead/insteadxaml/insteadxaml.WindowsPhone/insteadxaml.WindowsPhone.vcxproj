@@ -58,6 +58,7 @@
   <Import Project="..\insteadxaml.Shared\insteadxaml.Shared.vcxitems" Label="Shared" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
+  <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -87,40 +88,44 @@
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\..\..\..\..\..\XAML\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(AngleBinPath)lib\libGLESv2.lib;$(AngleBinPath)lib\libEGL.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\..\..\..\..\..\XAML\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(AngleBinPath)lib\libGLESv2.lib;$(AngleBinPath)lib\libEGL.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\..\..\..\..\..\XAML\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(AngleBinPath)lib\libGLESv2.lib;$(AngleBinPath)lib\libEGL.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\..\..\..\..\..\XAML\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(AngleBinPath)lib\libGLESv2.lib;$(AngleBinPath)lib\libEGL.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -152,8 +157,56 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\XAML\SDL\VisualC-WinRT\WinPhone81_VS2013\SDL-WinPhone81.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\..\SDL\VisualC-WinRT\WinPhone81_VS2013\SDL-WinPhone81.vcxproj">
       <Project>{48fadc0e-964d-4dab-bced-372e0ad19577}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_image\VisualC-WinRT\WinPhone81_VS2013\jpeg-WinPhone81.vcxproj">
+      <Project>{4f241f1f-6636-47a9-aeb2-5b5157961b51}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_image\VisualC-WinRT\WinPhone81_VS2013\libpng-WinPhone81.vcxproj">
+      <Project>{c396c32a-1a8d-4711-a3db-206f188fc738}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_image\VisualC-WinRT\WinPhone81_VS2013\libwebp-WinPhone81.vcxproj">
+      <Project>{9dc4d90a-0d6d-4150-9049-1f4358b59e06}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_image\VisualC-WinRT\WinPhone81_VS2013\SDL_image-WinPhone81.vcxproj">
+      <Project>{1444bb95-670b-4878-851b-7ed8da0629a3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_image\VisualC-WinRT\WinPhone81_VS2013\zlib-WinPhone81.vcxproj">
+      <Project>{183b6f21-dd86-49a1-ba70-c97d7c404469}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_mixer\VisualC-WinRT\WinPhone81_VS2013\libogg_dynamic-WinPhone81.vcxproj">
+      <Project>{0ccc2e56-e3a4-4cd7-92ba-0c6f99440753}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_mixer\VisualC-WinRT\WinPhone81_VS2013\libvorbisfile_dynamic-WinPhone81.vcxproj">
+      <Project>{203efcc5-ce11-4a75-92f4-c3dbf7609376}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_mixer\VisualC-WinRT\WinPhone81_VS2013\libvorbis_dynamic-WinPhone81.vcxproj">
+      <Project>{c943dbc9-4eb0-4684-be3e-334342a7ee2c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_mixer\VisualC-WinRT\WinPhone81_VS2013\SDL_mixer-WinPhone81.vcxproj">
+      <Project>{fb75c3d3-d261-4575-9d17-9e88e09568ba}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_ttf\VisualC-WinRT\WinPhone81_VS2013\freetype-WinPhone81.vcxproj">
+      <Project>{7b62bbd5-2f9d-428f-a1ee-857e485592f7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\SDL_ttf\VisualC-WinRT\WinPhone81_VS2013\SDL_ttf-WinPhone81.vcxproj">
+      <Project>{7ec61741-d45b-4a6e-aba2-525e3a3f3a76}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\instead_compat\instead_compat.WindowsPhone\instead_compat.WindowsPhone.vcxproj">
+      <Project>{602feb03-5606-48f3-abeb-80be55bb0af3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\libgen\libgen.WindowsPhone\libgen.WindowsPhone.vcxproj">
+      <Project>{1474d86b-4d9e-458f-9dc3-8b8c7917e2a2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\libiconv\libiconv.WindowsPhone\libiconv.WindowsPhone.vcxproj">
+      <Project>{7036dc2e-6fab-417e-9ebe-8056a11e8be8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\lua52\lua52.WindowsPhone\lua52.WindowsPhone.vcxproj">
+      <Project>{8bbd729c-c0af-46ca-a32d-ce40a58ecfe2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\main.WindowsPhone\main.WindowsPhone.vcxproj">
+      <Project>{b0e69d44-f057-440e-8e97-619cd704e87f}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

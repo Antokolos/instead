@@ -4,7 +4,7 @@
 SDL_Window * window = NULL;
 SDL_Renderer * renderer = NULL;
 
-void AppUpdate(void *userdata)
+void XXAppUpdate(void *userdata)
 {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -17,7 +17,7 @@ void AppUpdate(void *userdata)
     SDL_RenderPresent(renderer);
 }
 
-int main(int argc, char *argv[])
+int xtest_main(int argc, char *argv[])
 {
     void *nativeWindow = NULL;
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 
 #if __WINRT__
     if (nativeWindow) {
-        if (SDL_WinRTXAMLSetAnimationCallback(&AppUpdate, NULL) != 0) {
+        if (SDL_WinRTXAMLSetAnimationCallback(&XXAppUpdate, NULL) != 0) {
             SDL_Log("Unable to set SDL's XAML animation callback: %s", SDL_GetError());
             SDL_DestroyRenderer(renderer);
             renderer = NULL;
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
          * run a main loop.
          */
         while (true) {
-            AppUpdate(NULL);
+            XXAppUpdate(NULL);
         }
     }
 

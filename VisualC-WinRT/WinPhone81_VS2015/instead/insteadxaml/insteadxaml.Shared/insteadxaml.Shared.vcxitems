@@ -31,12 +31,4 @@
   <ItemGroup>
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)libEGL.dll">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)libGLESv2.dll">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-  </ItemGroup>
 </Project>

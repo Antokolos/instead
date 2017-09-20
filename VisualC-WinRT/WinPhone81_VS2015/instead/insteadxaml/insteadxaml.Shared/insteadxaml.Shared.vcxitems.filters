@@ -3,15 +3,26 @@
   <ItemGroup>
     <CLCompile Include="$(MSBuildThisFileDirectory)App.xaml.cpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)App.xaml.h" />
-    <CLCompile Include="$(MSBuildThisFileDirectory)pch.cpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)main.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)main.cpp">
+      <Filter>insteadxaml</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)pch.cpp">
+      <Filter>insteadxaml</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml" />
+    <Filter Include="insteadxaml">
+      <UniqueIdentifier>{8fa13052-4f11-4bb3-8850-07c187441b47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)libEGL.dll" />
-    <None Include="$(MSBuildThisFileDirectory)libGLESv2.dll" />
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <Filter>insteadxaml</Filter>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h">
+      <Filter>insteadxaml</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -91,6 +91,7 @@ float getMinLength(float a, float b)
 char* getModesString()
 {
 	//Windows::Graphics::Display::DisplayInformation^ info = Windows::Graphics::Display::DisplayInformation::NativeOrientation()//::GetForCurrentView();
+	//auto rect = Windows::UI::Core::CoreWindow::GetForCurrentThread()->Bounds;
 	auto devices = Windows::Devices::Input::PointerDevice::GetPointerDevices();
 	if (!devices) {
 		return NULL;

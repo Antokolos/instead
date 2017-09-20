@@ -3,9 +3,6 @@
   <ItemGroup>
     <CLCompile Include="$(MSBuildThisFileDirectory)App.xaml.cpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)App.xaml.h" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)main.cpp">
-      <Filter>insteadxaml</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)pch.cpp">
       <Filter>insteadxaml</Filter>
     </ClCompile>

@@ -234,6 +234,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="instead.Windows_TemporaryKey.pfx" />
+    <None Include="SDL2-WinRTResource_BlankCursor.cur" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\SDL\VisualC-WinRT\WinRT81_VS2013\SDL-WinRT81.vcxproj">
@@ -294,6 +295,9 @@
       <CompileAsWinRT Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</CompileAsWinRT>
       <CompileAsWinRT Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</CompileAsWinRT>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SDL2-WinRTResources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

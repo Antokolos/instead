@@ -118,7 +118,7 @@ static boolean nostdgames = false;
 static boolean hires = true;
 static boolean standalone = false;
 static char* game = NULL;
-static boolean nosound = true;
+static boolean nosound = false;
 static boolean owntheme = true;
 static char* theme = NULL;
 

@@ -205,8 +205,7 @@ int input(struct inp_event *inp, int wait)
 	SDL_Event peek;
 	memset(&event, 0, sizeof(event));
 	memset(&peek, 0, sizeof(peek));
-
-#if !defined(__EMSCRIPTEN__) && !defined(__WINRT__)
+#if !defined(__EMSCRIPTEN__)
 	if (wait) {
 		rc = SDL_WaitEvent(&event);
 	} else

@@ -88,24 +88,35 @@ float getMinLength(float a, float b)
 	return (a < b) ? a : b;
 }
 
+// see https://stackoverflow.com/questions/31936154/get-screen-resolution-in-win10-uwp-app
 char* getModesString()
 {
-	//Windows::Graphics::Display::DisplayInformation^ info = Windows::Graphics::Display::DisplayInformation::NativeOrientation()//::GetForCurrentView();
-	//auto rect = Windows::UI::Core::CoreWindow::GetForCurrentThread()->Bounds;
-	auto devices = Windows::Devices::Input::PointerDevice::GetPointerDevices();
-	if (!devices) {
-		return NULL;
-	}
-	auto firstDevice = devices->GetAt(0);
-	if (!firstDevice) {
-		return NULL;
-	}
-	auto screen = firstDevice->ScreenRect;
+	auto bounds = Windows::UI::ViewManagement::ApplicationView::GetForCurrentView()->VisibleBounds;
+	auto scaleFactor = Windows::Graphics::Display::DisplayInformation::GetForCurrentView()->RawPixelsPerViewPixel;
+	auto width = bounds.Width*scaleFactor;
+	auto height = bounds.Height*scaleFactor;
 	std::stringstream ss;
-	float min_length = getMinLength(screen.Width, screen.Height);
-	float max_length = getMaxLength(screen.Width, screen.Height);
+	float min_length = getMinLength(width, height);
+	float max_length = getMaxLength(width, height);
 	ss << ((int)min_length) << "x" << ((int)max_length) << "," << ((int)max_length) << "x" << ((int)min_length);
 	return strdup(ss.str().c_str());
+}
+
+void toggleToFullscreen()
+{
+	auto av = Windows::UI::ViewManagement::ApplicationView::GetForCurrentView();
+	if (!av->IsFullScreenMode)
+	{
+		if (av->TryEnterFullScreenMode())
+		{
+			av->FullScreenSystemOverlayMode = Windows::UI::ViewManagement::FullScreenSystemOverlayMode::Minimal;
+		}
+	}
+	else
+	{
+		av->ExitFullScreenMode();
+		av->FullScreenSystemOverlayMode = Windows::UI::ViewManagement::FullScreenSystemOverlayMode::Standard;
+	}
 }
 
 char* convertFolderNameFromWcharToASCII(Platform::String^ folder)
@@ -118,7 +129,7 @@ static boolean nostdgames = false;
 static boolean hires = true;
 static boolean standalone = false;
 static char* game = NULL;
-static boolean nosound = false;
+static boolean nosound = true;
 static boolean owntheme = true;
 static char* theme = NULL;
 
@@ -143,6 +154,7 @@ int main(int argc, char *argv[])
 		_argv[n++] = "-nostdgames";
 	}
 	_argv[n++] = "-fullscreen";
+	//toggleToFullscreen();
 	if (modes)
 	{
 		_argv[n++] = "-modes";

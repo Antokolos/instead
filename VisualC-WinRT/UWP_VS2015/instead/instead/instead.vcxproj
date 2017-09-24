@@ -219,6 +219,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="instead_TemporaryKey.pfx" />
+    <None Include="SDL2-WinRTResource_BlankCursor.cur" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\config.c" />
@@ -366,6 +367,9 @@
     <ProjectReference Include="..\..\zlib-UWP\zlib-UWP.vcxproj">
       <Project>{2c1dbfe5-a358-43e5-8dd8-48a9da1e2260}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SDL2-WinRTResources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
 		_argv[n++] = "-nostdgames";
 	}
 	_argv[n++] = "-fullscreen";
-	//toggleToFullscreen();
+	toggleToFullscreen();
 	if (modes)
 	{
 		_argv[n++] = "-modes";

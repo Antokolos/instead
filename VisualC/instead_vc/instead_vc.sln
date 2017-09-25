@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "instead_vc", "instead_vc\instead_vc.vcxproj", "{93A00AD2-776F-46E3-8471-B64B674F25C5}"
 EndProject
@@ -27,16 +27,24 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "native_midi", "..\..\..\SDL
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL2main", "..\..\..\SDL\VisualC\SDLmain\SDLmain.vcxproj", "{DA956FD3-E142-46F2-9DD5-C78BEBB56B7A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "instead_compat", "..\instead_compat\instead_compat\instead_compat.vcxproj", "{78EEE3F3-72DA-4325-AC48-3DE1231DFEC4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libgen", "..\libgen\libgen\libgen.vcxproj", "{58C2C02D-0DD0-4DC7-9E49-23354A0F02AE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libiconv", "..\libiconv\libiconv\libiconv.vcxproj", "{84ACD2F1-232B-4884-8D53-02972CAF3E91}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua52", "..\lua52\lua52\lua52.vcxproj", "{074D19DF-058F-4E2E-AF63-F819E030FD34}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
+		..\lua52\lua52.Shared\lua52.Shared.vcxitems*{074d19df-058f-4e2e-af63-f819e030fd34}*SharedItemsImports = 4
 		..\lua52\lua52.Shared\lua52.Shared.vcxitems*{334eab4b-c600-4a2b-95dd-f2d8bc95e414}*SharedItemsImports = 9
+		..\libgen\libgen.Shared\libgen.Shared.vcxitems*{58c2c02d-0dd0-4dc7-9e49-23354a0f02ae}*SharedItemsImports = 4
 		..\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{5a6fdeb1-9776-4a14-8bdd-e919603db294}*SharedItemsImports = 9
-		..\libgen\libgen.Shared\libgen.Shared.vcxitems*{93a00ad2-776f-46e3-8471-b64b674f25c5}*SharedItemsImports = 4
-		..\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{93a00ad2-776f-46e3-8471-b64b674f25c5}*SharedItemsImports = 4
-		..\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{93a00ad2-776f-46e3-8471-b64b674f25c5}*SharedItemsImports = 4
-		..\lua52\lua52.Shared\lua52.Shared.vcxitems*{93a00ad2-776f-46e3-8471-b64b674f25c5}*SharedItemsImports = 4
+		..\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{78eee3f3-72da-4325-ac48-3de1231dfec4}*SharedItemsImports = 4
 		..\libgen\libgen.Shared\libgen.Shared.vcxitems*{7cf3b759-856b-4dc4-a0e5-a7c5564788c5}*SharedItemsImports = 9
+		..\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{84acd2f1-232b-4884-8d53-02972caf3e91}*SharedItemsImports = 4
+		..\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -109,6 +117,38 @@ Global
 		{DA956FD3-E142-46F2-9DD5-C78BEBB56B7A}.Release|x64.Build.0 = Release|x64
 		{DA956FD3-E142-46F2-9DD5-C78BEBB56B7A}.Release|x86.ActiveCfg = Release|Win32
 		{DA956FD3-E142-46F2-9DD5-C78BEBB56B7A}.Release|x86.Build.0 = Release|Win32
+		{78EEE3F3-72DA-4325-AC48-3DE1231DFEC4}.Debug|x64.ActiveCfg = Debug|x64
+		{78EEE3F3-72DA-4325-AC48-3DE1231DFEC4}.Debug|x64.Build.0 = Debug|x64
+		{78EEE3F3-72DA-4325-AC48-3DE1231DFEC4}.Debug|x86.ActiveCfg = Debug|Win32
+		{78EEE3F3-72DA-4325-AC48-3DE1231DFEC4}.Debug|x86.Build.0 = Debug|Win32
+		{78EEE3F3-72DA-4325-AC48-3DE1231DFEC4}.Release|x64.ActiveCfg = Release|x64
+		{78EEE3F3-72DA-4325-AC48-3DE1231DFEC4}.Release|x64.Build.0 = Release|x64
+		{78EEE3F3-72DA-4325-AC48-3DE1231DFEC4}.Release|x86.ActiveCfg = Release|Win32
+		{78EEE3F3-72DA-4325-AC48-3DE1231DFEC4}.Release|x86.Build.0 = Release|Win32
+		{58C2C02D-0DD0-4DC7-9E49-23354A0F02AE}.Debug|x64.ActiveCfg = Debug|x64
+		{58C2C02D-0DD0-4DC7-9E49-23354A0F02AE}.Debug|x64.Build.0 = Debug|x64
+		{58C2C02D-0DD0-4DC7-9E49-23354A0F02AE}.Debug|x86.ActiveCfg = Debug|Win32
+		{58C2C02D-0DD0-4DC7-9E49-23354A0F02AE}.Debug|x86.Build.0 = Debug|Win32
+		{58C2C02D-0DD0-4DC7-9E49-23354A0F02AE}.Release|x64.ActiveCfg = Release|x64
+		{58C2C02D-0DD0-4DC7-9E49-23354A0F02AE}.Release|x64.Build.0 = Release|x64
+		{58C2C02D-0DD0-4DC7-9E49-23354A0F02AE}.Release|x86.ActiveCfg = Release|Win32
+		{58C2C02D-0DD0-4DC7-9E49-23354A0F02AE}.Release|x86.Build.0 = Release|Win32
+		{84ACD2F1-232B-4884-8D53-02972CAF3E91}.Debug|x64.ActiveCfg = Debug|x64
+		{84ACD2F1-232B-4884-8D53-02972CAF3E91}.Debug|x64.Build.0 = Debug|x64
+		{84ACD2F1-232B-4884-8D53-02972CAF3E91}.Debug|x86.ActiveCfg = Debug|Win32
+		{84ACD2F1-232B-4884-8D53-02972CAF3E91}.Debug|x86.Build.0 = Debug|Win32
+		{84ACD2F1-232B-4884-8D53-02972CAF3E91}.Release|x64.ActiveCfg = Release|x64
+		{84ACD2F1-232B-4884-8D53-02972CAF3E91}.Release|x64.Build.0 = Release|x64
+		{84ACD2F1-232B-4884-8D53-02972CAF3E91}.Release|x86.ActiveCfg = Release|Win32
+		{84ACD2F1-232B-4884-8D53-02972CAF3E91}.Release|x86.Build.0 = Release|Win32
+		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Debug|x64.ActiveCfg = Debug|x64
+		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Debug|x64.Build.0 = Debug|x64
+		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Debug|x86.ActiveCfg = Debug|Win32
+		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Debug|x86.Build.0 = Debug|Win32
+		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Release|x64.ActiveCfg = Release|x64
+		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Release|x64.Build.0 = Release|x64
+		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Release|x86.ActiveCfg = Release|Win32
+		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

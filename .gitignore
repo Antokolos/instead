@@ -6,6 +6,5 @@
 **/Release/
 **/ipch/
 **/*.obj
-/VisualC-WinRT/UWP_VS2015/instead/instead/instead.vcxproj.user
-/VisualC-WinRT/UWP_VS2015/instead/instead.VC.db
-/VisualC-WinRT/WinPhone81_VS2015/instead/instead.VC.db
+**/*.vcxproj.user
+**/*.VC.db

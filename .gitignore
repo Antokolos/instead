@@ -6,5 +6,4 @@
 **/Release/
 **/ipch/
 **/*.obj
-**/*.vcxproj.user
 **/*.VC.db

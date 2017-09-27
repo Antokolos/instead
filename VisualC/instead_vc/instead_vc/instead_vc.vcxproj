@@ -197,7 +197,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\unzip.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\utils.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\windows.c" />
-    <ClCompile Include="sdl_main.c" />
+    <ClCompile Include="..\..\..\src\SDL_main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\config.h" />

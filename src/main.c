@@ -22,7 +22,8 @@
  *
  */
 
-#if defined(__APPLE__) || defined(S60) || defined(ANDROID)
+#include "instead/system.h"
+#if defined(__APPLE__) || defined(S60) || defined(ANDROID) || defined(__WINRT__)
 #include <SDL.h>
 #endif
 

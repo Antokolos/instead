@@ -25,7 +25,7 @@
 #include "externals.h"
 #include "internals.h"
 
-#if defined(ANDROID) || defined(S60) || defined(_WIN32_WCE) || defined(MAEMO) || defined(__WINRT__)
+#if defined(ANDROID) || defined(S60) || defined(_WIN32_WCE) || defined(MAEMO)
 int opt_fsize = 12;
 #elif defined(IOS)
 int opt_fsize = 5;

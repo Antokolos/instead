@@ -1,6 +1,8 @@
 #ifndef __INSTEAD_EXTERNAL_H_
 #define __INSTEAD_EXTERNAL_H_
 
+#include "SDL_platform.h"  // __WINRT__ define
+
 #ifdef _WIN32_WCE
  #define PATH_MAX 255
  #define errno 0

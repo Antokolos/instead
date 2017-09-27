@@ -6,7 +6,11 @@ SDL_winrt_main_NonXAML.cpp, placed in the public domain by David Ludwig  3/13/14
 #include <sstream>
 #include <string>
 #include "SDL_main.h"
+#if _WIN32_WINNT >= 0x0A00
 #include "uwp.h"
+#else
+#include "winrt.h"
+#endif
 #include <wrl.h>
 
 /* At least one file in any SDL/WinRT app appears to require compilation
@@ -88,13 +92,29 @@ float getMinLength(float a, float b)
 	return (a < b) ? a : b;
 }
 
-// see https://stackoverflow.com/questions/31936154/get-screen-resolution-in-win10-uwp-app
 char* getModesString()
 {
+#if _WIN32_WINNT >= 0x0A00
+	// see https://stackoverflow.com/questions/31936154/get-screen-resolution-in-win10-uwp-app
 	auto bounds = Windows::UI::ViewManagement::ApplicationView::GetForCurrentView()->VisibleBounds;
 	auto scaleFactor = Windows::Graphics::Display::DisplayInformation::GetForCurrentView()->RawPixelsPerViewPixel;
 	auto width = bounds.Width*scaleFactor;
 	auto height = bounds.Height*scaleFactor;
+#else
+	auto devices = Windows::Devices::Input::PointerDevice::GetPointerDevices();
+	if (!devices)
+	{
+		return NULL;
+	}
+	auto firstDevice = devices->GetAt(0);
+	if (!firstDevice)
+	{
+		return NULL;
+	}
+	auto screen = firstDevice->ScreenRect;
+	auto width = screen.Width;
+	auto height = screen.Height;
+#endif
 	std::stringstream ss;
 	float min_length = getMinLength(width, height);
 	float max_length = getMaxLength(width, height);
@@ -102,6 +122,7 @@ char* getModesString()
 	return strdup(ss.str().c_str());
 }
 
+#if _WIN32_WINNT >= 0x0A00
 void toggleToFullscreen()
 {
 	auto av = Windows::UI::ViewManagement::ApplicationView::GetForCurrentView();
@@ -118,6 +139,7 @@ void toggleToFullscreen()
 		av->FullScreenSystemOverlayMode = Windows::UI::ViewManagement::FullScreenSystemOverlayMode::Standard;
 	}
 }
+#endif
 
 char* convertFolderNameFromWcharToASCII(Platform::String^ folder)
 {
@@ -154,7 +176,9 @@ int main(int argc, char *argv[])
 		_argv[n++] = "-nostdgames";
 	}
 	_argv[n++] = "-fullscreen";
+#if _WIN32_WINNT >= 0x0A00
 	toggleToFullscreen();
+#endif
 	if (modes)
 	{
 		_argv[n++] = "-modes";

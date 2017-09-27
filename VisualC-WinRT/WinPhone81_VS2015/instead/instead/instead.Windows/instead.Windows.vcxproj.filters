@@ -1,15 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Common">
-      <UniqueIdentifier>1d9225f7-ce03-40a0-9d44-877a1eb01ab9</UniqueIdentifier>
-    </Filter>
     <Filter Include="Assets">
       <UniqueIdentifier>8a1f34b4-5163-4d39-a45c-bdafc027d5bb</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
-    </Filter>
-    <Filter Include="Content">
-      <UniqueIdentifier>79aa9fd4-214d-41cf-94ef-8460da9b1dfe</UniqueIdentifier>
     </Filter>
     <Image Include="Assets\Logo.png">
       <Filter>Assets</Filter>
@@ -29,12 +23,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="instead.Windows_TemporaryKey.pfx" />
-    <None Include="SDL2-WinRTResource_BlankCursor.cur" />
+    <None Include="..\..\..\..\..\src\SDL2-WinRTResource_BlankCursor.cur" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="winrt_main.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\SDL2_winrt.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SDL2-WinRTResources.rc" />
+    <ResourceCompile Include="..\..\..\..\..\src\SDL2-WinRTResources.rc" />
   </ItemGroup>
 </Project>

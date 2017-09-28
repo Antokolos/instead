@@ -37,6 +37,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="instead_TemporaryKey.pfx" />
+    <None Include="..\..\..\..\src\SDL2-WinRTResource_BlankCursor.cur">
+      <Filter>instead</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\cache.c">

@@ -52,6 +52,18 @@ static char cfg_path[PATH_MAX];
 
 #ifdef _UWP
 // TODO: the same function in winrt.c. Maybe move to utils.c?
+int dir_exists(char *path)
+{
+	DIR* dir = opendir(path);
+	if (dir)
+	{
+		/* Directory exists. */
+		closedir(dir);
+		return 1;
+	}
+	return 0;
+}
+
 int create_dir_if_needed(char *path)
 {
 	DIR* dir = opendir(path);

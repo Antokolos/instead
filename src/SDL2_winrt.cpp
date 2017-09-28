@@ -68,7 +68,7 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	return 0;
 }
 
-char* convertFolderNameFromWcharToASCII(Platform::String^ folder, std::string subfolder)
+char* convertFolderNameFromPlatformString(Platform::String^ folder, std::string subfolder)
 {
 	std::wstring folderNameW(folder->Begin());
 	std::string folderNameA(folderNameW.begin(), folderNameW.end());
@@ -141,9 +141,9 @@ void toggleToFullscreen()
 }
 #endif
 
-char* convertFolderNameFromWcharToASCII(Platform::String^ folder)
+char* convertFolderNameFromPlatformString(Platform::String^ folder)
 {
-	return convertFolderNameFromWcharToASCII(folder, "");
+	return convertFolderNameFromPlatformString(folder, "");
 }
 
 static char* tmppath = NULL;
@@ -156,6 +156,7 @@ static boolean owntheme = true;
 static char* theme = NULL;
 
 extern "C" int create_dir_if_needed(char *path);
+extern "C" int dir_exists(char *path);
 
 int main(int argc, char *argv[])
 {
@@ -163,12 +164,14 @@ int main(int argc, char *argv[])
 	Platform::String^ installationFolder = Windows::ApplicationModel::Package::Current->InstalledLocation->Path;
 	Platform::String^ localFolder = Windows::Storage::ApplicationData::Current->LocalFolder->Path;  // C:/Users/user/AppData/Local/Packages/<GUID>/LocalState
 	Platform::String^ tempFolder = Windows::Storage::ApplicationData::Current->TemporaryFolder->Path;
-	char* curdir = convertFolderNameFromWcharToASCII(installationFolder);
-	char* appdata = convertFolderNameFromWcharToASCII(localFolder, "appdata");
+	char* curdir = convertFolderNameFromPlatformString(installationFolder);
+	char* appdata = convertFolderNameFromPlatformString(localFolder, "appdata");
+	char* appdata_games = convertFolderNameFromPlatformString(localFolder, "appdata\\games");
+	char* appdata_themes = convertFolderNameFromPlatformString(localFolder, "appdata\\themes");
 	create_dir_if_needed(appdata);
-	tmppath = convertFolderNameFromWcharToASCII(tempFolder);
+	tmppath = convertFolderNameFromPlatformString(tempFolder);
 	char* modes = getModesString();
-	char* _argv[20];
+	char* _argv[24];
 	int n = 1;
 	_argv[0] = curdir;
 	if (nostdgames)
@@ -194,8 +197,16 @@ int main(int argc, char *argv[])
 		_argv[n++] = "-appdata";
 		_argv[n++] = appdata;
 	}
-	// -gamespath
-	// -themespath
+	if (dir_exists(appdata_games))
+	{
+		_argv[n++] = "-gamespath";
+		_argv[n++] = appdata_games;
+	}
+	if (dir_exists(appdata_themes))
+	{
+		_argv[n++] = "-themespath";
+		_argv[n++] = appdata_themes;
+	}
 	if (game)
 	{
 		_argv[n++] = "-game";
@@ -216,7 +227,10 @@ int main(int argc, char *argv[])
 	}
 	_argv[n] = NULL;
 	err = instead_main(n, _argv);
+	free(modes);
 	free(tmppath);
+	free(appdata_themes);
+	free(appdata_games);
 	free(appdata);
 	free(curdir);
 	return err;

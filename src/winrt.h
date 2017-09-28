@@ -7,14 +7,8 @@
 extern "C"
 {
 #endif
+	int dir_exists(char *path);
     int create_dir_if_needed(char *path);
-#ifdef __cplusplus_winrt
-}
-#endif
-#ifdef __cplusplus_winrt
-extern "C"
-{
-#endif	
     void rotate_landscape(void);
     void rotate_portrait(void);
     void unlock_rotation(void);

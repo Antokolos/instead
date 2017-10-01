@@ -613,7 +613,7 @@ local unzFile unzOpenInternal (const void *path,
     us.is64bitOpenFunction = is64bitOpenFunction;
 
 	void *_path = path;
-#ifdef _WIN_EXT
+#ifdef _WIDE_CHARS
 	wchar_t wpath[_MAX_PATH];
 	mbstowcs(wpath, path, _MAX_PATH);
 	_path = (void*) wpath;

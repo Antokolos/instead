@@ -612,10 +612,14 @@ local unzFile unzOpenInternal (const void *path,
         us.z_filefunc = *pzlib_filefunc64_32_def;
     us.is64bitOpenFunction = is64bitOpenFunction;
 
-
-
+	void *_path = path;
+#ifdef _WIN_EXT
+	wchar_t wpath[_MAX_PATH];
+	mbstowcs(wpath, path, _MAX_PATH);
+	_path = (void*) wpath;
+#endif
     us.filestream = ZOPEN64(us.z_filefunc,
-                                                 path,
+                                                 _path,
                                                  ZLIB_FILEFUNC_MODE_READ |
                                                  ZLIB_FILEFUNC_MODE_EXISTING);
     if (us.filestream==NULL)

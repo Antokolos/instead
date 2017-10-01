@@ -303,7 +303,7 @@ long ZCALLBACK win32_seek_file_func (voidpf opaque,voidpf stream,uLong offset,in
 		LARGE_INTEGER loffset;
 		loffset.QuadPart = 0;
 		loffset.u.LowPart = offset;
-		DWORD dwSet = SetFilePointerEx(hFile, loffset, &outPointer, FILE_CURRENT) ? outPointer.u.LowPart : INVALID_SET_FILE_POINTER;
+		DWORD dwSet = SetFilePointerEx(hFile, loffset, &outPointer, dwMoveMethod) ? outPointer.u.LowPart : INVALID_SET_FILE_POINTER;
 #endif
         if (dwSet == INVALID_SET_FILE_POINTER)
         {
@@ -348,7 +348,7 @@ long ZCALLBACK win32_seek64_file_func (voidpf opaque, voidpf stream,ZPOS64_T off
 #else
 		LARGE_INTEGER outPointer;
 		LARGE_INTEGER* li = (LARGE_INTEGER*)&offset;
-		DWORD dwSet = SetFilePointerEx(hFile, *li, &outPointer, FILE_CURRENT) ? outPointer.u.LowPart : INVALID_SET_FILE_POINTER;
+		DWORD dwSet = SetFilePointerEx(hFile, *li, &outPointer, dwMoveMethod) ? outPointer.u.LowPart : INVALID_SET_FILE_POINTER;
 #endif
         if (dwSet == INVALID_SET_FILE_POINTER)
         {

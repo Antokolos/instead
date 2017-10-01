@@ -166,12 +166,13 @@ int main(int argc, char *argv[])
 	Platform::String^ tempFolder = Windows::Storage::ApplicationData::Current->TemporaryFolder->Path;
 	char* curdir = convertFolderNameFromPlatformString(installationFolder);
 	char* appdata = convertFolderNameFromPlatformString(localFolder, "appdata");
+	//char* game_file = convertFolderNameFromPlatformString(localFolder, "appdata\\1.zip");
 	char* appdata_games = convertFolderNameFromPlatformString(localFolder, "appdata\\games");
 	char* appdata_themes = convertFolderNameFromPlatformString(localFolder, "appdata\\themes");
 	create_dir_if_needed(appdata);
 	tmppath = convertFolderNameFromPlatformString(tempFolder);
 	char* modes = getModesString();
-	char* _argv[24];
+	char* _argv[25];
 	int n = 1;
 	_argv[0] = curdir;
 	if (nostdgames)
@@ -225,12 +226,14 @@ int main(int argc, char *argv[])
 		_argv[n++] = "-theme";
 		_argv[n++] = theme;
 	}
+	//_argv[n++] = game_file;
 	_argv[n] = NULL;
 	err = instead_main(n, _argv);
 	free(modes);
 	free(tmppath);
 	free(appdata_themes);
 	free(appdata_games);
+	//free(game_file);
 	free(appdata);
 	free(curdir);
 	return err;

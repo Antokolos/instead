@@ -83,7 +83,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.8;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -97,7 +97,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.8;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -111,7 +111,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.8;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -125,7 +125,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.8;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />

@@ -68,6 +68,17 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	return 0;
 }
 
+char* convertToCString(Platform::String^ string)
+{
+	if (!string)
+	{
+		return NULL;
+	}
+	std::wstring stringW(string->Begin());
+	std::string stringA(stringW.begin(), stringW.end());
+	return strdup(stringA.c_str());
+}
+
 char* convertFolderNameFromPlatformString(Platform::String^ folder, std::string subfolder)
 {
 	std::wstring folderNameW(folder->Begin());
@@ -80,7 +91,6 @@ char* convertFolderNameFromPlatformString(Platform::String^ folder, std::string 
 	std::string s = ss.str();
 	return strdup(s.c_str());
 }
-
 
 float getMaxLength(float a, float b)
 {
@@ -146,6 +156,71 @@ char* convertFolderNameFromPlatformString(Platform::String^ folder)
 	return convertFolderNameFromPlatformString(folder, "");
 }
 
+/*
+You must patch SDL_winrtapp_direct3d.cpp to be able to use getGameFile()
+
+void SDL_WinRTApp::OnAppActivated(CoreApplicationView^ applicationView, IActivatedEventArgs^ args)
+{
+    // <AddedCode>
+    Platform::String^ key = ref new Platform::String(L"FilePathToOpen");
+    Platform::String^ empty = ref new Platform::String(L"");
+    if (args != nullptr)
+    {
+        if (args->Kind == Windows::ApplicationModel::Activation::ActivationKind::File)
+        {
+            auto fileArgs = (Windows::ApplicationModel::Activation::FileActivatedEventArgs^) args;
+            auto strFilePath = fileArgs->Files->GetAt(0)->Path;
+            CoreWindow::GetForCurrentThread()->CustomProperties->Insert(key, strFilePath);
+        }
+        else
+        {
+            CoreWindow::GetForCurrentThread()->CustomProperties->Insert(key, empty);
+        }
+    }
+    else
+    {
+        CoreWindow::GetForCurrentThread()->CustomProperties->Insert(key, empty);
+    }
+	// </AddedCode>
+    CoreWindow::GetForCurrentThread()->Activate();
+}
+*/
+
+char* getGameFile()
+{
+	auto window = Windows::UI::Core::CoreWindow::GetForCurrentThread();
+	auto props = window->CustomProperties;
+	Platform::String^ key = ref new Platform::String(L"FilePathToOpen");
+	auto path = (Platform::String^) (props->Lookup(key));
+	return convertToCString(path);
+}
+
+/*
+void logToFile(char *parentFolder, char *text)
+{
+	char* parent = strdup(parentFolder);
+	FILE* f = fopen(strcat(parent, "\\file.txt"), "w");
+	if (f == NULL)
+	{
+		printf("Error opening file!\n");
+		exit(1);
+	}
+
+	if (text)
+	{
+		fprintf(f, "Some text: %s\n", text);
+	}
+	if (f)
+	{
+		fclose(f);
+	}
+	if (parent)
+	{
+		free(parent);
+	}
+}
+*/
+
 static char* tmppath = NULL;
 static boolean nostdgames = false;
 static boolean hires = true;
@@ -166,7 +241,6 @@ int main(int argc, char *argv[])
 	Platform::String^ tempFolder = Windows::Storage::ApplicationData::Current->TemporaryFolder->Path;
 	char* curdir = convertFolderNameFromPlatformString(installationFolder);
 	char* appdata = convertFolderNameFromPlatformString(localFolder, "appdata");
-	//char* game_file = convertFolderNameFromPlatformString(localFolder, "appdata\\1.zip");
 	char* appdata_games = convertFolderNameFromPlatformString(localFolder, "appdata\\games");
 	char* appdata_themes = convertFolderNameFromPlatformString(localFolder, "appdata\\themes");
 	create_dir_if_needed(appdata);
@@ -226,14 +300,21 @@ int main(int argc, char *argv[])
 		_argv[n++] = "-theme";
 		_argv[n++] = theme;
 	}
-	//_argv[n++] = game_file;
+	char* game_file = getGameFile();
+	if (game_file)
+	{
+		_argv[n++] = game_file;
+	}
 	_argv[n] = NULL;
 	err = instead_main(n, _argv);
+	if (game_file)
+	{
+		free(game_file);
+	}
 	free(modes);
 	free(tmppath);
 	free(appdata_themes);
 	free(appdata_games);
-	//free(game_file);
 	free(appdata);
 	free(curdir);
 	return err;

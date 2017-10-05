@@ -194,10 +194,23 @@ const char *newdir;
 	return 1;
 }
 
-static int do_extract_currentfile(uf, password)
+static __inline char *get_full_path(full_path_buffer, dirname, filename)
+char *full_path_buffer;
+const char *dirname;
+const char *filename;
+{
+	strcpy(full_path_buffer, dirname);
+	strcat(full_path_buffer, "/");
+	strcat(full_path_buffer, filename);
+	return full_path_buffer;
+}
+
+static int do_extract_currentfile(uf, password, dirname)
 unzFile uf;
 const char *password;
+const char *dirname;
 {
+	char full_path_buffer[MAX_PATH];
 	char filename_inzip[256];
 	char dir_inzip[256];
 	char *filename_withoutpath;
@@ -243,7 +256,7 @@ const char *password;
 			goto out;
 		}
 		fprintf(stderr, "creating directory: %s\n", filename_inzip);
-		mymkdir(filename_inzip);
+		mymkdir(get_full_path(full_path_buffer, dirname, filename_inzip));
 		if (!*zip_game_dirname)
 			strcpy(zip_game_dirname, dir_inzip);
 	} else {
@@ -260,16 +273,16 @@ const char *password;
 		}
 
 		if (skip == 0) {
-			fout = fopen64(write_filename, "wb");
+			fout = fopen64(get_full_path(full_path_buffer, dirname, write_filename), "wb");
 
 			/* some zipfile don't contain directory alone before file */
 			if ((fout == NULL)
 			    && (filename_withoutpath != (char *)filename_inzip)) {
 				char c = *(filename_withoutpath - 1);
 				*(filename_withoutpath - 1) = '\0';
-				makedir(write_filename);
+				makedir(get_full_path(full_path_buffer, dirname, write_filename));
 				*(filename_withoutpath - 1) = c;
-				fout = fopen64(write_filename, "wb");
+				fout = fopen64(get_full_path(full_path_buffer, dirname, write_filename), "wb");
 			}
 
 			if (fout == NULL) {
@@ -307,7 +320,7 @@ const char *password;
 				fclose(fout);
 
 			if (err == 0)
-				change_file_date(write_filename,
+				change_file_date(get_full_path(full_path_buffer, dirname, write_filename),
 						 file_info.dosDate,
 						 file_info.tmu_date);
 		}
@@ -347,9 +360,10 @@ out:
 	return err;
 }
 
-static int do_extract(uf, password)
+static int do_extract(uf, password, dirname)
 unzFile uf;
 const char *password;
+const char *dirname;
 {
 	uLong i;
 	unz_global_info64 gi;
@@ -359,7 +373,7 @@ const char *password;
 		fprintf(stderr, "error %d with zipfile in unzGetGlobalInfo \n", err);
 
 	for (i = 0; i < gi.number_entry; i++) {
-		if (do_extract_currentfile(uf, password) != UNZ_OK)
+		if (do_extract_currentfile(uf, password, dirname) != UNZ_OK)
 			return -1;
 
 		if ((i + 1) < gi.number_entry) {
@@ -429,7 +443,7 @@ int unpack(const char *zipfilename, const char *dirname)
 		fprintf(stderr, "Error changing dir to %s, aborting\n", dirname);
 		goto out;
 	}
-	ret_value = do_extract(uf, NULL);
+	ret_value = do_extract(uf, NULL, dirname);
  out:
 	unzClose(uf);
 #ifdef _WIN32

@@ -29,6 +29,7 @@
             <uap:EditFlags OpenIsSafe="true" />
             <uap:SupportedFileTypes>
               <uap:FileType ContentType="application/zip">.zip</uap:FileType>
+              <uap:FileType ContentType="application/zip">.igf</uap:FileType>
             </uap:SupportedFileTypes>
           </uap:FileTypeAssociation>
         </uap:Extension>

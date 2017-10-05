@@ -10,7 +10,7 @@
  #define putenv(a) ;
  #define setlocale(a, b) ;
 #elif defined(__WINRT__)
-#define PATH_MAX 255
+// #define PATH_MAX 255
 #define putenv(a) ;
 #endif
 

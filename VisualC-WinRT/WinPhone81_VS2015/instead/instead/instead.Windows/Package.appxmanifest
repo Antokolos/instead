@@ -15,12 +15,27 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="instead_Windows.App">
-      <m2:VisualElements DisplayName="instead.Windows" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="instead.Windows" ForegroundText="light" BackgroundColor="#464646">
+      <m2:VisualElements DisplayName="instead" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="INSTEAD game engine" ForegroundText="light" BackgroundColor="#464646">
         <m2:SplashScreen Image="Assets\SplashScreen.png" />
       </m2:VisualElements>
+      <Extensions>
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name="zip">
+            <DisplayName>INSTEAD</DisplayName>
+            <Logo>sdl_instead.png</Logo>
+            <InfoTip>INSTEAD game</InfoTip>
+            <EditFlags OpenIsSafe="true" />
+            <SupportedFileTypes>
+              <FileType ContentType="application/zip">.zip</FileType>
+              <FileType ContentType="application/zip">.igf</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <Capability Name="removableStorage" />
   </Capabilities>
 </Package>

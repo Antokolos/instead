@@ -283,12 +283,56 @@ char *game_save_path( int cr, int nr )
 
 int debug_init(void)
 {
+	// stub
 	return 0;
 }
 
 void debug_done()
 {
+	// stub
 }
+
+BOOL GetFileTime(
+	HANDLE     hFile,
+	LPFILETIME lpCreationTime,
+	LPFILETIME lpLastAccessTime,
+	LPFILETIME lpLastWriteTime
+)
+{
+	// stub
+	return 1;
+}
+
+BOOL SetFileTime(
+	HANDLE   hFile,
+	const FILETIME *lpCreationTime,
+	const FILETIME *lpLastAccessTime,
+	const FILETIME *lpLastWriteTime
+)
+{
+	// stub
+	return 1;
+}
+
+// see https://docs.microsoft.com/en-us/cpp/cppcx/crt-functions-not-supported-in-universal-windows-platform-apps
+// The concept of a working directory doesn't apply to Windows 8.x Store apps. Use full paths instead.
+char *_getcwd(
+	char *buffer,
+	int maxlen
+)
+{
+	// stub
+	return buffer;
+}
+
+int _chdir(
+	const char *dirname
+)
+{
+	// stub
+	return 0;
+}
+
 #ifdef _USE_BROWSE
 char *open_file_dialog(void)
 {

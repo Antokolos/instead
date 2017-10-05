@@ -31,4 +31,9 @@
   <ItemGroup>
     <ResourceCompile Include="..\..\..\..\..\src\SDL2-WinRTResources.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="sdl_instead.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

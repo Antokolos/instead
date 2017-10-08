@@ -48,6 +48,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\unzip.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\utils.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\winrt.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\winrt_utils.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\config.h" />

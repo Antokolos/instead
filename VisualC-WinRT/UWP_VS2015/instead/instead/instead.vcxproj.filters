@@ -141,6 +141,9 @@
     <ClCompile Include="..\..\..\src\SDL2_winrt.cpp">
       <Filter>instead</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\winrt_utils.c">
+      <Filter>instead</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\cache.h">

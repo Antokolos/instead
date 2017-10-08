@@ -154,22 +154,45 @@ char *sdl_path(char *p)
 
 char *appdir( void );
 
+#ifdef _UWP
+char *game_tmp_path(void)
+{
+	static char lpTempPathBuffer[MAX_PATH];
+	getAppTempDir(lpTempPathBuffer);
+	strcat((char*)lpTempPathBuffer, "/instead-games");
+	if (mkdir((char*)lpTempPathBuffer) && access((char*)lpTempPathBuffer, W_OK))
+		return NULL;
+	unix_path((char*)lpTempPathBuffer);
+	return (char*)lpTempPathBuffer;
+}
+#else
 char *game_tmp_path(void)
 {
 	DWORD dwRetVal = 0;
 	static TCHAR lpTempPathBuffer[MAX_PATH];
+	static char res[MAX_PATH];
 	  //  Gets the temp path env string (no guarantee it's a valid path).
 	dwRetVal = GetTempPath(MAX_PATH,          // length of the buffer
 		lpTempPathBuffer); // buffer for path 
 	if (dwRetVal > MAX_PATH || (dwRetVal == 0)) {
 		return NULL;
 	}
+#ifdef _WIDE_CHARS
+	wcstombs(res, lpTempPathBuffer, sizeof(res));
+	strcat(res, "/instead-games");
+	if (mkdir(res) && errno != EEXIST)
+		return NULL;
+	unix_path(res);
+	return res;
+#else
 	strcat((char*)lpTempPathBuffer, "/instead-games");
 	if (mkdir((char*)lpTempPathBuffer) && errno != EEXIST)
 		return NULL;
 	unix_path((char*)lpTempPathBuffer);
 	return (char*)lpTempPathBuffer;
+#endif
 }
+#endif
 
 char *game_local_games_path(int cr)
 {

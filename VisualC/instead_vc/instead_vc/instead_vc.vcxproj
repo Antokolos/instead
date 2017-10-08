@@ -91,7 +91,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WIDE_CHARS;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIDE_CHARS;_USE_UNPACK;_WIN_EXT;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
@@ -108,7 +108,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WIDE_CHARS;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIDE_CHARS;_USE_UNPACK;_WIN_EXT;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
@@ -127,7 +127,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>_WIDE_CHARS;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIDE_CHARS;_USE_UNPACK;_WIN_EXT;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
@@ -148,7 +148,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>_WIDE_CHARS;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIDE_CHARS;_USE_UNPACK;_WIN_EXT;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>

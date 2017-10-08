@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Assets">
+      <UniqueIdentifier>e704987b-fc9b-49cd-9520-b6d25cb415df</UniqueIdentifier>
+      <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
+    </Filter>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Filter Include="instead">
+      <UniqueIdentifier>{9fea872e-4c90-4ec3-a550-e0ac6ef31ade}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="sdl_instead.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="instead_TemporaryKey.pfx" />
+    <None Include="..\..\..\src\SDL2-WinRTResource_BlankCursor.cur">
+      <Filter>instead</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\cache.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\config.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\game.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\graphics.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\idf.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\input.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\instead.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead_bits.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead_paths.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead_sound.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead_sprites.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead_timer.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\ioapi.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\iowin32.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\lfs.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\list.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\main.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\menu.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\noise1234.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_anigif.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_gfxBlitFunc.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL2_rotozoom.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\snprintf.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\sound.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\themes.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\tinymt32.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\unpack.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\unzip.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\util.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\utils.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\windows.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SDL2_winrt.cpp">
+      <Filter>instead</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\cache.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\config.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\externals.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\game.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\graphics.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\idf.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\input.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\instead.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\internals.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\ioapi.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\iowin32.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\list.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\menu.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\noise1234.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_anigif.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_gfxBlitFunc.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_rotozoom.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL2_rotozoom.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\snprintf.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\sound.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\system.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\themes.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\tinymt32.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\unzip.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\instead\util.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\utils.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\uwp.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\src\SDL2-WinRTResources.rc">
+      <Filter>instead</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

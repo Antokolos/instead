@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="nlbhub.instead.launcher" Publisher="CN=user" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>instead.Windows</DisplayName>
+    <PublisherDisplayName>Antokolos</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="instead_Windows.App">
+      <m2:VisualElements DisplayName="instead" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="INSTEAD game engine" ForegroundText="light" BackgroundColor="#464646">
+        <m2:SplashScreen Image="Assets\SplashScreen.png" />
+      </m2:VisualElements>
+      <Extensions>
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name="zip">
+            <DisplayName>INSTEAD</DisplayName>
+            <Logo>sdl_instead.png</Logo>
+            <InfoTip>INSTEAD game</InfoTip>
+            <EditFlags OpenIsSafe="true" />
+            <SupportedFileTypes>
+              <FileType ContentType="application/zip">.zip</FileType>
+              <FileType ContentType="application/zip">.igf</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="removableStorage" />
+  </Capabilities>
+</Package>

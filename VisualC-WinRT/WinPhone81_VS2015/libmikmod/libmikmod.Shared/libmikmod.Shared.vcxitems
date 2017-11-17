@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{91367529-57e0-4bd1-b1e2-2f98f3ef48da}</ItemsProjectGuid>
+    <ItemsRootNamespace>libmikmod</ItemsRootNamespace>
+    <ItemsProjectName>libmikmod.Shared</ItemsProjectName>
+    <CodeSharingProject>248F659F-DAC5-46E8-AC09-60EC9FC95053</CodeSharingProject>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include\mikmod.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include\mikmod_build.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include\mikmod_internals.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_ds.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_nos.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_raw.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_stdout.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_wav.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_win.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_669.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_amf.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_dsm.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_far.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_gdm.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_imf.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_it.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_m15.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_med.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_mod.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_mtm.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_okt.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_s3m.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_stm.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_stx.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_ult.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_uni.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_xm.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\mmio\mmalloc.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\mmio\mmerror.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\mmio\mmio.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mdreg.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mdriver.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mloader.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mlreg.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mlutil.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mplayer.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\munitrk.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mwav.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\npertab.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\sloader.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\virtch.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\virtch2.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\virtch_common.c" />
+  </ItemGroup>
+</Project>

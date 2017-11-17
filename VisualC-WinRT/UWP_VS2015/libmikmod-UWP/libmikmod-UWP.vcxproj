@@ -27,113 +27,94 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\cderror.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\cdjpeg.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\jconfig.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\jdct.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\jerror.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\jinclude.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\jmemsys.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\jmorecfg.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\jpegint.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\jpeglib.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\jversion.h" />
-    <ClInclude Include="..\..\..\..\SDL_image\external\jpeg-9\transupp.h" />
+    <ClInclude Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include\mikmod.h" />
+    <ClInclude Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include\mikmod_build.h" />
+    <ClInclude Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include\mikmod_internals.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jaricom.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcapimin.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcapistd.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcarith.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jccoefct.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jccolor.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcdctmgr.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jchuff.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcinit.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcmainct.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcmarker.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcmaster.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcomapi.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcparam.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcprepct.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jcsample.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jctrans.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdapimin.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdapistd.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdarith.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdatadst.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdatasrc.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdcoefct.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdcolor.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jddctmgr.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdhuff.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdinput.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdmainct.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdmarker.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdmaster.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdmerge.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdpostct.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdsample.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jdtrans.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jerror.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jfdctflt.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jfdctfst.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jfdctint.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jidctflt.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jidctfst.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jidctint.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jmemansi.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jmemmgr.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jquant1.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jquant2.c" />
-    <ClCompile Include="..\..\..\..\SDL_image\external\jpeg-9\jutils.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\jpeg.def" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_ds.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_nos.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_raw.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_stdout.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_wav.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_win.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_669.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_amf.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_dsm.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_far.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_gdm.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_imf.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_it.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_m15.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_med.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_mod.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_mtm.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_okt.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_s3m.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_stm.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_stx.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_ult.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_uni.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_xm.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\mmio\mmalloc.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\mmio\mmerror.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\mmio\mmio.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mdreg.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mdriver.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mloader.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mlreg.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mlutil.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mplayer.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\munitrk.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mwav.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\npertab.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\sloader.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\virtch.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\virtch2.c" />
+    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\virtch_common.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7592d295-3804-4db4-809f-d7958b596582}</ProjectGuid>
-    <Keyword>DynamicLibrary</Keyword>
-    <ProjectName>jpeg-UWP</ProjectName>
-    <RootNamespace>jpeg_UWP</RootNamespace>
+    <ProjectGuid>{c69267c7-77a6-48b9-a286-81c7b9172478}</ProjectGuid>
+    <Keyword>StaticLibrary</Keyword>
+    <RootNamespace>libmikmod_UWP</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>
-    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformMinVersion>10.0.10240.0</WindowsTargetPlatformMinVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.10586.0</WindowsTargetPlatformMinVersion>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
@@ -165,110 +146,122 @@
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>jpeg</TargetName>
+    <TargetName>libmikmod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>jpeg</TargetName>
+    <TargetName>libmikmod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>jpeg</TargetName>
+    <TargetName>libmikmod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>jpeg</TargetName>
+    <TargetName>libmikmod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>jpeg</TargetName>
+    <TargetName>libmikmod</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>jpeg</TargetName>
+    <TargetName>libmikmod</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NO_GETENV;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\win32;..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\..\..\..\SDL_image\VisualC-WinRT\jpeg.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NO_GETENV;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\win32;..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\..\..\..\SDL_image\VisualC-WinRT\jpeg.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|arm'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NO_GETENV;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\win32;..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\..\..\..\SDL_image\VisualC-WinRT\jpeg.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NO_GETENV;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\win32;..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\..\..\..\SDL_image\VisualC-WinRT\jpeg.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NO_GETENV;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\win32;..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\..\..\..\SDL_image\VisualC-WinRT\jpeg.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NO_GETENV;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\win32;..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\..\..\..\SDL_image\VisualC-WinRT\jpeg.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

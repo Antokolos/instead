@@ -187,6 +187,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\SDL_image\VisualC-WinRT\jpeg.def" />
+    <None Include="..\..\jpeg.def" />
   </ItemGroup>
 </Project>

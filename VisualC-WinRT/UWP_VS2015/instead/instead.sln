@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "instead", "instead\instead.vcxproj", "{AA39689E-2BA4-4163-96DD-107781B4CE0E}"
 EndProject
@@ -47,16 +47,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib-UWP", "..\zlib-UWP\zli
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng-UWP", "..\libpng-UWP\libpng-UWP.vcxproj", "{C4D98017-3027-42DE-836C-F9683C2C84E0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod-UWP", "..\libmikmod-UWP\libmikmod-UWP.vcxproj", "{C69267C7-77A6-48B9-A286-81C7B9172478}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
-		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{8a2751f1-952f-4090-b357-8357eab880d5}*SharedItemsImports = 4
-		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{788c15e5-6db8-4420-ac1e-c279955fb585}*SharedItemsImports = 4
 		..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems*{334eab4b-c600-4a2b-95dd-f2d8bc95e414}*SharedItemsImports = 9
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{5a6fdeb1-9776-4a14-8bdd-e919603db294}*SharedItemsImports = 9
-		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{7cf3b759-856b-4dc4-a0e5-a7c5564788c5}*SharedItemsImports = 9
-		..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems*{f64f67c6-787e-4b09-87b3-f7255080db01}*SharedItemsImports = 4
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{661a8649-72aa-4862-9161-6ab9ca1971a1}*SharedItemsImports = 4
+		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{788c15e5-6db8-4420-ac1e-c279955fb585}*SharedItemsImports = 4
+		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{7cf3b759-856b-4dc4-a0e5-a7c5564788c5}*SharedItemsImports = 9
+		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{8a2751f1-952f-4090-b357-8357eab880d5}*SharedItemsImports = 4
+		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
+		..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems*{f64f67c6-787e-4b09-87b3-f7255080db01}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -277,6 +279,18 @@ Global
 		{C4D98017-3027-42DE-836C-F9683C2C84E0}.Release|x64.Build.0 = Release|x64
 		{C4D98017-3027-42DE-836C-F9683C2C84E0}.Release|x86.ActiveCfg = Release|Win32
 		{C4D98017-3027-42DE-836C-F9683C2C84E0}.Release|x86.Build.0 = Release|Win32
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Debug|ARM.ActiveCfg = Debug|ARM
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Debug|ARM.Build.0 = Debug|ARM
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Debug|x64.ActiveCfg = Debug|x64
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Debug|x64.Build.0 = Debug|x64
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Debug|x86.ActiveCfg = Debug|Win32
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Debug|x86.Build.0 = Debug|Win32
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Release|ARM.ActiveCfg = Release|ARM
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Release|ARM.Build.0 = Release|ARM
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Release|x64.ActiveCfg = Release|x64
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Release|x64.Build.0 = Release|x64
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Release|x86.ActiveCfg = Release|Win32
+		{C69267C7-77A6-48B9-A286-81C7B9172478}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

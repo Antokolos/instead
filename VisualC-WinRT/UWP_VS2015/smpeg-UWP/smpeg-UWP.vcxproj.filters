@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\smpeg\audio\bitwindow.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\filter.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\filter_2.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\hufftable.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\MPEGaudio.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpeglayer1.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpeglayer2.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpeglayer3.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpegtable.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpegtoraw.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\decoders.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\floatdct.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\gdith.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\jrevdct.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\motionvec.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\MPEGvideo.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\parseblock.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\readfile.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\util.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\video.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\MPEG.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\MPEGlist.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\MPEGring.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\MPEGstream.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\MPEGsystem.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\smpeg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\smpeg\video\decoders.h" />
+    <ClInclude Include="..\..\..\..\smpeg\video\dither.h" />
+    <ClInclude Include="..\..\..\..\smpeg\video\proto.h" />
+    <ClInclude Include="..\..\..\..\smpeg\video\util.h" />
+    <ClInclude Include="..\..\..\..\smpeg\video\video.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEG.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGaction.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGaudio.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGerror.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGframe.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGlist.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGring.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGstream.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGsystem.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGvideo.h" />
+    <ClInclude Include="..\..\..\..\smpeg\smpeg.h" />
+  </ItemGroup>
+</Project>

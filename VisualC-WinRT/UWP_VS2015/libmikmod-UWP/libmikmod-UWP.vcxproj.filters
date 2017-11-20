@@ -13,135 +13,138 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include\mikmod.h">
+    <ClInclude Include="..\..\..\..\libmikmod\include\mikmod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include\mikmod_build.h">
+    <ClInclude Include="..\..\..\..\libmikmod\include\mikmod_internals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\include\mikmod_internals.h">
+    <ClInclude Include="..\..\..\..\libmikmod\include\mikmod_ctype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_ds.c">
+    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_ds.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_nos.c">
+    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_nos.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_raw.c">
+    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_raw.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_stdout.c">
+    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_stdout.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_wav.c">
+    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_wav.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\drivers\drv_win.c">
+    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_win.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_669.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_669.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_amf.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_amf.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_dsm.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_dsm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_far.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_far.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_gdm.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_gdm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_imf.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_imf.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_it.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_it.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_m15.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_m15.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_med.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_med.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_mod.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_mod.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_mtm.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_mtm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_okt.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_okt.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_s3m.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_s3m.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_stm.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_stm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_stx.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_stx.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_ult.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_ult.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_uni.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_uni.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\loaders\load_xm.c">
+    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_xm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mdreg.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\mdreg.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mdriver.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\mdriver.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mloader.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\mloader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mlreg.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\mlreg.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mlutil.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\mlutil.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\mmio\mmalloc.c">
+    <ClCompile Include="..\..\..\..\libmikmod\mmio\mmalloc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\mmio\mmerror.c">
+    <ClCompile Include="..\..\..\..\libmikmod\mmio\mmerror.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\mmio\mmio.c">
+    <ClCompile Include="..\..\..\..\libmikmod\mmio\mmio.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mplayer.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\mplayer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\munitrk.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\munitrk.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\mwav.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\mwav.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\npertab.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\npertab.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\sloader.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\sloader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\virtch.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\virtch.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\virtch_common.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\virtch_common.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SDL_mixer\external\libmikmod-3.1.12\playercode\virtch2.c">
+    <ClCompile Include="..\..\..\..\libmikmod\playercode\virtch2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libmikmod\posix\strcasecmp.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

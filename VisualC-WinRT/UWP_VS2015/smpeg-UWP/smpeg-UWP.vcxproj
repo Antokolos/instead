@@ -27,57 +27,67 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\libmikmod\include\mikmod.h" />
-    <ClInclude Include="..\..\..\..\libmikmod\include\mikmod_ctype.h" />
-    <ClInclude Include="..\..\..\..\libmikmod\include\mikmod_internals.h" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\bitwindow.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\filter.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\filter_2.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\hufftable.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\MPEGaudio.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpeglayer1.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpeglayer2.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpeglayer3.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpegtable.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\audio\mpegtoraw.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\MPEG.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\MPEGlist.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\MPEGring.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\MPEGstream.cpp">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\smpeg\MPEGsystem.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\smpeg.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\decoders.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\floatdct.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\gdith.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\jrevdct.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\motionvec.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\MPEGvideo.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\parseblock.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\readfile.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\util.cpp" />
+    <ClCompile Include="..\..\..\..\smpeg\video\video.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_ds.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_nos.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_raw.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_stdout.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_wav.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_win.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_669.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_amf.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_dsm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_far.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_gdm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_imf.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_it.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_m15.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_med.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_mod.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_mtm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_okt.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_s3m.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_stm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_stx.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_ult.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_uni.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_xm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\mmio\mmalloc.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\mmio\mmerror.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\mmio\mmio.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mdreg.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mdriver.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mloader.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mlreg.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mlutil.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mplayer.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\munitrk.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mwav.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\npertab.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\sloader.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\virtch.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\virtch2.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\virtch_common.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\posix\strcasecmp.c" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEG.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGaction.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGaudio.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGerror.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGframe.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGlist.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGring.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGstream.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGsystem.h" />
+    <ClInclude Include="..\..\..\..\smpeg\MPEGvideo.h" />
+    <ClInclude Include="..\..\..\..\smpeg\smpeg.h" />
+    <ClInclude Include="..\..\..\..\smpeg\video\decoders.h" />
+    <ClInclude Include="..\..\..\..\smpeg\video\dither.h" />
+    <ClInclude Include="..\..\..\..\smpeg\video\proto.h" />
+    <ClInclude Include="..\..\..\..\smpeg\video\util.h" />
+    <ClInclude Include="..\..\..\..\smpeg\video\video.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\SDL\VisualC-WinRT\UWP_VS2015\SDL-UWP.vcxproj">
+      <Project>{89e9b32e-a86a-47c3-a948-d2b1622925ce}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{c69267c7-77a6-48b9-a286-81c7b9172478}</ProjectGuid>
-    <Keyword>StaticLibrary</Keyword>
-    <RootNamespace>libmikmod_UWP</RootNamespace>
+    <ProjectGuid>{ba3f6264-3bfc-4d88-907a-07ab7e203526}</ProjectGuid>
+    <Keyword>DynamicLibrary</Keyword>
+    <RootNamespace>smpeg_UWP</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
@@ -88,34 +98,34 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
@@ -147,37 +157,34 @@
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL\include;..\..\..\..\smpeg;..\..\..\..\smpeg\video;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -189,11 +196,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL\include;..\..\..\..\smpeg;..\..\..\..\smpeg\video;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -205,11 +209,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL\include;..\..\..\..\smpeg;..\..\..\..\smpeg\video;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -221,11 +222,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL\include;..\..\..\..\smpeg;..\..\..\..\smpeg\video;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -237,11 +235,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL\include;..\..\..\..\smpeg;..\..\..\..\smpeg\video;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -253,11 +248,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;WIN32;NOCONTROLS;THREADED_AUDIO;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\SDL\include;..\..\..\..\smpeg;..\..\..\..\smpeg\video;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

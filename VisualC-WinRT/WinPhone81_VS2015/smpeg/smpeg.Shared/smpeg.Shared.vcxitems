@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{a3ce88c5-e0cd-41f5-80e7-9e597c563fda}</ItemsProjectGuid>
+    <ItemsRootNamespace>smpeg</ItemsRootNamespace>
+    <ItemsProjectName>smpeg.Shared</ItemsProjectName>
+    <CodeSharingProject>248F659F-DAC5-46E8-AC09-60EC9FC95053</CodeSharingProject>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\bitwindow.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\filter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\filter_2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\hufftable.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\MPEGaudio.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\mpeglayer1.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\mpeglayer2.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\mpeglayer3.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\mpegtable.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\audio\mpegtoraw.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEG.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGlist.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGring.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGstream.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGsystem.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\smpeg.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\decoders.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\floatdct.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\gdith.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\jrevdct.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\motionvec.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\MPEGvideo.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\parseblock.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\readfile.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\util.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\video.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEG.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGaction.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGaudio.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGerror.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGframe.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGlist.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGring.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGstream.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGsystem.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\MPEGvideo.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\smpeg.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\decoders.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\dither.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\proto.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\util.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\smpeg\video\video.h" />
+  </ItemGroup>
+</Project>

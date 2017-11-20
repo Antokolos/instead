@@ -49,6 +49,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng-UWP", "..\libpng-UWP
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod-UWP", "..\libmikmod-UWP\libmikmod-UWP.vcxproj", "{C69267C7-77A6-48B9-A286-81C7B9172478}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smpeg-UWP", "..\smpeg-UWP\smpeg-UWP.vcxproj", "{BA3F6264-3BFC-4D88-907A-07AB7E203526}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems*{334eab4b-c600-4a2b-95dd-f2d8bc95e414}*SharedItemsImports = 9
@@ -291,6 +293,18 @@ Global
 		{C69267C7-77A6-48B9-A286-81C7B9172478}.Release|x64.Build.0 = Release|x64
 		{C69267C7-77A6-48B9-A286-81C7B9172478}.Release|x86.ActiveCfg = Release|Win32
 		{C69267C7-77A6-48B9-A286-81C7B9172478}.Release|x86.Build.0 = Release|Win32
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Debug|ARM.ActiveCfg = Debug|ARM
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Debug|ARM.Build.0 = Debug|ARM
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Debug|x64.ActiveCfg = Debug|x64
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Debug|x64.Build.0 = Debug|x64
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Debug|x86.ActiveCfg = Debug|Win32
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Debug|x86.Build.0 = Debug|Win32
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Release|ARM.ActiveCfg = Release|ARM
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Release|ARM.Build.0 = Release|ARM
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Release|x64.ActiveCfg = Release|x64
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Release|x64.Build.0 = Release|x64
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Release|x86.ActiveCfg = Release|Win32
+		{BA3F6264-3BFC-4D88-907A-07AB7E203526}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,11 +6,7 @@ SDL_winrt_main_NonXAML.cpp, placed in the public domain by David Ludwig  3/13/14
 #include <sstream>
 #include <string>
 #include "SDL_main.h"
-#if _WIN32_WINNT >= 0x0A00
 #include "uwp.h"
-#else
-#include "winrt.h"
-#endif
 #include <wrl.h>
 
 /* At least one file in any SDL/WinRT app appears to require compilation

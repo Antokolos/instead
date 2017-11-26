@@ -91,14 +91,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL2-WinPhone81", "..\..\..
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL2-WinRT81", "..\..\..\..\SDL\VisualC-WinRT\WinRT81_VS2013\SDL-WinRT81.vcxproj", "{C8DF6173-06A1-4F56-A9BC-2002596B30E9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libmikmod", "libmikmod", "{3ADC6C18-8CEC-4AC4-BE3C-B8114D95DFE0}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod.Shared", "..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems", "{91367529-57E0-4BD1-B1E2-2F98F3EF48DA}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod.Windows", "..\libmikmod\libmikmod.Windows\libmikmod.Windows.vcxproj", "{622BF387-79CD-45E5-8852-6E37803096C9}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod.WindowsPhone", "..\libmikmod\libmikmod.WindowsPhone\libmikmod.WindowsPhone.vcxproj", "{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "smpeg", "smpeg", "{4A0F8903-1CB1-490B-9D89-B5B7E91078AF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smpeg.Shared", "..\smpeg\smpeg.Shared\smpeg.Shared.vcxitems", "{A3CE88C5-E0CD-41F5-80E7-9E597C563FDA}"
@@ -106,6 +98,14 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smpeg.Windows", "..\smpeg\smpeg.Windows\smpeg.Windows.vcxproj", "{16687686-C254-435A-8D45-7532B0F8DAF2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smpeg.WindowsPhone", "..\smpeg\smpeg.WindowsPhone\smpeg.WindowsPhone.vcxproj", "{4013BDAF-567E-45D6-A10A-DA7CBADB5C88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libmikmod", "libmikmod", "{7E1C7EB9-21CC-414A-8C0F-D11F7104C912}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod.Shared", "..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems", "{91367529-57E0-4BD1-B1E2-2F98F3EF48DA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod.Windows", "..\libmikmod\libmikmod.Windows\libmikmod.Windows.vcxproj", "{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod.WindowsPhone", "..\libmikmod\libmikmod.WindowsPhone\libmikmod.WindowsPhone.vcxproj", "{E0643C83-C208-4EB1-8149-0DC0370030A0}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -121,7 +121,6 @@ Global
 		..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems*{51061988-175e-4d93-a2f2-6223e76915da}*SharedItemsImports = 4
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{5a6fdeb1-9776-4a14-8bdd-e919603db294}*SharedItemsImports = 9
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{602feb03-5606-48f3-abeb-80be55bb0af3}*SharedItemsImports = 4
-		..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems*{622bf387-79cd-45e5-8852-6e37803096c9}*SharedItemsImports = 4
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{7036dc2e-6fab-417e-9ebe-8056a11e8be8}*SharedItemsImports = 4
 		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{762ff28f-4525-4730-8c20-b0eb86390716}*SharedItemsImports = 4
 		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{7cf3b759-856b-4dc4-a0e5-a7c5564788c5}*SharedItemsImports = 9
@@ -129,7 +128,8 @@ Global
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
 		..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems*{91367529-57e0-4bd1-b1e2-2f98f3ef48da}*SharedItemsImports = 9
 		..\smpeg\smpeg.Shared\smpeg.Shared.vcxitems*{a3ce88c5-e0cd-41f5-80e7-9e597c563fda}*SharedItemsImports = 9
-		..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems*{ce45dcd8-79ec-41ab-9940-29d9d8a13d93}*SharedItemsImports = 4
+		..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems*{e0643c83-c208-4eb1-8149-0dc0370030a0}*SharedItemsImports = 4
+		..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems*{fff7bd09-8e88-4d5c-ad5c-73f3623fe09f}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -524,28 +524,6 @@ Global
 		{C8DF6173-06A1-4F56-A9BC-2002596B30E9}.Release|x64.Build.0 = Release|x64
 		{C8DF6173-06A1-4F56-A9BC-2002596B30E9}.Release|x86.ActiveCfg = Release|Win32
 		{C8DF6173-06A1-4F56-A9BC-2002596B30E9}.Release|x86.Build.0 = Release|Win32
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Debug|ARM.ActiveCfg = Debug|ARM
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Debug|ARM.Build.0 = Debug|ARM
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Debug|x64.ActiveCfg = Debug|x64
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Debug|x64.Build.0 = Debug|x64
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Debug|x86.ActiveCfg = Debug|Win32
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Debug|x86.Build.0 = Debug|Win32
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Release|ARM.ActiveCfg = Release|ARM
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Release|ARM.Build.0 = Release|ARM
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Release|x64.ActiveCfg = Release|x64
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Release|x64.Build.0 = Release|x64
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Release|x86.ActiveCfg = Release|Win32
-		{622BF387-79CD-45E5-8852-6E37803096C9}.Release|x86.Build.0 = Release|Win32
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Debug|ARM.ActiveCfg = Debug|ARM
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Debug|ARM.Build.0 = Debug|ARM
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Debug|x64.ActiveCfg = Debug|Win32
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Debug|x86.ActiveCfg = Debug|Win32
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Debug|x86.Build.0 = Debug|Win32
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Release|ARM.ActiveCfg = Release|ARM
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Release|ARM.Build.0 = Release|ARM
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Release|x64.ActiveCfg = Release|Win32
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Release|x86.ActiveCfg = Release|Win32
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93}.Release|x86.Build.0 = Release|Win32
 		{16687686-C254-435A-8D45-7532B0F8DAF2}.Debug|ARM.ActiveCfg = Debug|ARM
 		{16687686-C254-435A-8D45-7532B0F8DAF2}.Debug|ARM.Build.0 = Debug|ARM
 		{16687686-C254-435A-8D45-7532B0F8DAF2}.Debug|x64.ActiveCfg = Debug|x64
@@ -568,6 +546,28 @@ Global
 		{4013BDAF-567E-45D6-A10A-DA7CBADB5C88}.Release|x64.ActiveCfg = Release|Win32
 		{4013BDAF-567E-45D6-A10A-DA7CBADB5C88}.Release|x86.ActiveCfg = Release|Win32
 		{4013BDAF-567E-45D6-A10A-DA7CBADB5C88}.Release|x86.Build.0 = Release|Win32
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Debug|ARM.Build.0 = Debug|ARM
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Debug|x64.ActiveCfg = Debug|x64
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Debug|x64.Build.0 = Debug|x64
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Debug|x86.ActiveCfg = Debug|Win32
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Debug|x86.Build.0 = Debug|Win32
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Release|ARM.ActiveCfg = Release|ARM
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Release|ARM.Build.0 = Release|ARM
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Release|x64.ActiveCfg = Release|x64
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Release|x64.Build.0 = Release|x64
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Release|x86.ActiveCfg = Release|Win32
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F}.Release|x86.Build.0 = Release|Win32
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Debug|ARM.Build.0 = Debug|ARM
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Debug|x64.ActiveCfg = Debug|Win32
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Debug|x86.ActiveCfg = Debug|Win32
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Debug|x86.Build.0 = Debug|Win32
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Release|ARM.ActiveCfg = Release|ARM
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Release|ARM.Build.0 = Release|ARM
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Release|x64.ActiveCfg = Release|Win32
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Release|x86.ActiveCfg = Release|Win32
+		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -588,11 +588,11 @@ Global
 		{8BC55AE3-7511-4317-86CE-6583310B54CF} = {C48C3BDA-56B2-40AF-AD28-AC92945EFDA7}
 		{2DE7D1E0-7587-4745-91B1-49B4E8E452C6} = {C48C3BDA-56B2-40AF-AD28-AC92945EFDA7}
 		{602FEB03-5606-48F3-ABEB-80BE55BB0AF3} = {C48C3BDA-56B2-40AF-AD28-AC92945EFDA7}
-		{91367529-57E0-4BD1-B1E2-2F98F3EF48DA} = {3ADC6C18-8CEC-4AC4-BE3C-B8114D95DFE0}
-		{622BF387-79CD-45E5-8852-6E37803096C9} = {3ADC6C18-8CEC-4AC4-BE3C-B8114D95DFE0}
-		{CE45DCD8-79EC-41AB-9940-29D9D8A13D93} = {3ADC6C18-8CEC-4AC4-BE3C-B8114D95DFE0}
 		{A3CE88C5-E0CD-41F5-80E7-9E597C563FDA} = {4A0F8903-1CB1-490B-9D89-B5B7E91078AF}
 		{16687686-C254-435A-8D45-7532B0F8DAF2} = {4A0F8903-1CB1-490B-9D89-B5B7E91078AF}
 		{4013BDAF-567E-45D6-A10A-DA7CBADB5C88} = {4A0F8903-1CB1-490B-9D89-B5B7E91078AF}
+		{91367529-57E0-4BD1-B1E2-2F98F3EF48DA} = {7E1C7EB9-21CC-414A-8C0F-D11F7104C912}
+		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F} = {7E1C7EB9-21CC-414A-8C0F-D11F7104C912}
+		{E0643C83-C208-4EB1-8149-0DC0370030A0} = {7E1C7EB9-21CC-414A-8C0F-D11F7104C912}
 	EndGlobalSection
 EndGlobal

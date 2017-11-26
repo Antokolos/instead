@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{ce45dcd8-79ec-41ab-9940-29d9d8a13d93}</ProjectGuid>
+    <ProjectGuid>{E0643C83-C208-4EB1-8149-0DC0370030A0}</ProjectGuid>
     <Keyword>StaticLibrary</Keyword>
     <RootNamespace>libmikmod</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>

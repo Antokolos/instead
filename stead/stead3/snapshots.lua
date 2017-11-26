@@ -2,11 +2,15 @@ local std = stead
 local type = std.type
 
 local SNAPSHOT = false
-local RESTORE = false
+local INWRITE = false
 
 local snap = std.obj {
-	nam = '@snaphots';
+	nam = '@snapshots';
 	data = {};
+	save = function(s, ...)
+		if INWRITE then return end
+		return std.obj.save(s, ...)
+	end;
 	write = function(s, name)
 		name = name or 'default'
 		local fp = { -- fake file object
@@ -15,13 +19,13 @@ local snap = std.obj {
 				s.data = s.data .. str
 			end;
 		}
-		std:save(fp)
+		INWRITE = true std:save(fp) INWRITE = false
 		s.data[name] = fp.data
 	end;
-	make = function(s)
-		SNAPSHOT = true
+	make = function(s, name)
+		SNAPSHOT = name or 'default'
 	end;
-	exist = function(s, name)
+	exists = function(s, name)
 		name = name or 'default'
 		return s.data[name]
 	end;
@@ -31,7 +35,7 @@ local snap = std.obj {
 	end;
 	restore = function(s, name) -- like std:load()
 		name = name or 'default'
-		if not s:exist(name) then
+		if not s:exists(name) then
 			return false
 		end
 		std:reset()
@@ -42,7 +46,6 @@ local snap = std.obj {
 		end
 		f();
 		std.ref 'game':__ini(true)
-		RESTORE = true
 		return std.nop()
 	end;
 }
@@ -51,7 +54,7 @@ snapshots = snap
 
 std.mod_cmd(function()
 	if SNAPSHOT then
-		snap:write(snap.SNAPSHOT)
+		snap:write(SNAPSHOT)
 		SNAPSHOT = nil
 	end
 end)

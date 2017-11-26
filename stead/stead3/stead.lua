@@ -43,10 +43,6 @@ stead = {
 	randomseed = instead_srandom;
 }
 
-function stead.round(num, n)
-	local m = 10 ^ (n or 0)
-	return std.math.floor(num * m + 0.5) / m
-end
 
 local std = stead
 
@@ -135,7 +131,10 @@ else
 	end
 end
 
-math.round = std.round
+math.round = function(num, n)
+	local m = 10 ^ (n or 0)
+	return std.math.floor(num * m + 0.5) / m
+end
 
 local function __mod_callback_reg(f, hook, prio, ...)
 	if type(f) ~= 'function' then
@@ -1080,6 +1079,7 @@ function std:done()
 	std.tags = {}
 	std.next_dynamic = -1
 	std.files = {}
+	std.startfile = false
 --	std.modules = {}
 	std.includes = {}
 	std.initialized = false
@@ -1862,6 +1862,7 @@ std.world = std.class({
 			local o1 = std.ref(cmd[2])
 			local o2 = std.ref(cmd[3])
 			o1 = s.player:srch(o1)
+
 			if not o1 then
 				return nil, false -- wrong input
 			end
@@ -1916,8 +1917,8 @@ std.world = std.class({
 		s:reaction(r or false)
 
 		if v then
-			std.mod_call('step', v)
 			s:step()
+			std.mod_call('step', v)
 		end
 		r = s:display(v)
 		if v then

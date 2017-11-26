@@ -27,57 +27,62 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\libmikmod\include\mikmod.h" />
-    <ClInclude Include="..\..\..\..\libmikmod\include\mikmod_ctype.h" />
-    <ClInclude Include="..\..\..\..\libmikmod\include\mikmod_internals.h" />
+    <ClInclude Include="..\..\..\..\mikmod\libmikmod\include\mikmod.h" />
+    <ClInclude Include="..\..\..\..\mikmod\libmikmod\include\mikmod_ctype.h" />
+    <ClInclude Include="..\..\..\..\mikmod\libmikmod\include\mikmod_internals.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_ds.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_nos.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_raw.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_stdout.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_wav.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\drivers\drv_win.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_669.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_amf.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_dsm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_far.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_gdm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_imf.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_it.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_m15.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_med.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_mod.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_mtm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_okt.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_s3m.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_stm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_stx.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_ult.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_uni.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\loaders\load_xm.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\mmio\mmalloc.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\mmio\mmerror.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\mmio\mmio.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mdreg.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mdriver.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mloader.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mlreg.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mlutil.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mplayer.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\munitrk.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\mwav.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\npertab.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\sloader.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\virtch.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\virtch2.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\playercode\virtch_common.c" />
-    <ClCompile Include="..\..\..\..\libmikmod\posix\strcasecmp.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\depackers\mmcmp.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\depackers\pp20.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\depackers\s404.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\depackers\xpk.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\drivers\drv_nos.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\drivers\drv_raw.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\drivers\drv_stdout.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\drivers\drv_wav.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_669.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_amf.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_asy.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_dsm.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_far.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_gdm.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_imf.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_it.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_m15.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_med.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_mod.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_mtm.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_okt.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_s3m.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_stm.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_stx.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_ult.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_umx.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_uni.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\loaders\load_xm.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\mmio\mmalloc.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\mmio\mmerror.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\mmio\mmio.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\mdreg.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\mdriver.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\mdulaw.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\mloader.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\mlreg.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\mlutil.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\mplayer.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\munitrk.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\mwav.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\npertab.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\sloader.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\virtch.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\virtch2.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\playercode\virtch_common.c" />
+    <ClCompile Include="..\..\..\..\mikmod\libmikmod\posix\strcasecmp.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{c69267c7-77a6-48b9-a286-81c7b9172478}</ProjectGuid>
-    <Keyword>StaticLibrary</Keyword>
-    <RootNamespace>libmikmod_UWP</RootNamespace>
+    <ProjectGuid>{aeb8c6f6-322d-4841-adde-61dbe60bc284}</ProjectGuid>
+    <Keyword>DynamicLibrary</Keyword>
+    <RootNamespace>mikmod\libmikmod_UWP</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
@@ -88,34 +93,34 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v140</PlatformToolset>
@@ -147,37 +152,35 @@
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <TargetName>libmikmod</TargetName>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4703</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -189,11 +192,9 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4703</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -205,11 +206,9 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4703</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -221,11 +220,9 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4703</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -237,11 +234,9 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4703</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -253,11 +248,9 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\libmikmod\win32;..\..\..\..\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <UndefinePreprocessorDefinitions>
-      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4703</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

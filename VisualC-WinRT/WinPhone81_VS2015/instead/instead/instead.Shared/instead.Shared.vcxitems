@@ -77,7 +77,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\themes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\unzip.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\utils.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\uwp.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)..\..\..\..\..\games\**\*.*" Exclude="$(MSBuildThisFileDirectory)..\..\..\..\..\games\**\Makefile;$(MSBuildThisFileDirectory)..\..\..\..\..\games\**\CMakeLists.txt">

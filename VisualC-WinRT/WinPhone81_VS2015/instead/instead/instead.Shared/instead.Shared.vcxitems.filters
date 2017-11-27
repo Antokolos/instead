@@ -182,6 +182,5 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\utils.h">
       <Filter>instead</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\uwp.h" />
   </ItemGroup>
 </Project>

@@ -6,7 +6,6 @@ SDL_winrt_main_NonXAML.cpp, placed in the public domain by David Ludwig  3/13/14
 #include <sstream>
 #include <string>
 #include "SDL_main.h"
-#include "uwp.h"
 #include <wrl.h>
 
 /* At least one file in any SDL/WinRT app appears to require compilation
@@ -241,7 +240,6 @@ int main(int argc, char *argv[])
 	char* appdata_themes = convertFolderNameFromPlatformString(localFolder, "appdata\\themes");
 	create_dir_if_needed(appdata);
 	tmppath = convertFolderNameFromPlatformString(tempFolder);
-	char* modes = getModesString();
 	char* _argv[25];
 	int n = 1;
 	_argv[0] = curdir;
@@ -253,11 +251,6 @@ int main(int argc, char *argv[])
 #if _WIN32_WINNT >= 0x0A00
 	toggleToFullscreen();
 #endif
-	if (modes)
-	{
-		_argv[n++] = "-modes";
-		_argv[n++] = modes;
-	}
 	if (standalone)
 	{
 		_argv[n++] = "-standalone";
@@ -301,13 +294,22 @@ int main(int argc, char *argv[])
 	{
 		_argv[n++] = game_file;
 	}
+	/*
+	char* modes = getModesString();
+	if (modes)
+	{
+	_argv[n++] = "-modes";
+	_argv[n++] = modes;
+	}
+	*/
 	_argv[n] = NULL;
+	Windows::Graphics::Display::DisplayInformation::AutoRotationPreferences = Windows::Graphics::Display::DisplayOrientations::Portrait;
 	err = instead_main(n, _argv);
+	//free(modes);
 	if (game_file)
 	{
 		free(game_file);
 	}
-	free(modes);
 	free(tmppath);
 	free(appdata_themes);
 	free(appdata_games);
@@ -320,7 +322,7 @@ extern "C" void getAppTempDir(char *lpPathBuffer)
 {
 	strcpy(lpPathBuffer, tmppath);
 }
-
+/*
 extern "C" void rotate_landscape(void)
 {
 	Windows::Graphics::Display::DisplayInformation::AutoRotationPreferences = Windows::Graphics::Display::DisplayOrientations::Landscape;
@@ -335,3 +337,4 @@ extern "C" void unlock_rotation(void)
 {
 	Windows::Graphics::Display::DisplayInformation::AutoRotationPreferences = Windows::Graphics::Display::DisplayOrientations::Landscape | Windows::Graphics::Display::DisplayOrientations::Portrait;
 }
+*/

@@ -224,9 +224,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\utils.h">
       <Filter>instead</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\uwp.h">
-      <Filter>instead</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\..\src\SDL2-WinRTResources.rc">

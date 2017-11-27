@@ -36,7 +36,4 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\SDL2_winrt.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\src\uwp.h" />
-  </ItemGroup>
 </Project>

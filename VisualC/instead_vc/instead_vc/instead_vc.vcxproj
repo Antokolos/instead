@@ -95,7 +95,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.8;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.8;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -131,7 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.8;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -152,7 +152,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.8;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

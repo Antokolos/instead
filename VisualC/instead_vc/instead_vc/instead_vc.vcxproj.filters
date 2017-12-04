@@ -183,4 +183,7 @@
       <UniqueIdentifier>{de58e86f-b00a-4ab5-9b95-c15b4b7f2a9a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\SDL\VisualC\SDLmain\SDLmain.vcxproj" />
+  </ItemGroup>
 </Project>

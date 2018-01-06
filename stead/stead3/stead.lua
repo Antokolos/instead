@@ -1226,11 +1226,12 @@ std.obj = std.class {
 			if type(v[i]) ~= 'table' then
 				std.err("Wrong declaration: "..std.tostr(v[i]), 2)
 			end
+			local var = (v[i].__var_type == true) -- raw or var mode
 			for key, val in pairs(v[i]) do
 				if type(key) ~= 'string' then
 					std.err("Wrong var name: "..std.tostr(key), 2)
 				end
-				raw[key] = true
+				raw[key] = not var
 				rawset(v, key, val)
 			end
 		end
@@ -1567,6 +1568,14 @@ std.obj = std.class {
 		return game:live(s)
 	end;
 };
+
+function std.var(v)
+	if type(v) ~= 'table' then
+		std.err("Wrong std.var() argument", 2)
+	end
+	v.__var_type = true
+	return v
+end
 
 std.room = std.class({
 	__room_type = true;

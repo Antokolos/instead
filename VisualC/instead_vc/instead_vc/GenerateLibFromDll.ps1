@@ -10,13 +10,15 @@ if($args.length -gt 0)
 
     $dll = [System.IO.Path]::GetFilename($args[0]);
     $path = [System.IO.Path]::GetDirectoryName($args[0]);
-Write-Host $path
+    Write-Host $path
     $def = [System.IO.Path]::ChangeExtension($dll, "def");
     $lib = [System.IO.Path]::ChangeExtension($dll, "lib");
 
-    Write-Host ("Generating " + $def + " file…");
-    "EXPORTS" > $path\$def;
-    &"dumpbin" "/exports" $args[0] | select-string $pattern | %{$null = $_.Line -match $pattern; ("`t" + $matches[1]) >> $path\$def; }
+    if(![System.IO.File]::Exists($path + "\" + $def)) {
+        Write-Host ("Generating " + $def + " file…");
+        "EXPORTS" > $path\$def;
+        &"dumpbin" "/exports" $args[0] | select-string $pattern | %{$null = $_.Line -match $pattern; ("`t" + $matches[1]) >> $path\$def; }
+    }
 
     Write-Host ("Generating " + $lib + " file…");
     &"lib" ("/def:" + $path + "\" + $def) ("/out:" + $path + "\" + $lib) ("/machine:" + $platform) | out-null;

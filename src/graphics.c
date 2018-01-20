@@ -731,24 +731,6 @@ img_t	gfx_grab_screen(int x, int y, int w, int h)
 #if SDL_VERSION_ATLEAST(2,0,0)
 static SDL_RendererInfo SDL_VideoRendererInfo;
 
-SDL_Surface *SDL_DisplayFormatAlpha(SDL_Surface * surface)
-{
-/*	SDL_PixelFormat *format; */
-	SDL_Surface *converted;
-	if (!screen) {
-		fprintf(stderr, "No video mode has been set.\n");
-		return NULL;
-	}
-/*	format = SDL_AllocFormat(SDL_PIXELFORMAT_ARGB8888);
-	if (surface->format->Amask == 0 && surface->format->palette)
-		SDL_SetColorKey(surface, SDL_TRUE, *(Uint8*)surface->pixels); */
-	converted = SDL_ConvertSurface(surface, Surf(screen)->format, 0); /* SDL_RLEACCEL); */
-	if (converted)
-		SDL_SetSurfaceBlendMode(converted, SDL_BLENDMODE_BLEND);
-/*	SDL_FreeFormat(format); */
-	return converted;
-}
-
 SDL_Surface *SDL_DisplayFormat(SDL_Surface * surface)
 {
 	SDL_PixelFormat *format;
@@ -759,12 +741,19 @@ SDL_Surface *SDL_DisplayFormat(SDL_Surface * surface)
 		return NULL;
 	}
 	format = Surf(screen)->format;
-/*	format = SDL_AllocFormat(SDL_PIXELFORMAT_ARGB8888); */
-	converted = SDL_ConvertSurface(surface, format, 0);/* SDL_RLEACCEL); */
-	/* Set the flags appropriate for copying to display surface */
-/*	SDL_FreeFormat(format); */
+	converted = SDL_ConvertSurface(surface, format, 0);
 	return converted;
 }
+
+SDL_Surface *SDL_DisplayFormatAlpha(SDL_Surface * surface)
+{
+	SDL_Surface *converted;
+	converted = SDL_DisplayFormat(surface);
+	if (converted)
+		SDL_SetSurfaceBlendMode(converted, SDL_BLENDMODE_BLEND);
+	return converted;
+}
+
 #endif
 img_t gfx_display_alpha(img_t src)
 {
@@ -775,6 +764,12 @@ img_t gfx_display_alpha(img_t src)
 		return src;
 	if (is_anigif(src)) /* already optimized */
 		return src;
+#if SDL_VERSION_ATLEAST(2,0,0)
+	if (Surf(screen)->format == Surf(src)->format) { /* fast path! */
+		SDL_SetSurfaceBlendMode(Surf(src), SDL_BLENDMODE_BLEND);
+		return src;
+	}
+#endif
 	res = SDL_DisplayFormatAlpha(Surf(src));
 	if (!res)
 		return src;
@@ -1289,6 +1284,28 @@ void gfx_draw_bg(img_t p, int x, int y, int width, int height)
 	gfx_set_alpha(p, a);
 }
 
+void gfx_draw_from_alpha(img_t s, int x, int y, int w, int h, img_t d, int xx, int yy, int alpha)
+{
+#if SDL_VERSION_ATLEAST(1,3,0)
+	SDL_BlendMode  blendMode;
+	Uint8	sdl_alpha = SDL_ALPHA_OPAQUE;
+	SDL_GetSurfaceBlendMode(Surf(s), &blendMode);
+	SDL_GetSurfaceAlphaMod(Surf(s), &sdl_alpha);
+
+	SDL_SetSurfaceAlphaMod(Surf(s), alpha);
+	SDL_SetSurfaceBlendMode(Surf(s), SDL_BLENDMODE_BLEND);
+
+	gfx_draw_from(s, x, y, w, h, d, xx, yy);
+	SDL_SetSurfaceBlendMode(Surf(s), blendMode);
+	SDL_SetSurfaceAlphaMod(Surf(s), sdl_alpha);
+#else
+	img_t img;
+	img = gfx_alpha_img(s, alpha);
+	gfx_draw_from((img)?img:s, x, y, w, h, d, xx, yy);
+	gfx_free_image(img);
+#endif
+}
+
 void gfx_draw_from(img_t p, int x, int y, int width, int height, img_t to, int xx, int yy)
 {
 	SDL_Surface *pixbuf = Surf(p);
@@ -1465,7 +1482,7 @@ int gfx_is_drawn_gifs(void)
 	return anigif_drawn_nr;
 }
 
-void gfx_update_gif(img_t img)
+void gfx_update_gif(img_t img, update_fn update)
 {
 	int i = 0;
 	anigif_t ag;
@@ -1475,7 +1492,7 @@ void gfx_update_gif(img_t img)
 	if (!ag->drawn || !ag->active)
 		return;
 	for (i = 0; i < ag->spawn_nr; i++) {
-		gfx_update(ag->spawn[i].x, ag->spawn[i].y,
+		update(ag->spawn[i].x, ag->spawn[i].y,
 			gfx_img_w(img), gfx_img_h(img));
 	}
 }
@@ -1945,16 +1962,26 @@ static int mouse_watcher(void *userdata, SDL_Event *event)
 	}
 	return 0;
 }
-void gfx_finger_pos_scale(float x, float y, int *ox, int *oy)
+void gfx_finger_pos_scale(float x, float y, int *ox, int *oy, int norm)
 {
 	int xx = 0, yy = 0;
 #ifndef SAILFISHOS
 	int w, h;
 	float sx, sy;
-	SDL_GetWindowSize(SDL_VideoWindow, &w, &h);
 	SDL_Rect rect;
-	SDL_RenderGetViewport(Renderer, &rect);
-	SDL_RenderGetScale(Renderer, &sx, &sy);
+
+	if (!norm) { /* do not normalize? */
+		w = gfx_width;
+		h = gfx_height;
+		sx = 1.0f;
+		sy = 1.0f;
+		rect.x = 0;
+		rect.y = 0;
+	} else {
+		SDL_GetWindowSize(SDL_VideoWindow, &w, &h);
+		SDL_RenderGetViewport(Renderer, &rect);
+		SDL_RenderGetScale(Renderer, &sx, &sy);
+	}
 
 	if (sx != 0) {
 		x = x * w;
@@ -2175,7 +2202,8 @@ retry:
 			SDL_VideoSurface->format->palette->ncolors);
 	}
 #endif
-	SDL_ShowCursor(SDL_DISABLE);
+	if (!nocursor_sw)
+		SDL_ShowCursor(SDL_DISABLE);
 
 	gfx_fs = fs;
 	gfx_width = w;
@@ -2218,7 +2246,8 @@ int gfx_set_mode(int w, int h, int fs)
 	gfx_fs = fs;
 	gfx_width = w;
 	gfx_height = h;
-	SDL_ShowCursor(SDL_DISABLE);
+	if (!nocursor_sw)
+		SDL_ShowCursor(SDL_DISABLE);
 #ifdef S60
 	scr = SDL_SetVideoMode(gfx_width, gfx_height, 0, SDL_ANYFORMAT | hw | ( ( fs ) ? SDL_FULLSCREEN : 0 ) );
 #else
@@ -2364,7 +2393,7 @@ static void gfx_render_cursor(void)
 #ifdef _USE_SWROTATE
 	SDL_Point r;
 #endif
-	if (!cursor_on || !mouse_focus())
+	if (!cursor_on || !mouse_focus() || nocursor_sw)
 		return;
 
 	gfx_cursor(&cursor_x, &cursor_y);
@@ -5530,7 +5559,8 @@ static void update_gfx(void)
 	gfx_render_copy(fade_bg_texture, NULL, 1);
 	SDL_SetTextureAlphaMod(fade_fg_texture, (SDL_ALPHA_OPAQUE * (fade_step_nr + 1)) / ALPHA_STEPS);
 	gfx_render_copy(fade_fg_texture, NULL, 0);
-	gfx_render_cursor();
+	if (game_cursor_show)
+		gfx_render_cursor();
 	SDL_RenderPresent(Renderer);
 #endif
 	fade_step_nr ++;
@@ -5643,6 +5673,7 @@ err:
 int gfx_init(void)
 {
 #if SDL_VERSION_ATLEAST(2,0,0)
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 	if (render_sw)
 		SDL_SetHint(SDL_HINT_RENDER_DRIVER, render_sw);
 #if defined(_WIN32) /* do not use buggy D3D by default: fullscreen problem with NVidia */

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2018 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -138,15 +138,17 @@ struct game_theme {
 #define CHANGED_IFONT	2
 #define CHANGED_MFONT	4
 #define CHANGED_BG	8
-#define CHANGED_CLICK	0x10
-#define CHANGED_CURSOR	0x20
-#define CHANGED_USE	0x40
-#define CHANGED_UP	0x80
-#define CHANGED_DOWN	0x100
-#define CHANGED_IUP	0x200
-#define CHANGED_IDOWN	0x400
-#define CHANGED_BUTTON	0x800
-#define CHANGED_ICON	0x1000
+#define CHANGED_WIN	0x10
+#define CHANGED_INV	0x20
+#define CHANGED_CLICK	0x40
+#define CHANGED_CURSOR	0x80
+#define CHANGED_USE	0x100
+#define CHANGED_UP	0x200
+#define CHANGED_DOWN	0x400
+#define CHANGED_IUP	0x800
+#define CHANGED_IDOWN	0x1000
+#define CHANGED_BUTTON	0x2000
+#define CHANGED_ICON	0x4000
 #define CHANGED_ALL 0xffff
 struct theme {
 	char *path;
@@ -189,13 +191,16 @@ extern int	theme_scalable_mode(int w, int h);
 
 extern int theme_relative;
 
-#define GFX_MODE_FLOAT 0
-#define GFX_MODE_FIXED 1
-#define GFX_MODE_EMBEDDED 2
-#define GFX_MODE_DIRECT 3
-#define GFX_MODE(v) ((v)&0xff)
-#define GFX_ALIGN(v) ((v)>>8)
-#define GFX_ALIGN_SET(v) ((v)<<8)
+#define GFX_MODE_FLOAT 1
+#define GFX_MODE_FIXED 2
+#define GFX_MODE_EMBEDDED 4
+#define GFX_MODE_DIRECT 0x100
+#define GFX_MODE(v) ((v) & 0x1ff)
+#define GFX_DIRECT(v) (!!((v) & 0x100))
+#define GFX_DIRECT_SET(v) ((v)|0x100)
+#define GFX_DIRECT_CLR(v) ((v)&(~0x100))
+#define GFX_ALIGN(v) ((v)>>16)
+#define GFX_ALIGN_SET(v) ((v)<<16)
 
 #define INV_MODE_DISABLED -1
 #define INV_MODE_VERT 0
@@ -205,7 +210,7 @@ extern int theme_relative;
 #define INV_ALIGN_SET(v) ((v)<<8)
 
 #define WAYS_BOTTOM (game_theme.ways_mode == ALIGN_BOTTOM)
-#define DIRECT_MODE (game_theme.gfx_mode == GFX_MODE_DIRECT)
+#define DIRECT_MODE (GFX_DIRECT(game_theme.gfx_mode))
 
 #define SCALABLE_FONT (!(game_theme.gfx_scalable & 4))
 #define SCALABLE_THEME (game_theme.gfx_scalable & 3)

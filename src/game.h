@@ -35,6 +35,7 @@
 
 #define HZ 		100
 
+extern int	game_wait_use;
 extern int	game_running;
 extern int	game_theme_changed;
 
@@ -44,6 +45,7 @@ extern int	fullscreen_sw;
 extern int	hires_sw;
 extern int	window_sw;
 extern int	nopause_sw;
+extern int	nocursor_sw;
 extern int	game_own_theme; /* current game has own theme */
 extern char	*games_sw;
 extern char	game_cwd[PATH_MAX]; /* current game cwd */
@@ -57,13 +59,15 @@ extern char	*render_sw;
 extern char	*appdir(void);
 
 extern void	game_clear(int x, int y, int w, int h);
+extern void	game_clear_all(void);
+
 extern char	*game_local_games_path(int cr);
 extern char	*game_local_themes_path(void);
 extern char	*game_tmp_path(void);
 extern int	game_theme_select(const char *name);
 
 extern int	game_init(const char *game);
-
+extern void	game_flip(void);
 extern int	game_loop(void);
 extern void	game_done(int err);
 extern char	*game_reset_name(void);
@@ -71,7 +75,7 @@ extern char	*game_reset_name(void);
 extern int	game_load_theme(const char *path);
 extern int	game_apply_theme(void);
 extern int	game_use_theme(void);
-extern void	game_release_theme(void);
+extern void	game_release_theme(int force);
 extern int	game_reset(void);
 extern int	game_cfg_save(void);
 
@@ -128,6 +132,8 @@ extern char	*open_file_dialog(void);
 extern int	game_from_disk(void);
 
 extern int	game_pict_modify(img_t p);
+extern int	game_bg_modify(img_t p);
+
 extern int game_pict_coord(int *x, int *y, int *w, int *h);
 extern void menu_toggle(int menu);
 extern int menu_visible(void);

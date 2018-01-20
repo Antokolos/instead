@@ -12,7 +12,12 @@ local instead = std.obj {
 	end;
 }
 
+-- luacheck: read globals instead_clipboard
+-- luacheck: read globals instead_wait_use
+-- luacheck: no self
+
 instead.clipboard = instead_clipboard
+instead.wait_use = instead_wait_use
 
 function instead.atleast(...)
 	for k, v in std.ipairs {...} do
@@ -35,7 +40,7 @@ function instead.version(...)
 	end
 	if not instead.atleast(...) then
 		local v = false
-		for k, n in std.ipairs({...}) do
+		for _, n in std.ipairs({...}) do
 			if std.type(n) ~= 'number' then
 				std.err([[Wrong instead.version argument: ]]..std.tostr(n), 2)
 			end
@@ -120,7 +125,9 @@ end)
 
 instead.nopic = false
 
+-- luacheck: push ignore savedpicture
 local savedpicture
+-- luacheck: pop
 instead.get_picture = std.cacheable('pic', function()
 	if get_bool(instead, 'nopic') then
 		return
@@ -129,7 +136,7 @@ instead.get_picture = std.cacheable('pic', function()
 	if not s then
 		s = stead.call(std.ref 'game', 'pic')
 	end
-	savedpicture = s -- to save pciture sprite from unload
+	savedpicture = s -- to save picture sprite from unload
 	return s and std.tostr(s)
 end)
 
@@ -213,13 +220,15 @@ function iface:title() -- hide title
 	return
 end
 
+-- luacheck: globals stat
 std.stat = std.class({
 	__stat_type = true;
 }, std.obj);
 
+-- luacheck: globals menu
 std.menu = std.class({
 	__menu_type = true;
-	new = function(self, v)
+	new = function(_, v)
 		if type(v) ~= 'table' then
 			std.err ("Wrong argument to std.menu:"..std.tostr(v), 2)
 		end
@@ -266,13 +275,14 @@ function iface:xref(str, o, ...)
 	end
 	local xref = std.string.format("%s%s", std.deref_str(o), args)
 	-- std.string.format("%s%s", iface:esc(std.deref_str(o)), iface:esc(args))
-
-	table.insert(dict, xref)
-	xref = std.tostr(#dict)
-
+	if not dict[xref] then
+		table.insert(dict, xref)
+		dict[xref] = #dict
+	end
+	xref = std.tostr(dict[xref])
 	if std.cmd[1] == 'way' then
 		return std.string.format("<a:go %s>", xref)..str.."</a>"
-	elseif o:type 'menu' or std.is_system(o) then
+	elseif std.is_obj(o, 'menu') or std.is_system(o) then
 		return std.string.format("<a:act %s>", xref)..str.."</a>"
 	elseif std.cmd[1] == 'inv' then
 		return std.string.format("<a:use %s>", xref)..str.."</a>"

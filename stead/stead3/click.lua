@@ -1,10 +1,13 @@
 local std = stead
 local input = std.ref '@input'
-local type = std.type
+
+-- luacheck: globals click
 
 click = std.obj {
 	nam = '@click';
+-- luacheck: no unused args
 	filter = function(s, press, btn, x, y, px, py)
+-- luacheck: unused args
 		return press and px
 	end
 }
@@ -14,7 +17,7 @@ function input:click(press, btn, x, y, px, py)
 	if not click:filter(press, btn, x, y, px, py) then
 		return
 	end
-	for k, v in std.ipairs {press, btn, x, y, px, py} do
+	for _, v in std.ipairs {press, btn, x, y, px, py} do
 		a = (a and (a..', ') or ' ') .. std.dump(v)
 	end
 	return '@click'.. (a or '')

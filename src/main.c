@@ -60,6 +60,7 @@ int vsync_sw = 0;
 int resizable_sw = 0;
 int scale_sw = 1;
 int standalone_sw = 0;
+int nocursor_sw = 0;
 
 static int opt_index = 1;
 
@@ -251,8 +252,30 @@ static int luaB_clipboard(lua_State *L) {
 	return 1;
 }
 
+static int luaB_wait_use(lua_State *L) {
+	int v = -1;
+	int old = game_wait_use;
+
+	if (lua_isboolean(L, 1))
+		v = lua_toboolean(L, 1);
+
+	if (v == -1) {
+		lua_pushboolean(L, old);
+		return 1;
+	}
+
+	if (!opt_owntheme) {
+		lua_pushboolean(L, 0);
+		return 1;
+	}
+	game_wait_use = v;
+	lua_pushboolean(L, old);
+	return 1;
+}
+
 static const luaL_Reg sdl_funcs[] = {
-	{"instead_clipboard", luaB_clipboard},
+	{ "instead_clipboard", luaB_clipboard },
+	{ "instead_wait_use", luaB_wait_use },
 	{NULL, NULL}
 };
 
@@ -421,6 +444,8 @@ int instead_main(int argc, char *argv[])
 			version_sw = 1;
 		} else if (!strcmp(argv[i], "-nopause")) {
 			nopause_sw = 1;
+		} else if (!strcmp(argv[i], "-nocursor")) {
+			nocursor_sw = 1;
 		} else if (!strcmp(argv[i], "-software")) {
 			software_sw = 1;
 		} else if (!strcmp(argv[i], "-resizable")) {
@@ -757,6 +782,7 @@ static struct parser profile_parser[] = {
 	{ "modes", parse_string, &modes_sw, 0 },
 	{ "fontscale", parse_string, &fsize_sw, 0 },
 	{ "renderer", parse_string, &render_sw, 0 },
+	{ "nocursor", parse_int, &nocursor_sw, 0 },
 	{ NULL, NULL, NULL, 0 },
 };
 

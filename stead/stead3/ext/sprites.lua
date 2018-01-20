@@ -2,6 +2,42 @@ local std = stead
 local type = std.type
 local instead = std.ref '@instead'
 
+-- luacheck: read globals instead_theme_var
+-- luacheck: read globals instead_theme_name
+-- luacheck: read globals instead_ticks
+-- luacheck: read globals instead_font_load
+-- luacheck: read globals instead_font_free
+-- luacheck: read globals instead_font_scaled_size
+-- luacheck: read globals instead_sprite_alpha
+-- luacheck: read globals instead_sprite_dup
+-- luacheck: read globals instead_sprite_scale
+-- luacheck: read globals instead_sprite_rotate
+-- luacheck: read globals instead_sprite_text
+-- luacheck: read globals instead_sprite_text_size
+-- luacheck: read globals instead_sprite_draw
+-- luacheck: read globals instead_sprite_copy
+-- luacheck: read globals instead_sprite_compose
+-- luacheck: read globals instead_sprite_fill
+-- luacheck: read globals instead_sprite_pixel
+-- luacheck: read globals instead_sprite_load
+-- luacheck: read globals instead_sprite_free
+-- luacheck: read globals instead_sprite_size
+-- luacheck: read globals instead_sprites_free
+-- luacheck: read globals instead_sprite_colorkey
+-- luacheck: read globals instead_sprite_pixels
+-- luacheck: read globals instead_mouse_pos
+-- luacheck: read globals instead_mouse_show
+-- luacheck: read globals instead_mouse_filter
+-- luacheck: read globals instead_finger_pos
+-- luacheck: read globals instead_noise1
+-- luacheck: read globals instead_noise2
+-- luacheck: read globals instead_noise3
+-- luacheck: read globals instead_noise4
+-- luacheck: read globals instead_render_callback
+-- luacheck: read globals instead_direct
+-- luacheck: read globals instead_busy
+-- luacheck: read globals instead_sprite_pixels
+
 -- theme
 instead.theme_var = instead_theme_var
 instead.theme_name = instead_theme_name
@@ -16,6 +52,7 @@ local theme = std.obj {
 		menu = { gfx = {}};
 		gfx = {};
 		snd = {};
+		scr = {};
 	};
 }
 
@@ -60,6 +97,14 @@ end
 
 function theme.get(...)
 	return instead.theme_var(...);
+end
+
+function theme.scr.w()
+	return tonumber(theme.get 'scr.w')
+end
+
+function theme.scr.h()
+	return tonumber(theme.get 'scr.h')
 end
 
 function theme.win.reset()
@@ -217,7 +262,7 @@ function theme.snd.reset()
 	theme.reset("snd.click");
 end
 
-function theme.snd.click()
+function theme.snd.click(w)
 	theme.set("snd.click", w);
 end
 
@@ -254,6 +299,10 @@ instead.noise1 = instead_noise1
 instead.noise2 = instead_noise2
 instead.noise3 = instead_noise3
 instead.noise4 = instead_noise4
+
+instead.render_callback = instead_render_callback
+
+instead.direct = instead_direct
 
 std.busy = instead_busy
 
@@ -307,7 +356,7 @@ function fnt:size(...)
 end
 
 function fnt:height(...)
-	local w, h = self:size()
+	local _, h = self:size(...)
 	return h
 end
 
@@ -424,24 +473,19 @@ function sprite.scr()
 end
 
 function sprite.direct(v)
-	local ov = theme.get('scr.gfx.mode') == 'direct'
-	if v then
-		if ov then
-			return true
-		end
-		theme.set ('scr.gfx.mode', 'direct')
-		return theme.get('scr.gfx.mode') == 'direct'
-	elseif v == false then
-		if ov then
-			theme.reset ('scr.gfx.mode')
-		end
-		return true
-	end
-	return ov
+	return instead.direct(v)
 end
 
 function sprite.font_scaled_size(size)
 	return instead.font_scaled_size(size);
+end
+
+local render_cb = nil
+function sprite.render_callback(fn)
+	local old = render_cb
+	render_cb = fn
+	instead.render_callback(render_cb)
+	return old
 end
 
 std.obj(sprite)
@@ -477,7 +521,7 @@ function pxl:draw_spr(fx, fy, fw, fh, d, x, y, alpha)
 		instead.sprite_draw(self, 0, 0, -1, -1, spr_get(fx), fy, fw, fh);
 		return fx
 	end
-	instead.sprite_draw(self, fx, fy, fw, fh, get(d), x, y, alpha);
+	instead.sprite_draw(self, fx, fy, fw, fh, spr_get(d), x, y, alpha);
 	return d
 end
 
@@ -575,5 +619,6 @@ stead.mod_init(function()
 end)
 
 stead.mod_done(function()
+	sprite.render_callback() -- stop render
 --	instead.sprites_free();
 end)

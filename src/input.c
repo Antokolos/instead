@@ -44,6 +44,8 @@ int mouse_focus(void)
 
 int mouse_cursor(int on)
 {
+	if (nocursor_sw)
+		return 0;
 	if (on)
 		SDL_ShowCursor(SDL_ENABLE);
 	else
@@ -114,12 +116,12 @@ static void push_mouse_event(SDL_Event *sevent)
 #if SDL_VERSION_ATLEAST(2,0,0)
 static unsigned long last_press_ms = 0;
 static unsigned long last_repeat_ms = 0;
-extern void gfx_finger_pos_scale(float x, float y, int *ox, int *oy);
+extern void gfx_finger_pos_scale(float x, float y, int *ox, int *oy, int norm);
 #endif
 #define INPUT_REP_DELAY_MS 500
 #define INPUT_REP_INTERVAL_MS 30
 
-#ifdef IOS
+#if defined(IOS) || defined(ANDROID)
 int HandleAppEvents(void *userdata, SDL_Event *event)
 {
 	switch (event->type) {
@@ -138,6 +140,9 @@ int HandleAppEvents(void *userdata, SDL_Event *event)
 		*/
 		/* snd_pause(1); */
 		m_minimized = 1;
+		if (opt_autosave && curgame_dir) /* autosave the game */
+			game_save(0);
+		cfg_save();
 		return 0;
 	case SDL_APP_WILLENTERFOREGROUND:
 		/* This call happens when your app is coming back to the foreground.
@@ -174,7 +179,7 @@ int input_init(void)
 #else
 	SDL_EnableKeyRepeat(INPUT_REP_DELAY_MS, INPUT_REP_INTERVAL_MS);
 #endif
-#ifdef IOS
+#if defined(IOS) || defined(ANDROID)
 	SDL_SetEventFilter(HandleAppEvents, NULL);
 #endif
 	return 0;
@@ -189,7 +194,9 @@ void input_clear(void)
 
 void input_uevents(void)
 {
+	char *g = curgame_dir;
 	SDL_Event peek;
+	curgame_dir = NULL;
 #if SDL_VERSION_ATLEAST(1,3,0)
 	while (SDL_PeepEvents(&peek, 1, SDL_GETEVENT, SDL_USEREVENT, SDL_USEREVENT) > 0) {
 #else
@@ -199,6 +206,7 @@ void input_uevents(void)
 		if (p)
 			p(peek.user.data2);
 	}
+	curgame_dir = g;
 }
 
 #if SDL_VERSION_ATLEAST(1,3,0)
@@ -248,7 +256,7 @@ int finger_pos(const char *finger, int *x, int *y, float *pressure)
 		if (f->id == fid) {
 			if (pressure)
 				*pressure = f->pressure;
-			gfx_finger_pos_scale(f->x, f->y, x, y);
+			gfx_finger_pos_scale(f->x, f->y, x, y, 1);
 			return 0;
 		}
 	}
@@ -294,8 +302,10 @@ int input(struct inp_event *inp, int wait)
 		touch_num = 0;
 #endif
 	case SDL_FINGERDOWN:
-#if defined(IOS) || defined(SAILFISHOS)
+#if defined(SAILFISHOS)
 		push_mouse_event(&event);
+#endif
+#if defined(IOS) || defined(SAILFISHOS)
 		if (event.type == SDL_FINGERDOWN) {
 			if (gfx_ticks() - touch_stamp > 100) {
 				touch_num = 0;
@@ -310,7 +320,11 @@ int input(struct inp_event *inp, int wait)
 			}
 		}
 #endif
-		gfx_finger_pos_scale(event.tfinger.x, event.tfinger.y, &inp->x, &inp->y);
+#if SDL_VERSION_ATLEAST(2,0,7) /* broken. normalized by event watcher */
+		gfx_finger_pos_scale(event.tfinger.x, event.tfinger.y, &inp->x, &inp->y, 0);
+#else
+		gfx_finger_pos_scale(event.tfinger.x, event.tfinger.y, &inp->x, &inp->y, 1);
+#endif
 		inp->type = (event.type == SDL_FINGERDOWN) ? FINGER_DOWN : FINGER_UP;
 		data2hex(&event.tfinger.fingerId,
 			sizeof(event.tfinger.fingerId),
@@ -329,7 +343,7 @@ int input(struct inp_event *inp, int wait)
 			gfx_resize(event.window.data1, event.window.data2);
 			/* Fall through */
 		case SDL_WINDOWEVENT_EXPOSED:
-			gfx_flip();
+			game_flip();
 			gfx_commit();
 			break;
 		case SDL_WINDOWEVENT_MINIMIZED:

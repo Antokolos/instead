@@ -1818,6 +1818,7 @@ static void after_click(int flags, int m_restore)
 #endif
 }
 
+extern void instead_ready(void);
 static void after_cmd(void)
 {
 	game_autosave();
@@ -1835,10 +1836,9 @@ static void after_fading(void *aux)
 	after_cmd();
 	game_cursor(CURSOR_DRAW);
 	game_flip();
-
 }
 
-static void game_redraw_all(void)
+void game_redraw_all(void)
 {
 	if (menu_shown || DIRECT_MODE)
 		return;
@@ -1894,7 +1894,7 @@ int game_cmd(char *cmd, int flags)
 	else
 		cmdstr = instead_cmd(cmd, &rc);
 	instead_unlock();
-
+	instead_ready();
 	if (opt_click && (flags & GAME_CMD_CLICK) && !rc)
 		sound_play_click();
 
@@ -2327,11 +2327,15 @@ int menu_visible(void)
 	return 0;
 }
 
+int game_freezed(void)
+{
+	return browse_dialog || menu_shown || gfx_fading() || minimized();
+}
+
+
 int game_paused(void)
 {
-	return browse_dialog || menu_shown ||
-		(use_xref && game_wait_use) ||
-		gfx_fading() || minimized() || instead_busy();
+	return game_freezed() || (use_xref && game_wait_use) || instead_busy();
 }
 
 void menu_update(struct el *elem)

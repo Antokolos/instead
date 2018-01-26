@@ -916,14 +916,28 @@ static int luaB_instead_direct(lua_State *L) {
 	lua_pushboolean(L, 1);
 	return 1;
 }
+static unsigned long busy_time = 0;
 
+void instead_ready(void)
+{
+	if (menu_visible() == menu_wait) {
+		menu_toggle(-1);
+	}
+	busy_time = 0;
+}
 static int luaB_stead_busy(lua_State *L) {
-	static unsigned long busy_time = 0;
 	int busy = lua_toboolean(L, 1);
 	if (busy) {
 		struct inp_event ev;
 		int dirty = 0;
 		memset(&ev, 0, sizeof(ev));
+
+		if (!game_freezed()) {
+			if (game_bg_modify(NULL))
+				game_redraw_all();
+			game_flip();
+		}
+
 		while (input(&ev, 0) == AGAIN);
 		if (ev.type == MOUSE_MOTION) {
 			game_cursor(CURSOR_ON); /* to make all happy */
@@ -939,10 +953,7 @@ static int luaB_stead_busy(lua_State *L) {
 			game_gfx_commit(0);
 		return 0;
 	}
-	if (menu_visible() == menu_wait) {
-		menu_toggle(-1);
-	}
-	busy_time = 0;
+	instead_ready();
 	return 0;
 }
 
@@ -2443,7 +2454,7 @@ static int render_callback_dirty = 0;
 int instead_render_callback_dirty(int fl)
 {
 	int rc = render_callback_dirty;
-	if (!callback_ref || game_paused())
+	if (!callback_ref || game_freezed())
 		return 0;
 	if (fl != -1)
 		render_callback_dirty = fl;
@@ -2452,7 +2463,7 @@ int instead_render_callback_dirty(int fl)
 
 void instead_render_callback(void)
 {
-	if (!callback_ref || game_paused() || render_callback_dirty == -1)
+	if (!callback_ref || game_freezed() || render_callback_dirty == -1)
 		return;
 
 	game_cursor(CURSOR_CLEAR);

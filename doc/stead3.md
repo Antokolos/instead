@@ -3285,11 +3285,13 @@ fmt.para = true -- включить отступы параграфов
 
 ```
 require "fmt"
-	fmt.filter = function(s, state)
-		-- s -- вывод
-		-- state -- true, если это вывод сцены
-        return s..'\nЭта строка будет добавлена к выводу';
+fmt.filter = function(s, state)
+	-- s -- вывод
+	-- state -- true, если это такт игры (вывод сцены)
+	if state then
+		return 'Эта строка будет добавлена к началу вывода\n'..s;
 	end
+	return s
 end
 ```
 
@@ -5024,7 +5026,8 @@ function game:timer()
 	return false -- Важно! Так, сцена не будет изменена
 end
 
-game.pic = spr
+game.pic = function() return spr end -- функция: так как
+-- спрайт это особый объект (не строка)
 
 function start()
 	timer:set(30)

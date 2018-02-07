@@ -276,6 +276,7 @@ static int luaB_text_size(lua_State *L) {
 
 	const char *font = luaL_optstring(L, 1, NULL);
 	const char *text = luaL_optstring(L, 2, NULL);
+	int style = luaL_optnumber(L, 3, 0);
 
 	if (!font)
 		return 0;
@@ -291,6 +292,7 @@ static int luaB_text_size(lua_State *L) {
 		else
 			h = fnt_height(fn->fnt);
 	} else {
+		fnt_style(fn->fnt, style);
 		txt_size(fn->fnt, text, &w, &h);
 		if (fn->flags & FN_SCALED) {
 			w = ceil((float)w / game_theme.scale);
@@ -495,7 +497,7 @@ static int luaB_blit_sprite(lua_State *L, int mode) {
 		break;
 	}
 
-	gfx_noclip();
+	game_gfx_noclip();
 	lua_pushboolean(L, 1);
 	return 1;
 }
@@ -739,7 +741,7 @@ static int luaB_fill_sprite(lua_State *L) {
 	game_pict_modify(d);
 	game_gfx_clip();
 	gfx_img_fill(d, x + xoff, y + yoff, w, h, col);
-	gfx_noclip();
+	game_gfx_noclip();
 	lua_pushboolean(L, 1);
 	return 1;
 }
@@ -2541,6 +2543,7 @@ static int sprites_done(void)
 	if (callback_ref) {
 		luaL_unref(instead_lua(), LUA_REGISTRYINDEX, callback_ref);
 		callback_ref = 0;
+		render_callback_dirty = 0;
 	}
 	sprites_free();
 	return 0;

@@ -44,6 +44,7 @@ enum {
 	menu_about_instead, 
 	menu_settings,
 	menu_quit,
+	menu_askmainmenu,
 	menu_askquit,
 	menu_saved, 
 	menu_games, 

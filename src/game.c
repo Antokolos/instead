@@ -1638,6 +1638,8 @@ static void game_instead_menu(void)
 		menu_toggle(menu_save);
 	else if (!strcmp(menu, "load"))
 		menu_toggle(menu_load);
+	else if (!strcmp(menu, "mainmenu"))
+		menu_toggle(menu_askmainmenu);
 	else if (!strcmp(menu, "quit") || !strcmp(menu, "exit"))
 		menu_toggle(menu_askquit);
 	else if (!strcmp(menu, "themes"))

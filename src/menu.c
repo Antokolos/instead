@@ -43,6 +43,7 @@ char *SELECT_LOAD_MENU = NULL;
 char *AUTOSAVE_SLOT = NULL;
 char *BROKEN_SLOT = NULL;
 char *SELECT_SAVE_MENU = NULL;
+char *MAINMENU_MENU = NULL;
 char *MAIN_MENU = NULL;
 char *ABOUT_MENU = NULL;
 char *BACK_MENU = NULL;
@@ -517,6 +518,8 @@ char *game_menu_gen(void)
 			langs[cur_lang].name,  (opt_autosave & 1)?ON:OFF);
 			break;
 		}
+	} else if (cur_menu == menu_askmainmenu) {
+		strcpy(menu_buff, MAINMENU_MENU);
 	} else if (cur_menu == menu_askquit) {
 		strcpy(menu_buff, QUIT_MENU);
 	} else if (cur_menu == menu_saved) {
@@ -725,6 +728,9 @@ int game_menu_act(const char *a)
 			game_restart();
 			restart_needed = 0;
 		}
+	}
+	else if (!strcmp(a, "/ask_mainmenu")) {
+		game_menu(menu_askmainmenu);
 	} else if (!strcmp(a,"/ask_quit")) {
 		game_menu(menu_askquit);
 	} else if (!strncmp(a, "/remove_", 8)) {
@@ -824,6 +830,11 @@ int game_menu_act(const char *a)
 		games_rename();
 		game_reset_name();
 		game_menu_box(1, game_menu_gen());
+	} else if (!strcmp(a, "/mainmenu")) {
+		game_done(0);
+		if (game_init("nlbhub")) {
+			game_error();
+		}
 	} else if (!strcmp(a,"/quit")) {
 		return -1;
 #ifdef _USE_BROWSE
@@ -884,6 +895,7 @@ static void lang_free(void)
 	FREE(AUTOSAVE_SLOT);
 	FREE(BROKEN_SLOT);
 	FREE(SELECT_SAVE_MENU);
+	FREE(MAINMENU_MENU);
 	FREE(MAIN_MENU);
 	FREE(ABOUT_MENU);
 	FREE(BACK_MENU);
@@ -915,7 +927,7 @@ static int lang_ok(void)
 {
 	if (UNKNOWN_ERROR && ERROR_MENU && WARNING_MENU && SAVE_SLOT_EMPTY &&
 		SELECT_LOAD_MENU && AUTOSAVE_SLOT && BROKEN_SLOT && SELECT_SAVE_MENU &&
-		MAIN_MENU && ABOUT_MENU && BACK_MENU && SETTINGS_SND_MENU && SETTINGS_GFX_MENU && SETTINGS_OTH_MENU &&
+		MAINMENU_MENU && MAIN_MENU && ABOUT_MENU && BACK_MENU && SETTINGS_SND_MENU && SETTINGS_GFX_MENU && SETTINGS_OTH_MENU &&
 		CUSTOM_THEME_MENU && OWN_THEME_MENU && SELECT_GAME_MENU && SELECT_THEME_MENU && WAIT_MENU &&
 		SAVED_MENU && NOGAMES_MENU && NOTHEMES_MENU && QUIT_MENU && REMOVE_MENU &&
 		ON && OFF && KBD_MODE_LINKS && KBD_MODE_SMART && KBD_MODE_SCROLL && CANCEL_MENU &&
@@ -933,6 +945,7 @@ struct parser lang_parser[] = {
 	{ "AUTOSAVE_SLOT", parse_esc_string, &AUTOSAVE_SLOT, 0 },
 	{ "BROKEN_SLOT", parse_esc_string, &BROKEN_SLOT, 0 },
 	{ "SELECT_SAVE_MENU", parse_esc_string, &SELECT_SAVE_MENU, 0 },
+	{ "MAINMENU_MENU", parse_esc_string, &MAINMENU_MENU, 0 },
 	{ "MAIN_MENU", parse_esc_string, &MAIN_MENU, 0 },
 	{ "ABOUT_MENU", parse_esc_string, &ABOUT_MENU, 0 },
 	{ "BACK_MENU", parse_esc_string, &BACK_MENU, 0 },

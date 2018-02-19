@@ -30,7 +30,7 @@
 
 
 #if !defined(LUA_ANSI) && defined(_WIN32) && !defined(_WIN32_WCE) && !defined(_WINRT)
-//#define LUA_WIN		/* enable goodies for regular Windows platforms */
+#define LUA_WIN		/* enable goodies for regular Windows platforms */
 #endif
 
 #if defined(LUA_WIN)
@@ -40,7 +40,8 @@
 
 #if WINAPI_FAMILY_PARTITION(WINAPI_FAMILY_DESKTOP_APP)
 #define LUA_WINRT
-#undef LUA_DL_DLL
+// Antokolos: why disabling DLL support?
+//#undef LUA_DL_DLL
 #endif
 
 #if defined(LUA_USE_LINUX)

@@ -35,6 +35,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libiconv", "..\libiconv\lib
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua52", "..\lua52\lua52\lua52.vcxproj", "{074D19DF-058F-4E2E-AF63-F819E030FD34}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mime", "..\luasocket\mime\mime.vcxproj", "{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket", "..\luasocket\socket\socket.vcxproj", "{CBE3243A-A668-422F-96C5-0317CDACBCD2}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\lua52\lua52.Shared\lua52.Shared.vcxitems*{074d19df-058f-4e2e-af63-f819e030fd34}*SharedItemsImports = 4
@@ -149,6 +153,22 @@ Global
 		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Release|x64.Build.0 = Release|x64
 		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Release|x86.ActiveCfg = Release|Win32
 		{074D19DF-058F-4E2E-AF63-F819E030FD34}.Release|x86.Build.0 = Release|Win32
+		{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}.Debug|x64.ActiveCfg = Debug|x64
+		{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}.Debug|x64.Build.0 = Debug|x64
+		{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}.Debug|x86.ActiveCfg = Debug|Win32
+		{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}.Debug|x86.Build.0 = Debug|Win32
+		{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}.Release|x64.ActiveCfg = Release|x64
+		{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}.Release|x64.Build.0 = Release|x64
+		{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}.Release|x86.ActiveCfg = Release|Win32
+		{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}.Release|x86.Build.0 = Release|Win32
+		{CBE3243A-A668-422F-96C5-0317CDACBCD2}.Debug|x64.ActiveCfg = Debug|x64
+		{CBE3243A-A668-422F-96C5-0317CDACBCD2}.Debug|x64.Build.0 = Debug|x64
+		{CBE3243A-A668-422F-96C5-0317CDACBCD2}.Debug|x86.ActiveCfg = Debug|Win32
+		{CBE3243A-A668-422F-96C5-0317CDACBCD2}.Debug|x86.Build.0 = Debug|Win32
+		{CBE3243A-A668-422F-96C5-0317CDACBCD2}.Release|x64.ActiveCfg = Release|x64
+		{CBE3243A-A668-422F-96C5-0317CDACBCD2}.Release|x64.Build.0 = Release|x64
+		{CBE3243A-A668-422F-96C5-0317CDACBCD2}.Release|x86.ActiveCfg = Release|Win32
+		{CBE3243A-A668-422F-96C5-0317CDACBCD2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

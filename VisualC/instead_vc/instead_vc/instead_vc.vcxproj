@@ -104,6 +104,7 @@
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -121,6 +122,7 @@
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -140,6 +142,7 @@
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -161,6 +164,7 @@
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -296,6 +300,12 @@
     </ProjectReference>
     <ProjectReference Include="..\..\lua52\lua52\lua52.vcxproj">
       <Project>{074d19df-058f-4e2e-af63-f819e030fd34}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\luasocket\mime\mime.vcxproj">
+      <Project>{51e80728-5e78-41c1-99cd-6fe4efe32f4d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\luasocket\socket\socket.vcxproj">
+      <Project>{cbe3243a-a668-422f-96c5-0317cdacbcd2}</Project>
     </ProjectReference>
   </ItemGroup>
 </Project>

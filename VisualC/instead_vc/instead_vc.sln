@@ -41,16 +41,20 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket", "..\luasocket\sock
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luasec", "..\luasec\luasec.vcxproj", "{70A8A1B2-D5E3-4AB4-9870-0B868720D129}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luahelpers", "..\luahelpers\luahelpers.vcxitems", "{45D41ACC-2C3C-43D2-BC10-02AA73FFC7C7}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\lua52\lua52.Shared\lua52.Shared.vcxitems*{074d19df-058f-4e2e-af63-f819e030fd34}*SharedItemsImports = 4
 		..\lua52\lua52.Shared\lua52.Shared.vcxitems*{334eab4b-c600-4a2b-95dd-f2d8bc95e414}*SharedItemsImports = 9
+		..\luahelpers\luahelpers.vcxitems*{45d41acc-2c3c-43d2-bc10-02aa73ffc7c7}*SharedItemsImports = 9
 		..\libgen\libgen.Shared\libgen.Shared.vcxitems*{58c2c02d-0dd0-4dc7-9e49-23354a0f02ae}*SharedItemsImports = 4
 		..\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{5a6fdeb1-9776-4a14-8bdd-e919603db294}*SharedItemsImports = 9
 		..\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{78eee3f3-72da-4325-ac48-3de1231dfec4}*SharedItemsImports = 4
 		..\libgen\libgen.Shared\libgen.Shared.vcxitems*{7cf3b759-856b-4dc4-a0e5-a7c5564788c5}*SharedItemsImports = 9
 		..\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{84acd2f1-232b-4884-8d53-02972caf3e91}*SharedItemsImports = 4
 		..\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
+		..\luahelpers\luahelpers.vcxitems*{93a00ad2-776f-46e3-8471-b64b674f25c5}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

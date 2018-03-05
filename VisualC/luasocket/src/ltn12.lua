@@ -9,12 +9,14 @@
 -----------------------------------------------------------------------------
 local string = require("string")
 local table = require("table")
-local unpack = unpack or table.unpack
+--local unpack = unpack or table.unpack -- Antokolos: removed for compatibility with STEAD3
+local unpack = stead.unpack or table.unpack
 local base = _G
 local _M = {}
-if module then -- heuristic for exporting a global package table
-    ltn12 = _M
-end
+-- Antokolos: removed the following 3 lines for compatibility with STEAD3
+--if module then -- heuristic for exporting a global package table
+--    ltn12 = _M
+--end
 local filter,source,sink,pump = {},{},{},{}
 
 _M.filter = filter
@@ -22,7 +24,8 @@ _M.source = source
 _M.sink = sink
 _M.pump = pump
 
-local unpack = unpack or table.unpack
+--local unpack = unpack or table.unpack -- Antokolos: removed for compatibility with STEAD3
+local unpack = stead.unpack or table.unpack
 local select = base.select
 
 -- 2048 seems to be better in windows...

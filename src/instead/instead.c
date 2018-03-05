@@ -367,7 +367,8 @@ char *instead_cmd(char *s, int *rc)
 		*rc = !instead_bretval(1); 
 	instead_clear();
 	extensions_hook(cmd);
-	tryloadgame();
+	if (tryloadgame())
+		return NULL;
 	return s;
 }
 
@@ -815,6 +816,17 @@ static int luaB_loadgame(lua_State *L) {
 	return 0;
 }
 
+static int luaB_installgame(lua_State *L) {
+	const char *fname = luaL_optstring(L, 1, NULL);
+	const char *gamespath = luaL_optstring(L, 2, NULL);
+	const char *gamename = luaL_optstring(L, 3, NULL);
+	if (setup_zip(fname, gamespath)) {
+		return 1;
+	}
+	games_replace(gamespath, gamename);
+	return 0;
+}
+
 extern int dir_iter_factory (lua_State *L);
 extern int luaopen_lfs (lua_State *L);
 
@@ -824,6 +836,7 @@ static const luaL_Reg base_funcs[] = {
 	{"doencfile", luaB_doencfile},
 	{"dofile", luaB_dofile},
 	{"loadgame", luaB_loadgame},
+	{"installgame", luaB_installgame},
 
 	{"table_get_maxn", luaB_maxn},
 

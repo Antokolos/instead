@@ -14,6 +14,16 @@ fmt = std.obj {
 	filter = nil;
 }
 
+std.obj {
+	nam = '$fmt';
+	act = function(s, w, ...)
+		if type(w) ~= 'string' or not fmt[w] then
+			return w
+		end
+		return fmt[w](...)
+	end
+}
+
 std.format = function(r, state)
 	local utf8 = (std.ref 'game'.codepage == 'UTF-8' or std.ref 'game'.codepage == 'utf-8')
 

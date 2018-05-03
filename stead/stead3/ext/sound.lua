@@ -71,7 +71,7 @@ function instead.add_sound(s, chan, loop)
 	if std.tonum(loop) then
 		s = s..','..std.tostr(loop)
 	end
-	instead.set_sound(instead.__sound..';'..s, instead.__sound_channel, instead.__sound);
+	instead.set_sound(instead.__sound..';'..s, instead.__sound_channel, instead.__sound_loop);
 end
 
 function instead.set_sound(sound, chan, loop)
@@ -129,7 +129,9 @@ local snd = {
 snd.__index = snd;
 
 function snd:play(...)
-	instead.add_sound(self.snd, ...)
+	if self.snd then
+		instead.add_sound(self.snd, ...)
+	end
 end
 
 function snd:new(a, b, t)
@@ -141,9 +143,9 @@ function snd:new(a, b, t)
 	elseif type(t) == 'table' then
 		o.snd = instead.sound_load_mem(a, b, t) -- hz, channel, t
 	end
-	if not o.snd then
-		return
-	end
+--	if not o.snd then
+--		return
+--	end
 	std.setmt(o, self)
 	return std.proxy(o)
 end

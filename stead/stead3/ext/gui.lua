@@ -5,7 +5,7 @@ local std = stead
 local instead = std.obj {
 	nam = '@instead';
 
-	version_table = {3, 2, 0};
+	version_table = {3, 2, 1};
 
 	ini = function(s) -- after reset always do fade
 		s.need_fading(true)
@@ -49,7 +49,7 @@ function instead.version(...)
 			v = (v and (v .. '.') or '').. std.tostr(n)
 		end
 		std.err ([[The game requires instead engine of version ]] ..(v or '???').. [[ or higher.
-		http://instead.sourceforge.net]], 2)
+		https://instead-hub.github.io]], 2)
 	end
 end
 

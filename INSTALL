@@ -1,4 +1,4 @@
-INSTEAD 3.2.0
+INSTEAD 3.2.1
 =============
 
 WARNING! For successfull building you must install these development packages
@@ -29,7 +29,7 @@ Install stable (old) version from repo:
 	$ apt-get install instead
 
 Or use ppa with latest version:
-	http://launchpad.net/~instead/+archive/ppa
+	https://launchpad.net/~gl00my/+archive/ubuntu/instead
 
 2) On Debian based systems you can build deb package
 ====================================================

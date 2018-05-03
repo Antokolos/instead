@@ -1,5 +1,5 @@
 stead = {
-	version = "3.2.0",
+	version = "3.2.1",
 	api_version = "1.1.6", -- last version before 1.2.0
 	table = table,
 	delim = ',',
@@ -3089,7 +3089,7 @@ function stead_version(v)
 
 	if not stead.atleast(stead.unpack(stead.api_version_table)) then
 		error ([[The game requires instead engine of version ]] ..v.. [[ or higher.
-		http://instead.sourceforge.net]], 2)
+		https://instead-hub.github.io]], 2)
 	end
 
 	stead.api_version = v

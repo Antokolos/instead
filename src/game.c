@@ -1041,6 +1041,13 @@ int game_use_theme(void)
 	return rc;
 }
 
+/* Initialize the game, with forced clear of the standalone flag*/
+int game_init_safe(const char *name)
+{
+	standalone_sw = 0;
+	return game_init(name);
+}
+
 int game_init(const char *name)
 {
 	getdir(game_cwd, sizeof(game_cwd));

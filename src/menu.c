@@ -261,6 +261,8 @@ static void games_menu(void)
 		
 		if (!games[i].name[0]) /* empty */
 			continue;
+		if (!strcmp("nlbhub", games[i].name)) /* It should be accessible only from Main Menu menu item */
+			continue;
 		if (curgame_dir && !strcmp(games[i].dir, curgame_dir))
 			snprintf(tmp, sizeof(tmp), "<l><a:/resume><b>%s</b></a></l>", games[i].name);
 		else
@@ -832,6 +834,7 @@ int game_menu_act(const char *a)
 		game_menu_box(1, game_menu_gen());
 	} else if (!strcmp(a, "/mainmenu")) {
 		game_done(0);
+		standalone_sw = 1;
 		if (game_init("nlbhub")) {
 			game_error();
 		}

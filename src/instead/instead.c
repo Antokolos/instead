@@ -798,7 +798,7 @@ static int tryloadgame() {
 		free(game_name);
 		game_name = NULL;
 		game_done(0);
-		if (game_init(p)) {
+		if (game_init_safe(p)) {
 			game_error();
 		}
 		free(p);

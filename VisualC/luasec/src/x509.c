@@ -9,7 +9,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#if defined(WIN32)
+ // Antokolos: NB, WIN32 is not defined under x64, you should use _WINDOWS or _WIN32
+#if defined(WIN32) || defined(_WINDOWS)
 #include <ws2tcpip.h>
 #include <windows.h>
 #else

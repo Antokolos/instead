@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{93A00AD2-776F-46E3-8471-B64B674F25C5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>instead_vc</RootNamespace>
+    <RootNamespace>instead</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -105,13 +105,13 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT32\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Libs\$(Platform)\zlib1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\LuaJIT32\src\lua51.lib;Libs\$(Platform)\zlib1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -123,13 +123,13 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT64\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Libs\$(Platform)\zlib1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\LuaJIT64\src\lua51.lib;Libs\$(Platform)\zlib1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -143,7 +143,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT32\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -151,7 +151,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Libs\$(Platform)\zlib1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\LuaJIT32\src\lua51.lib;Libs\$(Platform)\zlib1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -165,7 +165,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT64\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -173,7 +173,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Libs\$(Platform)\zlib1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\LuaJIT64\src\lua51.lib;Libs\$(Platform)\zlib1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -300,8 +300,37 @@
     <ProjectReference Include="..\..\libiconv\libiconv\libiconv.vcxproj">
       <Project>{84acd2f1-232b-4884-8d53-02972caf3e91}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\lua52\lua52\lua52.vcxproj">
-      <Project>{074d19df-058f-4e2e-af63-f819e030fd34}</Project>
+    <ProjectReference Include="..\..\luafilesystem\luafilesystem.vcxproj">
+      <Project>{28965fc3-3148-4589-af25-89763b1fd465}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\luasec\luasec.vcxproj">
+      <Project>{70a8a1b2-d5e3-4ab4-9870-0b868720d129}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\luasocket\mime\mime.vcxproj">
+      <Project>{51e80728-5e78-41c1-99cd-6fe4efe32f4d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\luasocket\socket\socket.vcxproj">
+      <Project>{cbe3243a-a668-422f-96c5-0317cdacbcd2}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\..\LuaJIT32\src\lua51.dll">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(Filename)%(Extension)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\..\LuaJIT64\src\lua51.dll">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copying %(Filename)%(Extension)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy %(FullPath) $(SolutionDir)\$(Platform)\$(Configuration)\</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
+    </CustomBuild>
   </ItemGroup>
 </Project>

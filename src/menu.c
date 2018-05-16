@@ -457,6 +457,12 @@ char *game_menu_gen(void)
 			menu_remove_tag("<?:select>", "</?>");
 			menu_remove_tag("<?:themes>", "</?>");
 		}
+		// Strip irrelevant menu items for nlbhub game
+		if (!strcmp("nlbhub", curgame_dir)) {
+			menu_strip_tag("<a:/load_menu>", "</a>\n");
+			menu_strip_tag("<a:/save_menu>", "</a>\n");
+			menu_strip_tag("<a:/ask_mainmenu>", "</a>\n");
+		}
 	} else if (cur_menu == menu_about || cur_menu == menu_about_instead) {
 		struct game *g;
 		if (cur_menu == menu_about && curgame_dir && (g = game_lookup(curgame_dir))) {

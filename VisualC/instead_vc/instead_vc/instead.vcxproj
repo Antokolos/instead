@@ -303,6 +303,9 @@
     <ProjectReference Include="..\..\luafilesystem\luafilesystem.vcxproj">
       <Project>{28965fc3-3148-4589-af25-89763b1fd465}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\luapassing\luapassing.vcxproj">
+      <Project>{c6c979d6-bb2a-4c08-a988-e9e823df3762}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\luasec\luasec.vcxproj">
       <Project>{70a8a1b2-d5e3-4ab4-9870-0b868720d129}</Project>
     </ProjectReference>

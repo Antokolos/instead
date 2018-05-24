@@ -303,5 +303,20 @@
     <ProjectReference Include="..\..\lua52\lua52\lua52.vcxproj">
       <Project>{074d19df-058f-4e2e-af63-f819e030fd34}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\luafilesystem\luafilesystem_vc.vcxproj">
+      <Project>{28965fc3-3148-4589-af25-89763b1fd465}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\luapassing\luapassing_vc.vcxproj">
+      <Project>{c6c979d6-bb2a-4c08-a988-e9e823df3762}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\luasec\luasec_vc.vcxproj">
+      <Project>{70a8a1b2-d5e3-4ab4-9870-0b868720d129}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\luasocket\mime\mime_vc.vcxproj">
+      <Project>{51e80728-5e78-41c1-99cd-6fe4efe32f4d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\luasocket\socket\socket_vc.vcxproj">
+      <Project>{cbe3243a-a668-422f-96c5-0317cdacbcd2}</Project>
+    </ProjectReference>
   </ItemGroup>
 </Project>

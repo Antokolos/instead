@@ -790,17 +790,20 @@ static int luaB_get_steadpath(lua_State *L) {
 	return 1;
 }
 
-char* game_name = NULL;
+char* game_to_load = NULL;
+int not_safe = 0;
 
 static int tryloadgame() {
-	if (game_name) {
-		char* p = strdup(game_name);
-		free(game_name);
-		game_name = NULL;
+	if (game_to_load) {
+		char* p = strdup(game_to_load);
+		free(game_to_load);
+		game_to_load = NULL;
 		game_done(0);
-		if (game_init_safe(p)) {
+		int init_result = not_safe ? game_init(p) : game_init_safe(p);
+		if (init_result) {
 			game_error();
 		}
+		not_safe = 0;
 		free(p);
 		return 1;
 	}
@@ -808,11 +811,18 @@ static int tryloadgame() {
 }
 
 static int luaB_loadgame(lua_State *L) {
+	int result = luaB_loadgame_safe(L);
+	not_safe = 1;
+	return result;
+}
+
+static int luaB_loadgame_safe(lua_State *L) {
 	const char *fname = luaL_optstring(L, 1, NULL);
-	if (game_name) {
-		free(game_name);
+	if (game_to_load) {
+		free(game_to_load);
 	}
-	game_name = strdup(fname);
+	game_to_load = strdup(fname);
+	not_safe = 0;
 	return 0;
 }
 
@@ -836,6 +846,7 @@ static const luaL_Reg base_funcs[] = {
 	{"doencfile", luaB_doencfile},
 	{"dofile", luaB_dofile},
 	{"loadgame", luaB_loadgame},
+	{"loadgame_safe", luaB_loadgame_safe},
 	{"installgame", luaB_installgame},
 
 	{"table_get_maxn", luaB_maxn},

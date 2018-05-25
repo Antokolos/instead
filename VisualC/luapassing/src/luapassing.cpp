@@ -163,6 +163,7 @@ extern "C" int luaopen_luapassing ( lua_State *L) {
     };
     new_lib(L, Map);
 	lua_pushvalue(L, -1);
+	lua_setglobal(L, "statsAPI");
 	return 1;
 }
 

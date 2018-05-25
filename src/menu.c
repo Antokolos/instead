@@ -261,8 +261,6 @@ static void games_menu(void)
 		
 		if (!games[i].name[0]) /* empty */
 			continue;
-		if (!strcmp("nlbhub", games[i].name)) /* It should be accessible only from Main Menu menu item */
-			continue;
 		if (curgame_dir && !strcmp(games[i].dir, curgame_dir))
 			snprintf(tmp, sizeof(tmp), "<l><a:/resume><b>%s</b></a></l>", games[i].name);
 		else
@@ -454,11 +452,15 @@ char *game_menu_gen(void)
 			else
 				menu_remove_tag("<?:themes>", "</?>");
 		} else {
+#ifdef _NO_GAME_SELECT
+			menu_strip_tag("<?:select>", "</?>");
+#else
 			menu_remove_tag("<?:select>", "</?>");
+#endif
 			menu_remove_tag("<?:themes>", "</?>");
 		}
 		// Strip irrelevant menu items for nlbhub game
-		if (!strcmp("nlbhub", curgame_dir)) {
+		if (curgame_dir && !strcmp("nlbhub", curgame_dir)) {
 			menu_strip_tag("<a:/load_menu>", "</a>\n");
 			menu_strip_tag("<a:/save_menu>", "</a>\n");
 			menu_strip_tag("<a:/ask_mainmenu>", "</a>\n");

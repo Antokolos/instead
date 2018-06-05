@@ -58,10 +58,20 @@ static int luaB_get_gamespath(lua_State *L) {
 	return 1;
 }
 
+static int luaB_get_cwdpath(lua_State *L) {
+	char cwd_path[PATH_MAX];
+	strcpy(cwd_path, instead_cwd());
+	strcat(cwd_path, "/");
+	unix_path(cwd_path);
+	lua_pushstring(L, cwd_path);
+	return 1;
+}
+
 const luaL_Reg paths_funcs[] = {
 	{"instead_savepath", luaB_get_savepath},
 	{"instead_exepath", luaB_get_exepath},
 	{"instead_gamespath", luaB_get_gamespath},
+	{"instead_cwdpath", luaB_get_cwdpath},
 	{ NULL, NULL }
 };
 

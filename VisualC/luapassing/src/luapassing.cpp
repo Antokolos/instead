@@ -15,6 +15,10 @@
 #include <dlfcn.h>
 #endif
 
+#ifdef _LINUX
+#include <stdlib.h>
+#endif
+
 static int init(lua_State *L) {
     log("Initializing API...\n");
     if (checkInitFunc()) {

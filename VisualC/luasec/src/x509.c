@@ -46,6 +46,11 @@
 
 static const char* hex_tab = "0123456789abcdef";
 
+void __stack_chk_fail_local(void)
+{
+  // Antokolos: dummy method for linux build
+}
+
 /**
  * Push the certificate on the stack.
  */

@@ -348,6 +348,26 @@ char *instead_file_cmd(char *s, int *rc)
 	return s;
 }
 
+char* game_to_load = NULL;
+int not_safe = 0;
+
+static int tryloadgame() {
+	if (game_to_load) {
+		char* p = strdup(game_to_load);
+		free(game_to_load);
+		game_to_load = NULL;
+		game_done(0);
+		int init_result = not_safe ? game_init(p) : game_init_safe(p);
+		if (init_result) {
+			game_error();
+		}
+		not_safe = 0;
+		free(p);
+		return 1;
+	}
+	return 0;
+}
+
 char *instead_cmd(char *s, int *rc)
 {
 	struct instead_args args[] = {
@@ -790,32 +810,6 @@ static int luaB_get_steadpath(lua_State *L) {
 	return 1;
 }
 
-char* game_to_load = NULL;
-int not_safe = 0;
-
-static int tryloadgame() {
-	if (game_to_load) {
-		char* p = strdup(game_to_load);
-		free(game_to_load);
-		game_to_load = NULL;
-		game_done(0);
-		int init_result = not_safe ? game_init(p) : game_init_safe(p);
-		if (init_result) {
-			game_error();
-		}
-		not_safe = 0;
-		free(p);
-		return 1;
-	}
-	return 0;
-}
-
-static int luaB_loadgame(lua_State *L) {
-	int result = luaB_loadgame_safe(L);
-	not_safe = 1;
-	return result;
-}
-
 static int luaB_loadgame_safe(lua_State *L) {
 	const char *fname = luaL_optstring(L, 1, NULL);
 	if (game_to_load) {
@@ -824,6 +818,12 @@ static int luaB_loadgame_safe(lua_State *L) {
 	game_to_load = strdup(fname);
 	not_safe = 0;
 	return 0;
+}
+
+static int luaB_loadgame(lua_State *L) {
+	int result = luaB_loadgame_safe(L);
+	not_safe = 1;
+	return result;
 }
 
 static int luaB_installgame(lua_State *L) {

@@ -8,7 +8,8 @@ OBJS= \
  config.o  \
  ec.o
 
-LIBS=-lssl -lcrypto -lluasocket
+#LIBS=-lssl -lcrypto -lluasocket
+LIBS=-lssl -lcrypto luasocket/libluasocket.a
 
 WARN=-Wall -pedantic
 

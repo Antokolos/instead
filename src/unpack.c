@@ -211,7 +211,7 @@ unzFile uf;
 const char *password;
 const char *dirname;
 {
-	char full_path_buffer[MAX_PATH];
+	char full_path_buffer[PATH_MAX];
 	char filename_inzip[256];
 	char dir_inzip[256];
 	char *filename_withoutpath;

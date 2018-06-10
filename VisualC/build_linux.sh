@@ -64,7 +64,7 @@ mkdir _dist_/lang
 cp ../lang/*.ini _dist_/lang
 mkdir _dist_/libs
 ./cpld.bash _dist_/sdl-instead _dist_/libs
-rm _dist_/libs/ld-linux-*
+rm _dist_/libs/ld-linux*
 rm _dist_/libs/libc.*
 rm _dist_/libs/libdl.*
 rm _dist_/libs/libgcc_s.*

@@ -1,1 +1,1 @@
-make PLAT=linux LUAINC_linux=/usr/include/lua5.1
+make PLAT=linux LUAINC_linux=/usr/include/luajit-2.1

@@ -64,6 +64,7 @@ mkdir _dist_/lang
 cp ../lang/*.ini _dist_/lang
 mkdir _dist_/libs
 ./cpld.bash _dist_/sdl-instead _dist_/libs
+./cpld.bash _dist_/ssl.so _dist_/libs
 rm _dist_/libs/ld-linux*
 rm _dist_/libs/libc.*
 rm _dist_/libs/libdl.*
@@ -71,6 +72,7 @@ rm _dist_/libs/libgcc_s.*
 rm _dist_/libs/libm.*
 rm _dist_/libs/libpthread.*
 rm _dist_/libs/librt.*
+#rm _dist_/libs/libstdc++.*
 cp -r ../stead _dist_/stead
 find _dist_/stead -type f -name "CMakeLists.txt" -delete
 find _dist_/stead -type f -name "Makefile" -delete

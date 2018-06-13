@@ -49,13 +49,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libiconv.Windows", "..\..\l
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libiconv.WindowsPhone", "..\..\libiconv\libiconv.WindowsPhone\libiconv.WindowsPhone.vcxproj", "{7036DC2E-6FAB-417E-9EBE-8056A11E8BE8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lua52", "lua52", "{59B9535D-1BDF-4C22-AF51-C4F6340CF897}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lua5x", "lua5x", "{59B9535D-1BDF-4C22-AF51-C4F6340CF897}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua52.Shared", "..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems", "{334EAB4B-C600-4A2B-95DD-F2D8BC95E414}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua5x.Shared", "..\..\..\VisualC\lua5x\lua5x.Shared\lua5x.Shared.vcxitems", "{334EAB4B-C600-4A2B-95DD-F2D8BC95E414}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua52.Windows", "..\..\lua52\lua52.Windows\lua52.Windows.vcxproj", "{51061988-175E-4D93-A2F2-6223E76915DA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua5x.Windows", "..\..\lua5x\lua5x.Windows\lua5x.Windows.vcxproj", "{51061988-175E-4D93-A2F2-6223E76915DA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua52.WindowsPhone", "..\..\lua52\lua52.WindowsPhone\lua52.WindowsPhone.vcxproj", "{8BBD729C-C0AF-46CA-A32D-CE40A58ECFE2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua5x.WindowsPhone", "..\..\lua5x\lua5x.WindowsPhone\lua5x.WindowsPhone.vcxproj", "{8BBD729C-C0AF-46CA-A32D-CE40A58ECFE2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jpeg-WinPhone81", "..\..\..\..\SDL_image\VisualC-WinRT\WinPhone81_VS2013\jpeg-WinPhone81.vcxproj", "{4F241F1F-6636-47A9-AEB2-5B5157961B51}"
 EndProject
@@ -113,18 +113,18 @@ Global
 		..\smpeg\smpeg.Shared\smpeg.Shared.vcxitems*{16687686-c254-435a-8d45-7532b0f8daf2}*SharedItemsImports = 4
 		instead\instead.Shared\instead.Shared.vcxitems*{1d9225f7-ce03-40a0-9d44-877a1eb01ab9}*SharedItemsImports = 4
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{2de7d1e0-7587-4745-91b1-49b4e8e452c6}*SharedItemsImports = 4
-		..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems*{334eab4b-c600-4a2b-95dd-f2d8bc95e414}*SharedItemsImports = 9
+		..\..\..\VisualC\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{334eab4b-c600-4a2b-95dd-f2d8bc95e414}*SharedItemsImports = 9
 		instead\instead.Shared\instead.Shared.vcxitems*{36657cbe-4fd2-4728-8d57-cf55de261c72}*SharedItemsImports = 4
 		instead\instead.Shared\instead.Shared.vcxitems*{381fe8cd-787f-4bc6-b313-8453be79a518}*SharedItemsImports = 9
 		..\smpeg\smpeg.Shared\smpeg.Shared.vcxitems*{4013bdaf-567e-45d6-a10a-da7cbadb5c88}*SharedItemsImports = 4
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{4eb10ead-e26b-4bcc-928b-818888fbf36e}*SharedItemsImports = 4
-		..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems*{51061988-175e-4d93-a2f2-6223e76915da}*SharedItemsImports = 4
+		..\..\..\VisualC\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{51061988-175e-4d93-a2f2-6223e76915da}*SharedItemsImports = 4
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{5a6fdeb1-9776-4a14-8bdd-e919603db294}*SharedItemsImports = 9
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{602feb03-5606-48f3-abeb-80be55bb0af3}*SharedItemsImports = 4
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{7036dc2e-6fab-417e-9ebe-8056a11e8be8}*SharedItemsImports = 4
 		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{762ff28f-4525-4730-8c20-b0eb86390716}*SharedItemsImports = 4
 		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{7cf3b759-856b-4dc4-a0e5-a7c5564788c5}*SharedItemsImports = 9
-		..\..\..\VisualC\lua52\lua52.Shared\lua52.Shared.vcxitems*{8bbd729c-c0af-46ca-a32d-ce40a58ecfe2}*SharedItemsImports = 4
+		..\..\..\VisualC\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{8bbd729c-c0af-46ca-a32d-ce40a58ecfe2}*SharedItemsImports = 4
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
 		..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems*{91367529-57e0-4bd1-b1e2-2f98f3ef48da}*SharedItemsImports = 9
 		..\smpeg\smpeg.Shared\smpeg.Shared.vcxitems*{a3ce88c5-e0cd-41f5-80e7-9e597c563fda}*SharedItemsImports = 9

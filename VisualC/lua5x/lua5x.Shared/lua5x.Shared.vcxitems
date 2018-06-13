@@ -4,8 +4,8 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{334eab4b-c600-4a2b-95dd-f2d8bc95e414}</ItemsProjectGuid>
-    <ItemsRootNamespace>lua52</ItemsRootNamespace>
-    <ItemsProjectName>lua52.Shared</ItemsProjectName>
+    <ItemsRootNamespace>lua5x</ItemsRootNamespace>
+    <ItemsProjectName>lua5x.Shared</ItemsProjectName>
     <CodeSharingProject>248F659F-DAC5-46E8-AC09-60EC9FC95053</CodeSharingProject>
   </PropertyGroup>
   <ItemDefinitionGroup>

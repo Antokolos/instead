@@ -83,7 +83,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -97,7 +97,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -111,7 +111,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -125,7 +125,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_LOCAL_APPDATA;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";PSAPI_VERSION=2;WINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP;_UITHREADCTXT_SUPPORT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\src;..\..\..\..\..\src;..\..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\..\..\SDL_ttf;..\..\..\..\..\..\SDL_mixer;..\..\..\..\..\..\SDL_image;..\..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <PropertyGroup Label="UserMacros" />
@@ -201,7 +201,7 @@
     <ProjectReference Include="..\..\..\..\libiconv\libiconv.WindowsPhone\libiconv.WindowsPhone.vcxproj">
       <Project>{7036dc2e-6fab-417e-9ebe-8056a11e8be8}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\lua52\lua52.WindowsPhone\lua52.WindowsPhone.vcxproj">
+    <ProjectReference Include="..\..\..\..\lua5x\lua5x.WindowsPhone\lua5x.WindowsPhone.vcxproj">
       <Project>{8bbd729c-c0af-46ca-a32d-ce40a58ecfe2}</Project>
     </ProjectReference>
   </ItemGroup>

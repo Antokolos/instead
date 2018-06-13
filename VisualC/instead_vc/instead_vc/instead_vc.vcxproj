@@ -105,7 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua5x\lua5x.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -123,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua5x\lua5x.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -143,7 +143,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua5x\lua5x.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -165,7 +165,7 @@
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua5x\lua5x.Shared\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -300,7 +300,7 @@
     <ProjectReference Include="..\..\libiconv\libiconv\libiconv.vcxproj">
       <Project>{84acd2f1-232b-4884-8d53-02972caf3e91}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\lua52\lua52\lua52.vcxproj">
+    <ProjectReference Include="..\..\lua5x\lua5x\lua5x.vcxproj">
       <Project>{074d19df-058f-4e2e-af63-f819e030fd34}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\luafilesystem\luafilesystem_vc.vcxproj">

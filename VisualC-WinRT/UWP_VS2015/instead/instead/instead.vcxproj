@@ -112,7 +112,7 @@
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
-      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_UWP;_LOCAL_APPDATA;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -129,7 +129,7 @@
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
-      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_UWP;_LOCAL_APPDATA;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -146,7 +146,7 @@
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
-      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_UWP;_LOCAL_APPDATA;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -163,7 +163,7 @@
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
-      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_UWP;_LOCAL_APPDATA;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -180,7 +180,7 @@
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
-      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_UWP;_LOCAL_APPDATA;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -197,7 +197,7 @@
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
-      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua52\lua52.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\..\src;..\..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\VisualC\instead_compat\instead_compat.Shared;..\..\..\..\VisualC\libiconv\libiconv.Shared\include;..\..\..\..\VisualC\libgen\libgen.Shared;..\..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\..\..\SDL_ttf;..\..\..\..\..\SDL_mixer;..\..\..\..\..\SDL_image;..\..\..\..\..\SDL\include;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
       <PreprocessorDefinitions>WINRT;_USE_SWROTATE;_USE_UNPACK;_WIN_EXT;_WIDE_CHARS;_UWP;_LOCAL_APPDATA;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;VERSION="3.1.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -344,7 +344,7 @@
     <ProjectReference Include="..\..\..\libiconv\libiconv\libiconv.vcxproj">
       <Project>{8a2751f1-952f-4090-b357-8357eab880d5}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\lua52\lua52\lua52.vcxproj">
+    <ProjectReference Include="..\..\..\lua5x\lua5x\lua5x.vcxproj">
       <Project>{f64f67c6-787e-4b09-87b3-f7255080db01}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\freetype-UWP\freetype-UWP.vcxproj">

@@ -98,7 +98,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LUAFILESYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua52\lua52.Shared\src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lua5x\lua5x.Shared\src;src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -113,7 +113,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;LUAFILESYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua52\lua52.Shared\src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lua5x\lua5x.Shared\src;src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -130,7 +130,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LUAFILESYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua52\lua52.Shared\src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lua5x\lua5x.Shared\src;src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,7 +149,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;LUAFILESYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lua52\lua52.Shared\src;src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\lua5x\lua5x.Shared\src;src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -169,7 +169,7 @@
     <ClInclude Include="src\lfs.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\lua52\lua52\lua52.vcxproj">
+    <ProjectReference Include="..\lua5x\lua5x\lua5x.vcxproj">
       <Project>{074d19df-058f-4e2e-af63-f819e030fd34}</Project>
     </ProjectReference>
   </ItemGroup>

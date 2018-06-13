@@ -99,7 +99,7 @@
     <ClCompile Include="..\src\wsocket.c" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\lua52\lua52\lua52.vcxproj">
+    <ProjectReference Include="..\..\lua5x\lua5x\lua5x.vcxproj">
       <Project>{074d19df-058f-4e2e-af63-f819e030fd34}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -188,7 +188,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LUASOCKET_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;LUASOCKET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua5x\lua5x.Shared\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -204,7 +204,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;LUASOCKET_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;LUASOCKET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua5x\lua5x.Shared\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -222,7 +222,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LUASOCKET_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua5x\lua5x.Shared\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -242,7 +242,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;LUASOCKET_API=__declspec(dllexport);_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\lua52\lua52.Shared\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lua5x\lua5x.Shared\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

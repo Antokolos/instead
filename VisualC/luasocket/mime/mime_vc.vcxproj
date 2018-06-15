@@ -29,12 +29,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\compat.c" />
     <ClCompile Include="..\src\mime.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\lua5x\lua5x\lua5x.vcxproj">
       <Project>{074d19df-058f-4e2e-af63-f819e030fd34}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\compat.h" />
+    <ClInclude Include="..\src\mime.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}</ProjectGuid>

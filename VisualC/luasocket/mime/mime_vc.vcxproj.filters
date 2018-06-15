@@ -12,5 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\mime.c" />
+    <ClCompile Include="..\src\compat.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\mime.h" />
+    <ClInclude Include="..\src\compat.h" />
   </ItemGroup>
 </Project>

@@ -15,16 +15,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\lbaselib.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\lbitlib.c">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\lcode.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\lcorolib.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\lctype.c">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ldblib.c">
@@ -102,6 +93,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\lzio.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\print.c">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\lapi.h">
@@ -111,9 +105,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\lcode.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\lctype.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ldebug.h">

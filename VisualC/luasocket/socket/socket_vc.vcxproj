@@ -87,6 +87,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\auxiliar.c" />
     <ClCompile Include="..\src\buffer.c" />
+    <ClCompile Include="..\src\compat.c" />
     <ClCompile Include="..\src\except.c" />
     <ClCompile Include="..\src\inet.c" />
     <ClCompile Include="..\src\io.c" />
@@ -102,6 +103,9 @@
     <ProjectReference Include="..\..\lua5x\lua5x\lua5x.vcxproj">
       <Project>{074d19df-058f-4e2e-af63-f819e030fd34}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\compat.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CBE3243A-A668-422F-96C5-0317CDACBCD2}</ProjectGuid>

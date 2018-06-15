@@ -8,6 +8,9 @@
 #ifndef LSEC_COMPAT_H
 #define LSEC_COMPAT_H
 
+#include "lua.h"
+#include "lauxlib.h"
+
 #if defined(_WIN32)
 #define LSEC_API __declspec(dllexport) 
 #else

@@ -91,6 +91,13 @@ static lua_CFunction ll_sym (lua_State *L, void *lib, const char *sym) {
 
 #include <windows.h>
 
+/*
+** Antokolos: compatibility with WinRT/UWP
+** optional flags for LoadLibraryEx
+*/
+#if !defined(LUA_LLE_FLAGS)
+#define LUA_LLE_FLAGS	0
+#endif
 
 #undef setprogdir
 
@@ -112,27 +119,36 @@ static void setprogdir (lua_State *L) {
 static void pusherror (lua_State *L) {
   int error = GetLastError();
   char buffer[128];
+  // Antokolos: sizeof(buffer) / sizeof(char) because of possible bugfix from Lua 5.2
   if (FormatMessageA(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM,
-      NULL, error, 0, buffer, sizeof(buffer), NULL))
+      NULL, error, 0, buffer, sizeof(buffer) / sizeof(char), NULL))
     lua_pushstring(L, buffer);
   else
     lua_pushfstring(L, "system error %d\n", error);
 }
 
 static void ll_unloadlib (void *lib) {
-  FreeLibrary((HINSTANCE)lib);
+  // Antokolos: HMODULE because it was HMODULE in ll_load
+  FreeLibrary((HMODULE)lib);
 }
 
 
 static void *ll_load (lua_State *L, const char *path) {
-  HINSTANCE lib = LoadLibraryA(path);
+  // Antokolos: replaced LoadLibraryA with LoadPackagedLibrary for WinRT/UWP compatibility, used code from Lua 5.2
+  // Antokolos: +see here: https://msdn.microsoft.com/library/windows/desktop/hh447159.aspx
+#ifdef WINRT
+  HMODULE lib = LoadPackagedLibrary(path, 0);
+#else
+  HMODULE lib = LoadLibraryExA(path, NULL, LUA_LLE_FLAGS);
+#endif
   if (lib == NULL) pusherror(L);
   return lib;
 }
 
 
 static lua_CFunction ll_sym (lua_State *L, void *lib, const char *sym) {
-  lua_CFunction f = (lua_CFunction)GetProcAddress((HINSTANCE)lib, sym);
+  // Antokolos: HMODULE because it was HMODULE in ll_load
+  lua_CFunction f = (lua_CFunction)GetProcAddress((HMODULE)lib, sym);
   if (f == NULL) pusherror(L);
   return f;
 }

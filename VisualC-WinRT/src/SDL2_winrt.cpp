@@ -219,8 +219,8 @@ void logToFile(char *parentFolder, char *text)
 static char* tmppath = NULL;
 static boolean nostdgames = false;
 static boolean hires = true;
-static boolean standalone = false;
-static char* game = NULL;
+static boolean standalone = true;
+static char* game = "nlbhub";
 static boolean nosound = false;
 static boolean owntheme = true;
 static char* theme = NULL;

@@ -36,7 +36,12 @@ static int os_pushresult (lua_State *L, int i, const char *filename) {
 
 
 static int os_execute (lua_State *L) {
+// Antokolos: see https://docs.microsoft.com/en-us/cpp/cppcx/crt-functions-not-supported-in-universal-windows-platform-apps (system)
+#ifdef WINRT
+  lua_pushinteger(L, 0);
+#else
   lua_pushinteger(L, system(luaL_optstring(L, 1, NULL)));
+#endif
   return 1;
 }
 
@@ -66,7 +71,12 @@ static int os_tmpname (lua_State *L) {
 
 
 static int os_getenv (lua_State *L) {
+// Antokolos: see https://docs.microsoft.com/en-us/cpp/cppcx/crt-functions-not-supported-in-universal-windows-platform-apps (getenv)
+#ifdef WINRT
+  lua_pushstring(L, NULL);
+#else
   lua_pushstring(L, getenv(luaL_checkstring(L, 1)));  /* if NULL push nil */
+#endif
   return 1;
 }
 

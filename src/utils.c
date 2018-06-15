@@ -305,6 +305,7 @@ static char *wchar2utf(const wchar_t *wc)
 	return buf;
 }
 
+#ifndef WINRT
 char *w32_getdir(char *path, size_t size)
 {
 	wchar_t *wp;
@@ -321,6 +322,8 @@ char *w32_getdir(char *path, size_t size)
 	free(p);
 	return path;
 }
+#endif // !WINRT
+
 #endif
 int parse_full_path(const char *v, void *data)
 {
@@ -333,7 +336,7 @@ int parse_full_path(const char *v, void *data)
 		*p = strdup("");
 		return (*p)?0:-1;
 	}
-#if defined(_WIN32) && !defined(_WIN32_WCE)
+#if defined(_WIN32) && !defined(_WIN32_WCE) && !defined(WINRT)
 	w32_getdir(cwd, sizeof(cwd));
 #else
 	getdir(cwd, sizeof(cwd));

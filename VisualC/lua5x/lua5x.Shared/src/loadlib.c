@@ -102,6 +102,7 @@ static lua_CFunction ll_sym (lua_State *L, void *lib, const char *sym) {
 #undef setprogdir
 
 static void setprogdir (lua_State *L) {
+#ifndef WINRT
   char buff[MAX_PATH + 1];
   char *lb;
   DWORD nsize = sizeof(buff)/sizeof(char);
@@ -113,6 +114,7 @@ static void setprogdir (lua_State *L) {
     luaL_gsub(L, lua_tostring(L, -1), LUA_EXECDIR, buff);
     lua_remove(L, -2);  /* remove original string */
   }
+#endif
 }
 
 
@@ -607,6 +609,11 @@ static int ll_seeall (lua_State *L) {
 
 static void setpath (lua_State *L, const char *fieldname, const char *envname,
                                    const char *def) {
+
+// Antokolos: see https://docs.microsoft.com/en-us/cpp/cppcx/crt-functions-not-supported-in-universal-windows-platform-apps (getenv)
+#ifdef WINRT
+  lua_pushstring(L, def);  /* use default */
+#else
   const char *path = getenv(envname);
   if (path == NULL)  /* no environment variable? */
     lua_pushstring(L, def);  /* use default */
@@ -617,6 +624,7 @@ static void setpath (lua_State *L, const char *fieldname, const char *envname,
     luaL_gsub(L, path, AUXMARK, def);
     lua_remove(L, -2);
   }
+#endif
   setprogdir(L);
   lua_setfield(L, -2, fieldname);
 }

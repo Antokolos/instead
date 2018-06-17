@@ -29,16 +29,16 @@
 
 #define DATA_IDF INSTEAD_IDF
 #ifdef _USE_SDL
-#ifndef __EMSCRIPTEN__
+#if !defined(__EMSCRIPTEN__) && !defined(WINRT)
 static SDL_mutex *sem;
 #endif
 void instead_lock(void) {
-#ifndef __EMSCRIPTEN__
+#if !defined(__EMSCRIPTEN__) && !defined(WINRT)
 	SDL_LockMutex(sem);
 #endif
 }
 void instead_unlock(void) {
-#ifndef __EMSCRIPTEN__
+#if !defined(__EMSCRIPTEN__) && !defined(WINRT)
 	SDL_UnlockMutex(sem);
 #endif
 }
@@ -1112,7 +1112,7 @@ int instead_init(const char *path)
 		goto err;
 	}
 #ifdef _USE_SDL
-#ifndef __EMSCRIPTEN__
+#if !defined(__EMSCRIPTEN__) && !defined(WINRT)
 	sem = SDL_CreateMutex();
 	if (!sem)
 		goto err;
@@ -1163,7 +1163,7 @@ void instead_done(void)
 	if (wasL)
 		extensions_hook(done);
 #ifdef _USE_SDL
-#ifndef __EMSCRIPTEN__
+#if !defined(__EMSCRIPTEN__) && !defined(WINRT)
 	if (sem)
 		SDL_DestroyMutex(sem);
 	sem = NULL;

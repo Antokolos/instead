@@ -139,7 +139,13 @@ static void *ll_load (lua_State *L, const char *path) {
   // Antokolos: replaced LoadLibraryA with LoadPackagedLibrary for WinRT/UWP compatibility, used code from Lua 5.2
   // Antokolos: +see here: https://msdn.microsoft.com/library/windows/desktop/hh447159.aspx
 #ifdef WINRT
-  HMODULE lib = LoadPackagedLibrary(path, 0);
+  void *_path = path;
+#ifdef _WIDE_CHARS
+  wchar_t wpath[_MAX_PATH];
+  mbstowcs(wpath, path, _MAX_PATH);
+  _path = (void*)wpath;
+#endif
+  HMODULE lib = LoadPackagedLibrary(_path, 0);
 #else
   HMODULE lib = LoadLibraryExA(path, NULL, LUA_LLE_FLAGS);
 #endif
@@ -390,8 +396,9 @@ static const char *findfile (lua_State *L, const char *name,
 
 
 static void loaderror (lua_State *L, const char *filename) {
+  char* reason = lua_tostring(L, -1);
   luaL_error(L, "error loading module " LUA_QS " from file " LUA_QS ":\n\t%s",
-                lua_tostring(L, 1), filename, lua_tostring(L, -1));
+                lua_tostring(L, 1), filename, reason);
 }
 
 

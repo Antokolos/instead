@@ -217,7 +217,7 @@ void logToFile(char *parentFolder, char *text)
 */
 
 static char* tmppath = NULL;
-static boolean nostdgames = false;
+static boolean nostdgames = true;
 static boolean hires = true;
 static boolean standalone = true;
 static char* game = "nlbhub";

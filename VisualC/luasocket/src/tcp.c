@@ -272,7 +272,10 @@ static int meth_connect(lua_State *L) {
 static int meth_close(lua_State *L)
 {
     p_tcp tcp = (p_tcp) auxiliar_checkgroup(L, "tcp{any}", 1);
-    socket_destroy(&tcp->sock);
+#ifndef WINRT
+	// Antokolos: ??? exception under WINRT ???
+	socket_destroy(&tcp->sock);
+#endif // !WINRT
     lua_pushnumber(L, 1);
     return 1;
 }

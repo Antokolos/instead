@@ -299,8 +299,22 @@ static int lfs_lock_dir(lua_State *L) {
     lua_pushnil(L); lua_pushstring(L, strerror(errno)); return 2;
   }
   strcpy(ln, path); strcat(ln, lockfile);
+  // Antokolos:
+  // CreateFile has to be replaced with CreateFile2 because CreateFile can actually do a number of potentially unsafe (read: malware) things
+  // see: https://social.msdn.microsoft.com/Forums/office/en-US/e44eaf00-5be2-4683-868f-aca54dd658e0/u81not-able-to-create-file-using-universal-app-?forum=wpdevelop
+#ifndef _WIN_EXT
   if((fd = CreateFile(ln, GENERIC_WRITE, 0, NULL, CREATE_NEW,
                 FILE_ATTRIBUTE_NORMAL | FILE_FLAG_DELETE_ON_CLOSE, NULL)) == INVALID_HANDLE_VALUE) {
+#else
+  CREATEFILE2_EXTENDED_PARAMETERS ms_param = { 0 };
+  ms_param.dwSize = sizeof(CREATEFILE2_EXTENDED_PARAMETERS);
+  ms_param.dwFileAttributes = FILE_ATTRIBUTE_NORMAL;
+  ms_param.dwFileFlags = FILE_FLAG_DELETE_ON_CLOSE;
+  ms_param.dwSecurityQosFlags = SECURITY_ANONYMOUS;
+  ms_param.lpSecurityAttributes = NULL;
+  ms_param.hTemplateFile = NULL;
+  if ((fd = CreateFile2(ln, GENERIC_WRITE, 0, CREATE_NEW, &ms_param)) == INVALID_HANDLE_VALUE) {
+#endif
         int en = GetLastError();
         free(ln); lua_pushnil(L);
         if(en == ERROR_FILE_EXISTS || en == ERROR_SHARING_VIOLATION)

@@ -1,5 +1,11 @@
 // luapassing.cpp : Defines the exported functions for the DLL application.
 // See http://www.wellho.net/mouth/1844_Calling-functions-in-C-from-your-Lua-script-a-first-HowTo.html
+#ifdef WINRT
+using namespace std;
+
+#include <wrl.h>
+#include <ppltasks.h>
+#endif
 
 #include <stdio.h>
 #include "luapassing.h"
@@ -11,7 +17,7 @@
 #include <windows.h>
 #include <Shellapi.h>
 #include <Objbase.h>
-#else
+#elseif !defined(WINRT)
 #include <dlfcn.h>
 #endif
 
@@ -126,6 +132,46 @@ static int openURL(lua_State *L) {
     ShellExecuteA(NULL, "open", url, NULL, NULL, SW_SHOWNORMAL);
     lua_pushnumber(L, 0.0);
     return 1;
+}
+
+extern "C" __declspec(dllexport) int luaopen_luapassing(lua_State *L) {
+#elif defined(WINRT)
+Platform::String^ StringFromAscIIChars(const char* chars) {
+	size_t newsize = strlen(chars) + 1;
+	wchar_t * wcstring = new wchar_t[newsize];
+	size_t convertedChars = 0;
+	mbstowcs_s(&convertedChars, wcstring, newsize, chars, _TRUNCATE);
+	Platform::String^ str = ref new Platform::String(wcstring);
+	delete[] wcstring;
+	return str;
+}
+
+static int openURL(lua_State *L) {
+	const char* url = lua_tostring(L, 1);
+	log("Opening URL '%s'...\n", url);
+
+	auto uri = ref new Windows::Foundation::Uri(StringFromAscIIChars(url));
+	
+	// Set the option to show a warning
+	auto launchOptions = ref new Windows::System::LauncherOptions();
+	launchOptions->TreatAsUntrusted = true;
+
+	// Launch the URI with a warning prompt
+	concurrency::task<bool> launchUriOperation(Windows::System::Launcher::LaunchUriAsync(uri, launchOptions));
+	launchUriOperation.then([](bool success)
+	{
+		if (success)
+		{
+			// URI launched
+		}
+		else
+		{
+			// URI launch failed
+		}
+	});
+
+	lua_pushnumber(L, 0.0);
+	return 1;
 }
 
 extern "C" __declspec(dllexport) int luaopen_luapassing(lua_State *L) {

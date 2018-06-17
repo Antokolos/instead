@@ -347,6 +347,21 @@
     <ProjectReference Include="..\..\..\lua5x\lua5x\lua5x.vcxproj">
       <Project>{af4d95d2-eb5c-4645-8b01-d11ad51df1cb}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\luafilesystem\luafilesystem\luafilesystem.vcxproj">
+      <Project>{f8db1e8f-0066-4aed-abcd-de11c469cace}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\mime\mime\mime.vcxproj">
+      <Project>{2b478a99-5105-457e-b21e-8f701e3cf071}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\socket\socket\socket.vcxproj">
+      <Project>{dc2f6189-d32a-411f-9f68-a0a62813d921}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\luapassing\luapassing\luapassing.vcxproj">
+      <Project>{53431bc0-d831-4442-baad-ce4da9cbc2d6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\luasec\luasec\luasec.vcxproj">
+      <Project>{993c5425-0a32-4d9a-bca7-e13bb8666870}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\freetype-UWP\freetype-UWP.vcxproj">
       <Project>{fb8f8fe3-906a-44cc-8bed-ac999637f97e}</Project>
     </ProjectReference>

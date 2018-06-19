@@ -130,7 +130,8 @@ local function wrap(sock, cfg)
    local s, msg = core.create(ctx)
    if s then
       core.setfd(s, sock:getfd())
-      sock:setfd(core.SOCKET_INVALID)
+      -- sock:setfd(core.SOCKET_INVALID) -- Antokolos: this causes bug under WinRT!
+	  sock:clearfd()
       registry[s] = ctx
       return s
    end

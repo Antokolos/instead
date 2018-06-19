@@ -40,6 +40,7 @@ static int meth_gettimeout(lua_State *L);
 static int meth_settimeout(lua_State *L);
 static int meth_getfd(lua_State *L);
 static int meth_setfd(lua_State *L);
+static int meth_clearfd(lua_State *L);
 static int meth_dirty(lua_State *L);
 
 /* tcp object methods */
@@ -62,6 +63,7 @@ static luaL_Reg tcp_methods[] = {
     {"receive",     meth_receive},
     {"send",        meth_send},
     {"setfd",       meth_setfd},
+	{"clearfd",     meth_clearfd},
     {"setoption",   meth_setoption},
     {"setpeername", meth_connect},
     {"setsockname", meth_bind},
@@ -178,6 +180,13 @@ static int meth_setfd(lua_State *L)
     return 0;
 }
 
+static int meth_clearfd(lua_State *L)
+{
+	p_tcp tcp = (p_tcp)auxiliar_checkgroup(L, "tcp{any}", 1);
+	tcp->sock = SOCKET_INVALID;
+	return 0;
+}
+
 static int meth_dirty(lua_State *L)
 {
     p_tcp tcp = (p_tcp) auxiliar_checkgroup(L, "tcp{any}", 1);
@@ -272,10 +281,7 @@ static int meth_connect(lua_State *L) {
 static int meth_close(lua_State *L)
 {
     p_tcp tcp = (p_tcp) auxiliar_checkgroup(L, "tcp{any}", 1);
-#ifndef WINRT
-	// Antokolos: ??? exception under WINRT ???
 	socket_destroy(&tcp->sock);
-#endif // !WINRT
     lua_pushnumber(L, 1);
     return 1;
 }

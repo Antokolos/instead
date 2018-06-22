@@ -1,26 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="lua">
-      <UniqueIdentifier>{a50ef67d-18c4-4ce7-a66b-cd0b7d4ff573}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lua\https">
-      <UniqueIdentifier>{8b8a8c41-54e9-4ade-856d-2dceb0abd2fe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="luasocket">
       <UniqueIdentifier>{756d33b9-9d22-45f4-ba3c-a764aac968c2}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\VisualC\luasec\src\ssl.lua">
-      <Filter>lua</Filter>
-    </None>
-    <None Include="..\..\..\VisualC\luasec\src\https.lua">
-      <Filter>lua\https</Filter>
-    </None>
-    <None Include="..\..\..\VisualC\luasec\src\options.lua">
-      <Filter>lua\https</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\VisualC\luasec\src\luasocket\buffer.c">

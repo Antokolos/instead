@@ -47,10 +47,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket_vc", "..\luasocket\s
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luapassing_vc", "..\luapassing\luapassing_vc.vcxproj", "{C6C979D6-BB2A-4C08-A988-E9E823DF3762}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luasec.lua", "..\luasec.lua\luasec.lua.vcxitems", "{3B455748-8367-435F-92E1-61A2D54E7783}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mime.lua", "..\mime.lua\mime.lua.vcxitems", "{D0185AE0-0CEC-4D1B-8569-90B7BB6CF19A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket.lua", "..\socket.lua\socket.lua.vcxitems", "{DAFA093D-CF76-4338-A40B-F5282263DDF4}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{074d19df-058f-4e2e-af63-f819e030fd34}*SharedItemsImports = 4
 		..\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{334eab4b-c600-4a2b-95dd-f2d8bc95e414}*SharedItemsImports = 9
+		..\luasec.lua\luasec.lua.vcxitems*{3b455748-8367-435f-92e1-61a2d54e7783}*SharedItemsImports = 9
 		..\luahelpers\luahelpers.vcxitems*{45d41acc-2c3c-43d2-bc10-02aa73ffc7c7}*SharedItemsImports = 9
 		..\libgen\libgen.Shared\libgen.Shared.vcxitems*{58c2c02d-0dd0-4dc7-9e49-23354a0f02ae}*SharedItemsImports = 4
 		..\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{5a6fdeb1-9776-4a14-8bdd-e919603db294}*SharedItemsImports = 9
@@ -59,6 +66,11 @@ Global
 		..\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{84acd2f1-232b-4884-8d53-02972caf3e91}*SharedItemsImports = 4
 		..\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
 		..\luahelpers\luahelpers.vcxitems*{93a00ad2-776f-46e3-8471-b64b674f25c5}*SharedItemsImports = 4
+		..\luasec.lua\luasec.lua.vcxitems*{93a00ad2-776f-46e3-8471-b64b674f25c5}*SharedItemsImports = 4
+		..\mime.lua\mime.lua.vcxitems*{93a00ad2-776f-46e3-8471-b64b674f25c5}*SharedItemsImports = 4
+		..\socket.lua\socket.lua.vcxitems*{93a00ad2-776f-46e3-8471-b64b674f25c5}*SharedItemsImports = 4
+		..\mime.lua\mime.lua.vcxitems*{d0185ae0-0cec-4d1b-8569-90b7bb6cf19a}*SharedItemsImports = 9
+		..\socket.lua\socket.lua.vcxitems*{dafa093d-cf76-4338-a40b-f5282263ddf4}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

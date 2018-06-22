@@ -1,40 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="lua">
-      <UniqueIdentifier>{aabc5985-18f1-49ea-8ad2-31bd131f819d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lua\socket">
-      <UniqueIdentifier>{76b83527-a65c-43bc-9d98-9fa94b16b256}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\VisualC\luasocket\src\ltn12.lua">
-      <Filter>lua</Filter>
-    </None>
-    <None Include="..\..\..\VisualC\luasocket\src\socket.lua">
-      <Filter>lua</Filter>
-    </None>
-    <None Include="..\..\..\VisualC\luasocket\src\ftp.lua">
-      <Filter>lua\socket</Filter>
-    </None>
-    <None Include="..\..\..\VisualC\luasocket\src\headers.lua">
-      <Filter>lua\socket</Filter>
-    </None>
-    <None Include="..\..\..\VisualC\luasocket\src\http.lua">
-      <Filter>lua\socket</Filter>
-    </None>
-    <None Include="..\..\..\VisualC\luasocket\src\smtp.lua">
-      <Filter>lua\socket</Filter>
-    </None>
-    <None Include="..\..\..\VisualC\luasocket\src\tp.lua">
-      <Filter>lua\socket</Filter>
-    </None>
-    <None Include="..\..\..\VisualC\luasocket\src\url.lua">
-      <Filter>lua\socket</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\..\VisualC\luasocket\src\auxiliar.c" />
     <ClCompile Include="..\..\..\VisualC\luasocket\src\buffer.c" />
     <ClCompile Include="..\..\..\VisualC\luasocket\src\compat.c" />

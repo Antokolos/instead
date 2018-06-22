@@ -43,23 +43,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\ssl.lua">
-      <Filter>lua</Filter>
-    </None>
-    <None Include="src\https.lua">
-      <Filter>lua\https</Filter>
-    </None>
-    <None Include="src\options.lua">
-      <Filter>lua\https</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="lua">
-      <UniqueIdentifier>{dc8bf357-2077-4810-acaa-529dc0d7c034}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lua\https">
-      <UniqueIdentifier>{325108ff-52cc-4bea-b039-e812be61d5f9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="luasocket">
       <UniqueIdentifier>{65cb7d68-cda0-4ea1-87a8-321ba9ea3e33}</UniqueIdentifier>
     </Filter>

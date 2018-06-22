@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="lua">
+      <UniqueIdentifier>{95f24e15-95b3-4072-9d6e-f08bc728e568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua\https">
+      <UniqueIdentifier>{a7fa8f02-5908-4b7f-ab25-1a9a46919911}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)..\luasec\src\ssl.lua">
+      <Filter>lua</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\luasec\src\https.lua">
+      <Filter>lua\https</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\luasec\src\options.lua">
+      <Filter>lua\https</Filter>
+    </None>
+  </ItemGroup>
+</Project>

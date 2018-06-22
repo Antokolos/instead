@@ -56,6 +56,9 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
     <Import Project="..\..\luahelpers\luahelpers.vcxitems" Label="Shared" />
+    <Import Project="..\..\luasec.lua\luasec.lua.vcxitems" Label="Shared" />
+    <Import Project="..\..\mime.lua\mime.lua.vcxitems" Label="Shared" />
+    <Import Project="..\..\socket.lua\socket.lua.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />

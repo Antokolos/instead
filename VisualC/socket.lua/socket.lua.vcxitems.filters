@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="lua">
+      <UniqueIdentifier>{261839f7-5915-4bb6-9b7f-c148c5b4713b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua\socket">
+      <UniqueIdentifier>{f345611c-1dc4-4d12-9841-c27ac581f909}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)..\luasocket\src\ltn12.lua">
+      <Filter>lua</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\luasocket\src\socket.lua">
+      <Filter>lua</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\luasocket\src\ftp.lua">
+      <Filter>lua\socket</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\luasocket\src\headers.lua">
+      <Filter>lua\socket</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\luasocket\src\http.lua">
+      <Filter>lua\socket</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\luasocket\src\smtp.lua">
+      <Filter>lua\socket</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\luasocket\src\tp.lua">
+      <Filter>lua\socket</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\luasocket\src\url.lua">
+      <Filter>lua\socket</Filter>
+    </None>
+  </ItemGroup>
+</Project>

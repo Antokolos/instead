@@ -3,12 +3,8 @@
 -- $Author:NLB project$
 -- $Info:Collection of text games\nby different authors$
 
--- Linux
---package.path = instead_cwdpath() .. "/lua/?.lua;" .. package.path;
---package.cpath = instead_cwdpath() .. "/?.so;" .. package.cpath;
-
-package.path = "lua/?.lua;" .. package.path;
-package.cpath = "?.dll;" .. package.cpath;
+package.path = "lua/?.lua;" .. instead_cwdpath() .. "/lua/?.lua;" .. package.path;
+package.cpath = "?.dll;" .. instead_cwdpath() .. "/?.so;" .. package.cpath;
 
 require 'nlbhub'
 require 'utils'
@@ -71,7 +67,8 @@ function start(load)
         typewriter = false,
         z = -1
     };
-    here().cache_size = get_dir_size(instead_gamepath() .. "cache");
+    here().cache_size = get_dir_size(get_cachedir());
+    mkdir(get_cachedir());
     D {
         "cache_stats",
         "txt",
@@ -101,7 +98,7 @@ function game:ondecor(name, press, x, y, btn, act, a, b)
         return false;
     end
     if act == 'clear_cache_cmd' then
-        delete_all_subdirs(instead_gamepath() .. "cache");
+        delete_all_subdirs(get_cachedir());
         here().cache_size = 0;
         instead_busy(false);
         D(D"cache_stats");

@@ -1,5 +1,9 @@
 local lfs = require('lfs');
 
+function mkdir(dir)
+    return lfs.mkdir(dir);
+end
+
 function get_dir_size(dir)
     local result = 0;
     for file in lfs.dir(dir) do
@@ -30,7 +34,7 @@ function deletedir(dir)
             end
         end
     end
-    lfs.rmdir(dir)
+    return lfs.rmdir(dir)
     --print('remove dir', dir)
 end
 

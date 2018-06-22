@@ -10,6 +10,14 @@ function get_lang()
     return here().lang;
 end
 
+function get_cachedir()
+    return instead_appdirpath() .. "cache";
+end
+
+function get_gamesdir()
+    return instead_appdirpath() .. "games";
+end
+
 function games_feed(games, baseurl, url, lang)
     local xml = download_to_string(url);
     local tag;
@@ -74,7 +82,7 @@ function games_feed(games, baseurl, url, lang)
 end
 
 get_names = function(f)
-    local mainf = io.open(instead_gamepath() .. "../" .. f .. "/" .. "main.lua", "r") or io.open(instead_gamepath() .. "../" .. f .. "/" .. "main3.lua", "r");
+    local mainf = io.open(get_gamesdir() .. "/" .. f .. "/" .. "main.lua", "r") or io.open(get_gamesdir() .. "/" .. f .. "/" .. "main3.lua", "r");
     local nameen = nil;
     local nameru = nil;
     if mainf then
@@ -108,14 +116,14 @@ get_desc = function(desc_file)
 end;
 
 get_real_descs = function(game_dir)
-    local descen = get_desc(instead_gamepath() .. ".." .. "/" .. game_dir .. "/" .. "desc_en.txt");
-    local descru = get_desc(instead_gamepath() .. ".." .. "/" .. game_dir .. "/" .. "desc_ru.txt");
+    local descen = get_desc(get_gamesdir() .. "/" .. game_dir .. "/" .. "desc_en.txt");
+    local descru = get_desc(get_gamesdir() .. "/" .. game_dir .. "/" .. "desc_ru.txt");
     return {["ru"] = descru, ["en"] = descen};        
 end;
 
 get_cached_descs = function(game_dir)
-    local descen = get_desc(instead_gamepath() .. "cache" .. "/" .. game_dir .. "/" .. "desc_en.txt");
-    local descru = get_desc(instead_gamepath() .. "cache" .. "/" .. game_dir .. "/" .. "desc_ru.txt");
+    local descen = get_desc(get_cachedir() .. "/" .. game_dir .. "/" .. "desc_en.txt");
+    local descru = get_desc(get_cachedir() .. "/" .. game_dir .. "/" .. "desc_ru.txt");
     return {["ru"] = descru, ["en"] = descen};
 end;
 
@@ -178,7 +186,7 @@ game_entry = function(g, launch_func, properties)
             return cached_desc[get_lang()];
         end
         local save_desc_cache = function(desc_text)
-            local dname = instead_gamepath() .. "cache/" .. g.name;
+            local dname = get_cachedir() .. "/" .. g.name;
             lfs.mkdir(dname);
             local fname = dname .. "/desc_" .. get_lang() .. ".txt";
             lfs.touch(fname);
@@ -226,13 +234,13 @@ game_entry = function(g, launch_func, properties)
         return cached_desc[get_lang()];
     end;
     v.lnch = function(s)
-        local main_lua = io.open(instead_gamepath() .. '../' .. name .. '/main.lua', 'r') or io.open(instead_gamepath() .. '../' .. name .. '/main3.lua', 'r');
+        local main_lua = io.open(get_gamesdir() .. '/' .. name .. '/main.lua', 'r') or io.open(get_gamesdir() .. '/' .. name .. '/main3.lua', 'r');
         if main_lua == nil then
             -- game directory does not contain main game file
-            local fname = instead_gamepath() .. "cache/" .. basename(g.url);
+            local fname = get_cachedir() .. "/" .. basename(g.url);
             download_to_file(g.url, fname, g.size);
             --installgame(fname, instead_gamespath(), name);
-            installgame(fname, instead_gamepath() .. '..', name);
+            installgame(fname, get_gamesdir(), name);
             os.remove(fname);
             s.properties.installed = true;
             s:clear_txt_cache();
@@ -248,7 +256,7 @@ game_entry = function(g, launch_func, properties)
     end;
     v.clear_cache = function(s)
         s:clear_txt_cache();
-        local cache_dir = instead_gamepath() .. "cache/" .. name;
+        local cache_dir = get_cachedir() .. "/" .. name;
         if (lfs.attributes(cache_dir, 'mode') == 'directory') then
             here().cache_size = here().cache_size - get_dir_size(cache_dir);
             deletedir(cache_dir);
@@ -257,7 +265,7 @@ game_entry = function(g, launch_func, properties)
     end;
     v.delete = function(s)
         if s:exists() then
-            deletedir(instead_gamepath() .. '../' .. name);
+            deletedir(get_gamesdir() .. '/' .. name);
             instead_busy(false);
             s.properties.installed = false;
             if s.properties.unregistered then
@@ -281,7 +289,7 @@ game_entry = function(g, launch_func, properties)
         end
     end;
     v.exists = function(s)
-        local main_lua = io.open(instead_gamepath() .. '../' .. name .. '/main.lua', 'r') or io.open(instead_gamepath() .. '../' .. name .. '/main3.lua', 'r');
+        local main_lua = io.open(get_gamesdir() .. '/' .. name .. '/main.lua', 'r') or io.open(get_gamesdir() .. '/' .. name .. '/main3.lua', 'r');
         local exists = main_lua ~= nil;
         if exists then
             main_lua:close();
@@ -293,7 +301,7 @@ game_entry = function(g, launch_func, properties)
     end;
     -- Corresponding screenshot file and its existence flag
     v.get_pic_file = function(s)
-        local screenshot_file = instead_gamepath() .. "cache/" .. name .. "/screenshot.pic";
+        local screenshot_file = get_cachedir() .. "/" .. name .. "/screenshot.pic";
         return screenshot_file, lfs.attributes(screenshot_file, 'mode') == 'file';
     end;
     --v.act = function(s)
@@ -329,7 +337,7 @@ function init_hub(launch_func)
             stead.table.insert(here().games_list, games_map[g.name]);
         end
     end
-    for f in stead.readdir(instead_gamepath() .. "..") do
+    for f in stead.readdir(get_gamesdir()) do
         instead_busy(true);
         if f ~= '.' and f ~= '..' and f ~= 'nlbhub' then
             if games_map[f] then

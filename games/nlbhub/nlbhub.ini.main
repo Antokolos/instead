@@ -1,0 +1,6 @@
+nlbhub.general.main-repository-name = NLB project games
+nlbhub.general.main-repository-baseurl = https://nlbproject.com
+nlbhub.general.main-repository-url = https://nlbproject.com/hub/services/nlbproject_games
+nlbhub.general.community-repository-name = Community games
+nlbhub.general.community-repository-baseurl = https://nlbproject.com
+nlbhub.general.community-repository-url = https://nlbproject.com/hub/services/community_games

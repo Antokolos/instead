@@ -1,0 +1,4 @@
+Text games for this bundle were written on INSTEAD -- a cross-platform engine with an open source code, which was created especially for text-based games.^
+You can read more about this engine on the website {@hyperlink https://instead-hub.github.io|https://instead-hub.github.io}^
+In this given section of the catalogue you can see games by different authors from the INSTEAD community.^
+To read a full description of a game, click its title in the list on the left.

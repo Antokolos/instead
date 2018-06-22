@@ -11,7 +11,7 @@
 #include <string.h>
 
 // Antokolos: NB, WIN32 is not defined under x64, you should use _WINDOWS or _WIN32
-#if defined(WIN32) || defined(_WINDOWS)
+#if defined(WIN32) || defined(_WINDOWS) || defined(WINRT)
 #include <Winsock2.h>
 #endif
 

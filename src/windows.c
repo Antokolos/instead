@@ -303,8 +303,9 @@ char *game_save_path( int cr, int nr )
 		return NULL;
 
 	strcpy(dir,p);
-
-	if (cr && mkdir(dir) && errno != EEXIST)
+	int d = mkdir(dir);
+	int er = errno;
+	if (cr && d && errno != EEXIST)
 		return NULL;
 
 	snprintf(save_path, sizeof(save_path) - 1 , "%s/saves", dir);

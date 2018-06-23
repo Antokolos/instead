@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="luasocket">
+      <UniqueIdentifier>{412b02eb-abf9-47c5-95ab-ca96dfcf998b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\luasocket\buffer.c">
+      <Filter>luasocket</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\luasocket\timeout.c">
+      <Filter>luasocket</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\luasocket\wsocket.c">
+      <Filter>luasocket</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\config.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\context.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\ec.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\ssl.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\x509.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\luasocket\io.c">
+      <Filter>luasocket</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\buffer.h">
+      <Filter>luasocket</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\io.h">
+      <Filter>luasocket</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\socket.h">
+      <Filter>luasocket</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\timeout.h">
+      <Filter>luasocket</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\wsocket.h">
+      <Filter>luasocket</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\compat.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\context.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\ec.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\options.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\ssl.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\x509.h" />
+  </ItemGroup>
+</Project>

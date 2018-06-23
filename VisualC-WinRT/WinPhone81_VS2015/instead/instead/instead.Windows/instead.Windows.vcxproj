@@ -119,6 +119,10 @@
     <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <Import Project="..\instead.Shared\instead.Shared.vcxitems" Label="Shared" />
+  <Import Project="..\..\..\..\..\VisualC\luasec.lua\luasec.lua.vcxitems" Label="Shared" />
+  <Import Project="..\..\..\..\..\VisualC\mime.lua\mime.lua.vcxitems" Label="Shared" />
+  <Import Project="..\..\..\..\..\VisualC\socket.lua\socket.lua.vcxitems" Label="Shared" />
+  <Import Project="..\..\..\..\..\VisualC\luahelpers\luahelpers.vcxitems" Label="Shared" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
       <AdditionalDependencies>vccorlibd.lib;msvcrtd.lib;d2d1.lib; d3d11.lib; dxgi.lib; ole32.lib; windowscodecs.lib; dwrite.lib; %(AdditionalDependencies)</AdditionalDependencies>
@@ -285,6 +289,21 @@
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\lua5x\lua5x.Windows\lua5x.Windows.vcxproj">
       <Project>{51061988-175e-4d93-a2f2-6223e76915da}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\luafilesystem\luafilesystem.Windows\luafilesystem.Windows.vcxproj">
+      <Project>{2e9c23d4-aee1-46e3-925c-3b3c511a76ad}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\luapassing\luapassing.Windows\luapassing.Windows.vcxproj">
+      <Project>{30f91969-6243-4888-95c1-c28c87e5cb30}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\luasec\luasec.Windows\luasec.Windows.vcxproj">
+      <Project>{bc624ac1-1f14-49de-83ee-c2ebb28bbcf8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\mime\mime.Windows\mime.Windows.vcxproj">
+      <Project>{648b065f-8c19-48ac-b861-b6d0a76be9f6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\socket\socket.Windows\socket.Windows.vcxproj">
+      <Project>{ef85d041-8298-463c-8e69-293ed599ce27}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

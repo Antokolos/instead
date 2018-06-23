@@ -59,6 +59,10 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
     <Import Project="..\instead.Shared\instead.Shared.vcxitems" Label="Shared" />
+    <Import Project="..\..\..\..\..\VisualC\luasec.lua\luasec.lua.vcxitems" Label="Shared" />
+    <Import Project="..\..\..\..\..\VisualC\mime.lua\mime.lua.vcxitems" Label="Shared" />
+    <Import Project="..\..\..\..\..\VisualC\socket.lua\socket.lua.vcxitems" Label="Shared" />
+    <Import Project="..\..\..\..\..\VisualC\luahelpers\luahelpers.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -203,6 +207,21 @@
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\lua5x\lua5x.WindowsPhone\lua5x.WindowsPhone.vcxproj">
       <Project>{8bbd729c-c0af-46ca-a32d-ce40a58ecfe2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\luafilesystem\luafilesystem.WindowsPhone\luafilesystem.WindowsPhone.vcxproj">
+      <Project>{f7c3a9eb-f67d-4bd2-b4df-0e380a8a9f12}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\luapassing\luapassing.WindowsPhone\luapassing.WindowsPhone.vcxproj">
+      <Project>{582a91f2-296f-4f77-bced-8d5cdaea36c8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\luasec\luasec.WindowsPhone\luasec.WindowsPhone.vcxproj">
+      <Project>{96660d43-1248-448b-9e2b-745df19fdfe2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\mime\mime.WindowsPhone\mime.WindowsPhone.vcxproj">
+      <Project>{cda595f9-4db2-4548-bbd3-58902cdb3433}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\socket\socket.WindowsPhone\socket.WindowsPhone.vcxproj">
+      <Project>{288ede96-d1f3-4d96-93fc-a7b548a1b921}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

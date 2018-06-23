@@ -1,15 +1,2 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <ClCompile Include="..\..\..\VisualC\luapassing\src\adapter.cpp" />
-    <ClCompile Include="..\..\..\VisualC\luapassing\src\luapassing.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\VisualC\luapassing\src\adapter.h" />
-    <ClInclude Include="..\..\..\VisualC\luapassing\src\luapassing.h" />
-    <ClInclude Include="..\..\..\VisualC\luapassing\src\resource.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="..\..\..\VisualC\luapassing\src\luapassing.rc" />
-  </ItemGroup>
-</Project>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />

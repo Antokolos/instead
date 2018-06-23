@@ -69,24 +69,44 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket.lua", "..\..\..\Visu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luahelpers", "..\..\..\VisualC\luahelpers\luahelpers.vcxitems", "{45D41ACC-2C3C-43D2-BC10-02AA73FFC7C7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luafilesystem.Shared", "..\..\..\VisualC\luafilesystem\luafilesystem.Shared\luafilesystem.Shared.vcxitems", "{89237B65-CD86-4427-B7E6-0234FAFA30DE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luapassing.Shared", "..\..\..\VisualC\luapassing\luapassing.Shared\luapassing.Shared.vcxitems", "{C20EB92B-1FCE-49C9-BC57-B14E004DB581}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luasec.Shared", "..\..\..\VisualC\luasec\luasec.Shared\luasec.Shared.vcxitems", "{2ED699F1-E3A1-40AC-AE39-CEB9C770F891}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mime.Shared", "..\..\..\VisualC\luasocket\mime.Shared\mime.Shared.vcxitems", "{7E25537F-9613-46E5-8FE1-C9E62579BD39}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket.Shared", "..\..\..\VisualC\luasocket\socket.Shared\socket.Shared.vcxitems", "{4631CD09-E1D8-4432-BAEF-D897BFC5729A}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\..\..\VisualC\luasocket\mime.Shared\mime.Shared.vcxitems*{2b478a99-5105-457e-b21e-8f701e3cf071}*SharedItemsImports = 4
+		..\..\..\VisualC\luasec\luasec.Shared\luasec.Shared.vcxitems*{2ed699f1-e3a1-40ac-ae39-ceb9c770f891}*SharedItemsImports = 9
 		..\..\..\VisualC\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{334eab4b-c600-4a2b-95dd-f2d8bc95e414}*SharedItemsImports = 9
 		..\..\..\VisualC\luasec.lua\luasec.lua.vcxitems*{3b455748-8367-435f-92e1-61a2d54e7783}*SharedItemsImports = 9
 		..\..\..\VisualC\luahelpers\luahelpers.vcxitems*{45d41acc-2c3c-43d2-bc10-02aa73ffc7c7}*SharedItemsImports = 9
+		..\..\..\VisualC\luasocket\socket.Shared\socket.Shared.vcxitems*{4631cd09-e1d8-4432-baef-d897bfc5729a}*SharedItemsImports = 9
+		..\..\..\VisualC\luapassing\luapassing.Shared\luapassing.Shared.vcxitems*{53431bc0-d831-4442-baad-ce4da9cbc2d6}*SharedItemsImports = 4
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{5a6fdeb1-9776-4a14-8bdd-e919603db294}*SharedItemsImports = 9
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{661a8649-72aa-4862-9161-6ab9ca1971a1}*SharedItemsImports = 4
 		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{788c15e5-6db8-4420-ac1e-c279955fb585}*SharedItemsImports = 4
 		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{7cf3b759-856b-4dc4-a0e5-a7c5564788c5}*SharedItemsImports = 9
+		..\..\..\VisualC\luasocket\mime.Shared\mime.Shared.vcxitems*{7e25537f-9613-46e5-8fe1-c9e62579bd39}*SharedItemsImports = 9
+		..\..\..\VisualC\luafilesystem\luafilesystem.Shared\luafilesystem.Shared.vcxitems*{89237b65-cd86-4427-b7e6-0234fafa30de}*SharedItemsImports = 9
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{8a2751f1-952f-4090-b357-8357eab880d5}*SharedItemsImports = 4
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
+		..\..\..\VisualC\luasec\luasec.Shared\luasec.Shared.vcxitems*{993c5425-0a32-4d9a-bca7-e13bb8666870}*SharedItemsImports = 4
 		..\..\..\VisualC\luahelpers\luahelpers.vcxitems*{aa39689e-2ba4-4163-96dd-107781b4ce0e}*SharedItemsImports = 4
 		..\..\..\VisualC\luasec.lua\luasec.lua.vcxitems*{aa39689e-2ba4-4163-96dd-107781b4ce0e}*SharedItemsImports = 4
 		..\..\..\VisualC\mime.lua\mime.lua.vcxitems*{aa39689e-2ba4-4163-96dd-107781b4ce0e}*SharedItemsImports = 4
 		..\..\..\VisualC\socket.lua\socket.lua.vcxitems*{aa39689e-2ba4-4163-96dd-107781b4ce0e}*SharedItemsImports = 4
 		..\..\..\VisualC\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{af4d95d2-eb5c-4645-8b01-d11ad51df1cb}*SharedItemsImports = 4
+		..\..\..\VisualC\luapassing\luapassing.Shared\luapassing.Shared.vcxitems*{c20eb92b-1fce-49c9-bc57-b14e004db581}*SharedItemsImports = 9
 		..\..\..\VisualC\mime.lua\mime.lua.vcxitems*{d0185ae0-0cec-4d1b-8569-90b7bb6cf19a}*SharedItemsImports = 9
 		..\..\..\VisualC\socket.lua\socket.lua.vcxitems*{dafa093d-cf76-4338-a40b-f5282263ddf4}*SharedItemsImports = 9
+		..\..\..\VisualC\luasocket\socket.Shared\socket.Shared.vcxitems*{dc2f6189-d32a-411f-9f68-a0a62813d921}*SharedItemsImports = 4
+		..\..\..\VisualC\luafilesystem\luafilesystem.Shared\luafilesystem.Shared.vcxitems*{f8db1e8f-0066-4aed-abcd-de11c469cace}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -414,5 +434,10 @@ Global
 		{D0185AE0-0CEC-4D1B-8569-90B7BB6CF19A} = {11CE4422-E481-4210-ADAC-3E55D9AB283F}
 		{DAFA093D-CF76-4338-A40B-F5282263DDF4} = {11CE4422-E481-4210-ADAC-3E55D9AB283F}
 		{45D41ACC-2C3C-43D2-BC10-02AA73FFC7C7} = {11CE4422-E481-4210-ADAC-3E55D9AB283F}
+		{89237B65-CD86-4427-B7E6-0234FAFA30DE} = {11CE4422-E481-4210-ADAC-3E55D9AB283F}
+		{C20EB92B-1FCE-49C9-BC57-B14E004DB581} = {11CE4422-E481-4210-ADAC-3E55D9AB283F}
+		{2ED699F1-E3A1-40AC-AE39-CEB9C770F891} = {11CE4422-E481-4210-ADAC-3E55D9AB283F}
+		{7E25537F-9613-46E5-8FE1-C9E62579BD39} = {11CE4422-E481-4210-ADAC-3E55D9AB283F}
+		{4631CD09-E1D8-4432-BAEF-D897BFC5729A} = {11CE4422-E481-4210-ADAC-3E55D9AB283F}
 	EndGlobalSection
 EndGlobal

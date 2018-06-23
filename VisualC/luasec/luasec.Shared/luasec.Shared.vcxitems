@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{2ed699f1-e3a1-40ac-ae39-ceb9c770f891}</ItemsProjectGuid>
+    <ItemsRootNamespace>luasec</ItemsRootNamespace>
+    <ItemsProjectName>luasec.Shared</ItemsProjectName>
+    <CodeSharingProject>248F659F-DAC5-46E8-AC09-60EC9FC95053</CodeSharingProject>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\config.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\context.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\ec.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\luasocket\buffer.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\luasocket\io.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\luasocket\timeout.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\luasocket\wsocket.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\ssl.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\src\x509.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\compat.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\context.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\ec.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\buffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\io.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\socket.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\timeout.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\luasocket\wsocket.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\options.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\ssl.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\src\x509.h" />
+  </ItemGroup>
+</Project>

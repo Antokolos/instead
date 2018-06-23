@@ -107,28 +107,103 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod.Windows", "..\lib
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmikmod.WindowsPhone", "..\libmikmod\libmikmod.WindowsPhone\libmikmod.WindowsPhone.vcxproj", "{E0643C83-C208-4EB1-8149-0DC0370030A0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "luafilesystem", "luafilesystem", "{E44BF721-BD26-4A1E-B084-773122A46739}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luafilesystem.Windows", "..\..\luafilesystem\luafilesystem.Windows\luafilesystem.Windows.vcxproj", "{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luafilesystem.WindowsPhone", "..\..\luafilesystem\luafilesystem.WindowsPhone\luafilesystem.WindowsPhone.vcxproj", "{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luafilesystem.Shared", "..\..\..\VisualC\luafilesystem\luafilesystem.Shared\luafilesystem.Shared.vcxitems", "{89237B65-CD86-4427-B7E6-0234FAFA30DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "luapassing", "luapassing", "{AB01F904-D656-4187-8499-BFA616777693}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luapassing.Windows", "..\..\luapassing\luapassing.Windows\luapassing.Windows.vcxproj", "{30F91969-6243-4888-95C1-C28C87E5CB30}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luapassing.WindowsPhone", "..\..\luapassing\luapassing.WindowsPhone\luapassing.WindowsPhone.vcxproj", "{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luapassing.Shared", "..\..\..\VisualC\luapassing\luapassing.Shared\luapassing.Shared.vcxitems", "{C20EB92B-1FCE-49C9-BC57-B14E004DB581}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "luasec", "luasec", "{E0E62EE5-03BA-41C8-8DD8-681DA8171361}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luasec.Windows", "..\..\luasec\luasec.Windows\luasec.Windows.vcxproj", "{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luasec.WindowsPhone", "..\..\luasec\luasec.WindowsPhone\luasec.WindowsPhone.vcxproj", "{96660D43-1248-448B-9E2B-745DF19FDFE2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luasec.Shared", "..\..\..\VisualC\luasec\luasec.Shared\luasec.Shared.vcxitems", "{2ED699F1-E3A1-40AC-AE39-CEB9C770F891}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mime", "mime", "{6999CDE7-13A8-44ED-B259-320212CC8AE3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mime.Windows", "..\..\mime\mime.Windows\mime.Windows.vcxproj", "{648B065F-8C19-48AC-B861-B6D0A76BE9F6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mime.WindowsPhone", "..\..\mime\mime.WindowsPhone\mime.WindowsPhone.vcxproj", "{CDA595F9-4DB2-4548-BBD3-58902CDB3433}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mime.Shared", "..\..\..\VisualC\luasocket\mime.Shared\mime.Shared.vcxitems", "{7E25537F-9613-46E5-8FE1-C9E62579BD39}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "socket", "socket", "{AD414249-DFCB-4C85-B83D-ECBFE0111B97}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket.Windows", "..\..\socket\socket.Windows\socket.Windows.vcxproj", "{EF85D041-8298-463C-8E69-293ED599CE27}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket.WindowsPhone", "..\..\socket\socket.WindowsPhone\socket.WindowsPhone.vcxproj", "{288EDE96-D1F3-4D96-93FC-A7B548A1B921}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket.Shared", "..\..\..\VisualC\luasocket\socket.Shared\socket.Shared.vcxitems", "{4631CD09-E1D8-4432-BAEF-D897BFC5729A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket.lua", "..\..\..\VisualC\socket.lua\socket.lua.vcxitems", "{DAFA093D-CF76-4338-A40B-F5282263DDF4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mime.lua", "..\..\..\VisualC\mime.lua\mime.lua.vcxitems", "{D0185AE0-0CEC-4D1B-8569-90B7BB6CF19A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luasec.lua", "..\..\..\VisualC\luasec.lua\luasec.lua.vcxitems", "{3B455748-8367-435F-92E1-61A2D54E7783}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luahelpers", "..\..\..\VisualC\luahelpers\luahelpers.vcxitems", "{45D41ACC-2C3C-43D2-BC10-02AA73FFC7C7}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{1474d86b-4d9e-458f-9dc3-8b8c7917e2a2}*SharedItemsImports = 4
 		..\smpeg\smpeg.Shared\smpeg.Shared.vcxitems*{16687686-c254-435a-8d45-7532b0f8daf2}*SharedItemsImports = 4
 		instead\instead.Shared\instead.Shared.vcxitems*{1d9225f7-ce03-40a0-9d44-877a1eb01ab9}*SharedItemsImports = 4
+		..\..\..\VisualC\luahelpers\luahelpers.vcxitems*{1d9225f7-ce03-40a0-9d44-877a1eb01ab9}*SharedItemsImports = 4
+		..\..\..\VisualC\luasec.lua\luasec.lua.vcxitems*{1d9225f7-ce03-40a0-9d44-877a1eb01ab9}*SharedItemsImports = 4
+		..\..\..\VisualC\mime.lua\mime.lua.vcxitems*{1d9225f7-ce03-40a0-9d44-877a1eb01ab9}*SharedItemsImports = 4
+		..\..\..\VisualC\socket.lua\socket.lua.vcxitems*{1d9225f7-ce03-40a0-9d44-877a1eb01ab9}*SharedItemsImports = 4
+		..\..\..\VisualC\luasocket\socket.Shared\socket.Shared.vcxitems*{288ede96-d1f3-4d96-93fc-a7b548a1b921}*SharedItemsImports = 4
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{2de7d1e0-7587-4745-91b1-49b4e8e452c6}*SharedItemsImports = 4
+		..\..\..\VisualC\luafilesystem\luafilesystem.Shared\luafilesystem.Shared.vcxitems*{2e9c23d4-aee1-46e3-925c-3b3c511a76ad}*SharedItemsImports = 4
+		..\..\..\VisualC\luasec\luasec.Shared\luasec.Shared.vcxitems*{2ed699f1-e3a1-40ac-ae39-ceb9c770f891}*SharedItemsImports = 9
+		..\..\..\VisualC\luapassing\luapassing.Shared\luapassing.Shared.vcxitems*{30f91969-6243-4888-95c1-c28c87e5cb30}*SharedItemsImports = 4
 		..\..\..\VisualC\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{334eab4b-c600-4a2b-95dd-f2d8bc95e414}*SharedItemsImports = 9
 		instead\instead.Shared\instead.Shared.vcxitems*{36657cbe-4fd2-4728-8d57-cf55de261c72}*SharedItemsImports = 4
+		..\..\..\VisualC\luahelpers\luahelpers.vcxitems*{36657cbe-4fd2-4728-8d57-cf55de261c72}*SharedItemsImports = 4
+		..\..\..\VisualC\luasec.lua\luasec.lua.vcxitems*{36657cbe-4fd2-4728-8d57-cf55de261c72}*SharedItemsImports = 4
+		..\..\..\VisualC\mime.lua\mime.lua.vcxitems*{36657cbe-4fd2-4728-8d57-cf55de261c72}*SharedItemsImports = 4
+		..\..\..\VisualC\socket.lua\socket.lua.vcxitems*{36657cbe-4fd2-4728-8d57-cf55de261c72}*SharedItemsImports = 4
 		instead\instead.Shared\instead.Shared.vcxitems*{381fe8cd-787f-4bc6-b313-8453be79a518}*SharedItemsImports = 9
+		..\..\..\VisualC\luasec.lua\luasec.lua.vcxitems*{3b455748-8367-435f-92e1-61a2d54e7783}*SharedItemsImports = 9
 		..\smpeg\smpeg.Shared\smpeg.Shared.vcxitems*{4013bdaf-567e-45d6-a10a-da7cbadb5c88}*SharedItemsImports = 4
+		..\..\..\VisualC\luahelpers\luahelpers.vcxitems*{45d41acc-2c3c-43d2-bc10-02aa73ffc7c7}*SharedItemsImports = 9
+		..\..\..\VisualC\luasocket\socket.Shared\socket.Shared.vcxitems*{4631cd09-e1d8-4432-baef-d897bfc5729a}*SharedItemsImports = 9
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{4eb10ead-e26b-4bcc-928b-818888fbf36e}*SharedItemsImports = 4
 		..\..\..\VisualC\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{51061988-175e-4d93-a2f2-6223e76915da}*SharedItemsImports = 4
+		..\..\..\VisualC\luapassing\luapassing.Shared\luapassing.Shared.vcxitems*{582a91f2-296f-4f77-bced-8d5cdaea36c8}*SharedItemsImports = 4
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{5a6fdeb1-9776-4a14-8bdd-e919603db294}*SharedItemsImports = 9
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{602feb03-5606-48f3-abeb-80be55bb0af3}*SharedItemsImports = 4
+		..\..\..\VisualC\luasocket\mime.Shared\mime.Shared.vcxitems*{648b065f-8c19-48ac-b861-b6d0a76be9f6}*SharedItemsImports = 4
 		..\..\..\VisualC\libiconv\libiconv.Shared\libiconv.Shared.vcxitems*{7036dc2e-6fab-417e-9ebe-8056a11e8be8}*SharedItemsImports = 4
 		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{762ff28f-4525-4730-8c20-b0eb86390716}*SharedItemsImports = 4
 		..\..\..\VisualC\libgen\libgen.Shared\libgen.Shared.vcxitems*{7cf3b759-856b-4dc4-a0e5-a7c5564788c5}*SharedItemsImports = 9
+		..\..\..\VisualC\luasocket\mime.Shared\mime.Shared.vcxitems*{7e25537f-9613-46e5-8fe1-c9e62579bd39}*SharedItemsImports = 9
+		..\..\..\VisualC\luafilesystem\luafilesystem.Shared\luafilesystem.Shared.vcxitems*{89237b65-cd86-4427-b7e6-0234fafa30de}*SharedItemsImports = 9
 		..\..\..\VisualC\lua5x\lua5x.Shared\lua5x.Shared.vcxitems*{8bbd729c-c0af-46ca-a32d-ce40a58ecfe2}*SharedItemsImports = 4
 		..\..\..\VisualC\instead_compat\instead_compat.Shared\instead_compat.Shared.vcxitems*{8bc55ae3-7511-4317-86ce-6583310b54cf}*SharedItemsImports = 9
 		..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems*{91367529-57e0-4bd1-b1e2-2f98f3ef48da}*SharedItemsImports = 9
+		..\..\..\VisualC\luasec\luasec.Shared\luasec.Shared.vcxitems*{96660d43-1248-448b-9e2b-745df19fdfe2}*SharedItemsImports = 4
 		..\smpeg\smpeg.Shared\smpeg.Shared.vcxitems*{a3ce88c5-e0cd-41f5-80e7-9e597c563fda}*SharedItemsImports = 9
+		..\..\..\VisualC\luasec\luasec.Shared\luasec.Shared.vcxitems*{bc624ac1-1f14-49de-83ee-c2ebb28bbcf8}*SharedItemsImports = 4
+		..\..\..\VisualC\luapassing\luapassing.Shared\luapassing.Shared.vcxitems*{c20eb92b-1fce-49c9-bc57-b14e004db581}*SharedItemsImports = 9
+		..\..\..\VisualC\luasocket\mime.Shared\mime.Shared.vcxitems*{cda595f9-4db2-4548-bbd3-58902cdb3433}*SharedItemsImports = 4
+		..\..\..\VisualC\mime.lua\mime.lua.vcxitems*{d0185ae0-0cec-4d1b-8569-90b7bb6cf19a}*SharedItemsImports = 9
+		..\..\..\VisualC\socket.lua\socket.lua.vcxitems*{dafa093d-cf76-4338-a40b-f5282263ddf4}*SharedItemsImports = 9
 		..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems*{e0643c83-c208-4eb1-8149-0dc0370030a0}*SharedItemsImports = 4
+		..\..\..\VisualC\luasocket\socket.Shared\socket.Shared.vcxitems*{ef85d041-8298-463c-8e69-293ed599ce27}*SharedItemsImports = 4
+		..\..\..\VisualC\luafilesystem\luafilesystem.Shared\luafilesystem.Shared.vcxitems*{f7c3a9eb-f67d-4bd2-b4df-0e380a8a9f12}*SharedItemsImports = 4
 		..\libmikmod\libmikmod.Shared\libmikmod.Shared.vcxitems*{fff7bd09-8e88-4d5c-ad5c-73f3623fe09f}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -568,6 +643,116 @@ Global
 		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Release|x64.ActiveCfg = Release|Win32
 		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Release|x86.ActiveCfg = Release|Win32
 		{E0643C83-C208-4EB1-8149-0DC0370030A0}.Release|x86.Build.0 = Release|Win32
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Debug|ARM.ActiveCfg = Debug|ARM
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Debug|ARM.Build.0 = Debug|ARM
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Debug|x64.ActiveCfg = Debug|x64
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Debug|x64.Build.0 = Debug|x64
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Debug|x86.ActiveCfg = Debug|Win32
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Debug|x86.Build.0 = Debug|Win32
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Release|ARM.ActiveCfg = Release|ARM
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Release|ARM.Build.0 = Release|ARM
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Release|x64.ActiveCfg = Release|x64
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Release|x64.Build.0 = Release|x64
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Release|x86.ActiveCfg = Release|Win32
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD}.Release|x86.Build.0 = Release|Win32
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Debug|ARM.ActiveCfg = Debug|ARM
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Debug|ARM.Build.0 = Debug|ARM
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Debug|x64.ActiveCfg = Debug|Win32
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Debug|x86.ActiveCfg = Debug|Win32
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Debug|x86.Build.0 = Debug|Win32
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Release|ARM.ActiveCfg = Release|ARM
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Release|ARM.Build.0 = Release|ARM
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Release|x64.ActiveCfg = Release|Win32
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Release|x86.ActiveCfg = Release|Win32
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12}.Release|x86.Build.0 = Release|Win32
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Debug|ARM.ActiveCfg = Debug|ARM
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Debug|ARM.Build.0 = Debug|ARM
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Debug|x64.ActiveCfg = Debug|x64
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Debug|x64.Build.0 = Debug|x64
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Debug|x86.ActiveCfg = Debug|Win32
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Debug|x86.Build.0 = Debug|Win32
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Release|ARM.ActiveCfg = Release|ARM
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Release|ARM.Build.0 = Release|ARM
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Release|x64.ActiveCfg = Release|x64
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Release|x64.Build.0 = Release|x64
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Release|x86.ActiveCfg = Release|Win32
+		{30F91969-6243-4888-95C1-C28C87E5CB30}.Release|x86.Build.0 = Release|Win32
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Debug|ARM.ActiveCfg = Debug|ARM
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Debug|ARM.Build.0 = Debug|ARM
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Debug|x64.ActiveCfg = Debug|Win32
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Debug|x86.ActiveCfg = Debug|Win32
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Debug|x86.Build.0 = Debug|Win32
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Release|ARM.ActiveCfg = Release|ARM
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Release|ARM.Build.0 = Release|ARM
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Release|x64.ActiveCfg = Release|Win32
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Release|x86.ActiveCfg = Release|Win32
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8}.Release|x86.Build.0 = Release|Win32
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Debug|ARM.ActiveCfg = Debug|ARM
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Debug|ARM.Build.0 = Debug|ARM
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Debug|x64.ActiveCfg = Debug|x64
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Debug|x64.Build.0 = Debug|x64
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Debug|x86.ActiveCfg = Debug|Win32
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Debug|x86.Build.0 = Debug|Win32
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Release|ARM.ActiveCfg = Release|ARM
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Release|ARM.Build.0 = Release|ARM
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Release|x64.ActiveCfg = Release|x64
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Release|x64.Build.0 = Release|x64
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Release|x86.ActiveCfg = Release|Win32
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8}.Release|x86.Build.0 = Release|Win32
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Debug|ARM.ActiveCfg = Debug|ARM
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Debug|ARM.Build.0 = Debug|ARM
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Debug|x64.ActiveCfg = Debug|Win32
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Debug|x86.ActiveCfg = Debug|Win32
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Debug|x86.Build.0 = Debug|Win32
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Release|ARM.ActiveCfg = Release|ARM
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Release|ARM.Build.0 = Release|ARM
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Release|x64.ActiveCfg = Release|Win32
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Release|x86.ActiveCfg = Release|Win32
+		{96660D43-1248-448B-9E2B-745DF19FDFE2}.Release|x86.Build.0 = Release|Win32
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Debug|ARM.ActiveCfg = Debug|ARM
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Debug|ARM.Build.0 = Debug|ARM
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Debug|x64.ActiveCfg = Debug|x64
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Debug|x64.Build.0 = Debug|x64
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Debug|x86.ActiveCfg = Debug|Win32
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Debug|x86.Build.0 = Debug|Win32
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Release|ARM.ActiveCfg = Release|ARM
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Release|ARM.Build.0 = Release|ARM
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Release|x64.ActiveCfg = Release|x64
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Release|x64.Build.0 = Release|x64
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Release|x86.ActiveCfg = Release|Win32
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6}.Release|x86.Build.0 = Release|Win32
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Debug|ARM.ActiveCfg = Debug|ARM
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Debug|ARM.Build.0 = Debug|ARM
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Debug|x64.ActiveCfg = Debug|Win32
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Debug|x86.ActiveCfg = Debug|Win32
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Debug|x86.Build.0 = Debug|Win32
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Release|ARM.ActiveCfg = Release|ARM
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Release|ARM.Build.0 = Release|ARM
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Release|x64.ActiveCfg = Release|Win32
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Release|x86.ActiveCfg = Release|Win32
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433}.Release|x86.Build.0 = Release|Win32
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Debug|ARM.ActiveCfg = Debug|ARM
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Debug|ARM.Build.0 = Debug|ARM
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Debug|x64.ActiveCfg = Debug|x64
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Debug|x64.Build.0 = Debug|x64
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Debug|x86.ActiveCfg = Debug|Win32
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Debug|x86.Build.0 = Debug|Win32
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Release|ARM.ActiveCfg = Release|ARM
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Release|ARM.Build.0 = Release|ARM
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Release|x64.ActiveCfg = Release|x64
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Release|x64.Build.0 = Release|x64
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Release|x86.ActiveCfg = Release|Win32
+		{EF85D041-8298-463C-8E69-293ED599CE27}.Release|x86.Build.0 = Release|Win32
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Debug|ARM.ActiveCfg = Debug|ARM
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Debug|ARM.Build.0 = Debug|ARM
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Debug|x64.ActiveCfg = Debug|Win32
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Debug|x86.ActiveCfg = Debug|Win32
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Debug|x86.Build.0 = Debug|Win32
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Release|ARM.ActiveCfg = Release|ARM
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Release|ARM.Build.0 = Release|ARM
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Release|x64.ActiveCfg = Release|Win32
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Release|x86.ActiveCfg = Release|Win32
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -594,5 +779,23 @@ Global
 		{91367529-57E0-4BD1-B1E2-2F98F3EF48DA} = {7E1C7EB9-21CC-414A-8C0F-D11F7104C912}
 		{FFF7BD09-8E88-4D5C-AD5C-73F3623FE09F} = {7E1C7EB9-21CC-414A-8C0F-D11F7104C912}
 		{E0643C83-C208-4EB1-8149-0DC0370030A0} = {7E1C7EB9-21CC-414A-8C0F-D11F7104C912}
+		{2E9C23D4-AEE1-46E3-925C-3B3C511A76AD} = {E44BF721-BD26-4A1E-B084-773122A46739}
+		{F7C3A9EB-F67D-4BD2-B4DF-0E380A8A9F12} = {E44BF721-BD26-4A1E-B084-773122A46739}
+		{89237B65-CD86-4427-B7E6-0234FAFA30DE} = {E44BF721-BD26-4A1E-B084-773122A46739}
+		{30F91969-6243-4888-95C1-C28C87E5CB30} = {AB01F904-D656-4187-8499-BFA616777693}
+		{582A91F2-296F-4F77-BCED-8D5CDAEA36C8} = {AB01F904-D656-4187-8499-BFA616777693}
+		{C20EB92B-1FCE-49C9-BC57-B14E004DB581} = {AB01F904-D656-4187-8499-BFA616777693}
+		{BC624AC1-1F14-49DE-83EE-C2EBB28BBCF8} = {E0E62EE5-03BA-41C8-8DD8-681DA8171361}
+		{96660D43-1248-448B-9E2B-745DF19FDFE2} = {E0E62EE5-03BA-41C8-8DD8-681DA8171361}
+		{2ED699F1-E3A1-40AC-AE39-CEB9C770F891} = {E0E62EE5-03BA-41C8-8DD8-681DA8171361}
+		{648B065F-8C19-48AC-B861-B6D0A76BE9F6} = {6999CDE7-13A8-44ED-B259-320212CC8AE3}
+		{CDA595F9-4DB2-4548-BBD3-58902CDB3433} = {6999CDE7-13A8-44ED-B259-320212CC8AE3}
+		{7E25537F-9613-46E5-8FE1-C9E62579BD39} = {6999CDE7-13A8-44ED-B259-320212CC8AE3}
+		{EF85D041-8298-463C-8E69-293ED599CE27} = {AD414249-DFCB-4C85-B83D-ECBFE0111B97}
+		{288EDE96-D1F3-4D96-93FC-A7B548A1B921} = {AD414249-DFCB-4C85-B83D-ECBFE0111B97}
+		{4631CD09-E1D8-4432-BAEF-D897BFC5729A} = {AD414249-DFCB-4C85-B83D-ECBFE0111B97}
+		{DAFA093D-CF76-4338-A40B-F5282263DDF4} = {AD414249-DFCB-4C85-B83D-ECBFE0111B97}
+		{D0185AE0-0CEC-4D1B-8569-90B7BB6CF19A} = {6999CDE7-13A8-44ED-B259-320212CC8AE3}
+		{3B455748-8367-435F-92E1-61A2D54E7783} = {E0E62EE5-03BA-41C8-8DD8-681DA8171361}
 	EndGlobalSection
 EndGlobal

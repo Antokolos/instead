@@ -27,14 +27,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\VisualC\luasocket\src\compat.c" />
-    <ClCompile Include="..\..\..\VisualC\luasocket\src\mime.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\VisualC\luasocket\src\compat.h" />
-    <ClInclude Include="..\..\..\VisualC\luasocket\src\mime.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\lua5x\lua5x\lua5x.vcxproj">
       <Project>{af4d95d2-eb5c-4645-8b01-d11ad51df1cb}</Project>
     </ProjectReference>
@@ -89,6 +81,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="..\..\..\VisualC\luasocket\mime.Shared\mime.Shared.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />

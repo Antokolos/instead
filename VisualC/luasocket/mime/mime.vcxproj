@@ -18,14 +18,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\compat.c" />
-    <ClCompile Include="..\src\mime.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\src\compat.h" />
-    <ClInclude Include="..\src\mime.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{51E80728-5E78-41C1-99CD-6FE4EFE32F4D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -63,6 +55,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="..\mime.Shared\mime.Shared.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />

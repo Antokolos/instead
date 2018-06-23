@@ -31,30 +31,6 @@
       <Project>{af4d95d2-eb5c-4645-8b01-d11ad51df1cb}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\VisualC\luasec\src\config.c" />
-    <ClCompile Include="..\..\..\VisualC\luasec\src\context.c" />
-    <ClCompile Include="..\..\..\VisualC\luasec\src\ec.c" />
-    <ClCompile Include="..\..\..\VisualC\luasec\src\luasocket\buffer.c" />
-    <ClCompile Include="..\..\..\VisualC\luasec\src\luasocket\io.c" />
-    <ClCompile Include="..\..\..\VisualC\luasec\src\luasocket\timeout.c" />
-    <ClCompile Include="..\..\..\VisualC\luasec\src\luasocket\wsocket.c" />
-    <ClCompile Include="..\..\..\VisualC\luasec\src\ssl.c" />
-    <ClCompile Include="..\..\..\VisualC\luasec\src\x509.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\VisualC\luasec\src\compat.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\context.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\ec.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\luasocket\buffer.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\luasocket\io.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\luasocket\socket.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\luasocket\timeout.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\luasocket\wsocket.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\options.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\ssl.h" />
-    <ClInclude Include="..\..\..\VisualC\luasec\src\x509.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{993c5425-0a32-4d9a-bca7-e13bb8666870}</ProjectGuid>
     <Keyword>DynamicLibrary</Keyword>
@@ -105,6 +81,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="..\..\..\VisualC\luasec\luasec.Shared\luasec.Shared.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />

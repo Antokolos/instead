@@ -158,6 +158,11 @@ static int pushresult(lua_State *L, int res, const char *info) {
 ** This function changes the working (current) directory
 */
 static int change_dir (lua_State *L) {
+#ifdef NO_CHDIR
+	lua_pushnil(L);
+	lua_pushstring(L, "Function 'chdir' not provided by system");
+	return 2;
+#else
         const char *path = luaL_checkstring(L, 1);
         if (chdir(path)) {
                 lua_pushnil (L);
@@ -168,6 +173,7 @@ static int change_dir (lua_State *L) {
                 lua_pushboolean (L, 1);
                 return 1;
         }
+#endif
 }
 
 /*

@@ -17,7 +17,7 @@ using namespace std;
 #include <windows.h>
 #include <Shellapi.h>
 #include <Objbase.h>
-#elseif !defined(WINRT)
+#elif !defined(WINRT)
 #include <dlfcn.h>
 #endif
 

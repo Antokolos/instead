@@ -198,8 +198,12 @@ static int push_asn1_time(lua_State *L, ASN1_UTCTIME *tm)
 static void push_asn1_ip(lua_State *L, ASN1_STRING *string)
 {
   int af;
+#ifdef NO_IP6
+  char dst[INET_ADDRSTRLEN];
+#else
   char dst[INET6_ADDRSTRLEN];
-  unsigned char *ip = (unsigned char*)LSEC_ASN1_STRING_data(string);
+#endif
+  void *ip = LSEC_ASN1_STRING_data(string);
   switch(ASN1_STRING_length(string)) {
   case 4:
     af = AF_INET;
@@ -211,8 +215,18 @@ static void push_asn1_ip(lua_State *L, ASN1_STRING *string)
     lua_pushnil(L);
     return;
   }
-  if(inet_ntop(af, ip, dst, INET6_ADDRSTRLEN))
-    lua_pushstring(L, dst);
+#ifdef NO_IP6
+  PIN_ADDR in = (PIN_ADDR) ip;
+  char* _dst = inet_ntoa(*in);
+  if (_dst)
+  {
+	memcpy(dst, _dst, INET_ADDRSTRLEN);
+#else
+  if (inet_ntop(af, ip, dst, INET6_ADDRSTRLEN))
+  {
+#endif
+	lua_pushstring(L, dst);
+  }
   else
     lua_pushnil(L);
 }

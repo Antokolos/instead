@@ -239,6 +239,7 @@ int main(int argc, char *argv[])
 	char* appdata_games = convertFolderNameFromPlatformString(localFolder, "appdata\\games");
 	char* appdata_themes = convertFolderNameFromPlatformString(localFolder, "appdata\\themes");
 	create_dir_if_needed(appdata);
+	create_dir_if_needed(appdata_games);
 	tmppath = convertFolderNameFromPlatformString(tempFolder);
 	char* _argv[25];
 	int n = 1;

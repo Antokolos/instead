@@ -2,8 +2,8 @@
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
   <Identity Name="nlbhub.instead.launcher" Publisher="CN=user" Version="1.0.0.0" />
   <Properties>
-    <DisplayName>instead.Windows</DisplayName>
-    <PublisherDisplayName>Antokolos</PublisherDisplayName>
+    <DisplayName>Non-Linear Text Quests</DisplayName>
+    <PublisherDisplayName>NLB project</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -15,15 +15,15 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="instead_Windows.App">
-      <m2:VisualElements DisplayName="instead" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="INSTEAD game engine" ForegroundText="light" BackgroundColor="#464646">
+      <m2:VisualElements DisplayName="Non-Linear Text Quests" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Collection of text-based games by different authors" ForegroundText="light" BackgroundColor="#464646">
         <m2:SplashScreen Image="Assets\SplashScreen.png" />
       </m2:VisualElements>
       <Extensions>
         <Extension Category="windows.fileTypeAssociation">
           <FileTypeAssociation Name="zip">
-            <DisplayName>INSTEAD</DisplayName>
-            <Logo>sdl_instead.png</Logo>
-            <InfoTip>INSTEAD game</InfoTip>
+            <DisplayName>Non-Linear Text Quests</DisplayName>
+            <Logo>NLBB_128x128.png</Logo>
+            <InfoTip>Non-Linear Text Quest</InfoTip>
             <EditFlags OpenIsSafe="true" />
             <SupportedFileTypes>
               <FileType ContentType="application/zip">.zip</FileType>

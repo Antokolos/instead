@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="instead_WindowsPhone.App">
-      <m3:VisualElements DisplayName="instead" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="INSTEAD game engine" ForegroundText="light" BackgroundColor="transparent">
+      <m3:VisualElements DisplayName="Non-Linear Text Quests" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Collection of text-based games by different authors" ForegroundText="light" BackgroundColor="transparent">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
@@ -24,9 +24,9 @@
       <Extensions>
         <Extension Category="windows.fileTypeAssociation">
           <FileTypeAssociation Name="zip">
-            <DisplayName>INSTEAD</DisplayName>
-            <Logo>sdl_instead.png</Logo>
-            <InfoTip>INSTEAD game</InfoTip>
+            <DisplayName>Non-Linear Text Quests</DisplayName>
+            <Logo>NLBB_128x128.png</Logo>
+            <InfoTip>Non-Linear Text Quest</InfoTip>
             <SupportedFileTypes>
               <FileType ContentType="application/zip">.zip</FileType>
               <FileType ContentType="application/zip">.igf</FileType>

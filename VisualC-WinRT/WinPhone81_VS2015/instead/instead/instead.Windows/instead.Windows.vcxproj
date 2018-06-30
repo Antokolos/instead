@@ -232,7 +232,7 @@
     <Image Include="Assets\SmallLogo.png" />
     <Image Include="Assets\StoreLogo.png" />
     <Image Include="Assets\SplashScreen.png" />
-    <Image Include="sdl_instead.png" />
+    <Image Include="NLBB_128x128.png" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -31,7 +31,7 @@
     <Image Include="Assets\StoreLogo.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="sdl_instead.png">
+    <Image Include="NLBB_128x128.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>

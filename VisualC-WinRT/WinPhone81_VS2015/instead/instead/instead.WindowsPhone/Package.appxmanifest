@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="f1ff4262-c52d-4fa7-9b3b-fef349780ee3" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>instead.WindowsPhone</DisplayName>
-    <PublisherDisplayName>Antokolos</PublisherDisplayName>
+    <PublisherDisplayName>NLB project</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>

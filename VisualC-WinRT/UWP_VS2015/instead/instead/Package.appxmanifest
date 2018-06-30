@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="7683e59a-406e-4d43-a96a-f344cc0534ee" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Non-Linear Text Quests</DisplayName>
-    <PublisherDisplayName>Antokolos</PublisherDisplayName>
+    <PublisherDisplayName>NLB project</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>

@@ -1,7 +1,7 @@
 -- $Name:Non-Linear Text Quests$
 -- $Version: 1.0$
 -- $Author:NLB project$
--- $Info:Collection of text games\nby different authors$
+-- $Info:Collection of text-based games\nby different authors$
 
 package.path = "lua/?.lua;" .. instead_cwdpath() .. "/lua/?.lua;" .. package.path;
 package.cpath = "?.dll;" .. instead_cwdpath() .. "/?.so;" .. package.cpath;
@@ -67,8 +67,10 @@ function start(load)
         typewriter = false,
         z = -1
     };
-    here().cache_size = get_dir_size(get_cachedir());
+    -- appdata dir MUST exist near instead.exe!
+    mkdir(get_gamesdir());
     mkdir(get_cachedir());
+    here().cache_size = get_dir_size(get_cachedir());
     D {
         "cache_stats",
         "txt",

@@ -46,12 +46,16 @@ end)
 declare 'f_controls' (function()
     local config = load_config();
     local mark = "• ";
+    local nlbproject = get_lang() == "ru" and [[: ({nlbproject_en|EN}) | ◄({nlbproject_ru|RU})►
+    ]] or [[: ◄({nlbproject_en|EN})► | ({nlbproject_ru|RU})
+    ]];
+    local community = get_lang() == "ru" and [[: ({community_en|EN}) | ◄({community_ru|RU})►
+    ]] or [[: ◄({community_en|EN})► | ({community_ru|RU})
+    ]];
     -- {nlbproject_all|all} , {community_all|all} filters were removed from UI but should still work
     local reponame1 = here().list_name == 'nlbproject' and mark .. config["nlbhub.general.main-repository-name"] or config["nlbhub.general.main-repository-name"];
     local reponame2 = here().list_name == 'community' and mark .. config["nlbhub.general.community-repository-name"] or config["nlbhub.general.community-repository-name"];
-    return reponame1 .. [[: {nlbproject_en|EN} | {nlbproject_ru|RU}
-        ]] .. reponame2 .. [[: {community_en|EN} | {community_ru|RU}
-        ]];
+    return reponame1 .. nlbproject .. reponame2 .. community;
 end)
 
 function start(load)
@@ -61,7 +65,7 @@ function start(load)
         f_controls,
         x = 37,
         y = 55,
-        w = 470,
+        w = 500,
         align = 'right',
         hidden = false,
         typewriter = false,

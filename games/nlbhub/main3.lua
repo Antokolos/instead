@@ -43,29 +43,47 @@ declare 'f_cache_size' (function()
     return "Cache size: " .. tostring(nicesize(here().cache_size)) .. " ({clear_cache_cmd|clear})";
 end)
 
-declare 'f_controls' (function()
+-- {nlbproject_all|all} , {community_all|all} filters were removed from UI but should still work    
+declare 'f_nlb_controls' (function()
     local config = load_config();
     local mark = "• ";
-    local nlbproject = get_lang() == "ru" and [[: ({nlbproject_en|EN}) | ◄({nlbproject_ru|RU})►
-    ]] or [[: ◄({nlbproject_en|EN})► | ({nlbproject_ru|RU})
+    local nlbproject = get_lang() == "ru" and [[: ({nlbproject_en|ENG}) | ◄({nlbproject_ru|RUS})►
+    ]] or [[: ◄({nlbproject_en|ENG})► | ({nlbproject_ru|RUS})
     ]];
-    local community = get_lang() == "ru" and [[: ({community_en|EN}) | ◄({community_ru|RU})►
-    ]] or [[: ◄({community_en|EN})► | ({community_ru|RU})
+    local reponame = here().list_name == 'nlbproject' and mark .. config["nlbhub.general.main-repository-name"] or config["nlbhub.general.main-repository-name"];
+    return reponame .. nlbproject;
+end)
+
+declare 'f_com_controls' (function()
+    local config = load_config();
+    local mark = "• ";
+    local community = get_lang() == "ru" and [[: ({community_en|ENG}) | ◄({community_ru|RUS})►
+    ]] or [[: ◄({community_en|ENG})► | ({community_ru|RUS})
     ]];
-    -- {nlbproject_all|all} , {community_all|all} filters were removed from UI but should still work
-    local reponame1 = here().list_name == 'nlbproject' and mark .. config["nlbhub.general.main-repository-name"] or config["nlbhub.general.main-repository-name"];
-    local reponame2 = here().list_name == 'community' and mark .. config["nlbhub.general.community-repository-name"] or config["nlbhub.general.community-repository-name"];
-    return reponame1 .. nlbproject .. reponame2 .. community;
+    local reponame = here().list_name == 'community' and mark .. config["nlbhub.general.community-repository-name"] or config["nlbhub.general.community-repository-name"];
+    return reponame .. community;
 end)
 
 function start(load)
     D {
-        "controls",
+        "nlb_controls",
         "txt",
-        f_controls,
+        f_nlb_controls,
         x = 37,
-        y = 55,
-        w = 500,
+        y = 30,
+        w = 530,
+        align = 'right',
+        hidden = false,
+        typewriter = false,
+        z = -1
+    };
+    D {
+        "com_controls",
+        "txt",
+        f_com_controls,
+        x = 37,
+        y = 90,
+        w = 530,
         align = 'right',
         hidden = false,
         typewriter = false,
@@ -118,12 +136,14 @@ function game:ondecor(name, press, x, y, btn, act, a, b)
         v:toggle();
     end
     if act:starts('nlbproject') then
-        D(D'controls');
+        D(D'nlb_controls');
+        D(D'com_controls');
         change_pl(pl_nlbproject);
         return;
     elseif act:starts('community') then
         here().list_name = 'community';
-        D(D'controls');
+        D(D'nlb_controls');
+        D(D'com_controls');
         change_pl(pl_community);
         return;
     end

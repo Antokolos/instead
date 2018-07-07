@@ -153,7 +153,7 @@ char* convertFolderNameFromPlatformString(Platform::String^ folder)
 }
 
 /*
-You must patch SDL_winrtapp_direct3d.cpp to be able to use getGameFile()
+// You must patch SDL_winrtapp_direct3d.cpp to be able to use getGameFile()
 
 void SDL_WinRTApp::OnAppActivated(CoreApplicationView^ applicationView, IActivatedEventArgs^ args)
 {
@@ -179,6 +179,26 @@ void SDL_WinRTApp::OnAppActivated(CoreApplicationView^ applicationView, IActivat
     }
 	// </AddedCode>
     CoreWindow::GetForCurrentThread()->Activate();
+}
+
+// Also you must patch the following method, too.
+// Maybe, it should be fixed on the INSTEAD side though.
+// See game.c -> is_key_back() and its usage, the problem here is that SDL_RELEASED being send leads to very strange behaviour,
+// therefore it is easier to fix SDL code
+
+template <typename BackButtonEventArgs>
+static void WINRT_OnBackButtonPressed(BackButtonEventArgs ^ args)
+{
+    // Following two lines were removed for compatibility with INSTEAD
+    //SDL_SendKeyboardKey(SDL_PRESSED, SDL_SCANCODE_AC_BACK);
+    //SDL_SendKeyboardKey(SDL_RELEASED, SDL_SCANCODE_AC_BACK);
+
+    // Following line was added for compatibility with INSTEAD
+    SDL_SendKeyboardKey(SDL_PRESSED, SDL_SCANCODE_ESCAPE);
+
+    if (SDL_GetHintBoolean(SDL_HINT_WINRT_HANDLE_BACK_BUTTON, SDL_FALSE)) {
+        args->Handled = true;
+    }
 }
 */
 

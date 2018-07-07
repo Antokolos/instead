@@ -46,21 +46,25 @@ end)
 -- {nlbproject_all|all} , {community_all|all} filters were removed from UI but should still work    
 declare 'f_nlb_controls' (function()
     local config = load_config();
+    if not here().has_nlbproject then
+        return config["nlbhub.general.network-error"] or "Network error, reduced functionality";
+    end
     local mark = "• ";
+    local reponame = here().list_name == 'nlbproject' and mark .. config["nlbhub.general.main-repository-name"] or config["nlbhub.general.main-repository-name"];
     local nlbproject = get_lang() == "ru" and [[: ({nlbproject_en|ENG}) | ◄({nlbproject_ru|RUS})►
     ]] or [[: ◄({nlbproject_en|ENG})► | ({nlbproject_ru|RUS})
     ]];
-    local reponame = here().list_name == 'nlbproject' and mark .. config["nlbhub.general.main-repository-name"] or config["nlbhub.general.main-repository-name"];
     return reponame .. nlbproject;
 end)
 
 declare 'f_com_controls' (function()
     local config = load_config();
     local mark = "• ";
+    local reponame_s = here().has_community and config["nlbhub.general.community-repository-name"] or (config["nlbhub.general.offline-games"] or "Offline games");
+    local reponame = here().list_name == 'community' and mark .. reponame_s or reponame_s;
     local community = get_lang() == "ru" and [[: ({community_en|ENG}) | ◄({community_ru|RUS})►
     ]] or [[: ◄({community_en|ENG})► | ({community_ru|RUS})
     ]];
-    local reponame = here().list_name == 'community' and mark .. config["nlbhub.general.community-repository-name"] or config["nlbhub.general.community-repository-name"];
     return reponame .. community;
 end)
 
@@ -243,7 +247,9 @@ end)
 main = room {
     nam = "main",
     {
-        games_list = {}
+        games_list = {},
+        has_nlbproject = false,
+        has_community = false
     },
     selectedGame = '',
     list_name = 'nlbproject',

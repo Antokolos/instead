@@ -3359,6 +3359,9 @@ static int is_key_back(struct inp_event *ev)
 	    !is_key(ev, "f4") ||
 	    !is_key(ev, "f5")
 #endif
+#ifdef WINRT
+		|| ev->code == 270    // SDL_SCANCODE_AC_BACK in SDL_hints.h
+#endif
 #ifdef ANDROID
 	    || ev->code == 118
 #endif
@@ -3369,10 +3372,15 @@ static int is_key_back(struct inp_event *ev)
 
 static int kbd_instead(struct inp_event *ev, int *x, int *y)
 {
+	int keyback = is_key_back(ev);
+#ifdef WINRT
+	if (ev->type != KEY_DOWN && keyback)
+#else
 	if (ev->type != KEY_DOWN)
+#endif
 		return 0;
 
-	if (!is_key_back(ev)) {
+	if (!keyback) {
 		if (use_xref)
 			disable_use();
 		else

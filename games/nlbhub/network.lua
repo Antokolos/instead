@@ -100,7 +100,7 @@ end
 function download_to_string(url)
     local str = '';
     local httpObj = get_http_obj(url);
-    httpObj.request {
+    local r, c, h, s = httpObj.request {
         url = url,
         sink = function(chunk, err)
             if not chunk then
@@ -110,14 +110,17 @@ function download_to_string(url)
             return chunk:len()
         end
     }
-    return str;
+    return str, r, c, h, s;
 end
 
 function download_to_file(url, fname, fsize)
     local file = io.open(fname, 'wb');
     local save = ltn12.sink.file(file or io.stdout);
     local httpObj = get_http_obj(url);
-    local r, c, h, s = httpObj.request {url = url, sink = ltn12.sink.chain(stats(fsize or gethttpsize(url)), save) };
+    local r, c, h, s = httpObj.request {
+        url = url,
+        sink = ltn12.sink.chain(stats(fsize or gethttpsize(url)), save)
+    };
     instead_busy(false);
     if c == 301 then
         -- file:close() is not needed; already closed
@@ -134,7 +137,7 @@ function download_to_file(url, fname, fsize)
         print(s or c, "\n");
         -- file:close() is not needed; already closed
     end
-    return c;
+    return r, c, h, s;
 end
 
 if stead.mod_init then

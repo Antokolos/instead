@@ -6,6 +6,7 @@ SDL_winrt_main_NonXAML.cpp, placed in the public domain by David Ludwig  3/13/14
 #include <sstream>
 #include <string>
 #include "SDL_main.h"
+#include "SDL_hints.h"
 #include <wrl.h>
 
 /* At least one file in any SDL/WinRT app appears to require compilation
@@ -231,6 +232,7 @@ extern "C" int dir_exists(char *path);
 int main(int argc, char *argv[])
 {
 	int err;
+	SDL_SetHint(SDL_HINT_WINRT_HANDLE_BACK_BUTTON, "1");
 	Platform::String^ installationFolder = Windows::ApplicationModel::Package::Current->InstalledLocation->Path;
 	Platform::String^ localFolder = Windows::Storage::ApplicationData::Current->LocalFolder->Path;  // C:/Users/user/AppData/Local/Packages/<GUID>/LocalState
 	Platform::String^ tempFolder = Windows::Storage::ApplicationData::Current->TemporaryFolder->Path;

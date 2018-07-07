@@ -19,11 +19,11 @@ function get_gamesdir()
 end
 
 function games_feed(games, baseurl, url, lang)
-    local xml = download_to_string(url);
+    local xml, r, c, h, s = download_to_string(url);
     local tag;
     local val = {};
     if xml == '' then
-        return games;
+        return r, c, h, s;
     end
     local parser = SLAXML:parser {
         startElement = function(name, nsURI,nsPrefix)
@@ -78,7 +78,7 @@ function games_feed(games, baseurl, url, lang)
     }
     parser:parse(xml, {stripWhitespace = true});
     instead_busy(false);
-    return games;
+    return r, c, h, s;
 end
 
 get_names = function(f)
@@ -315,9 +315,18 @@ function init_hub(launch_func)
     local config = load_config();
     local nlbproject_games = {};
     here().games_list = {};
-    games_feed(nlbproject_games, config["nlbhub.general.main-repository-baseurl"], config["nlbhub.general.main-repository-url"] .. "?lang=ru", "ru");
-    games_feed(nlbproject_games, config["nlbhub.general.main-repository-baseurl"], config["nlbhub.general.main-repository-url"] .. "?lang=en", "en");
+    local r, c, h, s;
+    local network_failure = false;
+    r, c, h, s = games_feed(nlbproject_games, config["nlbhub.general.main-repository-baseurl"], config["nlbhub.general.main-repository-url"] .. "?lang=ru", "ru");
+    if c ~= 200 then
+        network_failure = true;
+    end
+    r, c, h, s = games_feed(nlbproject_games, config["nlbhub.general.main-repository-baseurl"], config["nlbhub.general.main-repository-url"] .. "?lang=en", "en");
+    if c ~= 200 then
+        network_failure = true;
+    end
     for k, g in pairs(nlbproject_games) do
+        here().has_nlbproject = true;
         instead_busy(true);
         -- Do not insert duplicates, if any
         if not games_map[g.name] then
@@ -326,9 +335,16 @@ function init_hub(launch_func)
         end
     end
     local community_games = {};
-    games_feed(community_games, config["nlbhub.general.community-repository-baseurl"], config["nlbhub.general.community-repository-url"] .. "?lang=ru", "ru");
-    games_feed(community_games, config["nlbhub.general.community-repository-baseurl"], config["nlbhub.general.community-repository-url"] .. "?lang=en", "en");
+    r, c, h, s = games_feed(community_games, config["nlbhub.general.community-repository-baseurl"], config["nlbhub.general.community-repository-url"] .. "?lang=ru", "ru");
+    if c ~= 200 then
+        network_failure = true;
+    end
+    r, c, h, s = games_feed(community_games, config["nlbhub.general.community-repository-baseurl"], config["nlbhub.general.community-repository-url"] .. "?lang=en", "en");
+    if c ~= 200 then
+        network_failure = true;
+    end
     for k, g in pairs(community_games) do
+        here().has_community = true;
         instead_busy(true);
         if games_map[g.name] then
             games_map[g.name].properties.community = true;
@@ -368,6 +384,13 @@ function init_hub(launch_func)
         end
         take(v);
     end
-    change_pl(pl_nlbproject);
+    if network_failure then
+        change_pl(pl_community);
+        here().list_name = "community";
+    else
+        change_pl(pl_nlbproject);
+    end
+    D(D'nlb_controls');
+    D(D'com_controls');
     instead_busy(false);
 end

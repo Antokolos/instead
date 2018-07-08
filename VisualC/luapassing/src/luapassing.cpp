@@ -134,7 +134,7 @@ static int openURL(lua_State *L) {
     return 1;
 }
 
-extern "C" __declspec(dllexport) int luaopen_luapassing(lua_State *L) {
+extern "C" __declspec(dllexport) int luaopen_luapassing_core(lua_State *L) {
 #elif defined(WINRT)
 Platform::String^ StringFromAscIIChars(const char* chars) {
 	size_t newsize = strlen(chars) + 1;
@@ -174,7 +174,7 @@ static int openURL(lua_State *L) {
 	return 1;
 }
 
-extern "C" __declspec(dllexport) int luaopen_luapassing(lua_State *L) {
+extern "C" __declspec(dllexport) int luaopen_luapassing_core(lua_State *L) {
 #elif defined(_LINUX)
 static int openURL(lua_State *L) {
     const char* url = lua_tostring(L, 1);
@@ -186,7 +186,7 @@ static int openURL(lua_State *L) {
     return 1;
 }
 
-extern "C" int luaopen_luapassing ( lua_State *L) {
+extern "C" int luaopen_luapassing_core ( lua_State *L) {
 #elif defined(_MACOSX)
 static int openURL(lua_State *L) {
     const char* url = lua_tostring(L, 1);
@@ -198,7 +198,7 @@ static int openURL(lua_State *L) {
     return 1;
 }
 
-extern "C" int luaopen_luapassing ( lua_State *L) {
+extern "C" int luaopen_luapassing_core ( lua_State *L) {
 #endif
     static const luaL_Reg Map [] = {
         {"init", init},

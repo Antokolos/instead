@@ -1,5 +1,5 @@
 -- $Name:Non-Linear Text Quests$
--- $Version: 1.0$
+-- $Version: 1.1$
 -- $Author:NLB project$
 -- $Info:Collection of text-based games\nby different authors$
 

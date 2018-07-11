@@ -7,3 +7,7 @@
 **/ipch/
 **/*.obj
 **/*.VC.db
+VisualC-WinRT/UWP_VS2015/instead/AppPackages/
+VisualC-WinRT/UWP_VS2015/instead/instead/BundleArtifacts/
+VisualC-WinRT/UWP_VS2015/instead/instead/_pkginfo.txt
+VisualC-WinRT/WinPhone81_VS2015/instead/AppPackages/

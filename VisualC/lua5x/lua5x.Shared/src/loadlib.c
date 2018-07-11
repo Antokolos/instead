@@ -122,10 +122,12 @@ static void pusherror (lua_State *L) {
   int error = GetLastError();
   char buffer[128];
   // Antokolos: sizeof(buffer) / sizeof(char) because of possible bugfix from Lua 5.2
+#if !defined(WINRT) || _WIN32_WINNT >= 0x0A00
   if (FormatMessageA(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM,
       NULL, error, 0, buffer, sizeof(buffer) / sizeof(char), NULL))
     lua_pushstring(L, buffer);
   else
+#endif
     lua_pushfstring(L, "system error %d\n", error);
 }
 

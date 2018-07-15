@@ -29,6 +29,13 @@ function init()
         -- NB: You shouldn't enable saves here, because autosave will be written at this point
         --instead.nosave = false;
         --instead.noautosave = false;
+
+        -- Incrementing openstat counter
+        local statid = g.statid;
+        if statid then
+            local config = load_config();
+            download_to_string(config["nlbhub.general.openstat-url"] .. "?cid=" .. statid);
+        end
         if g.standalone or properties.nlbproject then
             loadgame(g.name);
         else

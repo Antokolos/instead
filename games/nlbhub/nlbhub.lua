@@ -57,6 +57,7 @@ function games_feed(games, baseurl, url, lang)
                         version = val.version,
                         lang = val.lang,
                         standalone = val.standalone,
+                        statid = val.statid,
                         descurl = descurl,
                         baseurl = baseurl
                     };
@@ -392,5 +393,7 @@ function init_hub(launch_func)
     end
     D(D'nlb_controls');
     D(D'com_controls');
+    -- Incrementing openstat counter
+    download_to_string(config["nlbhub.general.openstat-url"] .. "?cid=" .. config["nlbhub.general.openstat-id"]);
     instead_busy(false);
 end

@@ -1,3 +1,8 @@
+if package then
+    package.path = "lua/?.lua;" .. instead_cwdpath() .. "/lua/?.lua;" .. package.path;
+    package.cpath = "?.dll;" .. instead_cwdpath() .. "/?.so;" .. package.cpath;
+end
+
 local initFunc = function()
 end
 

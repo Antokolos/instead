@@ -82,11 +82,11 @@ find _dist_/themes -type f -name "Makefile" -delete
 
 # run.sh
 
-cat <<EOT >> _dist_/run.sh
-#!/bin/sh
+cat <<EOT >> _dist_/nlbhub.sh
+#!/usr/bin/env bash
 
 PROGRAM_DIRECTORY=\$( cd \$(dirname "\$0") ; pwd -P )
-export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:\$PROGRAM_DIRECTORY/libs"
+export LD_LIBRARY_PATH="\$PROGRAM_DIRECTORY:\$PROGRAM_DIRECTORY/libs:\$LD_LIBRARY_PATH"
 
 cd "\$PROGRAM_DIRECTORY"
 "./sdl-instead" -fullscreen -standalone -game nlbhub "\$@"

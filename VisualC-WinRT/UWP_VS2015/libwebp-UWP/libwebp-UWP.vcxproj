@@ -287,7 +287,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <DisableSpecificWarnings>4244</DisableSpecificWarnings>
       <ObjectFileName>$(IntDir)\%(RelativeDir)\%(Filename)</ObjectFileName>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -302,7 +301,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <DisableSpecificWarnings>4244</DisableSpecificWarnings>
       <ObjectFileName>$(IntDir)\%(RelativeDir)\%(Filename)</ObjectFileName>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -317,7 +315,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <DisableSpecificWarnings>4244</DisableSpecificWarnings>
       <ObjectFileName>$(IntDir)\%(RelativeDir)\%(Filename)</ObjectFileName>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -332,7 +329,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <DisableSpecificWarnings>4244</DisableSpecificWarnings>
       <ObjectFileName>$(IntDir)\%(RelativeDir)\%(Filename)</ObjectFileName>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -347,7 +343,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <DisableSpecificWarnings>4244</DisableSpecificWarnings>
       <ObjectFileName>$(IntDir)\%(RelativeDir)\%(Filename)</ObjectFileName>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -362,7 +357,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <DisableSpecificWarnings>4244</DisableSpecificWarnings>
       <ObjectFileName>$(IntDir)\%(RelativeDir)\%(Filename)</ObjectFileName>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

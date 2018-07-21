@@ -137,7 +137,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\VisualC\luafilesystem\src;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN_EXT;_CRT_SECURE_NO_WARNINGS;LUAFILESYSTEM_EXPORTS;NO_GETCWD;NO_CHDIR;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,7 +151,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\VisualC\luafilesystem\src;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN_EXT;_CRT_SECURE_NO_WARNINGS;LUAFILESYSTEM_EXPORTS;NO_GETCWD;NO_CHDIR;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,7 +165,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\VisualC\luafilesystem\src;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN_EXT;_CRT_SECURE_NO_WARNINGS;LUAFILESYSTEM_EXPORTS;NO_GETCWD;NO_CHDIR;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -182,7 +179,6 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>..\..\..\VisualC\lua5x\lua5x.Shared\src;..\..\..\VisualC\luafilesystem\src;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WIN_EXT;_CRT_SECURE_NO_WARNINGS;LUAFILESYSTEM_EXPORTS;NO_GETCWD;NO_CHDIR;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -36,7 +36,7 @@ function init()
             local config = load_config();
             download_to_string(config["nlbhub.general.openstat-url"] .. "?cid=" .. statid);
         end
-        if g.standalone or properties.nlbproject then
+        if g.standalone == 'true' then
             loadgame(g.name);
         else
             loadgame_safe(g.name);

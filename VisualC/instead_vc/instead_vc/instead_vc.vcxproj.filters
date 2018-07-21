@@ -177,6 +177,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\snprintf.h">
       <Filter>instead</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="instead">
@@ -185,5 +186,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\SDL\VisualC\SDLmain\SDLmain.vcxproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="instead.rc" />
   </ItemGroup>
 </Project>

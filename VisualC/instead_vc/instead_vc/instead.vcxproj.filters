@@ -177,6 +177,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\instead\snprintf.h">
       <Filter>instead</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="instead">
@@ -199,5 +200,11 @@
     <CustomBuild Include="..\..\..\..\LuaJIT64\src\lua51.dll">
       <Filter>x64</Filter>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="instead.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
   </ItemGroup>
 </Project>

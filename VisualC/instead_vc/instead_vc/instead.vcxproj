@@ -243,6 +243,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\themes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\unzip.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\utils.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)\..\..\..\games\**\*.*" Exclude="$(MSBuildThisFileDirectory)\..\..\..\games\**\Makefile;$(MSBuildThisFileDirectory)\..\..\..\games\**\CMakeLists.txt">
@@ -338,5 +339,11 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copying %(Filename)%(Extension)</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="instead.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
   </ItemGroup>
 </Project>

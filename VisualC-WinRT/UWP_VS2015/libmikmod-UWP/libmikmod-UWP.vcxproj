@@ -181,6 +181,7 @@
       <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -195,6 +196,7 @@
       <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -209,6 +211,7 @@
       <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -223,6 +226,7 @@
       <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -237,6 +241,7 @@
       <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -251,6 +256,7 @@
       <PreprocessorDefinitions>strcasecmp=stricmp;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;MIKMOD_BUILD;DLL_EXPORT;HAVE_LIMITS_H;HAVE_FCNTL_H;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\..\mikmod\libmikmod\win32;..\..\..\..\mikmod\libmikmod\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4703</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

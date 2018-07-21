@@ -243,6 +243,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\themes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\unzip.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\utils.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)\..\..\..\games\**\*.*" Exclude="$(MSBuildThisFileDirectory)\..\..\..\games\**\Makefile;$(MSBuildThisFileDirectory)\..\..\..\games\**\CMakeLists.txt">
@@ -321,5 +322,11 @@
     <ProjectReference Include="..\..\luasocket\socket\socket_vc.vcxproj">
       <Project>{cbe3243a-a668-422f-96c5-0317cdacbcd2}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="instead.rc" />
   </ItemGroup>
 </Project>

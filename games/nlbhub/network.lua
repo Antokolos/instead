@@ -1,8 +1,8 @@
 local socket = require("socket");
 local https = require('ssl.https');
-https.TIMEOUT = 20;
+https.TIMEOUT = 15;
 local http = require('socket.http');
-http.TIMEOUT = 20;
+http.TIMEOUT = 15;
 local ltn12 = require('ltn12');
 
 local function get_http_obj(url)

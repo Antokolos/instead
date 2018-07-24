@@ -11,6 +11,13 @@ local function get_http_obj(url)
     end
 end
 
+local function sock_create()
+    local req_sock = socket.tcp();
+    req_sock:settimeout(7, 'b');
+    req_sock:settimeout(21, 't');
+    return req_sock;
+end
+
 -- formats a number of seconds into human readable form
 function nicetime(s)
     local l = "s"
@@ -91,7 +98,7 @@ end
 -- determines the size of a http file
 function gethttpsize(url)
     local httpObj = get_http_obj(url);
-    local r, c, h = httpObj.request {method = "HEAD", url = url}
+    local r, c, h = httpObj.request {method = "HEAD", url = url, create = sock_create}
     if c == 200 then
         return tonumber(h["content-length"])
     end
@@ -102,6 +109,7 @@ function download_to_string(url)
     local httpObj = get_http_obj(url);
     local r, c, h, s = httpObj.request {
         url = url,
+        create = sock_create,
         sink = function(chunk, err)
             if not chunk then
                 return 1
@@ -119,6 +127,7 @@ function download_to_file(url, fname, fsize)
     local httpObj = get_http_obj(url);
     local r, c, h, s = httpObj.request {
         url = url,
+        create = sock_create,
         sink = ltn12.sink.chain(stats(fsize or gethttpsize(url)), save)
     };
     instead_busy(false);

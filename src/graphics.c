@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2020 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -29,6 +29,11 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
+#ifdef _USE_HARFBUZZ
+#include <hb.h>
+#include <glib.h>
+#endif
+
 #include <SDL_mutex.h>
 #if SDL_VERSION_ATLEAST(2,0,0)
 #include "SDL2_rotozoom.h"
@@ -37,9 +42,9 @@
 #include "SDL_rotozoom.h"
 #endif
 #include "SDL_gfxBlitFunc.h"
-#include "SDL_anigif.h"
+#include "SDL_gif.h"
 
-#define IMG_ANIGIF 1
+#define IMG_ANIM 1
 struct _img_t {
 	SDL_Surface *s;
 /*	SDL_Texture *t; */
@@ -286,18 +291,19 @@ int gfx_parse_color (
 	return -1;
 }
 
-struct _anigif_t;
+struct _anim_t;
 
-struct agspawn {
+struct anspawn {
 	SDL_Rect clip;
 	img_t	bg;
 	int x;
 	int y;
 };
-#define AGSPAWN_BLOCK 8
-struct _anigif_t {
-	struct _anigif_t *next;
-	struct _anigif_t *prev;
+
+#define ANSPAWN_BLOCK 8
+struct _anim_t {
+	struct _anim_t *next;
+	struct _anim_t *prev;
 	int	cur_frame;
 	int	nr_frames;
 	int	loop;
@@ -305,25 +311,24 @@ struct _anigif_t {
 	int	active;
 	int	delay;
 	int	spawn_nr;
-	struct	agspawn *spawn;
-	AG_Frame frames[1];
+	struct	anspawn *spawn;
+	Animation_t *anim;
 };
-#define anigif_size(nr) (sizeof(struct _anigif_t) + (nr) * sizeof(AG_Frame) - sizeof(AG_Frame))
 
-typedef struct _anigif_t *anigif_t;
+typedef struct _anim_t *anim_t;
 
-static int anigif_spawn(anigif_t ag, int x, int y, int w, int h)
+static int anim_spawn(anim_t ag, int x, int y, int w, int h)
 {
 	int nr;
 	SDL_Rect clip;
 	SDL_GetClipRect(Surf(screen), &clip);
 	/* gfx_free_image(ag->bg); */
-	if (!ag->spawn && !(ag->spawn = malloc(AGSPAWN_BLOCK * sizeof(struct agspawn))))
+	if (!ag->spawn && !(ag->spawn = malloc(ANSPAWN_BLOCK * sizeof(struct anspawn))))
 		return -1;
 	nr = ag->spawn_nr + 1;
-	if (!(nr % AGSPAWN_BLOCK)) { /* grow */
-		void *p = realloc(ag->spawn, AGSPAWN_BLOCK * sizeof(struct agspawn) *
-						((nr / AGSPAWN_BLOCK) + 1));
+	if (!(nr % ANSPAWN_BLOCK)) { /* grow */
+		void *p = realloc(ag->spawn, ANSPAWN_BLOCK * sizeof(struct anspawn) *
+						((nr / ANSPAWN_BLOCK) + 1));
 		if (!p)
 			return -1;
 		ag->spawn = p;
@@ -336,128 +341,105 @@ static int anigif_spawn(anigif_t ag, int x, int y, int w, int h)
 	return 0;
 }
 
-static anigif_t anim_gifs = NULL;
+static anim_t anim_list = NULL;
 
-static int anigif_drawn_nr = 0;
+static int anim_drawn_nr = 0;
 
-static anigif_t anigif_find(anigif_t g)
+static anim_t anim_find(anim_t g)
 {
-	anigif_t p;
-	for (p = anim_gifs; p; p = p->next) {
+	anim_t p;
+	for (p = anim_list; p; p = p->next) {
 		if (p == g)
 			return p;
 	}
 	return NULL;
 }
 
-static void anigif_disposal(anigif_t g)
+static void anim_disposal(anim_t g)
 {
 	SDL_Rect dest;
 	SDL_Rect clip;
 	int i = 0;
 	SDL_Surface	*img = NULL;
-	AG_Frame *frame;
-	frame = &g->frames[g->cur_frame];
+
+	dest.x = 0;
+	dest.y = 0;
+	dest.w = g->anim->w;
+	dest.h = g->anim->h;
+
 	SDL_GetClipRect(Surf(screen), &clip);
 
-	dest.x = 0; /* g->x; */
-	dest.y = 0; /* g->y; */
-	dest.w = dest.h = 0; /* to make happy compiler */
-
-	switch (frame->disposal) {
-	case AG_DISPOSE_NA:
-	case AG_DISPOSE_NONE: /* just show next frame */
-		break;
-	case AG_DISPOSE_RESTORE_BACKGROUND:
-/*		img = g->bg;
-		dest.w = Surf(img)->w;
-		dest.h = Surf(img)->h;*/
-		break;
-	case AG_DISPOSE_RESTORE_PREVIOUS:
-		if (g->cur_frame) {
-			img = (g->frames[g->cur_frame - 1].surface);
-			dest.w = g->frames[g->cur_frame - 1].surface->w;
-			dest.h = g->frames[g->cur_frame - 1].surface->h;
-			dest.x += g->frames[g->cur_frame - 1].x;
-			dest.y += g->frames[g->cur_frame - 1].y;
-		}
-		break;
-	}
 	for (i = 0; i < g->spawn_nr; i++) {
 		SDL_Rect dst;
 		SDL_SetClipRect(Surf(screen), &g->spawn[i].clip);
 		dst = dest;
-
 		dst.x += g->spawn[i].x;
 		dst.y += g->spawn[i].y;
-		if (frame->disposal == AG_DISPOSE_RESTORE_BACKGROUND) {
-			img = Surf(g->spawn[i].bg);
-			if (img) {
-				dst.w = img->w;
-				dst.h = img->h;
-			}
-		}
-		if (img) { /* draw bg */
+		img = Surf(g->spawn[i].bg);
+		if (img) {
+			dst.w = img->w;
+			dst.h = img->h;
+			/* draw bg */
 			SDL_BlitSurface(img, NULL, Surf(screen), &dst);
 		}
 	}
 	SDL_SetClipRect(Surf(screen), &clip);
 }
 
-static void anigif_frame(anigif_t g)
+static void anim_frame(anim_t g)
 {
 	int i;
 	SDL_Rect dest;
 	SDL_Rect clip;
+	SDL_Surface *frame;
+	frame = g->anim->frames[g->cur_frame];
 
-	AG_Frame *frame;
-	frame = &g->frames[g->cur_frame];
 	SDL_GetClipRect(Surf(screen), &clip);
 
-	dest.w = frame->surface->w;
-	dest.h = frame->surface->h;
+	dest.w = g->anim->w;
+	dest.h = g->anim->h;
 
 	for (i = 0; i < g->spawn_nr; i++) {
-		dest.x = g->spawn[i].x + frame->x;
-		dest.y = g->spawn[i].y + frame->y;
+		dest.x = g->spawn[i].x;
+		dest.y = g->spawn[i].y;
 		SDL_SetClipRect(Surf(screen), &g->spawn[i].clip);
-		SDL_BlitSurface(frame->surface, NULL, Surf(screen), &dest);
+		SDL_BlitSurface(frame, NULL, Surf(screen), &dest);
 	}
-	g->delay = timer_counter;
+	if (!g->active) /* initial draw */
+		g->delay = timer_counter;
 	SDL_SetClipRect(Surf(screen), &clip);
 }
 
-static anigif_t is_anigif(img_t img)
+static anim_t is_anim(img_t img)
 {
-	if (img && (img->flags & IMG_ANIGIF))
-		return (anigif_t)(img->aux);
+	if (img && (img->flags & IMG_ANIM))
+		return (anim_t)(img->aux);
 	return NULL;
 }
 
-static anigif_t anigif_add(anigif_t g)
+static anim_t anim_add(anim_t g)
 {
-	anigif_t p;
-	p = anigif_find(g);
-	if (p) {
+	anim_t p;
+	p = anim_find(g);
+	if (p)
 		return p;
-	}
-	if (!anim_gifs)	{
-		anim_gifs = g;
+	if (!anim_list)	{
+		anim_list = g;
 		g->next = NULL;
 		g->prev = NULL;
 		return g;
 	}
-	for (p = anim_gifs; p && p->next; p = p->next);
+	for (p = anim_list; p && p->next; p = p->next);
 	p->next = g;
 	g->next = NULL;
 	g->prev = p;
 	return g;
 }
 
-static anigif_t anigif_del(anigif_t g)
+static anim_t anim_del(anim_t g)
 {
 	if (g->prev == NULL)
-		anim_gifs = g->next;
+		anim_list = g->next;
 	else
 		g->prev->next = g->next;
 	if (g->next)
@@ -465,7 +447,7 @@ static anigif_t anigif_del(anigif_t g)
 	return g;
 }
 
-static void anigif_free_spawn(anigif_t g)
+static void anim_free_spawn(anim_t g)
 {
 	int i;
 	for (i = 0; i < g->spawn_nr; i++)
@@ -477,10 +459,10 @@ static void anigif_free_spawn(anigif_t g)
 	}
 }
 
-static void anigif_free(anigif_t g)
+static void anim_free(anim_t g)
 {
-	AG_FreeSurfaces(g->frames, g->nr_frames);
-	anigif_free_spawn(g);
+	FreeAnimation(g->anim);
+	anim_free_spawn(g);
 	free(g);
 }
 
@@ -495,16 +477,16 @@ static void gfx_free_img(img_t p)
 
 void gfx_free_image(img_t p)
 {
-	anigif_t ag;
+	anim_t ag;
 	if (!p)
 		return;
 	if (!cache_forget(images, p))
 		return; /* cached sprite */
-	if ((ag = is_anigif(p))) {
+	if ((ag = is_anim(p))) {
 		if (ag->drawn)
-			anigif_drawn_nr --;
-		anigif_del(ag);
-		anigif_free(ag);
+			anim_drawn_nr --;
+		anim_del(ag);
+		anim_free(ag);
 		return;
 	}
 	gfx_free_img(p);
@@ -773,7 +755,7 @@ img_t gfx_display_alpha(img_t src)
 		return NULL;
 	if (!screen)
 		return src;
-	if (is_anigif(src)) /* already optimized */
+	if (is_anim(src)) /* already optimized */
 		return src;
 #if SDL_VERSION_ATLEAST(2,0,0)
 	if (Surf(screen)->format == Surf(src)->format) { /* fast path! */
@@ -1133,56 +1115,76 @@ cache_t gfx_image_cache(void)
 	return images;
 }
 
-static anigif_t ag_new(int nr)
+static anim_t anim_new(Animation_t *anim)
 {
-	anigif_t agif = malloc(anigif_size(nr));
-	if (!agif)
+	anim_t ag = malloc(sizeof(struct _anim_t));
+	if (!ag)
 		return NULL;
-	memset(agif, 0, anigif_size(nr));
-	agif->nr_frames = nr;
-	return agif;
+	memset(ag, 0, sizeof(struct _anim_t));
+	ag->anim = anim;
+	ag->nr_frames = anim->count;
+	ag->loop = anim->loop;
+	return ag;
 }
 
-static anigif_t ag_dup(anigif_t ag)
+static anim_t anim_clone(anim_t ag)
 {
-	anigif_t agif = malloc(anigif_size(ag->nr_frames));
-	if (!agif)
+	int i;
+	anim_t nag = malloc(sizeof(struct _anim_t));
+	if (!nag)
 		return NULL;
-	memcpy(agif, ag, anigif_size(ag->nr_frames));
-	agif->cur_frame = 0;
-	agif->drawn = 0;
-	agif->active = 0;
-	agif->delay = 0;
-	agif->spawn_nr = 0;
-	agif->spawn = NULL;
-	return agif;
+	memcpy(nag, ag, sizeof(struct _anim_t));
+	nag->cur_frame = 0;
+	nag->drawn = 0;
+	nag->active = 0;
+	nag->delay = 0;
+	nag->spawn_nr = 0;
+	nag->spawn = NULL;
+	nag->anim = malloc(sizeof(Animation_t));
+	if (!nag->anim)
+		goto err;
+	memcpy(nag->anim, ag->anim, sizeof(Animation_t));
+	nag->anim->delays = malloc(sizeof(int) * nag->nr_frames);
+	nag->anim->frames = malloc(sizeof(SDL_Surface *) * nag->nr_frames);
+	if (!nag->anim->delays || !nag->anim->frames)
+		goto err;
+	for (i = 0; i < nag->nr_frames; i ++) {
+		nag->anim->frames[i] = ag->anim->frames[i];
+		nag->anim->delays[i] = ag->anim->delays[i];
+	}
+	return nag;
+err:
+	if (nag->anim) {
+		if (nag->anim->delays)
+			free(nag->anim->delays);
+		if (nag->anim->frames)
+			free(nag->anim->frames);
+		free(nag->anim);
+	}
+	free(nag);
+	return NULL;
 }
 
 static img_t _gfx_load_image(char *filename, int combined)
 {
 	SDL_RWops *rw;
 	img_t img;
-	int nr = 0;
+	Animation_t *anim = NULL;
 	filename = strip(filename);
 	img = _gfx_load_special_image(filename, combined);
 	if (img)
 		return img;
-	if (strstr(filename,".gif") || strstr(filename,".GIF"))
-		nr = AG_LoadGIF(filename, NULL, 0, NULL);
-	if (nr > 1) { /* anigif logic */
-		int loop = 0;
-		anigif_t agif = ag_new(nr);
-		if (!agif)
+	if (strstr(filename,".gif") || strstr(filename,".GIF")) /* only agif now */
+		anim = GIF_LoadAnim(filename);
+	if (anim) { /* animation logic */
+		anim_t ag = anim_new(anim);
+		if (!ag)
 			return NULL;
-		AG_LoadGIF(filename, agif->frames, nr, &loop);
-		AG_NormalizeSurfacesToDisplayFormat( agif->frames, nr);
-		agif->loop = loop;
-		anigif_add(agif);
-/*		fprintf(stderr, "anigif: %s %p\n", filename, agif->frames[0].surface); */
-		img = gfx_new_img(agif->frames[0].surface, IMG_ANIGIF, agif, 0);
+		anim_add(ag);
+		img = gfx_new_img(ag->anim->frames[0], IMG_ANIM, ag, 0);
 		if (!img) {
-			anigif_del(agif);
-			anigif_free(agif);
+			anim_del(ag);
+			anim_free(ag);
 		}
 		return img;
 	}
@@ -1396,7 +1398,7 @@ void gfx_copy_from(img_t p, int x, int y, int width, int height, img_t to, int x
 
 void gfx_draw(img_t p, int x, int y)
 {
-	anigif_t ag;
+	anim_t ag;
 	SDL_Surface *pixbuf = Surf(p);
 	SDL_Rect dest;
 	if (!p)
@@ -1405,54 +1407,54 @@ void gfx_draw(img_t p, int x, int y)
 	dest.y = y;
 	dest.w = pixbuf->w;
 	dest.h = pixbuf->h;
-	if (!DIRECT_MODE) /* no gifs in direct mode */
-		ag = is_anigif(p);
+	if (!DIRECT_MODE) /* no anim in direct mode */
+		ag = is_anim(p);
 	else
 		ag = NULL;
 	if (ag) {
-		anigif_spawn(ag, x, y, dest.w, dest.h);
+		anim_spawn(ag, x, y, dest.w, dest.h);
 		if (!ag->drawn)
-			anigif_drawn_nr ++;
+			anim_drawn_nr ++;
+		anim_frame(ag);
 		ag->drawn = 1;
 		ag->active = 1;
-		anigif_frame(ag);
 		return;
 	}
 	SDL_BlitSurface(pixbuf, NULL, Surf(screen), &dest);
 }
 
-void gfx_stop_gif(img_t p)
+void gfx_stop_anim(img_t p)
 {
-	anigif_t ag;
-	ag = is_anigif(p);
+	anim_t ag;
+	ag = is_anim(p);
 	if (ag)
 		ag->active = 0;
 }
 
-void gfx_dispose_gif(img_t p)
+void gfx_dispose_anim(img_t p)
 {
-	anigif_t ag;
-	ag = is_anigif(p);
+	anim_t ag;
+	ag = is_anim(p);
 	if (ag) {
 		if (ag->drawn)
-			anigif_drawn_nr --;
+			anim_drawn_nr --;
 		ag->drawn = 0;
-		anigif_free_spawn(ag);
+		anim_free_spawn(ag);
 	}
 }
 
-void gfx_start_gif(img_t p)
+void gfx_start_anim(img_t p)
 {
-	anigif_t ag;
-	ag = is_anigif(p);
+	anim_t ag;
+	ag = is_anim(p);
 	if (ag)
 		ag->active = 1;
 }
 
-int gfx_frame_gif(img_t img)
+int gfx_frame_anim(img_t img)
 {
-	anigif_t ag;
-	ag = is_anigif(img);
+	anim_t ag;
+	ag = is_anim(img);
 
 	if (!ag)
 		return 0;
@@ -1462,11 +1464,11 @@ int gfx_frame_gif(img_t img)
 	if (ag->loop == -1)
 		return 0;
 
-	if ((timer_counter - ag->delay) < (ag->frames[ag->cur_frame].delay / HZ))
+	if ((timer_counter - ag->delay) < (ag->anim->delays[ag->cur_frame] / HZ))
 		return 0;
 
 	if (ag->cur_frame != ag->nr_frames - 1 || ag->loop > 1 || !ag->loop)
-		anigif_disposal(ag);
+		anim_disposal(ag);
 
 	ag->cur_frame ++;
 
@@ -1483,21 +1485,21 @@ int gfx_frame_gif(img_t img)
 
 	}
 	if (ag->loop != -1)
-		anigif_frame(ag);
+		anim_frame(ag);
 
 	return 1;
 }
 
-int gfx_is_drawn_gifs(void)
+int gfx_is_drawn_anims(void)
 {
-	return anigif_drawn_nr;
+	return anim_drawn_nr;
 }
 
-void gfx_update_gif(img_t img, update_fn update)
+void gfx_update_anim(img_t img, update_fn update)
 {
 	int i = 0;
-	anigif_t ag;
-	ag = is_anigif(img);
+	anim_t ag;
+	ag = is_anim(img);
 	if (!ag)
 		return;
 	if (!ag->drawn || !ag->active)
@@ -1523,16 +1525,26 @@ void gfx_draw_wh(img_t p, int x, int y, int w, int h)
 	SDL_BlitSurface(pixbuf, &src, Surf(screen), &dest);
 }
 static SDL_Color bgcol = { .r = 0, .g = 0, .b = 0 };
+static SDL_Color brdcol = { .r = 0, .g = 0, .b = 0 };
+static SDL_Rect brd = { .x = 0, .y = 0, .w = -1, .h = -1 };
 
-void gfx_bg(color_t col)
+void gfx_bg(int x, int y, int w, int h, color_t col, color_t bcol)
 {
+	brd.x = x;
+	brd.y = y;
+	brd.w = w;
+	brd.h = h;
 	bgcol.r = col.r;
 	bgcol.g = col.g;
 	bgcol.b = col.b;
+	brdcol.r = bcol.r;
+	brdcol.g = bcol.g;
+	brdcol.b = bcol.b;
 }
 
 void gfx_clear(int x, int y, int w, int h)
 {
+	int dx, dy;
 	SDL_Rect dest;
 	SDL_Surface *s = Surf(screen);
 	if (!s)
@@ -1541,7 +1553,28 @@ void gfx_clear(int x, int y, int w, int h)
 	dest.y = y;
 	dest.w = w;
 	dest.h = h;
-	SDL_FillRect(s, &dest, SDL_MapRGB(s->format, bgcol.r, bgcol.g, bgcol.b));
+	if (x < brd.x || y < brd.y || x + w >= brd.x + brd.w || y + h >= brd.y + brd.h) {
+		SDL_FillRect(s, &dest, SDL_MapRGB(s->format, brdcol.r, brdcol.g, brdcol.b));
+		dx = brd.x - x;
+		dy = brd.y - y;
+		if (dx > 0) {
+			dest.x += dx;
+			dest.w -= dx;
+		}
+		if (dy > 0) {
+			dest.y += dy;
+			dest.h -= dy;
+		}
+		dx = (brd.x + brd.w) - (dest.x + dest.w);
+		dy = (brd.y + brd.h) - (dest.y + dest.h);
+		if (dx < 0)
+			dest.w += dx;
+		if (dy < 0)
+			dest.h += dy;
+		if (dest.w > 0 && dest.h > 0)
+			SDL_FillRect(s, &dest, SDL_MapRGB(s->format, bgcol.r, bgcol.g, bgcol.b));
+	} else
+		SDL_FillRect(s, &dest, SDL_MapRGB(s->format, bgcol.r, bgcol.g, bgcol.b));
 }
 
 int gfx_width = -1;
@@ -1786,6 +1819,11 @@ static int current_gfx_w = - 1;
 static int current_gfx_h = - 1;
 #endif
 #endif
+
+#if defined(ANDROID)
+extern void get_screen_size(int *w, int *h);
+#endif
+
 int gfx_get_max_mode(int *w, int *h, int o)
 {
 	int ww = 0, hh = 0;
@@ -1796,7 +1834,13 @@ int gfx_get_max_mode(int *w, int *h, int o)
 #else
  #if SDL_VERSION_ATLEAST(2,0,0)
 	SDL_DisplayMode desktop_mode;
-  #if defined(ANDROID) || defined(IOS)
+  #if defined(ANDROID)
+	if (o == MODE_ANY) {
+		get_screen_size(w, h);
+		return 0;
+	}
+  #endif
+  #if defined(IOS)
 	if (o == MODE_ANY && current_gfx_w != -1) {
 		*w = current_gfx_w;
 		*h = current_gfx_h;
@@ -1842,6 +1886,8 @@ int gfx_get_max_mode(int *w, int *h, int o)
 		i ++;
 	}
 #endif
+	if (*w == 0 || *h == 0) /* no suitable mode */
+		return -1;
 	return 0;
 }
 
@@ -1974,6 +2020,17 @@ static int mouse_watcher(void *userdata, SDL_Event *event)
 	}
 	return 0;
 }
+
+void gfx_real_size(int *ww, int *hh)
+{
+	int w, h;
+	SDL_GetWindowSize(SDL_VideoWindow, &w, &h);
+	if (ww)
+		*ww = w;
+	if (hh)
+		*hh = h;
+}
+
 void gfx_finger_pos_scale(float x, float y, int *ox, int *oy, int norm)
 {
 	int xx = 0, yy = 0;
@@ -2141,7 +2198,11 @@ int gfx_set_mode(int w, int h, int fs)
 
 #if defined(IOS) || defined(ANDROID) || defined(WINRT) || defined(SAILFISHOS)
 	SDL_VideoWindow = SDL_CreateWindow(t, window_x, window_y, win_w, win_h,
-			SDL_WINDOW_OPENGL | SDL_WINDOW_BORDERLESS | SDL_WINDOW_RESIZABLE);
+			SDL_WINDOW_OPENGL | SDL_WINDOW_BORDERLESS | SDL_WINDOW_RESIZABLE
+#if defined(ANDROID)
+			| SDL_WINDOW_FULLSCREEN_DESKTOP
+#endif
+			);
 	if (!SDL_VideoWindow) {
 		fprintf(stderr, "Fallback to software window.\n");
 		SDL_VideoWindow = SDL_CreateWindow(t, window_x, window_y, win_w, win_h,
@@ -2543,40 +2604,37 @@ void gfx_video_done(void)
 
 img_t gfx_scale(img_t src, float xscale, float yscale, int smooth)
 {
-	anigif_t ag;
-	if ((ag = is_anigif(src))) {
+	anim_t ag;
+	if ((ag = is_anim(src))) {
 		int i;
 		int err = 0;
 		img_t img = NULL;
-		anigif_t ag2;
-		ag2 = ag_dup(ag);
+		anim_t ag2;
+		ag2 = anim_clone(ag);
 
 		if (!ag2)
 			return NULL;
 
 		for (i = 0; i < ag->nr_frames; i ++) {
 			SDL_Surface *s;
-			s = (err) ? NULL : zoomSurface(ag->frames[i].surface, xscale, yscale, 1);
+			s = (err) ? NULL : zoomSurface(ag->anim->frames[i], xscale, yscale, 1);
 
 			if (!s) {
 				err ++;
-				ag2->frames[i].surface = NULL;
+				ag2->anim->frames[i] = NULL;
 				continue;
 			}
-
-			ag2->frames[i].surface = s;
-			ag2->frames[i].x = (float)(ag2->frames[i].x) * xscale;
-			ag2->frames[i].y = (float)(ag2->frames[i].y) * yscale;
+			ag2->anim->frames[i] = s;
 		}
 		if (err) {
-			anigif_free(ag2);
+			anim_free(ag2);
 			return NULL;
 		}
-		anigif_add(ag2); /* scaled anigif added */
-		img = gfx_new_img(ag2->frames[0].surface, IMG_ANIGIF, ag2, 0);
+		anim_add(ag2); /* scaled anim added */
+		img = gfx_new_img(ag2->anim->frames[0], IMG_ANIM, ag2, 0);
 		if (!img) {
-			anigif_del(ag2);
-			anigif_free(ag2);
+			anim_del(ag2);
+			anim_free(ag2);
 		}
 		return img;
 	}
@@ -2585,89 +2643,40 @@ img_t gfx_scale(img_t src, float xscale, float yscale, int smooth)
 
 img_t gfx_rotate(img_t src, float angle, int smooth)
 {
-	anigif_t ag;
+	anim_t ag;
 
-	float rangle = (angle) * (M_PI / 180.0);
-
-	if ((ag = is_anigif(src))) {
+	if ((ag = is_anim(src))) {
 		int i;
-		int w,h;
 		int err = 0;
 		img_t img = NULL;
 
-		anigif_t ag2;
+		anim_t ag2;
 
-		float x, y;
-
-		ag2 = ag_dup(ag);
+		ag2 = anim_clone(ag);
 
 		if (!ag2)
 			return NULL;
 
-		w = gfx_img_w(src);
-		h = gfx_img_h(src);
-
 		for (i = 0; i < ag->nr_frames; i ++) {
-			float x1, y1, x2, y2, x3, y3, x4, y4;
-
-			int w2, h2;
-			float rsin, rcos;
-
 			SDL_Surface *s;
-			s = (err) ? NULL : rotozoomSurface(ag->frames[i].surface, angle, 1.0f, smooth);
+			s = (err) ? NULL : rotozoomSurface(ag->anim->frames[i], angle, 1.0f, smooth);
 
 			if (!s) {
 				err ++;
-				ag2->frames[i].surface = NULL;
+				ag2->anim->frames[i] = NULL;
 				continue;
 			}
-
-			rsin = sin(rangle);
-			rcos = cos(rangle);
-
-			x = (float)(ag->frames[i].x) - (float)w / 2;
-			y = (float)(ag->frames[i].y) - (float)h / 2;
-
-			w2 = ag->frames[i].surface->w;
-			h2 = ag->frames[i].surface->h;
-
-			ag2->frames[i].surface = s;
-
-			x1 = x * rcos - y * rsin;
-			y1 = y * rcos + x * rsin;
-
-			x2 = (x + (float)w2) * rcos - y * rsin;
-			y2 = y * rcos + (x + (float)w2) * rsin;
-
-			x3 = x * rcos - (y + (float)h2) * rsin;
-			y3 = (y + (float)h2) * rcos + x * rsin;
-
-			x4 = (x + (float)w2) * rcos - (y + (float)h2) * rsin;
-			y4 = (y + (float)h2) * rcos + (x + (float)w) * rsin;
-
-			if (x1 > x2) x1 = x2;
-			if (x1 > x3) x1 = x3;
-			if (x1 > x4) x1 = x4;
-
-			if (y1 > y2) y1 = y2;
-			if (y1 > y3) y1 = y3;
-			if (y1 > y4) y1 = y4;
-
-			w2 = s->w;
-			h2 = s->h;
-
-			ag2->frames[i].x = x1 + (float)w2 / 2;
-			ag2->frames[i].y = y1 + (float)h2 / 2;
+			ag2->anim->frames[i] = s;
 		}
 		if (err) {
-			anigif_free(ag2);
+			anim_free(ag2);
 			return NULL;
 		}
-		anigif_add(ag2); /* rotated anigif added */
-		img = gfx_new_img(ag2->frames[0].surface, IMG_ANIGIF, ag2, 0);
+		anim_add(ag2); /* rotated anim added */
+		img = gfx_new_img(ag2->anim->frames[0], IMG_ANIM, ag2, 0);
 		if (!img) {
-			anigif_del(ag2);
-			anigif_free(ag2);
+			anim_del(ag2);
+			anim_free(ag2);
 		}
 		return img;
 	}
@@ -2934,6 +2943,12 @@ struct word {
 	int unbrake;
 	int valign;
 	int img_align;
+
+	/* Direction and Script (Language) of the word */
+	int rtl;
+	int script;		/* See HarfBuzz hb_script_t */
+	int isalpha;	/* Whether this word contains alphabets */
+
 	char *word;
 	img_t	img;
 	struct word *next; /* in line */
@@ -2951,6 +2966,53 @@ img_t	word_image(word_t v)
 	if (!w)
 		return NULL;
 	return w->img;
+}
+
+#ifdef _USE_HARFBUZZ
+static int hb_dir(int rtl)
+{
+	return rtl ? HB_DIRECTION_RTL:HB_DIRECTION_LTR;
+}
+#endif
+
+/* This function detects and configures direction, script and type of a word. */
+static void word_detect_rtl(struct word *w, int mode)
+{
+#ifdef _USE_HARFBUZZ
+	const char *str = w->word;
+	int rc;
+	unsigned long sym = 0;
+	if (mode == 0) /* force ltr mode */
+		return;
+	/*	Find the first alphanumeric utf8 character for a meaningful direction
+		or use direction of the first character.
+	*/
+	while ((rc = get_utf8(str, &sym))) {
+		if (g_unichar_isalpha(sym))
+			break;
+		str += rc;
+	}
+	/* Is this made of alphabets? */
+	w->isalpha = g_unichar_isalpha(sym);
+	if (mode == 1) { /* force rtl */
+		w->rtl = 1;
+		w->script = HB_SCRIPT_COMMON;
+		return;
+	}
+	switch(g_unichar_get_script(sym)) {
+		case G_UNICODE_SCRIPT_HEBREW:
+			w->rtl = !g_unichar_isdigit(sym);
+			w->script = HB_SCRIPT_HEBREW;
+			/* Fall through */
+		case G_UNICODE_SCRIPT_ARABIC:
+			w->rtl = !g_unichar_isdigit(sym);
+			w->script = HB_SCRIPT_ARABIC;
+			break;
+		default:
+			w->rtl = 0;
+			w->script = HB_SCRIPT_COMMON;
+	}
+#endif
 }
 
 struct word *word_new(const char *str)
@@ -2972,6 +3034,11 @@ struct word *word_new(const char *str)
 	w->unbrake = 0;
 	w->prerend = NULL;
 	w->hlprerend = NULL;
+
+	w->rtl = 0;
+	w->script = 0;
+	w->isalpha = 0;
+
 	return w;
 }
 
@@ -2987,6 +3054,10 @@ struct line {
 	int	al_tabx;
 	int	taby;
 	int	al_taby;
+
+	/* Each line could be RTL or LTR regardless of its script */
+	int rtl;
+
 	struct word *words;
 	struct line *next;
 	struct line *prev;
@@ -2994,6 +3065,8 @@ struct line {
 };
 
 static int vertical_align(struct word *w, int *hh);
+
+static int word_pos_x(struct word *word);
 
 int	word_geom(word_t v, int *x, int *y, int *w, int *h)
 {
@@ -3003,7 +3076,7 @@ int	word_geom(word_t v, int *x, int *y, int *w, int *h)
 	if (!word || !word->line)
 		return -1;
 	line = word->line;
-	xx = word->x + line->x;
+	xx = word_pos_x(word);
 	ww = word->w;
 	yy = line->y;
 	yy += vertical_align(v, &hh);
@@ -3039,6 +3112,7 @@ struct line *line_new(void)
 	l->layout = NULL;
 	l->align = 0;
 	l->pos = 0;
+	l->rtl = 0;
 	return l;
 }
 
@@ -3194,6 +3268,11 @@ void line_add_word(struct line *l, struct word *word)
 	if (!l->words) {
 		l->words = word;
 		word->prev = word;
+
+		/*	This is the first word in this line. Let's use its direction
+			for the line too. Ideally, something like fribidi should be
+			used for mixing directions however. */
+		l->rtl = word->rtl;
 		return;
 	}
 	w = w->prev;
@@ -3285,6 +3364,7 @@ struct layout {
 	int acnt;
 	int vcnt;
 	int style;
+	int rtl;
 	int scnt[4];
 	int lstyle;
 	cache_t img_cache;
@@ -3549,6 +3629,7 @@ struct layout *layout_new(fnt_t fn, int w, int h)
 	l->valign = 0;
 	l->style = 0;
 	l->lstyle = 0;
+	l->rtl = 0;
 	l->xrefs = NULL;
 	l->margin = NULL;
 	l->col = gfx_col(0, 0, 0);
@@ -4100,6 +4181,14 @@ void txt_layout_color(layout_t lay, color_t fg)
 	layout->col = fg;
 }
 
+void txt_layout_rtl(layout_t lay, int rtl)
+{
+	struct layout *layout = (struct layout*)lay;
+	if (!lay)
+		return;
+	layout->rtl = rtl;
+}
+
 void	txt_layout_font_height(layout_t lay, float height)
 {
 	struct layout *layout = (struct layout*)lay;
@@ -4171,7 +4260,11 @@ static void word_render(struct layout *layout, struct word *word, int x, int y)
 	}
 	if (!wc)
 		return;
-
+#ifdef _USE_HARFBUZZ
+	/* Set the language and script for SDL_ttf */
+	TTF_SetDirection(hb_dir(word->rtl));
+	TTF_SetScript(word->script);
+#endif
 	if (!word->xref) {
 		if (!word->prerend) {
 			prerend = cache_get(layout->prerend_cache, wc);
@@ -4210,6 +4303,11 @@ static void word_render(struct layout *layout, struct word *word, int x, int y)
 		s = word->prerend;
 	}
 	free(wc);
+#ifdef _USE_HARFBUZZ
+	/* Drop to defaults */
+	TTF_SetDirection(HB_DIRECTION_LTR);
+	TTF_SetScript(HB_SCRIPT_COMMON);
+#endif
 	if (!s)
 		return;
 	gfx_draw(s, x, y);
@@ -4245,36 +4343,55 @@ static int vertical_align(struct word *w, int *hh)
 	return (line->h - h) / 2;
 }
 
+/* relative position in line */
+static int line_pos(struct line *line, int x)
+{
+	if (!line->rtl)
+		return x;
+	return line->layout->w - line->x - x;
+}
+
+/* absolute position of word */
+static int word_pos_x(struct word *word)
+{
+	struct line *line = word->line;
+	struct layout *layout = line->layout;
+	if (word->img && word->img_align) {
+		if (line->rtl)
+			return layout->w - word->x - gfx_img_w(word->img);
+		return word->x;
+	}
+	if (!line->rtl) /* fast path */
+		return line->x + word->x;
+	if (word->img)
+		return layout->w - line->x - word->x - gfx_img_w(word->img);
+	return layout->w - line->x - word->x - word->w;
+}
+
 static void word_image_render(struct word *word, int x, int y, clear_fn clear, update_fn update)
 {
 	struct line *line = word->line;
 	struct layout *layout = line->layout;
-	int yy;
+	int yy; int posx = word_pos_x(word);
 
 	if (clear && !word->xref)
 		return;
 	yy = vertical_align(word, NULL);
-
 	if (clear) {
 		if (word->img) {
-			if (word->img_align)
-				clear(x + word->x, y + line->y + yy, gfx_img_w(word->img), gfx_img_h(word->img));
-			else
-				clear(x + line->x + word->x, y + line->y + yy, gfx_img_w(word->img), gfx_img_h(word->img));
+			clear(x + posx, y + line->y + yy, gfx_img_w(word->img), gfx_img_h(word->img));
 		} else
-			clear(x + line->x + word->x, y + line->y/* + yy*/, word->w, line->h);
+			clear(x + posx, y + line->y/* + yy*/, word->w, line->h);
 	}
 	if (word->img) {
-		if (word->img_align)
-			gfx_draw(word->img, x + word->x, y + line->y + yy);
-		else
-			gfx_draw(word->img, x + line->x + word->x, y + line->y + yy);
+		/* We have an image to draw */
+		gfx_draw(word->img, x + posx, y + line->y + yy);
 		if (update)
-			update(x + word->x, y + line->y + yy, gfx_img_w(word->img), gfx_img_h(word->img));
+			update(x + posx, y + line->y + yy, gfx_img_w(word->img), gfx_img_h(word->img));
 	} else {
-		word_render(layout, word, x + line->x + word->x, y + yy + line->y);
+		word_render(layout, word, x + posx, y + yy + line->y);
 		if (update)
-			update(x + line->x + word->x, y + line->y + yy, word->w, line->h);
+			update(x + posx, y + line->y + yy, word->w, line->h);
 	}
 }
 
@@ -4301,6 +4418,7 @@ void xref_update(xref_t pxref, int x, int y, clear_fn clear, update_fn update)
 	gfx_noclip();
 }
 
+/* Draws everything */
 void txt_layout_draw_ex(layout_t lay, struct line *line, int x, int y, int off, int height, clear_fn clear)
 {
 	void *v;
@@ -4313,7 +4431,7 @@ void txt_layout_draw_ex(layout_t lay, struct line *line, int x, int y, int off, 
 	if (!lay)
 		return;
 	for (v = NULL; (img = txt_layout_images(lay, &v)); )
-		gfx_dispose_gif(img);
+		gfx_dispose_anim(img);
 
 	for (margin = layout->margin; margin; margin = margin->next) {
 		if (margin->y + margin->h < off)
@@ -4625,24 +4743,29 @@ xref_t txt_box_xref(textbox_t tbox, int x, int y)
 		return NULL;
 	if (x >= box->w)
 		return NULL;
+
+	/* Process each word in each line */
 	for (line = box->line; line; line = line->next) {
-		int hh, yy;
+		int hh, yy, lx;
 		if (y < line->y)
 			break;
 		if (y > line->y + line->h)
 			continue;
+		lx = line_pos(line, x);
 		for (word = line->words; word; word = word->next) {
 			yy = vertical_align(word, &hh);
 			if (y < line->y + yy || y > line->y + yy + hh)
 				continue;
-			if (x < line->x + word->x)
+			if (lx < line->x + word->x)
 				continue;
 			xref = word->xref;
+
+			/* Go back. Found nothing. */
 			if (!xref)
 				continue;
-			if (x < line->x + word->x + word->w)
-				break;
-			if (word->next && word->next->xref == xref && x < line->x + word->next->x + word->next->w) {
+			if (lx < line->x + word->x + word->w)
+					break;
+			if (word->next && word->next->xref == xref && lx < line->x + word->next->x + word->next->w) {
 				yy = vertical_align(word->next, &hh);
 				if (y < line->y + yy || y > line->y + yy + hh)
 					continue;
@@ -4651,6 +4774,7 @@ xref_t txt_box_xref(textbox_t tbox, int x, int y)
 		}
 	}
 	if (word && xref) {
+		/* We found a highlighted word. */
 		return xref;
 	}
 	return NULL;
@@ -4684,6 +4808,7 @@ img_t txt_box_render(textbox_t tbox)
 	return dst;
 }
 
+/* Draws game content */
 void txt_box_draw(textbox_t tbox, int x, int y)
 {
 	struct textbox *box = (struct textbox *)tbox;
@@ -5050,6 +5175,28 @@ static void word_x(struct line *line, struct word *word, int width)
 	line->align = ALIGN_LEFT;
 }
 
+#ifdef _USE_HARFBUZZ
+static void layout_lines_dir(struct layout *layout)
+{
+	/*	Set direction of each line based on the first non-image,
+		alphabet word in that line. */
+	struct word *word = NULL;
+	struct line *ln = NULL;
+	for (ln = layout->lines; ln; ln = ln->next) {
+		for (word = ln->words; word; word = word->next ) {
+			/* Continue until we get a word with some text (not letters or symbols) */
+			if (!word->isalpha)
+				continue;
+
+			if (!word->img) {
+				ln->rtl = word->rtl;
+				break;
+			}
+		}
+	}
+}
+#endif
+
 void _txt_layout_add(layout_t lay, char *txt)
 {
 	int sp = 0;
@@ -5063,7 +5210,7 @@ void _txt_layout_add(layout_t lay, char *txt)
 	char *p, *eptr;
 	char *ptr = txt;
 	struct xref *xref = NULL;
-	int w, h = 0, nl = 0;
+	int w = 0, h = 0, nl = 0;
 	int spw;
 	img_t img = NULL;
 	if (!layout || !layout->fn)
@@ -5136,7 +5283,22 @@ void _txt_layout_add(layout_t lay, char *txt)
 			p = get_word_token(p, &wtok);
 			if (wtok && *p == 0)
 				sp = 1;
+#ifdef _USE_HARFBUZZ
+			/* Correct size depends on the script and direction.
+			   Set them correctly before calling txt_size */
+			word = word_new(p);
+			if (word) {
+				word_detect_rtl(word, layout->rtl);
+				TTF_SetDirection(hb_dir(word->rtl));
+				TTF_SetScript(word->script);
+				txt_size(layout->fn, p, &w, &h);
+				TTF_SetDirection(HB_DIRECTION_LTR);
+				TTF_SetScript(HB_SCRIPT_COMMON);
+				free(word);
+			}
+#else
 			txt_size(layout->fn, p, &w, &h);
+#endif
 			h *= layout->fn_height;
 		}
 		nl = (wtok)?0:!*p;
@@ -5172,7 +5334,6 @@ void _txt_layout_add(layout_t lay, char *txt)
 			line->h = 0;/* h; */
 			line->y = ol->y + ol->h;
 
-
 /*			line->x = 0; */
 			line->x = layout_find_margin(layout, line->y, &width);
 /*			fprintf(stderr,"%d %d\n", line->x, width); */
@@ -5195,6 +5356,7 @@ void _txt_layout_add(layout_t lay, char *txt)
 			free(p);
 			goto err;
 		}
+		word_detect_rtl(word, layout->rtl);
 		word->valign = layout->valign;
 		if (!sp && !line_empty(line))
 			word->unbrake = 1;
@@ -5254,6 +5416,9 @@ void _txt_layout_add(layout_t lay, char *txt)
 		ptr = eptr;
 		free(p);
 	}
+#ifdef _USE_HARFBUZZ
+	layout_lines_dir(layout);
+#endif
 	if (layout->h == 0)
 		layout->h = line->y + line->h;
 
@@ -5352,7 +5517,7 @@ int xref_position(xref_t x, int *xc, int *yc)
 		return -1;
 
 	if (xc)
-		*xc = line->x + word->x + (word->w + w);
+		*xc = line_pos(line, line->x + word->x + word->w + w);
 	if (yc)
 		*yc = line->y + line->h / 2;
 	return 0;
@@ -5368,9 +5533,10 @@ xref_t txt_layout_xref(layout_t lay, int x, int y)
 		return NULL;
 	for (xref = layout->xrefs; xref; xref = xref->next) {
 		for (i = 0; i < xref->num; i ++) {
-			int hh,yy;
+			int hh, yy, lx;
 			word = xref->words[i];
 			line = word->line;
+			lx = line_pos(line, x);
 			if (word->img_align)
 				continue;
 			if (y < line->y || y > line->y + line->h)
@@ -5378,11 +5544,11 @@ xref_t txt_layout_xref(layout_t lay, int x, int y)
 			yy = vertical_align(word, &hh);
 			if (y < line->y + yy || y > line->y + yy + hh)
 				continue;
-			if (x < line->x + word->x)
+			if (lx < line->x + word->x)
 				continue;
-			if (x <= line->x + word->x + word->w)
+			if (lx <= line->x + word->x + word->w)
 				return xref;
-			if (word->next && word->next->xref == xref && x < line->x + word->next->x + word->next->w) {
+			if (word->next && word->next->xref == xref && lx < line->x + word->next->x + word->next->w) {
 				yy = vertical_align(word->next, &hh);
 				if (y < line->y + yy || y > line->y + yy + hh)
 					continue;
@@ -5600,10 +5766,6 @@ static Uint32 update(Uint32 interval, void *aux)
 {
 	if (!gfx_fading())
 		return 0;
-#ifdef __EMSCRIPTEN__
-	SDL_RemoveTimer(fade_timer);
-	fade_timer = SDL_AddTimer(60, update, NULL);
-#endif
 	if (gfx_change_nr > 0)
 		return interval;
 	gfx_change_nr ++;

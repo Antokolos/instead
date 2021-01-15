@@ -23,30 +23,30 @@ else
 	zlib_libs="pkg-config --libs zlib"
 fi
 
-echo -n "Checking pkg-config --cflags gtk+-2.0..."
-if ! pkg-config --cflags gtk+-2.0 >/dev/null 2>&1; then
+echo -n "Checking pkg-config --cflags gtk+-3.0..."
+if ! pkg-config --cflags gtk+-3.0 >/dev/null 2>&1; then
 	echo "no"
-	echo -n "Checking pkg-config --cflags gtk+-3.0..."
-	if ! pkg-config --cflags gtk+-3.0 >/dev/null 2>&1; then
+	echo -n "Checking pkg-config --cflags gtk+-2.0..."
+	if ! pkg-config --cflags gtk+-2.0 >/dev/null 2>&1; then
 		echo "no open file dialog"
 		gtk_cflags=
 		gtk_libs=
 	else
 		echo "yes"
-		gtk_cflags="pkg-config --cflags gtk+-3.0"
-		gtk_libs="pkg-config --libs gtk+-3.0"
+		gtk_cflags="pkg-config --cflags gtk+-2.0"
+		gtk_libs="pkg-config --libs gtk+-2.0"
 	fi
 else
 	echo "yes"
-	gtk_cflags="pkg-config --cflags gtk+-2.0"
-	gtk_libs="pkg-config --libs gtk+-2.0"
+	gtk_cflags="pkg-config --cflags gtk+-3.0"
+	gtk_libs="pkg-config --libs gtk+-3.0"
 fi
 
 
 
-echo -n "Checking pkg-config --cflags lua[5.1|5.2|51|52|jit]..."
+echo -n "Checking pkg-config --cflags lua[jit|5.1|5.2|51|52]..."
 if [ "x$LUA" = "x" ]; then
-	lua_ver="lua5.1 lua5.2 lua lua-5.1 lua-5.2 lua51 lua52 luajit"
+	lua_ver="luajit lua5.1 lua5.2 lua lua-5.1 lua-5.2 lua51 lua52"
 else
 	lua_ver=$LUA
 fi
@@ -182,8 +182,8 @@ if [ ! -z "$gtk_cflags" ]; then
 fi
 if [ -z "$zlib_cflags" ]; then
 	echo "SUBDIRS=src/zlib" >> config.make
-	echo "ZLIB_CFLAGS=-I../zlib" >> config.make
-	echo "ZLIB_LFLAGS=../zlib/libz.a" >> config.make
+	echo "ZLIB_CFLAGS=-Izlib" >> config.make
+	echo "ZLIB_LFLAGS=zlib/libz.a" >> config.make
 elif [ "$zlib_cflags" = "x" ]; then
 	echo "ZLIB_CFLAGS=" >> config.make
 	echo "ZLIB_LFLAGS=-lz" >> config.make

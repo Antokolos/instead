@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2019 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -35,9 +35,11 @@
 #define USER_EVENT	8
 #define FINGER_UP	9
 #define FINGER_DOWN	10
+#define KEY_TEXT	11
 
 #define EV_CODE_KBD -1
 #define EV_CODE_FINGER -2
+#define EV_CODE_TEXT -3
 
 #define AGAIN 2
 struct inp_event {
@@ -51,6 +53,7 @@ struct inp_event {
 
 int input(struct inp_event *ev, int wait);
 int input_init(void);
+void input_done(void);
 void input_clear(void);
 void input_uevents(void);
 void push_user_event(void (*p) (void*), void *data);
@@ -59,5 +62,6 @@ extern int minimized(void);
 extern int mouse_cursor(int on);
 extern int finger_pos(const char *finger, int *x, int *y, float *pressure);
 extern int system_clipboard(const char *text, char **buf);
+extern int input_text(int start);
 
 #endif

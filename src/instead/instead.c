@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2020 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -121,6 +121,11 @@ static int extensions_hook(enum instead_hook nr)
 
 int instead_extension(struct instead_ext *ext)
 {
+	struct instead_ext *e = NULL;
+	for_each_extension(e) {
+		if (e == ext)
+			return 0;
+	}
 	list_add(&extensions, &ext->list);
 	return 0;
 }
@@ -149,12 +154,12 @@ const char *instead_err(void)
 	return err_msg;
 }
 
-static int report (lua_State *L, int status) 
+static int report (lua_State *L, int status)
 {
 	if (status && !lua_isnil(L, -1)) {
 		char *p;
 		const char *msg = lua_tostring(L, -1);
-		if (msg == NULL) 
+		if (msg == NULL)
 			msg = "(error object is not a string)";
 		fprintf(stderr,"Error: %s\n", msg);
 		p = instead_fromgame(msg);
@@ -180,7 +185,7 @@ static int traceback (lua_State *L) {
   return 1;
 }
 #else
-static int traceback (lua_State *L) 
+static int traceback (lua_State *L)
 {
 	lua_getfield(L, LUA_GLOBALSINDEX, "debug");
 	if (!lua_istable(L, -1)) {
@@ -198,10 +203,10 @@ static int traceback (lua_State *L)
 	return 1;
 }
 #endif
-static int docall (lua_State *L, int narg) 
+static int docall (lua_State *L, int narg)
 {
 	int status;
-	int base = 0; 	
+	int base = 0;
 	if (debug_sw) {
 		base = lua_gettop(L) - narg;  /* function index */
 		lua_pushcfunction(L, traceback);  /* push traceback function */
@@ -213,7 +218,7 @@ static int docall (lua_State *L, int narg)
 	if (debug_sw)
 		lua_remove(L, base);  /* remove traceback function */
 	/* force a complete garbage collection in case of errors */
-	if (status != 0) 
+	if (status != 0)
 		lua_gc(L, LUA_GCCOLLECT, 0);
 	return status;
 }
@@ -342,7 +347,7 @@ char *instead_file_cmd(char *s, int *rc)
 	instead_function("iface:cmd", args);
 	s = instead_retval(0);
 	if (rc)
-		*rc = !instead_bretval(1); 
+		*rc = !instead_bretval(1);
 	instead_clear();
 	extensions_hook(cmd);
 	return s;
@@ -384,7 +389,7 @@ char *instead_cmd(char *s, int *rc)
 	free(s);
 	s = instead_retval(0);
 	if (rc)
-		*rc = !instead_bretval(1); 
+		*rc = !instead_bretval(1);
 	instead_clear();
 	extensions_hook(cmd);
 	if (tryloadgame())
@@ -506,13 +511,13 @@ out0:
 	return strdup(s);
 }
 #else
-char *instead_fromgame(const char *s) 
+char *instead_fromgame(const char *s)
 {
 	if (!s)
 		return NULL;
 	return strdup(s);
 }
-char *togame(const char *s) 
+char *togame(const char *s)
 {
 	if (!s)
 		return NULL;
@@ -706,6 +711,8 @@ static int luaB_dofile (lua_State *L) {
 	return lua_gettop(L) - n;
 }
 
+#if LUA_VERSION_NUM <= 503
+/* is this hack still needed? */
 static int luaB_print (lua_State *L) {
 	int n = lua_gettop(L);  /* number of arguments */
 	int i;
@@ -725,6 +732,22 @@ static int luaB_print (lua_State *L) {
 	fputs("\n", stdout);
 	return 0;
 }
+#else
+static int luaB_print (lua_State *L) {
+  int n = lua_gettop(L);  /* number of arguments */
+  int i;
+  for (i = 1; i <= n; i++) {  /* for each argument */
+    size_t l;
+    const char *s = luaL_tolstring(L, i, &l);  /* convert it to string */
+    if (i > 1)  /* not the first element? */
+      lua_writestring("\t", 1);  /* add a tab before it */
+    lua_writestring(s, l);  /* print it */
+    lua_pop(L, 1);  /* pop result */
+  }
+  lua_writeline();
+  return 0;
+}
+#endif
 
 static int luaB_maxn (lua_State *L) {
 	lua_Integer max = 0;
@@ -837,6 +860,119 @@ static int luaB_installgame(lua_State *L) {
 	return 0;
 }
 
+#define utf_cont(p) ((*(p) & 0xc0) == 0x80)
+
+static int utf_ff(const char *s, const char *e)
+{
+	int l = 0;
+	if (!s || !e)
+		return 0;
+	if (s > e)
+		return 0;
+	if ((*s & 0x80) == 0) /* ascii */
+		return 1;
+	l = 1;
+	while (s < e && utf_cont(s + 1)) {
+		s ++;
+		l ++;
+	}
+	return l;
+}
+
+static int utf_bb(const char *s, const char *e)
+{
+	int l = 0;
+	if (!s || !e)
+		return 0;
+	if (s > e)
+		return 0;
+	if ((*e & 0x80) == 0) /* ascii */
+		return 1;
+	l = 1;
+	while (s < e && utf_cont(e)) {
+		e --;
+		l ++;
+	}
+	return l;
+}
+
+static int luaB_utf_next(lua_State *L) {
+	int l = 0;
+	const char *s = luaL_optstring(L, 1, NULL);
+	int idx = luaL_optnumber(L, 2, 1) - 1;
+	if (s && idx >= 0) {
+		int len = strlen(s);
+		if (idx < len)
+			l = utf_ff(s + idx, s + len - 1);
+	}
+	lua_pushnumber(L, l);
+	return 1;
+}
+
+static int luaB_utf_prev(lua_State *L) {
+	int l = 0;
+	const char *s = luaL_optstring(L, 1, NULL);
+	int idx = luaL_optnumber(L, 2, 0) - 1;
+	int len = 0;
+	if (s) {
+		len = strlen(s);
+		if (idx < 0)
+			idx += len;
+		if (idx >= 0) {
+			if (idx < len)
+				l = utf_bb(s, s + idx);
+		}
+	}
+	lua_pushnumber(L, l);
+	return 1;
+}
+
+static int luaB_utf_char(lua_State *L) {
+	int len, l = 0;
+	char *rs;
+	const char *s = luaL_optstring(L, 1, NULL);
+	int idx = luaL_optnumber(L, 2, 1) - 1;
+	if (!s || idx < 0)
+		return 0;
+	len = strlen(s) - 1;
+	while (idx >= 0 && len >= 0) {
+		s += l;
+		l = utf_ff(s, s + len);
+		if (l <= 0)
+			return 0;
+		idx --;
+		len -= l;
+	}
+	rs = malloc(l + 1);
+	if (!rs)
+		return 0;
+	if (l)
+		memcpy(rs, s, l);
+	rs[l] = 0;
+	lua_pushstring(L, rs);
+	free(rs);
+	return 1;
+}
+
+static int luaB_utf_len(lua_State *L) {
+	int l = 0;
+	int sym = 0;
+	const char *s = luaL_optstring(L, 1, NULL);
+	if (s) {
+		int len = strlen(s) - 1;
+		while (len >= 0) {
+			l = utf_ff(s, s + len);
+			if (!l)
+				break;
+			s += l;
+			len -= l;
+			sym ++;
+		}
+	}
+	lua_pushnumber(L, sym);
+	return 1;
+}
+
 extern int dir_iter_factory (lua_State *L);
 extern int luaopen_lfs (lua_State *L);
 
@@ -860,6 +996,10 @@ static const luaL_Reg base_funcs[] = {
 
 	{"instead_readdir", dir_iter_factory},
 
+	{"utf8_next", luaB_utf_next},
+	{"utf8_prev", luaB_utf_prev},
+	{"utf8_char", luaB_utf_char},
+	{"utf8_len", luaB_utf_len},
 	{ NULL, NULL }
 };
 
@@ -1034,7 +1174,7 @@ int instead_init_lua(const char *path, int detect)
 	getdir(instead_cwd_path, sizeof(instead_cwd_path));
 	unix_path(instead_cwd_path);
 	instead_cwd_path[sizeof(instead_cwd_path) - 1] = 0;
-	strncpy(instead_game_path, path, sizeof(instead_game_path));
+	strncpy(instead_game_path, path, sizeof(instead_game_path) - 1);
 	instead_cwd_path[sizeof(instead_game_path) - 1] = 0;
 
 	if (detect && (api = instead_detect_api(path)) < 0) {
@@ -1103,7 +1243,10 @@ int instead_init(const char *path)
 	if (instead_init_lua(path, 1))
 		goto err;
 
-	snprintf(stead_path, sizeof(stead_path), "%s/stead.lua", STEAD_API_PATH);
+	if (snprintf(stead_path, sizeof(stead_path), "%s/stead.lua", STEAD_API_PATH) >=
+		(int)sizeof(stead_path))
+		fprintf(stderr, "Path is too long.\n");
+
 	if (dofile(L, dirpath(stead_path)))
 		goto err;
 
@@ -1150,7 +1293,7 @@ int instead_api_register(const luaL_Reg *api)
 	lua_pushglobaltable(L);
 	luaL_setfuncs(L, api, 0);
 #else
-	lua_getfield(L, LUA_GLOBALSINDEX, "_G"); 
+	lua_getfield(L, LUA_GLOBALSINDEX, "_G");
 	luaL_register(L, NULL, api);
 #endif
 	lua_pop(L, 1);

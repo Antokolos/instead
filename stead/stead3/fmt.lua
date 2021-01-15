@@ -16,7 +16,7 @@ fmt = std.obj {
 
 std.obj {
 	nam = '$fmt';
-	act = function(s, w, ...)
+	act = function(_, w, ...)
 		if type(w) ~= 'string' or not fmt[w] then
 			return w
 		end
@@ -53,8 +53,10 @@ std.format = function(r, state)
 	end
 
 	if fmt.para then
-		r = r:gsub('\n([^\n])', '\001%1'):gsub('\001[ \t]*'..fmt.nopara,'\n'):gsub('\001[ \t]*', '\n'..iface:nb(fmt.para_space));
-		r = r:gsub('^[ \t]*', '\001'):gsub('\001[ \t]*'..fmt.nopara,''):gsub('\001[ \t]*', iface:nb(fmt.para_space));
+		r = r:gsub('\n([^\n])', '\001%1'):gsub('\001[ \t]*'..fmt.nopara,'\n'):
+			gsub('\001[ \t]*', '\n'..iface:nb(fmt.para_space));
+		r = r:gsub('^[ \t]*', '\001'):gsub('\001[ \t]*'..fmt.nopara,''):
+			gsub('\001[ \t]*', iface:nb(fmt.para_space));
 	end
 	return r
 end

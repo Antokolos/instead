@@ -566,7 +566,6 @@ char *game_menu_gen(void)
 	return menu_buff;
 }
 
-
 int game_menu_act(const char *a)
 {
 	static int old_vol = 0;

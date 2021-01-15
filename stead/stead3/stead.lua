@@ -140,6 +140,10 @@ else
 	end
 end
 
+math.pow = function(num, n)
+	return num ^ n
+end
+
 math.round = function(num, n)
 	local m = 10 ^ (n or 0)
 	return std.math.floor(num * m + 0.5) / m
@@ -390,17 +394,19 @@ std.fmt = function(str, fmt, state)
 	local s = str
 	s = string.gsub(s, '[\t \n]+', std.space_delim);
 	s = string.gsub(s, '\\?[\\^]', { ['^'] = '\n', ['\\^'] = '^'} ):gsub("\n[ \t]+", "\n")
+	local first = true
 	while true do
 		fmt_refs = {}
 		substs = false
 		s = std.for_each_xref(s, fmt_prep) -- rename all {}
-		if type(fmt) == 'function' then
+		if first and type(fmt) == 'function' then
 			s = fmt(s, state)
 		end
 		s = std.for_each_xref(s, fmt_post) -- rename and xref
 		if not substs then
 			break
 		end
+		first = false
 	end
 	s = s:gsub('\\?'..'[{}]', { ['\\{'] = '{', ['\\}'] = '}' })
 	if state then
@@ -695,29 +701,23 @@ std.list = std.class {
 		if o then
 			return o -- already here
 		end
-		if not pos then
-			o = std.ref(n)
-			if not o then
-				std.err("Wrong argument to list:add(): "..std.tostr(n), 2)
+		if pos then
+			if type(pos) ~= 'number' then
+				std.err("Wrong parameter to list.add:"..std.tostr(pos), 2)
 			end
-			s:__dirty(true)
-			s:__attach(o)
-			table.insert(s, o)
-			s:sort()
-			return o
-		end
-		if type(pos) ~= 'number' then
-			std.err("Wrong parameter to list.add:"..std.tostr(pos), 2)
-		end
-		if pos > #s then
-			pos = #s
-		elseif pos < 0 then
-			pos = #s + pos + 1
-		end
-		if pos <= 0 then
-			pos = 1
+			if pos > #s then
+				pos = nil -- add to last position
+			elseif pos < 0 then
+				pos = #s + pos + 1
+			end
+			if pos and pos <= 0 then
+				pos = 1
+			end
 		end
 		o = std.ref(n)
+		if not o then
+			std.err("Wrong argument to list:add(): "..std.tostr(n), 2)
+		end
 		s:__dirty(true)
 		s:__attach(o)
 		if pos then
@@ -953,7 +953,7 @@ function std:load(fname) -- load save
 	end
 	std.nostrict = strict
 
-	std.ref 'game':__ini()
+	std.ref 'game':__ini(true)
 	std.ref 'game':__start(true)
 	return self.game:lastdisp()
 end
@@ -993,8 +993,10 @@ end
 
 function std:save(fp)
 	local close
+	local name, name_tmp
 	if type(fp) == 'string' then
-		fp = io.open(fp, "wb");
+		name, name_tmp = fp, fp .. '.tmp'
+		fp = io.open(name_tmp, "wb");
 		if not fp then
 			return nil, false -- can create file
 		end
@@ -1037,6 +1039,8 @@ function std:save(fp)
 	if close then
 		fp:flush();
 		fp:close();
+		std.os.remove(name);
+		std.os.rename(name_tmp, name);
 	end
 	std.busy(false)
 	return std.game:lastdisp() -- same scene
@@ -1045,7 +1049,8 @@ end
 local rnd_seed = 1980 + 1978
 function std:init()
 	std.rawset(_G, 'iface', std.ref '@iface') -- force iface override
-	std.world { nam = 'game', player = 'player', codepage = 'UTF-8', dsc = [[STEAD3, 2018 by Peter Kosyh^https://instead-hub.github.io^^]] };
+	std.world { nam = 'game', player = 'player', codepage = 'UTF-8',
+		dsc = [[STEAD3, 2020 by Peter Kosyh^https://instead-hub.github.io^^]] };
 	std.room { nam = 'main' }
 	std.player { nam = 'player', room = 'main' }
 
@@ -1064,8 +1069,8 @@ function std:done()
 		local k = std.deref(v)
 		if std.is_system(v) then
 			objects[k] = v
---		else
---			print("Deleting "..k)
+		else
+			std.dprint("Deleting "..k)
 		end
 	end)
 	std.objects = objects
@@ -1260,7 +1265,7 @@ std.obj = std.class {
 		v.obj = std.list(v.obj)
 --		v.obj:attach(v)
 		for key, val in pairs(v) do
-			if type(self[key]) == 'function' and type(val) ~= 'function' then
+			if not std.nostrict_new and type(self[key]) == 'function' and type(val) ~= 'function' then
 				std.err("Overwrited object method: '"..std.tostr(key).. "' in: "..std.tostr(v.nam), 2)
 			end
 			if not raw[key] then
@@ -2830,7 +2835,7 @@ iface.imgr = fmt_stub
 iface.under = fmt_stub
 iface.st = fmt_stub
 iface.tab = fmt_stub
-iface.y = fmt_stub
+iface.y = function() return '' end
 
 function std.loadmod(f)
 	if std.game and not std.__in_gamefile then

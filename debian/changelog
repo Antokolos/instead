@@ -1,3 +1,23 @@
+instead (3.3.2) unstable; urgency=low
+  * 3.3.2 build fix release;
+
+ -- Peter Kosyh <p.kosyh@gmail.com>  Sun, 19 Apr 2020 11:00:00 +0300
+
+instead (3.3.1) unstable; urgency=low
+  * 3.3.1 build fix release;
+
+ -- Peter Kosyh <p.kosyh@gmail.com>  Fri, 4 Oct 2019 18:21:00 +0300
+
+instead (3.3.0) unstable; urgency=low
+  * 3.3.0 release;
+
+ -- Peter Kosyh <p.kosyh@gmail.com>  Fri, 8 Mar 2019 09:28:00 +0300
+
+instead (3.2.2) unstable; urgency=low
+  * 3.2.2 release;
+
+ -- Peter Kosyh <p.kosyh@gmail.com>  Sat, 1 Sep 2018 09:21:00 +0300
+
 instead (3.2.1) unstable; urgency=low
   * 3.2.1 release;
 

@@ -81,7 +81,7 @@ cd $WORKSPACE
 rm -rf SDL2
 git clone https://github.com/emscripten-ports/SDL2.git
 cd SDL2
-git checkout merge-2.0.7
+# git checkout merge-2.0.7
 git pull
 
 ./autogen.sh
@@ -188,10 +188,8 @@ cp -R instead-em/stead instead-em-js/fs/
 cp -R instead-em/themes instead-em-js/fs/
 cp -R instead-em/lang instead-em-js/fs/
 cp -R instead-em/games instead-em-js/fs/
+rm -rf instead-em-js/fs/games # without games
 find instead-em-js/fs/ \( -name '*.svg' -o -name Makefile -o -name CMakeLists.txt \) -exec rm {} \;
-cd instead-em-js
-ln -f -s ../instead-em/src/sdl-instead sdl-instead.bc
-ln -f -s ../lib lib
 
 cat <<EOF > post.js
 var Module;
@@ -262,11 +260,21 @@ Module['postRun'].push(function() {
 });
 EOF
 
+unzip -o -j instead-em/contrib/instead-em.zip -d instead-em-js/
+
+cd instead-em-js
+ln -f -s ../instead-em/src/sdl-instead sdl-instead.bc
+ln -f -s ../lib lib
+
+
 emcc -O2 sdl-instead.bc lib/libz.a lib/libiconv.so lib/liblua.a lib/libSDL2_ttf.a  lib/libfreetype.a lib/libSDL2_mixer.a lib/libSDL2.a lib/libmikmod.a  lib/libSDL2_image.a lib/libjpeg.a  \
 -s EXPORTED_FUNCTIONS="['_instead_main']" \
 -s 'SDL2_IMAGE_FORMATS=["png","jpeg","gif"]' \
 -s 'EXTRA_EXPORTED_RUNTIME_METHODS=["ccall", "Pointer_stringify"]' \
 -s QUANTUM_SIZE=4 \
+-s BINARYEN_TRAP_MODE=clamp \
+-s WASM=1 \
+-s PRECISE_F32=1 \
 -s USE_OGG=1 -s USE_VORBIS=1 -s USE_LIBPNG=1 \
 -o instead-em.html -s SAFE_HEAP=0  -s TOTAL_MEMORY=167772160 -s ALLOW_MEMORY_GROWTH=1 \
 --post-js post.js  \

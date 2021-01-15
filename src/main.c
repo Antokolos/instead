@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2020 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -52,6 +52,7 @@ int nostdgames_sw = 0;
 int nostdthemes_sw = 0;
 int version_sw = 0;
 int owntheme_sw = 0;
+int noowntheme_sw = 0;
 int nopause_sw = 0;
 int chunksize_sw = 0;
 int software_sw = 0;
@@ -80,6 +81,7 @@ char *idf_sw = NULL;
 char *start_idf_sw = NULL;
 char *lua_sw = NULL;
 char *render_sw = NULL;
+char *lang_sw = NULL;
 static int lua_exec = 1;
 static int nocfg_sw = 0;
 
@@ -169,43 +171,28 @@ void wince_init(char *path)
 #endif
 static int run_game(const char *path)
 {
-	char *p, *ep, *d;
-	static char gp[PATH_MAX + 1];
-	static char *cd = "./";
+	char *b, *d;
+	static char dir[PATH_MAX + 1];
+	static char base[PATH_MAX + 1];
 	if (!path)
 		return -1;
 	if (!path[0])
 		return -1;
 	if (strlen(path) >= PATH_MAX)
 		return -1;
-	strcpy(gp, path);
-	p = gp;
-	unix_path(p);
-	ep = p + strlen(p) - 1;
-	while (*ep == '/' && ep != p)
-		*ep-- = 0;
-	if (!p[0])
-		return -1;
-	ep = p + strlen(p) - 1;
-	while (ep != p) {
-		if (*ep == '/') {
-			*ep ++ = 0;
-			break;
-		}
-		ep --;
-	}
-	if (ep == p)
-		d = cd;
-	else
-		d = p;
-
-	if (!is_game(d, ep)) {
-		fprintf(stderr, "%s/%s is not a game path.\n", d, ep);
+	strcpy(dir, path);
+	unix_path(dir);
+	strcpy(base, path);
+	unix_path(base);
+	d = dirname(dir);
+	b = basename(base);
+	if (!is_game(d, b)) {
+		fprintf(stderr, "%s/%s is not a game path.\n", d, b);
 		return -1;
 	}
 	FREE(game_sw);
 	FREE(games_sw);
-	game_sw = strdup(ep);
+	game_sw = strdup(b);
 	games_sw = strdup(d);
 	return 0;
 }
@@ -282,25 +269,50 @@ static int luaB_grab_events(lua_State *L) {
 	return 1;
 }
 
+static int luaB_text_input(lua_State *L) {
+	int rc;
+	int inp = lua_toboolean(L, 1);
+
+	if (!lua_isboolean(L, 1)) {
+		rc = input_text(-1);
+		lua_pushboolean(L, rc > 0);
+		return 1;
+	}
+	rc = input_text(inp);
+	lua_pushboolean(L, rc >= 0);
+	return 1;
+}
+
 static const luaL_Reg sdl_funcs[] = {
 	{ "instead_clipboard", luaB_clipboard },
 	{ "instead_wait_use", luaB_wait_use },
-	{"instead_grab_events", luaB_grab_events},
+	{ "instead_grab_events", luaB_grab_events},
+	{ "instead_text_input", luaB_text_input},
 	{NULL, NULL}
 };
+
+static int input_text_state = 0;
 
 static int sdl_ext_init(void)
 {
 	char path[PATH_MAX];
 	instead_api_register(sdl_funcs);
+	input_text_state = input_text(-1);
 	game_wait_use = 1;
 	game_grab_events = 0;
 	snprintf(path, sizeof(path), "%s/%s", instead_stead_path(), "/ext/gui.lua");
 	return instead_loadfile(dirpath(path));
 }
 
+static int sdl_ext_done(void)
+{
+	input_text(input_text_state);
+	return 0;
+}
+
 static struct instead_ext sdl_ext = {
 	.init = sdl_ext_init,
+	.done = sdl_ext_done,
 };
 
 static int sdl_extensions(void)
@@ -327,6 +339,9 @@ int instead_main(int argc, char *argv[])
 #ifdef _WIN32_WCE
 	libwince_init(argv[0], 1);
 	wince_init(argv[0]);
+#elif defined(APPIMAGE)
+	unix_path(argv[0]);
+	strcpy(game_cwd, dirname(argv[0]));
 #elif defined(WINRT)
 	unix_path(argv[0]);
 	strcpy(game_cwd, argv[0]);
@@ -388,6 +403,8 @@ int instead_main(int argc, char *argv[])
 			debug_sw = 1;
 		} else if (!strcmp(argv[i], "-owntheme"))
 			owntheme_sw = 1;
+		else if (!strcmp(argv[i], "-notheme"))
+			noowntheme_sw = 1;
 		else if (!strcmp(argv[i], "-noautosave"))
 			noauto_sw = 1;
 		else if (!strcmp(argv[i], "-game")) {
@@ -404,14 +421,12 @@ int instead_main(int argc, char *argv[])
 				theme_sw = strdup("");
 		} else if (!strcmp(argv[i], "-nostdgames")) {
 			nostdgames_sw = 1;
-#ifdef _LOCAL_APPDATA
 		} else if (!strcmp(argv[i], "-appdata")) {
 			FREE(appdata_sw);
 			if ((i + 1) < argc)
 				appdata_sw = strdup(argv[++i]);
 			else
 				appdata_sw = strdup("");
-#endif
 		} else if (!strcmp(argv[i], "-chunksize")) {
 			if ((i + 1) < argc)
 				chunksize_sw = atoi(argv[++i]);
@@ -525,6 +540,11 @@ int instead_main(int argc, char *argv[])
 				err = 1;
 				goto out;
 			}
+		} else if (!strcmp(argv[i], "-lang")) {
+			if ((i + 1) < argc)
+				lang_sw = strdup(argv[++i]);
+			else
+				lang_sw = strdup("en");
 		} else if (argv[i][0] == '-') {
 			fprintf(stderr,"Unknown option: %s\n", argv[i]);
 			usage();
@@ -589,9 +609,11 @@ int instead_main(int argc, char *argv[])
 	}
 
 	if (lua_sw) {
+		char *script_dir = strdup(lua_sw);
 		instead_set_standalone(1);
 		instead_set_debug(debug_sw);
-		err = instead_init_lua(dirname(lua_sw), 0);
+		err = instead_init_lua(dirname(script_dir), 0);
+		free(script_dir);
 		if (err)
 			goto out;
 		instead_api_register(paths_funcs);
@@ -630,7 +652,9 @@ int instead_main(int argc, char *argv[])
 		err = 1;
 		goto out;
 	}
-	if (!opt_lang || !opt_lang[0])
+	if (lang_sw)
+		opt_lang = strdup(lang_sw);
+	else if (!opt_lang || !opt_lang[0])
 		opt_lang = game_locale();
 
 	if (menu_lang_select(opt_lang) && menu_lang_select(LANG_DEF)) {
@@ -694,6 +718,11 @@ int instead_main(int argc, char *argv[])
 		opt_owntheme = 2;
 	}
 
+	if (noowntheme_sw && opt_owntheme) {
+		opt_owntheme = 0;
+	} else
+		noowntheme_sw = 0;
+
 	if (noauto_sw && opt_autosave)
 		opt_autosave = 2;
 	if (window_sw)
@@ -747,12 +776,10 @@ int instead_main(int argc, char *argv[])
 #endif
 	cfg_save();
 	game_done(0);
-
 	snd_done();
+	input_done();
 	gfx_video_done();
-#ifndef ANDROID
 	gfx_done();
-#endif
 out:
 	if (debug_sw)
 		debug_done();
@@ -785,6 +812,8 @@ static struct parser profile_parser[] = {
 	{ "themespath", parse_string, &themes_sw, 0 },
 	{ "game", parse_string, &game_sw, 0 },
 	{ "owntheme", parse_int, &owntheme_sw, 0 },
+	{ "notheme", parse_int, &noowntheme_sw, 0 },
+	{ "lang", parse_string, &lang_sw, 0 },
 	{ "appdata", parse_string, &appdata_sw, 0 },
 	{ "fullscreen", parse_int, &fullscreen_sw, 0 },
 	{ "hires", parse_int, &hires_sw, 0 },

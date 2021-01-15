@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2019 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -155,13 +155,17 @@ int HandleAppEvents(void *userdata, SDL_Event *event)
 		*/
 		/* snd_pause(0); */
 		m_minimized = 0;
+		game_flip();
+		game_gfx_commit(0);
 		return 0;
 	case SDL_APP_TERMINATING:
+#if !defined(ANDROID)
 		cfg_save();
 		game_done(0);
 		snd_done();
 		gfx_video_done();
 		gfx_done();
+#endif
 		return 0;
 	default:
 		/* No special processing, add it to the event queue */
@@ -170,9 +174,72 @@ int HandleAppEvents(void *userdata, SDL_Event *event)
 }
 #endif
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+static SDL_GameController *gamepad = NULL;
+
+static void gamepad_init(void)
+{
+	int i;
+	static char gamepad_cfg[PATH_MAX] = "";
+	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0) {
+		fprintf(stderr, "Couldn't initialize GameController subsystem: %s\n", SDL_GetError());
+		return;
+	}
+	for (i = 0; i < SDL_NumJoysticks(); ++i) {
+		if (SDL_IsGameController(i)) {
+			gamepad = SDL_GameControllerOpen(i);
+			if (gamepad) {
+			        fprintf(stderr, "Found gamepad: %s\n", SDL_GameControllerName(gamepad));
+				break;
+			} else {
+				fprintf(stderr, "Could not open gamepad %i: %s\n", i, SDL_GetError());
+			}
+		}
+	}
+	snprintf(gamepad_cfg, sizeof(gamepad_cfg) - 1, "%s/gamecontrollerdb.txt", appdir());
+	SDL_GameControllerAddMappingsFromFile(gamepad_cfg);
+}
+
+static void gamepad_done(void)
+{
+	if(gamepad)
+		SDL_GameControllerClose(gamepad);
+	if(SDL_WasInit(SDL_INIT_GAMECONTROLLER))
+		SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
+}
+
+static const char *gamepad_map(int button)
+{
+	switch(button) {
+	case SDL_CONTROLLER_BUTTON_DPAD_UP:
+		return "up";
+	case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+		return "down";
+	case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+		return "left";
+	case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+		return "right";
+	case SDL_CONTROLLER_BUTTON_A:
+		return "return";
+	case SDL_CONTROLLER_BUTTON_B:
+		return "space";
+	case SDL_CONTROLLER_BUTTON_X:
+		return "tab";
+	case SDL_CONTROLLER_BUTTON_START:
+		return "escape";
+	case SDL_CONTROLLER_BUTTON_LEFTSHOULDER:
+		return "page up";
+	case SDL_CONTROLLER_BUTTON_RIGHTSHOULDER:
+		return "page down";
+	}
+	return "";
+}
+#endif
+
 int input_init(void)
 {
 #if SDL_VERSION_ATLEAST(2,0,0)
+	gamepad_init();
 	/* SDL_EnableKeyRepeat(500, 30); */ /* TODO ? */
 	last_press_ms = 0;
 	last_repeat_ms = 0;
@@ -183,6 +250,13 @@ int input_init(void)
 	SDL_SetEventFilter(HandleAppEvents, NULL);
 #endif
 	return 0;
+}
+
+void input_done(void)
+{
+#if SDL_VERSION_ATLEAST(2,0,0)
+	gamepad_done();
+#endif
 }
 
 void input_clear(void)
@@ -287,6 +361,11 @@ int input(struct inp_event *inp, int wait)
 	inp->count = 1;
 	switch(event.type){
 #if SDL_VERSION_ATLEAST(2,0,0)
+	case SDL_TEXTINPUT:
+		inp->type = KEY_TEXT;
+		strncpy(inp->sym, event.text.text, sizeof(inp->sym));
+		inp->sym[sizeof(inp->sym) - 1] = 0;
+		break;
 	case SDL_MULTIGESTURE:
 	case SDL_FINGERMOTION:
 		if (DIRECT_MODE && !game_paused())
@@ -335,16 +414,32 @@ int input(struct inp_event *inp, int wait)
 			inp->sym + sizeof(event.tfinger.fingerId) * 2 + 1);
 		inp->sym[sizeof(event.tfinger.fingerId) * 2 + 1 + sizeof(event.tfinger.touchId) * 2] = 0;
 		break;
+	case SDL_CONTROLLERBUTTONDOWN:
+		inp->type = KEY_DOWN;
+		inp->code = event.cbutton.button;
+		strncpy(inp->sym, gamepad_map(event.cbutton.button), sizeof(inp->sym));
+		inp->sym[sizeof(inp->sym) - 1] = 0;
+		break;
+	case SDL_CONTROLLERBUTTONUP:
+		inp->type = KEY_UP;
+		inp->code = event.cbutton.button;
+		strncpy(inp->sym, gamepad_map(event.cbutton.button), sizeof(inp->sym));
+		inp->sym[sizeof(inp->sym) - 1] = 0;
+		break;
 	case SDL_WINDOWEVENT:
 		switch (event.window.event) {
 /*		case SDL_WINDOWEVENT_SHOWN: */
-/*		case SDL_WINDOWEVENT_RESIZED: */
+		case SDL_WINDOWEVENT_RESIZED: /* Android send this on screen rotate */
 		case SDL_WINDOWEVENT_SIZE_CHANGED:
 			gfx_resize(event.window.data1, event.window.data2);
 			/* Fall through */
 		case SDL_WINDOWEVENT_EXPOSED:
+			if (m_minimized) { /* broken WM? no RESTORE msg? */
+				m_minimized = 0;
+				snd_pause(0);
+			}
 			game_flip();
-			gfx_commit();
+			game_gfx_commit(0);
 			break;
 		case SDL_WINDOWEVENT_MINIMIZED:
 		case SDL_WINDOWEVENT_RESTORED:
@@ -412,7 +507,7 @@ int input(struct inp_event *inp, int wait)
 	case SDL_USEREVENT: {
 		void (*p) (void*) = (void (*)(void*))event.user.data1;
 		if (!p) /* idle cycles */
-			return 0;
+			return 1;
 		p(event.user.data2);
 		return AGAIN;
 		}
@@ -447,7 +542,7 @@ int input(struct inp_event *inp, int wait)
 		key_compat(inp);
 #endif
 #if SDL_VERSION_ATLEAST(1,3,0) /* strange bug in some SDL2 env, with up/down events storm */
-		if (SDL_PeepEvents(&peek, 1, SDL_PEEKEVENT, SDL_KEYDOWN, SDL_KEYUP) > 0) {
+		if (DIRECT_MODE && SDL_PeepEvents(&peek, 1, SDL_PEEKEVENT, SDL_KEYDOWN, SDL_KEYUP) > 0) {
 			if (peek.key.keysym.scancode == event.key.keysym.scancode &&
 				peek.key.repeat == 0)
 				return AGAIN;
@@ -468,7 +563,7 @@ int input(struct inp_event *inp, int wait)
 		key_compat(inp);
 #endif
 #if SDL_VERSION_ATLEAST(1,3,0) /* strange bug in some SDL2 env, with up/down events storm */
-		if (SDL_PeepEvents(&peek, 1, SDL_PEEKEVENT, SDL_KEYDOWN, SDL_KEYUP) > 0) {
+		if (DIRECT_MODE && SDL_PeepEvents(&peek, 1, SDL_PEEKEVENT, SDL_KEYDOWN, SDL_KEYUP) > 0) {
 			if (event.key.keysym.scancode == peek.key.keysym.scancode &&
 				peek.key.repeat == 0)
 				return AGAIN;
@@ -545,4 +640,28 @@ int input(struct inp_event *inp, int wait)
 		break;
 	}
 	return 1;
+}
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+extern void gfx_real_size(int *ww, int *hh);
+#endif
+int input_text(int start)
+{
+	#if SDL_VERSION_ATLEAST(2,0,0)
+		SDL_Rect rect;
+		int w, h;
+		if (start == -1)
+			return SDL_IsTextInputActive();
+		if (start) {
+			gfx_real_size(&w, &h);
+			rect.x = w / 2; rect.y = h - 1;
+			rect.w = 1; rect.h = 1;
+			SDL_SetTextInputRect(&rect);
+			SDL_StartTextInput();
+		} else
+			SDL_StopTextInput();
+		return 0;
+	#else
+		return -1;
+	#endif
 }

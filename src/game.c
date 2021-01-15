@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2019 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -154,6 +154,7 @@ int game_reset(void)
 {
 	game_release(); /* commit all user events */
 	game_release_theme(1);
+	game_theme_free();
 	if (game_select(curgame_dir))
 		goto out;
 	if (game_apply_theme())
@@ -321,6 +322,16 @@ static char *game_version(const char *path, const char *d_name)
 	trunc_lines(p, 0);
 	return p;
 }
+
+static char *game_direction(const char *path, const char *d_name)
+{
+	char *p = game_tag(path, d_name, "Direction");
+	if (!p)
+		return strdup(d_name);
+	trunc_lines(p, 0);
+	return p;
+}
+
 #if 0
 static char *game_api(const char *path, const char *d_name)
 {
@@ -337,6 +348,7 @@ static void game_info_free(struct game *g)
 	FREE(g->info);
 	FREE(g->author);
 	FREE(g->version);
+	FREE(g->direction);
 /*	FREE(g->api); */
 }
 
@@ -353,6 +365,7 @@ static void game_info_fill(struct game *g)
 	g->info = game_info(dirpath(g->path), g->dir);
 	g->author = game_author(dirpath(g->path), g->dir);
 	g->version = game_version(dirpath(g->path), g->dir);
+	g->direction = game_direction(dirpath(g->path), g->dir);
 /*	g->api = game_api(dirpath(g->path), g->dir); */
 }
 
@@ -391,6 +404,8 @@ static int cmp_game(const void *p1, const void *p2)
 
 static void games_sort()
 {
+	if (!games)
+		return;
 	qsort(games, games_nr, sizeof(struct game), cmp_game);
 }
 
@@ -542,7 +557,11 @@ void game_clear(int x, int y, int w, int h)
 
 void game_clear_all(void)
 {
-	game_clear(0, 0, game_theme.w, game_theme.h);
+	if (DIRECT_MODE)
+		gfx_img_fill(gfx_screen(NULL), 0, 0, game_theme.w, game_theme.h,
+			gfx_col(game_theme.brdcol.r, game_theme.brdcol.g, game_theme.brdcol.b));
+	else
+		game_clear(0, 0, game_theme.w, game_theme.h);
 }
 
 void game_clear(int x, int y, int w, int h);
@@ -744,10 +763,18 @@ int game_apply_theme(void)
 	int align = game_theme.win_align;
 	layout_t lay = NULL;
 	textbox_t box = NULL;
-
-	gfx_bg(game_theme.bgcol);
-	if (!DIRECT_MODE)
-		game_clear_all();
+	struct game *g = game_lookup(curgame_dir);
+	int rtl = 0;
+	if (g && g->direction) {
+		if (!strcmp(g->direction, "rtl"))
+			rtl = 1;
+		else if (!strcmp(g->direction, "auto"))
+			rtl = -1;
+	}
+	gfx_bg(game_theme.xoff, game_theme.yoff,
+		game_theme.w - 2*game_theme.xoff, game_theme.h - 2*game_theme.yoff,
+		game_theme.bgcol, game_theme.brdcol);
+	game_clear_all();
 	gfx_flip();
 	if (opt_justify == JUST_NO && align == ALIGN_JUSTIFY)
 		align = ALIGN_LEFT;
@@ -766,6 +793,8 @@ int game_apply_theme(void)
 		/* txt_layout_link_style(lay, 4); */
 		txt_layout_active_color(lay, game_theme.acol);
 		txt_layout_font_height(lay, game_theme.font_height);
+		txt_layout_rtl(lay, rtl);
+
 		txt_box_set(box, lay);
 		el_set(el_scene, elt_box, game_theme.win_x, 0, box);
 	}
@@ -780,6 +809,7 @@ int game_apply_theme(void)
 			txt_layout_link_color(lay, game_theme.ilcol);
 			txt_layout_active_color(lay, game_theme.iacol);
 			txt_layout_font_height(lay, game_theme.inv_font_height);
+			txt_layout_rtl(lay, rtl);
 
 			box = txt_box(game_theme.inv_w, game_theme.inv_h);
 			if (!box)
@@ -799,6 +829,7 @@ int game_apply_theme(void)
 		txt_layout_link_color(lay, game_theme.lcol);
 		txt_layout_active_color(lay, game_theme.acol);
 		txt_layout_font_height(lay, game_theme.font_height);
+		txt_layout_rtl(lay, rtl);
 
 		el_set(el_title, elt_layout, game_theme.win_x, game_theme.win_y, lay);
 	}
@@ -812,6 +843,7 @@ int game_apply_theme(void)
 		txt_layout_link_color(lay, game_theme.lcol);
 		txt_layout_active_color(lay, game_theme.acol);
 		txt_layout_font_height(lay, game_theme.font_height);
+		txt_layout_rtl(lay, rtl);
 
 		el_set(el_ways, elt_layout, game_theme.win_x, 0, lay);
 	}
@@ -875,7 +907,7 @@ void game_gfx_commit(int sync)
 
 static int game_render_callback_redraw(void);
 
-static void anigif_do(void *data)
+static void anim_do(void *data)
 {
 	void *v;
 	img_t img;
@@ -885,27 +917,27 @@ static void anigif_do(void *data)
 
 	game_cursor(CURSOR_CLEAR);
 
-	if (gfx_frame_gif(el_img(el_spic))) { /* scene */
+	if (gfx_frame_anim(el_img(el_spic))) { /* scene */
 		game_render_callback_redraw();
-		gfx_update_gif(el_img(el_spic), game_update);
+		gfx_update_anim(el_img(el_spic), game_update);
 	}
 
 	game_cursor(CURSOR_CLEAR);
 
 	for (v = NULL; (img = txt_layout_images(txt_box_layout(el_box(el_scene)), &v)); ) { /* scene */
 		game_cursor(CURSOR_CLEAR);
-		if ((img != el_img(el_spic)) && gfx_frame_gif(img)) {
+		if ((img != el_img(el_spic)) && gfx_frame_anim(img)) {
 			game_render_callback_redraw();
-			gfx_update_gif(img, game_update);
+			gfx_update_anim(img, game_update);
 		}
 	}
 	game_cursor(CURSOR_CLEAR);
 
 	for (v = NULL; (img = txt_layout_images(txt_box_layout(el_box(el_inv)), &v)); ) { /* inv */
 		game_cursor(CURSOR_CLEAR);
-		if (gfx_frame_gif(img)) {
+		if (gfx_frame_anim(img)) {
 			game_render_callback_redraw();
-			gfx_update_gif(img, game_update);
+			gfx_update_anim(img, game_update);
 		}
 	}
 
@@ -913,9 +945,9 @@ static void anigif_do(void *data)
 
 	for (v = NULL; (img = txt_layout_images(el_layout(el_title), &v)); ) { /* title */
 		game_cursor(CURSOR_CLEAR);
-		if (gfx_frame_gif(img)) {
+		if (gfx_frame_anim(img)) {
 			game_render_callback_redraw();
-			gfx_update_gif(img, game_update);
+			gfx_update_anim(img, game_update);
 		}
 	}
 
@@ -923,9 +955,9 @@ static void anigif_do(void *data)
 
 	for (v = NULL; (img = txt_layout_images(el_layout(el_ways), &v)); ) { /* ways */
 		game_cursor(CURSOR_CLEAR);
-		if (gfx_frame_gif(img)) {
+		if (gfx_frame_anim(img)) {
 			game_render_callback_redraw();
-			gfx_update_gif(img, game_update);
+			gfx_update_anim(img, game_update);
 		}
 	}
 	game_cursor(CURSOR_ON);
@@ -941,14 +973,8 @@ int counter_fn(int interval, void *p)
 		push_user_event(NULL, NULL);
 	}
 #endif
-	if (gfx_is_drawn_gifs() && !DIRECT_MODE)
-		push_user_event(anigif_do, NULL);
-#ifdef __EMSCRIPTEN__
-	if (timer_han) { /* emscripten SDL bug? */
-		gfx_del_timer(timer_han);
-		timer_han = gfx_add_timer(HZ, counter_fn, NULL);
-	}
-#endif
+	if (gfx_is_drawn_anims() && !DIRECT_MODE)
+		push_user_event(anim_do, NULL);
 	return interval;
 }
 
@@ -1101,6 +1127,9 @@ void game_release_theme(int force)
 	if (el_img(el_spic)) {
 		gfx_free_image(el_img(el_spic));
 		el_zero(el_spic);
+		if (GFX_MODE(game_theme.gfx_mode) == GFX_MODE_EMBEDDED)
+			txt_layout_add_img(txt_box_layout(el_box(el_scene)),
+				"scene", NULL);
 	}
 
 	for (i = 0; i < el_max; i++) {
@@ -1142,7 +1171,7 @@ static int game_event(const char *ev);
 
 void game_done(int err)
 {
-	if (curgame_dir && !err) {
+	if (!err && curgame_dir) {
 		game_event("quit");
 		if (opt_autosave)
 			game_save(0);
@@ -1161,12 +1190,8 @@ void game_done(int err)
 	instead_done();
 	curgame_dir = NULL;
 
-/* #ifndef ANDROID
-	gfx_video_done();
-#endif */
 	game_own_theme = 0;
 	need_restart = 0;
-/*	SDL_Quit(); */
 }
 
 static void el_size(int i, int *w, int *h)
@@ -1211,12 +1236,12 @@ static int _el_clear(int n, clear_fn clear)
 		clear(x, y, w, h);
 	if (o->type == elt_box) {
 		for (v = NULL; (img = txt_layout_images(txt_box_layout(el_box(n)), &v)); )
-			gfx_dispose_gif(img);
+			gfx_dispose_anim(img);
 	} else if (o->type == elt_layout) {
 		for (v = NULL; (img = txt_layout_images(el_layout(n), &v)); )
-			gfx_dispose_gif(img);
+			gfx_dispose_anim(img);
 	} else if (o->type == elt_image)
-		gfx_dispose_gif(el_img(n));
+		gfx_dispose_anim(el_img(n));
 
 	return 1;
 }
@@ -1348,6 +1373,7 @@ void box_update_scrollbar(int n)
 	el_update(eldown->id);
 }
 
+/* Decides what to draw */
 void el_draw(int n)
 {
 	int x, y;
@@ -1849,11 +1875,12 @@ static void after_cmd(void)
 	game_autosave();
 	game_instead_restart();
 	game_instead_menu();
+	game_gfx_commit(0);
 }
 
 static void after_fading(void *aux)
 {
-	gfx_start_gif(el_img(el_spic));
+	gfx_start_anim(el_img(el_spic));
 	gfx_free_image(fade_ctx.offscreen);
 	game_render_callback_redraw();
 	after_click(fade_ctx.flags, fade_ctx.m_restore);
@@ -2046,9 +2073,8 @@ int game_cmd(char *cmd, int flags)
 			if (new_pict) {
 				gfx_free_image(el_img(el_spic));
 				el(el_spic)->p.p = NULL;
-				if (GFX_MODE(game_theme.gfx_mode) == GFX_MODE_EMBEDDED &&
-					!el(el_spic)->p.p) /* clear embedded gfx */
-				txt_layout_add_img(txt_box_layout(el_box(el_scene)),
+				if (GFX_MODE(game_theme.gfx_mode) == GFX_MODE_EMBEDDED) /* clear embedded gfx */
+					txt_layout_add_img(txt_box_layout(el_box(el_scene)),
 					"scene", NULL);
 			}
 		}
@@ -2226,7 +2252,7 @@ inv:
 	if (fading) {
 		img_t offscreen;
 		game_cursor(CURSOR_OFF);
-		gfx_stop_gif(el_img(el_spic));
+		gfx_stop_anim(el_img(el_spic));
 		instead_render_callback();
 		offscreen = gfx_screen(oldscreen);
 		fade_ctx.offscreen = offscreen;
@@ -3163,9 +3189,15 @@ static int game_input(int down, const char *key, int x, int y, int mb)
 		const char *k;
 		args[0].val = "kbd"; args[0].type = INSTEAD_STR;
 		args[1].val = (down)?"true":"false"; args[1].type = INSTEAD_BOOL;
-		k = (key)?key:"unknown";
+		k = (key) ? key:"unknown";
 		args[2].val = (char*)k; args[2].type = INSTEAD_STR;
 		args[3].val = NULL;
+	} else if (mb == EV_CODE_TEXT) {
+		const char *k;
+		args[0].val = "text"; args[0].type = INSTEAD_STR;
+		k = (key) ? key:"";
+		args[1].val = (char*)k; args[1].type = INSTEAD_STR;
+		args[2].val = NULL;
 	} else {
 		const char *k;
 		int px = -1;
@@ -3213,7 +3245,8 @@ static int game_input(int down, const char *key, int x, int y, int mb)
 		return -1;
 	}
 
-	rc = game_cmd(p, (mb != -1)?GAME_CMD_CLICK:0); free(p);
+	rc = game_cmd(p, (mb >= 0 || mb == EV_CODE_FINGER)?GAME_CMD_CLICK:0);
+	free(p);
 
 	return (rc)?-1:0;
 }
@@ -3310,15 +3343,20 @@ static int game_input_events(struct inp_event *ev)
 	if (!curgame_dir)
 		return 0;
 	if (ev->type == KEY_DOWN || ev->type == KEY_UP) {
+#if defined(ANDROID) || defined(IOS)
+		if (!is_key(ev, "f12") && !menu_shown) /* f12 is keyboard toggle */
+			return 0;
+#endif
 		if (!game_input((ev->type == KEY_DOWN), ev->sym, -1, -1, EV_CODE_KBD))
 			return 1;
-	}
-	if (ev->type == FINGER_DOWN || ev->type == FINGER_UP) {
+	} else if (ev->type == FINGER_DOWN || ev->type == FINGER_UP) {
 		if (!game_input((ev->type == FINGER_DOWN), ev->sym, ev->x, ev->y, EV_CODE_FINGER))
 			return 1;
-	}
-	if (ev->type == MOUSE_DOWN || ev->type == MOUSE_UP) {
+	} else if (ev->type == MOUSE_DOWN || ev->type == MOUSE_UP) {
 		if (!game_input((ev->type == MOUSE_DOWN), "mouse", ev->x, ev->y, ev->code))
+			return 1;
+	} else if (ev->type == KEY_TEXT) {
+		if (!game_input(1, ev->sym, -1, -1, EV_CODE_TEXT))
 			return 1;
 	}
 	return 0;
@@ -3394,6 +3432,10 @@ static int kbd_instead(struct inp_event *ev, int *x, int *y)
 					game_load(9);
 			}
 		}
+#if defined(ANDROID) || defined(IOS)
+	} else if (!is_key(ev, "f12") && curgame_dir && !menu_shown) {
+		input_text(!(input_text(-1) > 0));
+#endif
 	} else if (!is_key(ev, "f5") && curgame_dir && !menu_shown) {
 		mouse_reset(1);
 		game_cmd("look", 0);
@@ -3621,6 +3663,17 @@ out:
 	return rc;
 }
 #ifdef __EMSCRIPTEN__
+const char *em_beforeunload(int eventType, const void *reserved, void *userData)
+{
+	if (curgame_dir) {
+		game_event("quit");
+		if (opt_autosave)
+			game_save(0);
+		game_cfg_save();
+	}
+	return NULL;
+}
+
 static void game_void_cycle(void)
 {
 	int rc;
@@ -3640,6 +3693,7 @@ static void game_void_cycle(void)
 int game_loop(void)
 {
 #ifdef __EMSCRIPTEN__
+	emscripten_set_beforeunload_callback(NULL, em_beforeunload);
 	emscripten_set_main_loop(game_void_cycle, 0, 0);
 	return -1;
 #else

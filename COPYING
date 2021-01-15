@@ -1,4 +1,4 @@
-Copyright 2009-2018 Peter Kosyh <p.kosyh at gmail.com>
+Copyright 2009-2020 Peter Kosyh <p.kosyh at gmail.com>
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation files
@@ -29,7 +29,8 @@ INSTEAD links with the following libraries/sources:
     SDL_ttf (LGPL)
     SDL_mixer (LGPL)
     SDL_gfx (Zlib)
-    SDL_anigif.c (LGPL)
+
+    SDL_gif.c (Zlib)
 
     SDL2 (Zlib)
     SDL2_image (Zlib)
@@ -47,3 +48,6 @@ INSTEAD links with the following libraries/sources:
     list routines (MIT) (http://ccodearchive.net/info/list.html)
     LuaFileSystem (http://keplerproject.github.io/luafilesystem/license.html)
     tinymt32 (The 3-clause BSD License)
+
+    HarfBuzz (old MIT)
+    GLib (LGPL)

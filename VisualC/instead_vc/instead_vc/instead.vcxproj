@@ -104,11 +104,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_NO_GAME_SELECT;_LOCAL_APPDATA;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.2.1";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_NO_GAME_SELECT;_LOCAL_APPDATA;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.3.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT32\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT32\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;..\..\..\..\SDL_mixer\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -122,11 +122,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_NO_GAME_SELECT;_LOCAL_APPDATA;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.2.1";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_NO_GAME_SELECT;_LOCAL_APPDATA;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.3.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT64\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT64\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;..\..\..\..\SDL_mixer\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -142,11 +142,11 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>_NO_GAME_SELECT;_LOCAL_APPDATA;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.2.1";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_NO_GAME_SELECT;_LOCAL_APPDATA;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.3.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT32\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT32\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;..\..\..\..\SDL_mixer\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -164,11 +164,11 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>_NO_GAME_SELECT;_LOCAL_APPDATA;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.2.1";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_NO_GAME_SELECT;_LOCAL_APPDATA;_USE_UNPACK;HAVE_ASPRINTF;HAVE_VSNPRINTF;HAVE_SNPRINTF;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;NOMAIN;_HAVE_ICONV;_USE_SDL;_SDL_MOD_BUG;_WIN32;VERSION="3.3.2";LANG_PATH="lang";THEMES_PATH="themes";STEAD_PATH="stead";GAMES_PATH="games";NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT64\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\LuaJIT64\src;..\..\libiconv\libiconv.Shared\include;..\..\libgen\libgen.Shared;..\..\instead_compat\instead_compat.Shared;..\..\..\..\SDL_ttf;..\..\..\..\SDL_mixer;..\..\..\..\SDL_image;..\..\..\..\SDL_image\external\zlib-1.2.11;..\..\..\..\SDL\include;..\..\..\..\SDL_mixer\include;%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -206,7 +206,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\menu.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\noise1234.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL2_rotozoom.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_anigif.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_gif.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_gfxBlitFunc.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\sound.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\src\themes.c" />
@@ -236,7 +236,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\menu.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\noise1234.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL2_rotozoom.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_anigif.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_gif.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_gfxBlitFunc.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\SDL_rotozoom.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\src\sound.h" />

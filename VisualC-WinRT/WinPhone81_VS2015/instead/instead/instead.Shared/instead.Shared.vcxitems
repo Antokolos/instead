@@ -40,7 +40,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\menu.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\noise1234.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL2_rotozoom.c" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_anigif.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_gif.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_gfxBlitFunc.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\sound.c" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\themes.c" />
@@ -70,7 +70,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\menu.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\noise1234.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL2_rotozoom.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_anigif.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_gif.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_gfxBlitFunc.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_rotozoom.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\sound.h" />

@@ -102,9 +102,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\noise1234.c">
       <Filter>instead</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_anigif.c">
-      <Filter>instead</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_gfxBlitFunc.c">
       <Filter>instead</Filter>
     </ClCompile>
@@ -142,6 +139,9 @@
       <Filter>instead</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\winrt_utils.c">
+      <Filter>instead</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_gif.c">
       <Filter>instead</Filter>
     </ClCompile>
   </ItemGroup>
@@ -188,9 +188,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\noise1234.h">
       <Filter>instead</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_anigif.h">
-      <Filter>instead</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_gfxBlitFunc.h">
       <Filter>instead</Filter>
     </ClInclude>
@@ -222,6 +219,9 @@
       <Filter>instead</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\utils.h">
+      <Filter>instead</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)\..\..\..\..\src\SDL_gif.h">
       <Filter>instead</Filter>
     </ClInclude>
   </ItemGroup>

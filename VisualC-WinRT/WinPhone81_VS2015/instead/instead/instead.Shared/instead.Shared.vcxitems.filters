@@ -75,7 +75,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL2_rotozoom.c">
       <Filter>instead</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_anigif.c">
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_gif.c">
       <Filter>instead</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_gfxBlitFunc.c">
@@ -161,7 +161,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL2_rotozoom.h">
       <Filter>instead</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_anigif.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_gif.h">
       <Filter>instead</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\src\SDL_gfxBlitFunc.h">

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2021 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -1560,7 +1560,7 @@ static void triangle(struct lua_pixels *src, int x0, int y0, int x1, int y1, int
 
 	for (y = miny; y <= maxy; y ++) {
 		int w0 = w0_row;
-	        int w1 = w1_row;
+		int w1 = w1_row;
 		int w2 = w2_row;
 		unsigned char *p = ptr;
 		for (x = minx; x <= maxx; x++) {
@@ -1820,6 +1820,12 @@ static int pixels_triangle(lua_State *L) {
 	y1 = luaL_optnumber(L, 5, 0);
 	x2 = luaL_optnumber(L, 6, 0);
 	y2 = luaL_optnumber(L, 7, 0);
+	#define XOR_SWAP(x,y) x=x^y; y=x^y; x=x^y;
+	if (orient2d(x0, y0, x1, y1, x2, y2) < 0) {
+		XOR_SWAP(x1, x2)
+		XOR_SWAP(y1, y2)
+	}
+	#undef XOR_SWAP
 	r = luaL_optnumber(L, 8, 0);
 	g = luaL_optnumber(L, 9, 0);
 	b = luaL_optnumber(L, 10, 0);

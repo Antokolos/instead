@@ -8,7 +8,7 @@ IF("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 ENDIF("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 
 # global constants
-SET(INSTEAD_VERSION "3.3.2")
+SET(INSTEAD_VERSION "3.3.4")
 
 # options
 OPTION(WITH_SDL2 "Use SDL2 instead of SDL 1" ON)
@@ -30,6 +30,7 @@ OPTION(WITH_HARFBUZZ "Build with HarfBuzz for RTL language support" OFF)
 #     development
 OPTION(SYSTEMWIDE "Build for systemwide install" ON)
 OPTION(STANDALONE "Build for standalone package creation" OFF)
+OPTION(APPIMAGE "Build for appimage package creation" OFF)
 
 IF(WITH_GTK2 AND WITH_GTK3)
 	MESSAGE(WARNING "WITH_GTK2 and WITH_GTK3 are mutually exclusive, disabling WITH_GTK2")
@@ -40,6 +41,10 @@ IF(SYSTEMWIDE AND STANDALONE)
 	MESSAGE(WARNING "Both STANDALONE and SYSTEMWIDE specified, disabling SYSTEMWIDE")
 	SET(SYSTEMWIDE OFF)
 ENDIF(SYSTEMWIDE AND STANDALONE)
+
+IF(APPIMAGE)
+SET(CMAKE_INSTALL_PREFIX "/usr")
+ENDIF(APPIMAGE)
 
 SET(BINDIR "bin" CACHE STRING "Where to install binaries")
 SET(DATADIR "share/instead" CACHE STRING "Where to install data files")

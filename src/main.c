@@ -37,6 +37,10 @@
 #include "android.h"
 #endif
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #ifdef _WIN32_WCE
 extern void	libwince_init(const char* prog, int debug);
 #endif
@@ -62,6 +66,7 @@ int resizable_sw = 0;
 int scale_sw = 1;
 int standalone_sw = 0;
 int nocursor_sw = 0;
+int glhack_sw = 0;
 
 static int opt_index = 1;
 
@@ -329,6 +334,12 @@ int instead_main(int argc, char *argv[])
 #endif
 	int err = 0;
 	int i;
+#ifdef _WIN32
+	HINSTANCE lib = LoadLibrary("user32.dll");
+	int (*SetProcessDPIAware)() = (void*) GetProcAddress(lib, "SetProcessDPIAware");
+	if (SetProcessDPIAware)
+		SetProcessDPIAware();
+#endif
 #ifdef __APPLE__
 	macosx_init();
 #endif
@@ -475,6 +486,11 @@ int instead_main(int argc, char *argv[])
 			nocursor_sw = 1;
 		} else if (!strcmp(argv[i], "-software")) {
 			software_sw = 1;
+		} else if (!strcmp(argv[i], "-glhack")) {
+			if ((i + 1) < argc)
+				glhack_sw = atoi(argv[++i]);
+			else
+				glhack_sw = 565; /* some samsung devices */
 		} else if (!strcmp(argv[i], "-resizable")) {
 			resizable_sw = 1;
 		} else if (!strcmp(argv[i], "-scale")) {

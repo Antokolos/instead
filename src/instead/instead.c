@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2020 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2021 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -63,7 +63,8 @@ char 		*togame(const char *s);
 lua_State	*L = NULL;
 
 static char *err_msg = NULL;
-static char instead_api_path[PATH_MAX];
+static char instead_api_path[PATH_MAX + 1];
+static char instead_base_path[PATH_MAX] = STEAD_PATH;
 
 static char *API = NULL;
 static char *MAIN = NULL;
@@ -464,11 +465,21 @@ int instead_function(char *s, struct instead_args *args)
 }
 
 #ifdef _HAVE_ICONV
-static char *curcp = "UTF-8";
+static char *curcp = NULL;
 static char *fromcp = NULL;
 #endif
 
 #ifdef _HAVE_ICONV
+void instead_set_encoding(const char *cp)
+{
+	if (curcp)
+		free(curcp);
+	if (cp)
+		curcp = strdup(cp);
+	else
+		curcp = NULL;
+	return;
+}
 char *instead_fromgame(const char *s)
 {
 	iconv_t han;
@@ -522,6 +533,9 @@ char *togame(const char *s)
 	if (!s)
 		return NULL;
 	return strdup(s);
+}
+void instead_set_encoding(const char *cp)
+{
 }
 #endif
 
@@ -1086,6 +1100,18 @@ const char *instead_get_api(void)
 	return API;
 }
 
+const char *instead_lua_path(const char *path)
+{
+	if (!path)
+		return instead_base_path;
+	if (!*path) {
+		strncpy(instead_base_path, STEAD_PATH, sizeof(instead_base_path) - 1);
+		return instead_base_path;
+	}
+	strncpy(instead_base_path, path, sizeof(instead_base_path) - 1);
+	return instead_base_path;
+}
+
 static int instead_set_api(const char *api)
 {
 	int i, c = 0;
@@ -1093,7 +1119,7 @@ static int instead_set_api(const char *api)
 	char *oa;
 	if (!api || !*api) {
 		FREE(API);
-		snprintf(instead_api_path, sizeof(instead_api_path), "%s", STEAD_PATH);
+		snprintf(instead_api_path, sizeof(instead_api_path), "%s", instead_lua_path(NULL));
 	} else {
 		s = strlen(api);
 		for (i = 0; i < s; i ++) {
@@ -1110,7 +1136,7 @@ static int instead_set_api(const char *api)
 		oa = API;
 		API = strdup(api);
 		FREE(oa);
-		snprintf(instead_api_path, sizeof(instead_api_path), "%s/%s", STEAD_PATH, API);
+		snprintf(instead_api_path, sizeof(instead_api_path), "%s/%s", instead_lua_path(NULL), API);
 	}
 	return 0;
 }
@@ -1171,6 +1197,7 @@ int instead_init_lua(const char *path, int detect)
 	setlocale(LC_COLLATE, "C");
 #endif
 /*	strcpy(curcp, "UTF-8"); */
+	instead_set_encoding("UTF-8");
 	getdir(instead_cwd_path, sizeof(instead_cwd_path));
 	unix_path(instead_cwd_path);
 	instead_cwd_path[sizeof(instead_cwd_path) - 1] = 0;
@@ -1314,6 +1341,7 @@ void instead_done(void)
 #endif
 #ifdef _HAVE_ICONV
 	FREE(fromcp);
+	FREE(curcp);
 #endif
 	if (L)
 		lua_close(L);

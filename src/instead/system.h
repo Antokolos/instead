@@ -29,14 +29,16 @@
 #include <ctype.h>
 #include <dirent.h>
 #include <time.h>
-#ifndef S60
+#if !defined(S60) && !defined(PLAN9)
  #include <libgen.h>
 #endif
 #ifdef S60
  #include "snprintf.h"
  typedef long ssize_t;
 #endif
+#if !defined(PLAN9)
 #include <math.h>
+#endif
 
 #ifndef PATH_MAX
 #define PATH_MAX 	4096

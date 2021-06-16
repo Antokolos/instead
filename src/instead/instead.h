@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Peter Kosyh <p.kosyh at gmail.com>
+ * Copyright 2009-2021 Peter Kosyh <p.kosyh at gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation files
@@ -75,6 +75,8 @@ extern char *instead_fromgame(const char *s);
 extern int  instead_encode(const char *s, const char *d);
 extern int  instead_busy(void);
 
+extern void instead_set_encoding(const char *cp); /* UTF-8 by default */
+
 /* internal use */
 extern int  instead_init_lua(const char *path, int detect);
 extern int  instead_loadscript(char *name, int argc, char **argv, int exec);
@@ -91,6 +93,8 @@ extern int  instead_set_lang(const char *lang);
 extern int  instead_set_debug(int);
 extern int  instead_set_standalone(int);
 /* extern int  instead_set_api(const char *api); */
+extern const char *instead_lua_path(const char *path); /* override STEAD_PATH */
+
 extern const char *instead_get_api(void);
 
 extern lua_State *instead_lua(void);
